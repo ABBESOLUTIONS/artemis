@@ -3,11 +3,8 @@ import React from 'react';
 import FooterStyle from '../../styles/FooterStyle';
 import Logo from '../Logo';
 import SocialMediaButton from '../SocialMediaButton';
+import SocialMediaList from '../SocialMediaList';
 import FooterItems from './FooterItems';
-import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const FooterContainerCopirght=styled(FooterStyle)(()=>({
     minHeight: "250px",
@@ -48,12 +45,7 @@ function Footer() {
                 <FooterItems title={'+33 4 90 71 35 47'} path={''}></FooterItems>
                 <Typography>Lundi - vendredi, 	09:00–12:00 / 14:00–18:00</Typography>
                 <FooterItems title={'mailto:contact@artemisassurance.fr'} path={''}></FooterItems>
-                <SocialMediaContainer>
-                    <SocialMediaButton children={<FacebookOutlinedIcon/>} link={''}/>
-                    <SocialMediaButton children={<TwitterIcon/>} link={''}/>
-                    <SocialMediaButton children={<InstagramIcon/>} link={''}/>
-                    <SocialMediaButton children={<LinkedInIcon/>} link={''}/>
-                </SocialMediaContainer>
+                <SocialMediaList/>
             </FooterContainerPart>
             <FooterContainerPart>
                 <Typography sx={{fontSize:"18px", fontWeight:"bold"}}>Information légales</Typography>

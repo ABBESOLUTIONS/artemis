@@ -12,7 +12,6 @@ function Contact() {
        <ContactStyle>
         <div>
             hello contact!!!
-            <AboutDrawer />
         </div>
        </ContactStyle>
     );

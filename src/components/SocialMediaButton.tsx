@@ -3,7 +3,7 @@ import  { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
 const SocialMediaButtonContainer= styled(Link)(()=>({
-    color:"black",
+    color:"#138f82",
     margin:"10px"
 }));
 
