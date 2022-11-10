@@ -16,13 +16,13 @@ interface Pops {
     sx? : SxProps,
 };
 
-function FooterItems({title, path}: Pops) {
+function FooterItems({title, path, sx={}}: Pops) {
     let resolved = useResolvedPath(path);
     let match = useMatch({ path: resolved.pathname, end: true });
 
     return (
         <FooterItemContainer>
-            <Typography component={FooterItemLink} to={path} variant="body1" style={{color: match ? "black" : "white"}}>{title}</Typography>
+            <Typography component={FooterItemLink} to={path} variant="body1" style={{color: match ? "black" : "white"}} sx={{...sx}}>{title}</Typography>
         </FooterItemContainer>
     );
 }

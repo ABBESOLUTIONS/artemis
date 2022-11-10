@@ -6,6 +6,8 @@ import Qualities from '../sections/HomePage/Qualities';
 import HomeHero from '../sections/HomePage/HomeHero';
 import TestimonyOverview from '../sections/HomePage/TestimonyOverview';
 import HeroComponent from '../components/HeroComponent';
+import BlogOverview from '../sections/HomePage/BlogOverview';
+import ServiceOverview from '../sections/HomePage/ServiceOverview';
 
 function HomePage() {
     return (
@@ -15,7 +17,9 @@ function HomePage() {
         // <Qualities/>
         // <HomeHero/>
         // <TestimonyOverview/>
-        <HeroComponent/>
+        // <HeroComponent/>
+        // <BlogOverview/>
+        <ServiceOverview/>
     );
 }
 
