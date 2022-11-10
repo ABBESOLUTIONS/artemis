@@ -12,14 +12,14 @@ import ServiceOverview from '../sections/HomePage/ServiceOverview';
 function HomePage() {
     return (
         // <Members/>
-        // <ServicesOverview/>
+        <ServicesOverview/>
         // <Experience/>
         // <Qualities/>
         // <HomeHero/>
         // <TestimonyOverview/>
         // <HeroComponent/>
         // <BlogOverview/>
-        <ServiceOverview/>
+        // <ServiceOverview/>
     );
 }
 

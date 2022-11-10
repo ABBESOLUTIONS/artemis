@@ -58,3 +58,35 @@ export const qualitiesInfo = [
         text:"Chez Artémis, nous ne sommes pas limités. Vous avez la possibilité de choisir votre propre moyen de payement. Que ce soit en carte bleue, en espèces, par chèque, par virement ou par prélèvement, nous nous adaptons à vos besoins.",
     },
 ];
+ export const differentServices = [
+    {
+        icone:"assets/images/presentation.png",
+        title:"L'assurance des batiments",
+        text:"Qu'il s'agisse d'un simple bureau, d'un commerce ou d'un entrepôt, un contrat multirisque adapté permet de garantir la pérennité de vos bâtiments.",
+    },
+    {
+        icone:"assets/images/presentation.png",
+        title:"L'assurance des batiments",
+        text:"Qu'il s'agisse d'un simple bureau, d'un commerce ou d'un entrepôt, un contrat multirisque adapté permet de garantir la pérennité de vos bâtiments.",
+    },
+    {
+        icone:"assets/images/presentation.png",
+        title:"L'assurance des batiments",
+        text:"Qu'il s'agisse d'un simple bureau, d'un commerce ou d'un entrepôt, un contrat multirisque adapté permet de garantir la pérennité de vos bâtiments.",
+    },
+    {
+        icone:"assets/images/presentation.png",
+        title:"L'assurance des batiments",
+        text:"Qu'il s'agisse d'un simple bureau, d'un commerce ou d'un entrepôt, un contrat multirisque adapté permet de garantir la pérennité de vos bâtiments.",
+    },
+    {
+        icone:"assets/images/presentation.png",
+        title:"L'assurance des batiments",
+        text:"Qu'il s'agisse d'un simple bureau, d'un commerce ou d'un entrepôt, un contrat multirisque adapté permet de garantir la pérennité de vos bâtiments.",
+    },
+    {
+        icone:"assets/images/presentation.png",
+        title:"L'assurance des batiments",
+        text:"Qu'il s'agisse d'un simple bureau, d'un commerce ou d'un entrepôt, un contrat multirisque adapté permet de garantir la pérennité de vos bâtiments.",
+    },
+ ];
