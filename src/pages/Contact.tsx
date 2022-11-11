@@ -1,18 +1,16 @@
 import { Container, styled } from '@mui/material';
 import React from 'react';
 import AboutDrawer from '../components/AboutDrawer';
+import ContactElements from '../sections/ContactPage.tsx/ContactElements';
 
 const ContactStyle= styled("div")(()=>({
-    justifyContent:"center",
-    paddingTop:"100px"
+    
 }))
 
 function Contact() {
     return (
        <ContactStyle>
-        <div>
-            hello contact!!!
-        </div>
+            <ContactElements/>
        </ContactStyle>
     );
 }
