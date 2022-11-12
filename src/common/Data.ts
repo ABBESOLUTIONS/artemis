@@ -90,3 +90,22 @@ export const qualitiesInfo = [
         text:"Qu'il s'agisse d'un simple bureau, d'un commerce ou d'un entrepôt, un contrat multirisque adapté permet de garantir la pérennité de vos bâtiments.",
     },
  ];
+
+ export const currencies = [
+    {
+      value: 'Responsable',
+      label: 'Responsable',
+    },
+    {
+      value: 'Demi-Responsable',
+      label: 'Demi-Responsable',
+    },
+    {
+      value: 'Non-Responsable',
+      label: 'Non-Responsable',
+    },
+    {
+      value: 'Bris de glace',
+      label: 'Bris de glace',
+    },
+  ];

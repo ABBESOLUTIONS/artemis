@@ -8,6 +8,9 @@ import TestimonyOverview from '../sections/HomePage/TestimonyOverview';
 import HeroComponent from '../components/HeroComponent';
 import BlogOverview from '../sections/HomePage/BlogOverview';
 import ServiceOverview from '../sections/HomePage/ServiceOverview';
+import AutoMoto from './AutoMoto';
+import Habitation from './Habitation';
+import Sante from './Sante';
 
 function HomePage() {
     return (
@@ -18,8 +21,11 @@ function HomePage() {
         // <HomeHero/>
         // <TestimonyOverview/>
         // <HeroComponent/>
-        <BlogOverview/>
+        // <BlogOverview/>
         // <ServiceOverview/>
+        // <AutoMoto/>
+        // <Habitation/>
+        <Sante/>
     );
 }
 
