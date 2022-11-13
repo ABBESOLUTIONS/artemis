@@ -1,8 +1,8 @@
 
 import { styled, Typography, Box, Grid, TextField, MenuItem} from '@mui/material';
 import React from 'react';
-import { PROJECT_COLORS } from '../../common/colors';
-import SectionStyle from '../../styles/SectionStyle';
+import { PROJECT_COLORS } from '../../../common/colors';
+import SectionStyle from '../../../styles/SectionStyle';
 // import { PROJECT_COLORS } from '../../../common/colors';
 // import { currencies } from '../../../common/Data';
 // import AutoMotoGarageCheck from '../../../components/AutoMotoGarageCheck';

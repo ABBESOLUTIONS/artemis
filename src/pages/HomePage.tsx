@@ -11,6 +11,8 @@ import ServiceOverview from '../sections/HomePage/ServiceOverview';
 import AutoMoto from './AutoMoto';
 import Habitation from './Habitation';
 import Sante from './Sante';
+import Professionelle from './Professionelle';
+import AbonnementBanner from '../sections/HomePage/AbonnementBanner';
 
 function HomePage() {
     return (
@@ -23,9 +25,11 @@ function HomePage() {
         // <HeroComponent/>
         // <BlogOverview/>
         // <ServiceOverview/>
+        <AbonnementBanner/>
         // <AutoMoto/>
         // <Habitation/>
-        <Sante/>
+        // <Sante/>
+        // <Professionelle/>
     );
 }
 

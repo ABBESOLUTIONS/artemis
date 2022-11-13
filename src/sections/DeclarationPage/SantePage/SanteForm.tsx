@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled, Typography, Box, Grid, TextField, MenuItem} from '@mui/material';
-import SectionStyle from '../../../../styles/SectionStyle';
-import { PROJECT_COLORS } from '../../../../common/colors';
+import SectionStyle from '../../../styles/SectionStyle';
+import { PROJECT_COLORS } from '../../../common/colors';
 
 
 const SanteFormContainer=styled(SectionStyle)(()=>({
