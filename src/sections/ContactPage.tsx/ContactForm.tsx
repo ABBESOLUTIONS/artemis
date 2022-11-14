@@ -19,12 +19,12 @@ function ContactForm() {
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"45px", marginBottom:"50px", textAlign:"center" }}>Veuillez renseigner le formulaire</Typography>
             <Box component={"form"} sx={{'& .MuiTextField-root': { m:2, width: '50ch' },}}>
                 <div>
-                <TextField required id="outlined-required" label="Required" defaultValue="Hello World"/>
-                <TextField required id="outlined-disabled" label="Disabled" defaultValue="Hello World"/>
+                <TextField required id="outlined-required" label="Nom" defaultValue=""/>
+                <TextField required id="outlined-disabled" label="Email" defaultValue=""/>
                 </div>
                 <div>
-                <TextField required id="outlined-required" label="Required" defaultValue="Hello World"/>
-                <TextField required id="outlined-disabled" label="Disabled" defaultValue="Hello World"/>
+                <TextField required id="outlined-required" label="N° de Télephone" defaultValue=""/>
+                <TextField required id="outlined-disabled" label="Sujet" defaultValue="Sujet"/>
                 </div>
                 <div>
                 <FormControl fullWidth sx={{ m: 1 }} variant="standard">

@@ -12,7 +12,7 @@ const ContactStyle= styled("div")(()=>({
 function Contact() {
     return (
        <ContactStyle>
-        <HeroComponent/>
+            <HeroComponent/>
             <ContactElements/>
             <ContactForm/>
        </ContactStyle>
