@@ -6,9 +6,9 @@ import Header from "../components/Header/Header";
 export default function ClientLayout(){
     return(
         <Fragment>
-            {/* <Header/> */}
+            <Header/>
             <Outlet/>
-            {/* <Footer/> */}
+            <Footer/>
         </Fragment>
     )
 }

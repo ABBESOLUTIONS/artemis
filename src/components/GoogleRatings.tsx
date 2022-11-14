@@ -6,6 +6,7 @@ const GoogleRatingStyle=styled(Card)(()=>({
     padding:"10px",
     display:"flex",
     flexDirection:"column",
+    marginTop:"20px"
 }))
 
 function GoogleRatings() {

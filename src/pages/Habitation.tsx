@@ -1,5 +1,5 @@
 import React from 'react';
-import HabitationForm from '../sections/DeclarationPage/HabitationPage/HabitationForm';
+import HabitationForm from '../sections/HabitationPage/HabitationForm';
 
 function Habitation() {
     return (

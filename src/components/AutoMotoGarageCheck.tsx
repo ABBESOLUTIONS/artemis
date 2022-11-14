@@ -3,7 +3,6 @@ import React from 'react';
 const   AutoMotoGarageCheckContainer=styled("div")(()=>({
     display:"flex",
     flexDirection:"row",
-    height:"75px"
 }))
 
 function AutoMotoGarageCheck() {
@@ -53,7 +52,7 @@ function AutoMotoGarageCheck() {
             label="Voie PUBLIQUE"
           />
         </FormGroup>
-        <FormHelperText>Be careful</FormHelperText>
+        <FormHelperText>Veuillez sélectioner une case</FormHelperText>
       </FormControl>
       </Box>
         </AutoMotoGarageCheckContainer>

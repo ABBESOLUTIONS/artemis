@@ -16,20 +16,22 @@ import AbonnementBanner from '../sections/HomePage/AbonnementBanner';
 
 function HomePage() {
     return (
-        // <Members/>
-        // <ServicesOverview/>
-        // <Experience/>
-        // <Qualities/>
-        // <HomeHero/>
-        // <TestimonyOverview/>
-        // <HeroComponent/>
-        // <BlogOverview/>
-        // <ServiceOverview/>
+        <div>
+        <HomeHero/>
+        <Qualities/>
+        <ServicesOverview/>
+        <ServiceOverview/>
+        <Experience/>
+        <Members/>
+        <TestimonyOverview/>
+        <BlogOverview/>
         <AbonnementBanner/>
-        // <AutoMoto/>
-        // <Habitation/>
-        // <Sante/>
-        // <Professionelle/>
+        {/* <HeroComponent/>
+        <AutoMoto/>
+        <Habitation/>
+        <Sante/>
+        <Professionelle/> */}
+        </div>
     );
 }
 

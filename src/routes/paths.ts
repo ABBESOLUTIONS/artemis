@@ -8,4 +8,9 @@ export const CLIENT_PAGES = {
     blog: "/blog",
     contact:"/contact",
     declaration:"/declaration",
+    devisOption:"/devisOption",
+    autoMoto:"/autoMoto",
+    habitation:"/habitation",
+    sante:"/devisOption/sante",
+    professionelle:"/devisOption/professionelle",
 };

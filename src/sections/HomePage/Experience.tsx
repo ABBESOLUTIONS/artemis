@@ -31,7 +31,7 @@ function Experience() {
         <ExperienceContainer>
             <ExperienceContainerLeft>
                 <ImageComponent image={"assets/images/choose-us-img.jpg"} sx={{width:"650px",position:"absolute"}}/>
-                <ImageComponent image={"assets/images/choose-shape.png"} sx={{position:"absolute", marginLeft:"275px", marginTop:"-25px"}}/>
+                <ImageComponent image={"assets/images/leaf2.png"} sx={{position:"absolute", marginLeft:"275px", marginTop:"-25px"}}/>
             </ExperienceContainerLeft>
             <ExperienceContainerRight>
                 <Typography variant="h6" sx={{textAlign:"start", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>POURQUOI NOUS CHOISIR</Typography>

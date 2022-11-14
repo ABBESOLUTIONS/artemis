@@ -30,7 +30,17 @@ const ClientMenuItems = [
   },
   {
     title: "Declaration",
-    path:  CLIENT_PAGES.declaration,
+    path:"/look",
+    submenu:[
+      {
+      title:"Un sinistre",
+      path:CLIENT_PAGES.contact,
+      },
+      {
+      title:"Faire un réclamation",
+      path: CLIENT_PAGES.contact,
+      }
+    ]
   },
 ];
 

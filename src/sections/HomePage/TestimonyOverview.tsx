@@ -33,10 +33,10 @@ function TestimonyOverview() {
         <TestimonyOverviewStyle>
             <TestimonyOverviewLeft>
                 <TestimonyCard text={"Super accueil super service un super courtier qui saura trouvé la bonne réponse à vos questions d'assurance et cerise sur le gâteau chez Artemis on vous fait une audit de tout vos contrats assurance quand vous êtes pro oui oui."} profilImage={"assets/images/profile.jpg"} name={"Mohamad D"}/>
-                <GoogleRatings/>
+                <GoogleRatings />
             </TestimonyOverviewLeft>
             <TestimonyOverviewRight>
-                <ImageComponent image={"assets/images/choose-shape.png"} sx={{position:"absolute", marginLeft:"200px", marginTop:"-360px"}}/>
+                <ImageComponent image={"assets/images/leaf2.png"} sx={{position:"absolute", marginLeft:"200px", marginTop:"-360px"}}/>
                 <Typography variant="h6" sx={{textAlign:"start", fontSize:'', color:"white"}}>LES AVIS</Typography>
                 <Typography variant='h3' sx={{textAlign:"start", fontWeight:"bold", fontSize:"45px", marginBottom:"50px",color:"white",width:"475px"}}>Ce que disent les clients de nous</Typography>
                 <Typography variant="h6" sx={{textAlign:"start", fontSize:'18px', marginBottom:"50px",color:"white",width:"475px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus</Typography>

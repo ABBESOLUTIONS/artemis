@@ -35,7 +35,7 @@ function Header() {
             </LogoContainer>
             <Search />
             <Box sx={{display: "flex"}}>
-                {ClientMenuItems.map((menu, index) => <HeaderMenuItem key={index} title={menu.title} path={menu.path}/>)}
+                {ClientMenuItems.map((menu, index) => <HeaderMenuItem key={index} title={menu.title} path={menu.path} subMenu={menu.submenu}/>)}
             </Box>
             <DevisButton/>
             <AboutDrawer/>

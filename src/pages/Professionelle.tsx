@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfessionelleForm from '../sections/DeclarationPage/ProfessionellePage.tsx/ProfessionelleForm';
+import ProfessionelleForm from '../sections/ProfessionellePage.tsx/ProfessionelleForm';
 
 function Professionelle() {
     return (

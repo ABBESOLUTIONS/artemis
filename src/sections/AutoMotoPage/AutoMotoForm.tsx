@@ -1,12 +1,12 @@
 import { styled, Typography, Box, Grid, TextField, MenuItem} from '@mui/material';
 import React from 'react';
-import { PROJECT_COLORS } from '../../../common/colors';
-import { currencies } from '../../../common/Data';
-import AutoMotoGarageCheck from '../../../components/AutoMotoGarageCheck';
-import AutoMotoUsageVehiculaireCheck from '../../../components/AutoMotoUsageVehiculaireCheck';
-import SectionStyle from '../../../styles/SectionStyle';
+import { PROJECT_COLORS } from '../../common/colors';
+import { currencies } from '../../common/Data';
+import AutoMotoGarageCheck from '../../components/AutoMotoGarageCheck';
+import AutoMotoUsageVehiculaireCheck from '../../components/AutoMotoUsageVehiculaireCheck';
+import SectionStyle from '../../styles/SectionStyle';
 const AutoMotoFormContainer=styled(SectionStyle)(()=>({
-    maxHeight:"2000px",
+    // maxHeight:"5000px",
     display:"flex",
     flexDirection:"column",
     alignItems:"center",
@@ -127,6 +127,21 @@ function AutoMotoForm() {
                                 <Typography>Garage:</Typography>
                                 <Typography>Garage:</Typography>
             </Box>
+
+            <Typography>Garage:</Typography>
+                                <Typography>Garage:</Typography>
+                                <Typography>Garage:</Typography>
+                                <Typography>Garage:</Typography>
+                                <Typography>Garage:</Typography>
+                                <Typography>Garage:</Typography>
+
+
+                                <Typography>Garage:</Typography>
+                                <Typography>Garage:</Typography>
+                                <Typography>Garage:</Typography>
+                                <Typography>Garage:</Typography>
+                                <Typography>Garage:</Typography>
+                                <Typography>Garage:</Typography>
         </AutoMotoFormContainer>
     );
 }

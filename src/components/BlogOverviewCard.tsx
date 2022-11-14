@@ -14,7 +14,9 @@ const BlogOverviewCardContainer=styled(Card)(()=>({
     flexDirection:"column",
     justifyContent:"space-around",
     paddingTop:"-20px",
-    boxShadow:"none"
+    boxShadow:"none",
+    position:"relative",
+    margin:"25px"
 }));
  const DateContainer=styled("div")(()=>({
     width:"125px",

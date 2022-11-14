@@ -1,5 +1,5 @@
 import React from 'react';
-import AutoMotoForm from '../sections/DeclarationPage/AutoMotoPage/AutoMotoForm';
+import AutoMotoForm from '../sections/AutoMotoPage/AutoMotoForm';
 
 function AutoMoto() {
     return (

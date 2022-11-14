@@ -1,10 +1,13 @@
 import { Navigate, useRoutes } from "react-router-dom";
 import ClientLayout from "../layouts/ClientLayout";
 import OthersLayout from "../layouts/OthersLayout";
+import AutoMoto from "../pages/AutoMoto";
 import Blog from "../pages/Blog";
 import Contact from "../pages/Contact";
 import Declaration from "../pages/Declaration";
+import DevisOption from "../pages/DevisOption";
 import HomePage from "../pages/HomePage";
+import Sante from "../pages/Sante";
 import Services from "../pages/Services";
 import { CLIENT_PAGES } from "./paths";
 
@@ -27,6 +30,9 @@ export default function Router() {
           { path: CLIENT_PAGES.blog, element: <Blog/> },
           { path: CLIENT_PAGES.contact, element: <Contact /> },
           { path: CLIENT_PAGES.declaration, element: <Declaration /> },
+          { path: CLIENT_PAGES.devisOption, element: <DevisOption /> },
+          { path: CLIENT_PAGES.autoMoto, element: <AutoMoto /> },
+          { path: CLIENT_PAGES.sante, element: <Sante /> },
         ],
       },
 

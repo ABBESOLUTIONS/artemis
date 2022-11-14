@@ -1,6 +1,6 @@
 import { Box, Grid, styled, TextField } from '@mui/material';
 import React from 'react';
-import SectionStyle from '../../../styles/SectionStyle';
+import SectionStyle from '../../styles/SectionStyle';
 
 const ProfessionelleFormContainer=styled(SectionStyle)(()=>({
     maxHeight:"2000px",
