@@ -1,9 +1,10 @@
 import React from 'react';
+import BlogPageCard from '../components/BlogPageCard';
 
 function Blog() {
     return (
         <div>
-            hello blog!!
+            <BlogPageCard/>
         </div>
     );
 }
