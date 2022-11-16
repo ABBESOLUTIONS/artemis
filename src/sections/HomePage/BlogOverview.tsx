@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, styled, Typography, Paper } from '@mui/material';
 import SectionStyle from '../../styles/SectionStyle';
 import BlogOverviewCard from '../../components/BlogOverviewCard';
-import { ButtonBack, ButtonNext, CarouselProvider, Slide, Slider } from 'pure-react-carousel';
 import Carousel from 'react-material-ui-carousel';
 
 

@@ -29,22 +29,18 @@ function ContactForm() {
                 <div>
                 <FormControl fullWidth sx={{ m: 1 }} variant="standard">
                 {/* <TextField variant="standard" label={"Comment pouvons nous vous aidé"} /> */}
+                {/* <TextField variant="outlined" label={"Comment pouvons nous vous aidé"} fullWidth  multiline rows={6} /> */}
 
-                    <InputLabel htmlFor="standard-adornment-amount" >Amount</InputLabel>
+
+                    {/* <InputLabel htmlFor="standard-adornment-amount" >Amount</InputLabel> */}
                     <OutlinedInput
-                        id="standard-adornment-amount"
-                    />
+                        id="standard-adornment-amount" label="Comment pouvins nous vous aidé?" />
                    
         <Typography sx={{margin:"10px"}}>
                 Selectionner tous vos documents à envoyer
             </Typography>
             <OutlinedInput type='file' id="upload"></OutlinedInput>
-            <FormControlLabel
-          value="end"
-          control={<Checkbox />}
-          label="J'accepte les termes et conditions"
-          labelPlacement="end"
-        />
+            <FormControlLabel value="end" control={<Checkbox />} label="J'accepte les termes et conditions" labelPlacement="end"/>
             </FormControl>
                 </div>
             </Box>

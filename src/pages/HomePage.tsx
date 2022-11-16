@@ -13,10 +13,12 @@ import Habitation from './Habitation';
 import Sante from './Sante';
 import Professionelle from './Professionelle';
 import AbonnementBanner from '../sections/HomePage/AbonnementBanner';
+import SinistreForm from '../sections/SinistrePage/SinistreForm';
 
 function HomePage() {
     return (
         <div>
+        {/* <SinistreForm/> */}
         <HomeHero/>
         <Qualities/>
         <ServicesOverview/>

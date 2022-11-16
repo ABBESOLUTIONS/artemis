@@ -1,5 +1,5 @@
 import React from 'react';
-import SanteForm from '../sections/SanteForm';
+import SanteForm from '../sections/SantePage/SanteForm';
 
 function Sante() {
     return (

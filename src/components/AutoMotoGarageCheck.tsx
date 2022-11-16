@@ -25,7 +25,7 @@ function AutoMotoGarageCheck() {
         <AutoMotoGarageCheckContainer>
             <Box sx={{ display: 'flex' }}>
             <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-        <FormLabel component="legend">Assign responsibility</FormLabel>
+        {/* <FormLabel component="legend">Assign responsibility</FormLabel> */}
         <FormGroup>
           <FormControlLabel
             control={

@@ -6,7 +6,9 @@ import Blog from "../pages/Blog";
 import Contact from "../pages/Contact";
 import Declaration from "../pages/Declaration";
 import DevisOption from "../pages/DevisOption";
+import Habitation from "../pages/Habitation";
 import HomePage from "../pages/HomePage";
+import Professionelle from "../pages/Professionelle";
 import Sante from "../pages/Sante";
 import Services from "../pages/Services";
 import { CLIENT_PAGES } from "./paths";
@@ -33,6 +35,8 @@ export default function Router() {
           { path: CLIENT_PAGES.devisOption, element: <DevisOption /> },
           { path: CLIENT_PAGES.autoMoto, element: <AutoMoto /> },
           { path: CLIENT_PAGES.sante, element: <Sante /> },
+          { path: CLIENT_PAGES.habitation, element: <Habitation /> },
+          { path: CLIENT_PAGES.professionelle, element: <Professionelle /> },
         ],
       },
 

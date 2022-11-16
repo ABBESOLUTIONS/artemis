@@ -1,11 +1,14 @@
 import React from 'react';
 import { styled, Typography, Box, Grid, TextField, MenuItem} from '@mui/material';
-import SectionStyle from '../styles/SectionStyle';
-import { PROJECT_COLORS } from '../common/colors';
+import SectionStyle from '../../styles/SectionStyle';
+import { PROJECT_COLORS } from '../../common/colors';
+import SanteGarantieCheck from '../../components/SanteGarantieCheck';
+import SanteOptionCheck from '../../components/SanteOptionCheck';
+import AutoMotoPaiementCheck from '../../components/AutoMotoPaiementCheck';
 
 
 const SanteFormContainer=styled(SectionStyle)(()=>({
-    maxHeight:"2000px",
+    // maxHeight:"2000px",
     display:"flex",
     flexDirection:"column",
     alignItems:"center",
@@ -61,9 +64,35 @@ function SanteForm() {
                 </div>
                 <div>
                 <TextField  id="outlined-required" label="Nom et Prénom (enfant du souscripteur)" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Date de Naissance (Sexe)" defaultValue="" variant="outlined"/>
+                <TextField  id="outlined-required" label="Date de Naissance (Sexe)" defaultValue="" variant="outlined"/>
                 </div>
-                
+                <div>
+                <TextField  id="outlined-required" label="Nom et Prénom (enfant du souscripteur)" defaultValue="" variant="outlined"/>
+                <TextField  id="outlined-required" label="Date de Naissance (Sexe)" defaultValue="" variant="outlined"/>
+                </div>
+                <div>
+                <TextField  id="outlined-required" label="Nom et Prénom (enfant du souscripteur)" defaultValue="" variant="outlined"/>
+                <TextField  id="outlined-required" label="Date de Naissance (Sexe)" defaultValue="" variant="outlined"/>
+                </div>
+                <div>
+                <TextField  id="outlined-required" label="Nom et Prénom (enfant du souscripteur)" defaultValue="" variant="outlined"/>
+                <TextField  id="outlined-required" label="Date de Naissance (Sexe)" defaultValue="" variant="outlined"/>
+                </div>
+                <div>
+                <TextField  id="outlined-required" label="Nom et Prénom (enfant du souscripteur)" defaultValue="" variant="outlined"/>
+                <TextField  id="outlined-required" label="Date de Naissance (Sexe)" defaultValue="" variant="outlined"/>
+                </div>
+                <div>
+                <TextField  id="outlined-required" label="Nom et Prénom (enfant du souscripteur)" defaultValue="" variant="outlined"/>
+                <TextField  id="outlined-required" label="Date de Naissance (Sexe)" defaultValue="" variant="outlined"/>
+                </div>
+                <div>
+                <TextField  id="outlined-required" label="Nom et Prénom (enfant du souscripteur)" defaultValue="" variant="outlined"/>
+                <TextField  id="outlined-required" label="Date de Naissance (Sexe)" defaultValue="" variant="outlined"/>
+                </div>
+                <SanteGarantieCheck/>
+                <SanteOptionCheck/>
+                <AutoMotoPaiementCheck/>
             </Box>
         </SanteFormContainer>
     );

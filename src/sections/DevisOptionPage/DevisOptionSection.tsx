@@ -22,13 +22,13 @@ function DevisOptionSection() {
                     <FormAccesButton nom={"AUTO-MOTO"} desc={"(Vélo, Trotinette,Bateau)"} chemin={CLIENT_PAGES.autoMoto}/>
                 </Grid>
                 <Grid item xs={6}>
-                    <FormAccesButton nom={"HABITATION"} desc={"Propriétaie ou Locataire"} chemin={''}/>
+                    <FormAccesButton nom={"HABITATION"} desc={"Propriétaie ou Locataire"} chemin={CLIENT_PAGES.habitation}/>
                 </Grid>
                 <Grid item xs={6}>
                     <FormAccesButton nom={"SANTE"} desc={"Mutuel et Prévoyance"} chemin={CLIENT_PAGES.sante}/>
                 </Grid>
                 <Grid item xs={6}>
-                    <FormAccesButton nom={"PROFESSIONELLE"} desc={"RCPRO,Multirisques et Decennal"} chemin={''}/>
+                    <FormAccesButton nom={"PROFESSIONELLE"} desc={"RCPRO,Multirisques et Decennal"} chemin={CLIENT_PAGES.professionelle}/>
                 </Grid>
             </Grid>
         </DevisOptionSectionContainer>

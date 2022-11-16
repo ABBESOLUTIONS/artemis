@@ -3,6 +3,9 @@ import React from 'react';
 import { PROJECT_COLORS } from '../../common/colors';
 import { currencies } from '../../common/Data';
 import AutoMotoGarageCheck from '../../components/AutoMotoGarageCheck';
+import AutoMotoGarantieCheck from '../../components/AutoMotoGarantieCheck';
+import AutoMotoOptionCheck from '../../components/AutoMotoOptionCheck';
+import AutoMotoPaiementCheck from '../../components/AutoMotoPaiementCheck';
 import AutoMotoUsageVehiculaireCheck from '../../components/AutoMotoUsageVehiculaireCheck';
 import SectionStyle from '../../styles/SectionStyle';
 const AutoMotoFormContainer=styled(SectionStyle)(()=>({
@@ -116,6 +119,9 @@ function AutoMotoForm() {
                 </div>
                 <Typography>Garage:</Typography>
                 <div><AutoMotoGarageCheck/></div>
+                <div><AutoMotoGarantieCheck/></div>
+                <div><AutoMotoOptionCheck/></div>
+                <div><AutoMotoPaiementCheck/></div>
                 {/* <div><AutoMotoUsageVehiculaireCheck/></div>
                 <div>
                 <TextField  id="outlined-required" label="Date & motif de la suspension / Annulation" defaultValue="" variant="outlined"/>
