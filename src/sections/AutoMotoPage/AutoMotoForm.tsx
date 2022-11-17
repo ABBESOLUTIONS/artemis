@@ -7,6 +7,7 @@ import AutoMotoGarantieCheck from '../../components/AutoMotoGarantieCheck';
 import AutoMotoOptionCheck from '../../components/AutoMotoOptionCheck';
 import AutoMotoPaiementCheck from '../../components/AutoMotoPaiementCheck';
 import AutoMotoUsageVehiculaireCheck from '../../components/AutoMotoUsageVehiculaireCheck';
+import TextFieldPersonnalise from '../../components/TextFieldPersonnalise';
 import SectionStyle from '../../styles/SectionStyle';
 const AutoMotoFormContainer=styled(SectionStyle)(()=>({
     // maxHeight:"5000px",
@@ -36,55 +37,55 @@ function AutoMotoForm() {
                     <Grid item xs={12}><TextField required label="Firstname"/></Grid>
                 </Grid> */}
                 <div>
-                <TextField required id="outlined-required" label="Nom" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Prenom" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={'Nom'} value={'name'} />
+                <TextFieldPersonnalise id={''} required={true}  label={"Prénom"} value={'prenom'} />
                 </div>
                 <div>
-                <TextField required id="outlined-required" label="Adresse" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="N° Client" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={'Adresse'} value={'adresse'} />
+                <TextFieldPersonnalise id={''} required={true} label={'N° Client'} value={'number'} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Telephone Fixe" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Telephone Mobile" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={'Téléphone Fixe'} value={'telFix'} />
+                <TextFieldPersonnalise id={''} required={true} label={'Téléphone Mobile'} value={'telMob'} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Email" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Situation Famillial" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={'Email'} value={'email'} />
+                <TextFieldPersonnalise id={''} required={true} label={'Situation Familial'} value={'situattion'} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Nombre d'enfants < 16" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Nombre d'enfants > 16" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={"Nombre d'enfants < 16"} value={'nb<16'} />
+                <TextFieldPersonnalise id={''} required={true} label={"Nombre d'enfants > 16"} value={'nb>16'} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Profession" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Date de naissance" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={'Profession'} value={'profession'} />
+                <TextFieldPersonnalise id={''} required={true} label={'Date de Naissance'} value={'dateNaiss'} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Date de Permis de Conduire" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Marque (D1)" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={'Date de Permis de Conduire'} value={'datePermis'} />
+                <TextFieldPersonnalise id={''} required={true} label={"Marque (D1)"} value={"marque"} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Modèle(D3)" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Version" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={"Modèle (D3)"} value={"modele"} />
+                <TextFieldPersonnalise id={''} required={true} label={"Version"} value={"version"} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Puissance Fiscale (P6)" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Type Mines (D2) " defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={"Puissance Fiscale (P6)"} value={"puissanceFisc"} />
+                <TextFieldPersonnalise id={''} required={true} label={"Type Mines (D2)"} value={"typeMine"} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Mise en circulation (B)" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Immatriulation (A)" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={"Mise en Circulation (B)"} value={"miseCirc"} />
+                <TextFieldPersonnalise id={''} required={true} label={"Immatriculation (A)"} value={"miseCirc"} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Date d'Acquisition" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Titulaire Carte Grise" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={"Date d'Acquisition"} value={"dateAcquis"} />
+                <TextFieldPersonnalise id={''} required={true} label={"Titulaire Carte Grise"} value={"titulaireCarte"} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Autres conducteurs à désigner" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Coef. Bonus/Malus (CRM)" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={"Autres Conducteurs à désigner"} value={"autreConduct"} />
+                <TextFieldPersonnalise id={''} required={true} label={"Coef. Bonus/Malus (CRM)"} value={"coef"} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Date d’obtention du CRM" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={"Date d'Obtention du CRM"} value={"dateCrm"} />
                 </div>
                 <Typography>Nombre de sinistres lors des dernières années(R.i)</Typography>
                 <Typography>Ordre = Responsable / Demi-Responsable / Non-Responsable / Bris de Glace</Typography>
@@ -92,29 +93,33 @@ function AutoMotoForm() {
                 <TextField  id="outlined-required" select label="Nature" value={currency} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
                     {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
-                <TextField required id="outlined-required" label="Date" defaultValue="" variant="outlined"/>
+                {/* <TextFieldPersonnalise id={''} required={true} label={"Marque (D1)"} value={"marque"} variant={"outlined"}>
+
+                </TextFieldPersonnalise> */}
+                <TextFieldPersonnalise id={''} required={true} label={"Date"} value={"date"} />
                 </div>
                 <div>
                 <TextField  id="outlined-required" select label="Nature" value={currency} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
                     {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
-                <TextField required id="outlined-required" label="Date" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={"Date"} value={"date"} />
                 </div>
                 <div>
                 <TextField  id="outlined-required" select label="Nature" value={currency} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
                     {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
-                <TextField required id="outlined-required" label="Date" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={"Date"} value={"date"} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Résiliation de la compagnie" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Motif de la résiliation" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={"Résiliaton de la Compagnie"} value={"resiliation"} />
+                <TextFieldPersonnalise id={''} required={true} label={"Motif de Résiliation"} value={"motif"} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Date de résiliation de la compagnie" defaultValue="" variant="outlined"/>
-                <TextField required id="outlined-required" label="Suspension/Annulation de permis" defaultValue="" variant="outlined"/>
+                <TextFieldPersonnalise id={''} required={true} label={"Date de Résiliation"} value={"dateResil"} />
+                <TextFieldPersonnalise id={''} required={true} label={"Suspension/Annulation de Permis"} value={"suspension"} />
                 </div>
                 <div>
+                <TextFieldPersonnalise id={''} required={true} label={"Date & motif de la suspension / Annulation"} value={"date"} />
                 <TextField  id="outlined-required" label="Date & motif de la suspension / Annulation" defaultValue="" variant="outlined"/>
                 </div>
                 <Typography>Garage:</Typography>
@@ -126,28 +131,7 @@ function AutoMotoForm() {
                 <div>
                 <TextField  id="outlined-required" label="Date & motif de la suspension / Annulation" defaultValue="" variant="outlined"/>
                 </div> */}
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
             </Box>
-
-            <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
-
-
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
-                                <Typography>Garage:</Typography>
         </AutoMotoFormContainer>
     );
 }

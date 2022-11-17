@@ -13,4 +13,6 @@ export const CLIENT_PAGES = {
     habitation:"/habitation",
     sante:"/devisOption/sante",
     professionelle:"/devisOption/professionelle",
+    logIn:"/logIn",
+    signUp:"/signUp"
 };
