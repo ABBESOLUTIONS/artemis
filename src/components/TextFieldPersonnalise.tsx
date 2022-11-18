@@ -40,12 +40,13 @@ interface Props {
     required:boolean,
     label:string,
     value:string,
+    helperText?:string,
 
 }
 
-function TextFieldPersonnalise({id, required, label, value}: Props) {
+function TextFieldPersonnalise({id, required, label, value, helperText}: Props) {
     return (
-        <TextFieldPersonnaliseStyle id={id} required={required} label={label} value={value} />
+        <TextFieldPersonnaliseStyle id={id} required={required} label={label} value={value} helperText={helperText} />
     );
 }
 
