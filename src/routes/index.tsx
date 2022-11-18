@@ -1,6 +1,7 @@
 import { Navigate, useRoutes } from "react-router-dom";
 import ClientLayout from "../layouts/ClientLayout";
 import OthersLayout from "../layouts/OthersLayout";
+import Actualites from "../pages/Actualites";
 import AutoMoto from "../pages/AutoMoto";
 import Blog from "../pages/Blog";
 import Contact from "../pages/Contact";
@@ -41,6 +42,7 @@ export default function Router() {
           { path: CLIENT_PAGES.professionelle, element: <Professionelle /> },
           { path: CLIENT_PAGES.logIn, element: <LogIn /> },
           { path: CLIENT_PAGES.signUp, element: <SignUp /> },
+          { path: CLIENT_PAGES.actualite, element: <Actualites /> },
         ],
       },
 

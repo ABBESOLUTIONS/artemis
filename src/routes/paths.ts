@@ -14,5 +14,6 @@ export const CLIENT_PAGES = {
     sante:"/devisOption/sante",
     professionelle:"/devisOption/professionelle",
     logIn:"/logIn",
-    signUp:"/signUp"
+    signUp:"/signUp",
+    actualite:"/actualite"
 };
