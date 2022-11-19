@@ -5,12 +5,34 @@ import { qualitiesInfo } from '../../common/Data';
 import { PROJECT_COLORS } from '../../common/colors';
 
 const QualitiesContainer=styled("div")(()=>({
-    width:"100%",
-    minHeight:"500px",
-    diplay:"flex",
-    flexDirection:"row",
-    padding:"30px"
-}))
+    minHeight: "500px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingTop: "80px",
+    paddingBottom: "80px",
+}));
+
+const QualityTitle = styled(Typography)(({theme}) => ({
+    // fontFamily: "InterBold,sans-serif !important",
+    fontSize: "35px",
+    fontWeight: 800,
+    [theme.breakpoints.down("md")]: {
+        fontSize: "25px",
+        fontWeight: "400",
+        textAlign: "center"
+    },
+}));
+
+const QualitiesCardContainer = styled(Container)(({theme}) => ({
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    [theme.breakpoints.down("lg")]: {
+        flexDirection: "column",
+    },
+}));
 
 function Qualities() {
     return (
