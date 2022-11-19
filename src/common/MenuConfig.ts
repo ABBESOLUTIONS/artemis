@@ -44,4 +44,9 @@ const ClientMenuItems = [
   },
 ];
 
-export { OtherMenuItems, ClientMenuItems };
+const HeaderConfig = {
+  HEIGHT: 80,
+  MAX_HEIGHT: 90,
+};
+
+export { OtherMenuItems, ClientMenuItems, HeaderConfig };
