@@ -38,12 +38,18 @@ function Qualities() {
     return (
         <QualitiesContainer>
             <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>NOS QUALITES</Typography>
-            <Typography variant='h3' sx={{textAlign:"center", fontWeight:"bold", fontSize:"45px", marginBottom:"50px"}}>Ce qui nous distingue</Typography>
-            <Grid container sx={{margintop:""}} spacing={1}>
+            {/* <Typography variant='h3' sx={{textAlign:"center", fontWeight:"bold", fontSize:"45px", marginBottom:"50px"}}></Typography> */}
+            <QualityTitle>Ce qui nous distingue</QualityTitle>
+            <QualitiesCardContainer>
                 {
                     qualitiesInfo.map((oneQualitie,index)=> <Grid key={index} item xs={3} ><QualitieCard illus={oneQualitie.icone} titre={oneQualitie.title} texte={oneQualitie.text}/></Grid>)
                 }
-            </Grid>
+            </QualitiesCardContainer>
+            {/* <Grid container sx={{margintop:""}} spacing={1}>
+                {
+                    qualitiesInfo.map((oneQualitie,index)=> <Grid key={index} item xs={3} ><QualitieCard illus={oneQualitie.icone} titre={oneQualitie.title} texte={oneQualitie.text}/></Grid>)
+                }
+            </Grid> */}
         </QualitiesContainer>
     );
 }

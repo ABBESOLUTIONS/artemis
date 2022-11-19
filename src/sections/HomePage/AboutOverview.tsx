@@ -4,24 +4,38 @@ import ServiceOverviewCard from '../../components/AboutOverviewCard';
 import { PROJECT_COLORS } from '../../common/colors';
 import { servicesOverview } from '../../common/Data';
 import AboutImage from '../../components/AboutImage';
+import SectionStyle from '../../styles/SectionStyle';
 
-const AboutOverviewContainer=styled("div")(()=>({
-    width:"100%",
+const AboutOverviewContainer=styled(SectionStyle)(({theme})=>({
     height:"750px",
     backgroundColor:"#F8F8F8",
     display:"flex",
-    flexDirection:"row",
-    padding:"25px"
+    justifyContent:"space-around",
+    [theme.breakpoints.down("md")]: {
+        flexDirection:"column",
+        minHeight:"auto"    
+    },
 }));
 
-const AboutOverviewLeft=styled("div")(()=>({
+const AboutOverviewLeft=styled("div")(({theme})=>({
     width:"50%",
-    backgroundColor:"",
-    
+    marginLeft:"5%",
+    height:"calc(100% - 40px)",
+    display:"flex",
+    flexDirection:"column",
+    justifyContent:"space-around",
+    padding:"20px",
+    [theme.breakpoints.down("md")]: {
+        flexDirection:"column",
+        minHeight:"auto"    
+    },
 }));
-const AboutOverviewRight=styled("div")(()=>({
+const AboutOverviewRight=styled("div")(({theme})=>({
     width:"50%",
     backgroundColor:"",
+    [theme.breakpoints.down("lg")]: {
+        flexDirection:"column"
+    },
 }));
 
 

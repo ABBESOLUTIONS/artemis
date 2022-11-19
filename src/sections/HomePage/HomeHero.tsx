@@ -75,7 +75,6 @@ const HomeHeroLeftSubTitle=styled(Typography)(({theme})=>({
     fontSize:"30px",
     fontWeight:600,
     color:"#000000",
-    marginTop:"15px",
     position:"relative",
     [theme.breakpoints.down("md")]: {
         fontSize:"1.6em",
