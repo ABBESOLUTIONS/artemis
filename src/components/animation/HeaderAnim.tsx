@@ -1,7 +1,8 @@
 import { styled, SxProps, Toolbar } from "@mui/material";
 import { ReactNode } from "react";
+import { HeaderConfig } from "../../common/HeaderConfig";
 import useOffSetTop from "../../hooks/useOffSetTop";
-import { HeaderConfig } from "../common/MenuConfig";
+// import { HeaderConfig } from "../common/MenuConfig";s
 // import useOffSetTop from "../hooks/useOffSetTop";
 
 const HeaderAnimContainer = styled(Toolbar)(({ theme }) => ({
