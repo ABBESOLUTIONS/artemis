@@ -12,16 +12,14 @@ import Testimony from '../../components/Testimony';
 
 const HomeHeroContainer=styled(SectionStyle)(({theme})=>({
     // width:"100%",
-    width:"calc(100% - 100px)",
-    paddingLeft:"50px",
-    paddingRight:"50px",
+    // width:"calc(100% - 100px)",
     minHeight:"80vh",
     display:"flex",
     flexDirection:"row",
     justifyContent:"center",
     alignItems:"center",
     [theme.breakpoints.down("lg")]: {
-        flexDirection:"column"
+        flexDirection:"column",
     },
 }));
 const HomeHeroBG=styled("div")(()=>({
@@ -46,13 +44,14 @@ const HomeHeroContainerLeft=styled("div")(({theme})=>({
 const HomeHeroContainerRight=styled("div")(({theme})=>({
     minWidth:"450px",
     minHeight:"400Ppx",
-    margin:"40px",
+    margin:"25px",
     display:"flex",
     alignItems:"center",
     justifyContent:"center",
     [theme.breakpoints.down("md")]: {
         maxWidth:"300px",
         minWidth:"200px",
+        margin:"15px"
     },
 
 }));
@@ -68,6 +67,14 @@ const HomeHeroLeftTitle=styled(Typography)(({theme})=>({
     position:"relative",
     [theme.breakpoints.down("md")]: {
         fontSize:"2.5em",
+        textAlign:"center"
+    },
+}));
+const HeroImage=styled("img")(({theme})=>({
+    width:"100%",
+    borderRadius:"8px",
+    [theme.breakpoints.down("md")]: {
+        width:"125%",
         textAlign:"center"
     },
 }));
@@ -93,10 +100,11 @@ const HomeHeroLeftText=styled(Typography)(({theme})=>({
     },
 }));
 
+
 function HomeHero() {
     return (
         <HomeHeroContainer>
-            <HomeHeroBG/>
+            {/* <HomeHeroBG/> */}
             {/* <ImageComponent image={"assets/images/BigA.png "} sx={{position:"absolute", width:"98%",height:"100%", opacity:0.3, fill:"#F5FAF9"}} />
             <ImageComponent image={"assets/images/LittleTree.png "} sx={{position:"absolute",fill:"#F5FAF9"}} />
             <ImageComponent image={"assets/images/SmallEllipse.png "} sx={{position:"absolute", fill:"#F5FAF9", marginLeft:"175px",marginTop:"95px"}} />
@@ -130,8 +138,7 @@ function HomeHero() {
                 </Stack>
             </HomeHeroContainerLeft>
             <HomeHeroContainerRight>
-                <ImageComponent image={"assets/images/homeHeroImg.png"} sx={{width:"600px", height:"600px", position:"absolute", borderRadius:"8px", marginTop:"50px"}}/>
-                <Testimony/>
+                <HeroImage src="assets/images/homeHeroImg.png" />
             </HomeHeroContainerRight>
         </HomeHeroContainer>
     );

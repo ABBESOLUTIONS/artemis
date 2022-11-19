@@ -10,32 +10,40 @@ const AboutOverviewContainer=styled(SectionStyle)(({theme})=>({
     height:"750px",
     backgroundColor:"#F8F8F8",
     display:"flex",
+    flexDirection:"row",
     justifyContent:"space-around",
     [theme.breakpoints.down("md")]: {
         flexDirection:"column",
-        minHeight:"auto"    
+        height:"auto",
     },
 }));
 
 const AboutOverviewLeft=styled("div")(({theme})=>({
-    width:"50%",
-    marginLeft:"5%",
-    height:"calc(100% - 40px)",
+    maxWidth:"50%",
+    // marginLeft:"5%",
     display:"flex",
     flexDirection:"column",
-    justifyContent:"space-around",
-    padding:"20px",
+    padding:"10px",
     [theme.breakpoints.down("md")]: {
         flexDirection:"column",
         minHeight:"auto"    
     },
 }));
 const AboutOverviewRight=styled("div")(({theme})=>({
-    width:"50%",
+    maxWidth:"50%",
     backgroundColor:"",
+    display:"flex",
+    flexDirection:"row",
     [theme.breakpoints.down("lg")]: {
-        flexDirection:"column"
+        flexDirection:"column",
+        maxWidth:"100%",
     },
+}));
+const ImageRight=styled("div")(({theme})=>({
+    width:"100%",
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
 }));
 
 
@@ -51,9 +59,14 @@ function AboutOverview() {
                 }
             </AboutOverviewLeft>
             <AboutOverviewRight>
-                <AboutImage image={'assets/images/about/about-1.jpg'} sx={{}}/>
-                <AboutImage image={"assets/images/about/about-2.jpg"} sx={{marginLeft:"30px", marginBottom:"-150px"}}/>
-                <AboutImage image={'assets/images/about/about-3.jpg'} sx={{marginTop:"25px"}}/>
+                <div>
+                <AboutImage image={'assets/images/about/about-1.jpg'} />
+                <AboutImage image={"assets/images/about/about-2.jpg"} />
+                </div>
+                <ImageRight>
+                {/* <AboutImage image={'assets/images/about/about-3.jpg'} /> */}
+                <AboutImage image={"assets/images/about/about-2.jpg"} />
+                </ImageRight>
             </AboutOverviewRight>
         </AboutOverviewContainer>
     );

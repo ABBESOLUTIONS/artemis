@@ -1,6 +1,6 @@
 import { styled } from "@mui/material";
 import React, { Component } from "react";
-import Slider from "react-slick";
+import Slider, { ResponsiveObject } from "react-slick";
 import ServiceOverviewCard from "./ServiceOverviewCard";
 
 const ServiceCarouselContainer=styled("div")(()=>({
@@ -65,9 +65,10 @@ interface Props{
         autoplay:boolean,
         autoplaySpeed:number,
         pauseOnHover:boolean,
+        responsive? : Array<ResponsiveObject>
     }
 }
-function ServiceCarousel({settings = {dots: true, infinite: true, slidesToShow: 3, slidesToScroll: 1, autoplay: true, autoplaySpeed: 2000, pauseOnHover: true}}: Props) {
+function ServiceCarousel({settings = {dots: true, infinite: false, slidesToShow: 3, slidesToScroll: 1, autoplay: true, autoplaySpeed: 2000, pauseOnHover: true, responsive:[{breakpoint:600, settings:{slidesToShow:1, slidesToScroll:2, infinite:true, dots:true, initialSlide:2}}]}}: Props) {
     return (
         <div>
     {/* //    <ServiceCarouselContainer> */}

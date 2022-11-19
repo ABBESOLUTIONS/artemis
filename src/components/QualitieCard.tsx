@@ -4,17 +4,17 @@ import ImageComponent from './ImageComponent';
 
 
 const QualitieCardContainer=styled(Card)(({theme})=>({
-    width:"260px",
+    width:"225px",
     minHeight:"450px",
     display:"flex",
     flexDirection:"column",
     justifyContent:"space-around",
-    padding:"18px",
-    margin:"20px",
+    padding:"15px",
+    margin:"15px",
     [theme.breakpoints.down("sm")]: {
         width:"auto",
         minWidth:"315px",
-        height:"375px"
+        height:"275px"
     }
 }))
 
@@ -27,8 +27,8 @@ interface Props {
 function QualitieCard({illus,titre,texte}: Props) {
     return (
         <QualitieCardContainer>
-            <ImageComponent image={illus}/>
-            <Typography sx={{fontSize:"20px", fontWeight:"bold", marginTop:"-50px", marginBottom:"20px"}}>{titre}</Typography>
+            <ImageComponent image={illus} sx={{width:"80px"}}/>
+            <Typography sx={{fontSize:"20px", fontWeight:"bold"}}>{titre}</Typography>
             <Typography sx={{}}>{texte}</Typography>
         </QualitieCardContainer>
     );

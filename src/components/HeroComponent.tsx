@@ -1,6 +1,7 @@
-import { styled, Typography } from '@mui/material';
+import { Link, Stack, styled, Typography } from '@mui/material';
 import SectionStyle from '../styles/SectionStyle';
 import ImageComponent from './ImageComponent';
+import TextButton from './TextButton';
 
 const HeroComponentStyle=styled(SectionStyle)(()=>({
     height:"320px",
@@ -26,21 +27,77 @@ const HeroTitleContent2=styled("div")(()=>({
     borderRadius:"0px 161px 161px 161px",
     display:"flex",
     flexDirection:"column",
-    justifyContent:"center"
-}))
+    alignItems:"center",
+    justifyContent:"center",
+}));
+const BigTitle=styled(Typography)(({theme})=>({
+    fontSize:"50px", 
+    fontWeight:"bold",
+    [theme.breakpoints.down("md")]: {
+        fontSize:"12px",
+        textAlign:"center",
+
+    },
+}));
+const LittleTitle=styled(Typography)(({theme})=>({
+    [theme.breakpoints.down("md")]: {
+        fontSize:"12px",
+        textAlign:"center",
+
+    },
+}));
+const AccueilButton=styled(Link)(({theme})=>({
+    // fontSize:"50px", 
+    color:"black",
+    textDecoration:"none",
+    [theme.breakpoints.down("md")]: {
+        fontSize:"12px",
+        textAlign:"center",
+    },
+}));
+const LeafHero=styled("img")(({theme})=>({
+   position:"absolute",
+    [theme.breakpoints.down("lg")]: {
+        display:"none",
+    },
+}));
+const DaughtHero=styled("img")(({theme})=>({
+    position:"absolute",
+   
+    [theme.breakpoints.down("lg")]: {
+        display:"none",
+    },
+}));
+const DaughtLeafHero=styled("img")(({theme})=>({
+   position:"absolute",
+    
+    [theme.breakpoints.down("lg")]: {
+        display:"none",
+    },
+}));
+const TitleContent=styled("div")(({theme})=>({
+    
+    [theme.breakpoints.down("lg")]: {
+        
+    },
+}));
 
 function HeroComponent() {
     return (
         <HeroComponentStyle>
                 <HeroTitleContent>
                     <HeroTitleContent2>
-                        <Typography sx={{fontSize:"50px", fontWeight:"bold",marginTop:"-35px", marginLeft:"250px"}}>SERVICES</Typography>
-                        <Typography sx={{marginLeft:"300px"}}>Accueil  /  Services</Typography>
+                        <BigTitle>SERVICES</BigTitle>
+                        <Stack direction={"row"}>
+                            {/* <AccueilButton title="Accueil" path=''/> */}
+                            <AccueilButton><Typography>Accueil</Typography></AccueilButton>
+                            <LittleTitle>  /  service</LittleTitle>
+                        </Stack>
+                        {/* <LeafHero src="assets/images/leaf2.png"/>
+                        <DaughtHero src="assets/images/DaughtGroup2.png"/>
+                        <DaughtLeafHero src="assets/images/Leaf+daught.png"/> */}
                     </HeroTitleContent2>
                 </HeroTitleContent>
-                <ImageComponent sx={{marginTop:"-175px", position:"absolute",marginLeft:"1200px" }} image={"assets/images/Leaf+daught.png"}/>
-                <ImageComponent sx={{marginTop:"-100px", position:"absolute",marginLeft:"200px"}} image={"assets/images/DaughtGroup2.png"}/>
-                <ImageComponent sx={{marginTop:"-225px", position:"absolute", marginLeft:"325px"}} image={"assets/images/leaf2.png"}/>
         </HeroComponentStyle>
     );
 }

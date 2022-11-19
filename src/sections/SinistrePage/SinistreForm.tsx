@@ -18,18 +18,18 @@ function SinistreForm() {
         <SinistreFormContainer>
                 <Container>
                     <Grid container xs sx={{padding:"75px"}}>
-                        <Grid item xs={24} sx={{display:"flex", flexDirection:"row", '& .MuiTextField-root': { m: 2, width: '61ch' },}}>
+                        <Grid item xs={24} md={12} sx={{display:"flex", flexDirection:"row", '& .MuiTextField-root': { m: 2, width: '61ch' },}}>
                             <TextField variant="outlined" label={"Nom"}/>
                             <TextField variant="outlined" label={"Prénoms"}/>
                         </Grid>
-                        <Grid item xs={24} sx={{display:"flex", flexDirection:"row", '& .MuiTextField-root': { m: 2, width: '61ch' },}}>
+                        <Grid item xs={24} md={12} sx={{display:"flex", flexDirection:"row", '& .MuiTextField-root': { m: 2, width: '61ch' },}}>
                             <TextField variant="outlined" label={"Télephone"}/>
                             <TextField variant="outlined" label={"Email"}/>
                         </Grid>
-                        <Grid item xs={24} sx={{'& .MuiTextField-root': { m: 2, },}}>
+                        <Grid item xs={24} md={12} sx={{'& .MuiTextField-root': { m: 2, },}}>
                             <TextField variant="outlined" label={"Nom de société"} fullWidth />
                         </Grid>
-                        <Grid item xs={24} sx={{'& .MuiTextField-root': { m: 2, },}}>
+                        <Grid item xs={24} md={12} sx={{'& .MuiTextField-root': { m: 2, },}}>
                             <TextField variant="outlined" label={"Comment pouvons nous vous aidé"} fullWidth  multiline rows={6} />
                         </Grid>
                         <Typography sx={{margin:"10px"}}>Selectionner tous vos documents à envoyer</Typography>

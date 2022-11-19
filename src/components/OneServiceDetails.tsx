@@ -4,15 +4,18 @@ import TextButton from './TextButton';
 import { PROJECT_COLORS } from '../common/colors';
 
 
-const OneServiceDetailsContainer=styled(Card)(()=>({
-    width:"625px",
+const OneServiceDetailsContainer=styled(Card)(({theme})=>({
+    minWidth:"525px",
     minHeight:"135px",
     display:"flex",
     flexDirection:"row",
     justifyContent:"space-around",
     padding:"15px",
-    margin:"15px"
-    // margin:"20px",
+    margin:"10px",
+    [theme.breakpoints.down("md")]: {
+        flexDirection:"column",
+    },
+
 }));
 
 const AboutIconeCircle= styled("div")(()=>({
@@ -38,7 +41,7 @@ function OneServiceDetails({icone, title, detail}:Props) {
                 <AboutIconeCircle sx={{backgroundImage:"url('"+icone+"')"}}/>
                 <Stack direction={"column"} sx={{}}>
                     <TextButton title={title} path={''} sx={{fontWeight:"bold", fontSize:"18px",textDecoration:"none",color:"black", '&hover':{color:PROJECT_COLORS.primarySwatch}}}/>
-                    <Typography sx={{width:"475px", marginTop:"10px"}}>{detail}</Typography>
+                    <Typography sx={{width:"375px", marginTop:"10px"}}>{detail}</Typography>
                 </Stack>
             </OneServiceDetailsContainer>
         </Container>

@@ -12,19 +12,67 @@ const AbonnementBannerContainer=styled(SectionStyle)(()=>({
     alignItems:"center",
     justifyContent:"center",
 }));
+const FirstTitle=styled(Typography)(({theme})=>({
+    color:"#138F82",
+    [theme.breakpoints.down("md")]: {
+
+    },
+}));
+const SecondTitle=styled(Typography)(({theme})=>({
+    fontWeight:"bold", 
+    fontSize:"38px", 
+    width:"600px", 
+    textAlign:"center",
+    [theme.breakpoints.down("md")]: {
+        fontWeight:500,
+        fontSize:"28px",
+        width:"400px",
+        textAlign:"center",
+
+    },
+}));
+const TheSubTitle=styled(Typography)(({theme})=>({
+    color:"#61617A",
+    fontSize:"16px", 
+    width:"600px", 
+    textAlign:"center",
+    [theme.breakpoints.down("md")]: {
+        fontSize:"12px",
+        width:"400px",
+        textAlign:"center",
+
+    },
+}));
+const LeafDaught=styled("img")(({theme})=>({
+    position:"absolute", 
+    marginLeft:"450px",
+    [theme.breakpoints.down("md")]: {
+        display:"none",
+    },
+}));
+const DaughtGroup=styled("img")(({theme})=>({
+    position:"absolute", 
+    marginLeft:"-450px",
+    [theme.breakpoints.down("md")]: {
+        display:"none",
+    },
+}));
 
 function AbonnementBanner() {
     return (
         <AbonnementBannerContainer>
-            <Typography sx={{color:"#138F82", }}>S'abonner à nos news</Typography>
-            <Typography sx={{fontWeight:"bold", fontSize:"38px", width:"600px", textAlign:"center"}}>Restez informé de nos dernières infos</Typography>
-            <Typography sx={{color:"#61617A",fontSize:"16px", width:"600px", textAlign:"center"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus..</Typography>
+            <FirstTitle>S'abonner à nos news</FirstTitle>
+            <SecondTitle>Restez informé de nos dernières infos</SecondTitle>
+            <TheSubTitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus..</TheSubTitle>
+            <Typography sx={{color:"#138F82", }}></Typography>
+            <Typography sx={{}}></Typography>
+            <Typography sx={{}}></Typography>
             <Stack direction={"row"} sx={{margin:"25px"}}>
                 <TextField/>
                 <Button variant='contained' startIcon={<Send/>} sx={{backgroundColor:"#138F82", '&:hover':{backgroundColor:"black"}}}>S'abonner</Button>
             </Stack>
-            <ImageComponent image={"assets/images/DaughtGroup2.png"} sx={{position:"absolute", marginLeft:"-450px"}} />
-            <ImageComponent image={"assets/images/Leaf+Daught.png"} sx={{position:"absolute", marginLeft:"450px"}}/>
+            <DaughtGroup src="assets/images/DaughtGroup2.png"/>
+            <LeafDaught src="assets/images/Leaf+Daught.png"/>
         </AbonnementBannerContainer>
     );
 }

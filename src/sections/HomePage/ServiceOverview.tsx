@@ -7,11 +7,8 @@ import PauseOnHover from '../../components/ServiceCarousel';
 import ServiceCarousel from '../../components/ServiceCarousel';
 
 const ServiceOverviewContainer=styled(SectionStyle)(()=>({
-    // height:"400px",
-    // display:"flex",
-    // flexDirection:"row",
-    // alignItems:"center",
-    // justifyContent:"center"
+    height:"600px",
+    width:"calc(100% - 50px)"
 }))
 
 function ServiceOverview() {

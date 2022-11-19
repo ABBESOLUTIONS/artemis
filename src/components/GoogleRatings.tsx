@@ -1,12 +1,17 @@
 import { Card, Rating, styled, Typography } from '@mui/material';
 import React from 'react';
-const GoogleRatingStyle=styled(Card)(()=>({
+const GoogleRatingStyle=styled(Card)(({theme})=>({
     width:"250px",
     height:"125px",
     padding:"10px",
     display:"flex",
     flexDirection:"column",
-    marginTop:"20px"
+    marginTop:"20px",
+    [theme.breakpoints.down("lg")]: {
+        width:"390px",
+        marginBottom:"-50px"
+        
+    },
 }))
 
 function GoogleRatings() {

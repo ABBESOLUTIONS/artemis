@@ -2,9 +2,9 @@ import { Button, styled, Typography } from '@mui/material';
 import { PROJECT_COLORS } from '../common/colors';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
 
-const ExperienceButtonStyle=styled("div")(()=>({
+const ExperienceButtonStyle=styled("div")(({theme})=>({
     // boxShadow:"none",
-    width:"325px",
+    width:"90%",
     // fontSize:"15px",
     backgroundColor:"white",
     // fontWeight:"700",
@@ -19,7 +19,10 @@ const ExperienceButtonStyle=styled("div")(()=>({
     // position:"absolute",
     '&:hover': {
         backgroundColor: PROJECT_COLORS.primarySwatch,
-    }
+    },
+    [theme.breakpoints.down("lg")]: {
+        width:"275px",
+    },
 }));
 
 interface Props {
@@ -30,8 +33,8 @@ function ExperienceButton({text}:Props) {
     return (
         // <ExperienceButtonStyle variant="contained" startIcon={<DoneAllIcon/>}>{text}</ExperienceButtonStyle>
         <ExperienceButtonStyle>
-            <DoneAllIcon sx={{margin:"12px", '&hover':{color:"white"}}}/>
-            <Typography sx={{color:"black", margin:"12px",fontSize:18,'&hover':{color:"white"}}}>{text}</Typography>
+            <DoneAllIcon sx={{margin:"12px", '&:hover':{color:"white"}}}/>
+            <Typography sx={{color:"black", margin:"12px",fontSize:18,'&:hover':{color:"white"}}}>{text}</Typography>
         </ExperienceButtonStyle>
     );
 }

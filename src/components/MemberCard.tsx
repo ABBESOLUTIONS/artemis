@@ -4,16 +4,20 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import { PROJECT_COLORS } from '../common/colors';
 
 
-const MemberCardContainer= styled(Card)(()=>({
+const MemberCardContainer= styled(Card)(({theme})=>({
     width: "300px",
     height: "395px",
     boxShadow:"0px 4px 4px rgba(0, 0, 0, 0.25)",
     borderRadius:"3px",
     position:"relative",
-    margin:"1px"
+    margin:"1px",
+    [theme.breakpoints.down("md")]: {
+        width:"450px",
+        margin:"8px"
+    },
 }));
 const MemberImageContainer =styled("img")(()=>({
-    width:"300px",
+    width:"100%",
     height:"275px",
     // borderRadius:"19px 19px 0px 0px",
 }));

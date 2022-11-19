@@ -5,10 +5,12 @@ import TextButton from './TextButton';
 
 
 const ServiceOverviewCardStyle=styled(Card)(()=>({
-    width:"465px",
+    minWidth:"375px",
     height:"450px",
     display:"flex",
+    margin:"8px",
     boxShadow:"none",
+    position:"relative",
     // padding:"10px"
 
 }));
@@ -18,7 +20,7 @@ const ServiceOverviewImgStyle=styled("img")(()=>({
     // padding:"10px"
 }));
 const ServiceOverviewTextStyle=styled("div")(()=>({
-    width:"415px",
+    minWidth:"85%",
     height:"115px",
     backgroundColor:"#389B91",
     position:"absolute",

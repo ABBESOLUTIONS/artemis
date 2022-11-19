@@ -5,7 +5,7 @@ import TextButton from './TextButton';
 import { PROJECT_COLORS } from '../common/colors';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-const BlogOverviewCardContainer=styled(Card)(()=>({
+const BlogOverviewCardContainer=styled(Card)(({theme})=>({
     // position:"relative",
     width:"400px",
     height:"450px",
@@ -16,7 +16,10 @@ const BlogOverviewCardContainer=styled(Card)(()=>({
     paddingTop:"-20px",
     boxShadow:"none",
     position:"relative",
-    margin:"25px"
+    margin:"25px",
+    [theme.breakpoints.down("lg")]: {
+        
+    },
 }));
  const DateContainer=styled("div")(()=>({
     width:"125px",
