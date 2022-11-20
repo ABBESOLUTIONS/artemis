@@ -14,6 +14,11 @@ const SanteFormContainer=styled(SectionStyle)(()=>({
     flexDirection:"column",
     alignItems:"center",
     justifyContent:"center",
+    paddingTop:"100px"
+}));
+
+const BgFormeStyle=styled("img")(()=>({
+    
 }));
 
 function SanteForm() {

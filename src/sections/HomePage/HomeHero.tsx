@@ -13,20 +13,25 @@ import Testimony from '../../components/Testimony';
 const HomeHeroContainer=styled(SectionStyle)(({theme})=>({
     // width:"100%",
     // width:"calc(100% - 100px)",
-    minHeight:"80vh",
+    minHeight:"150vh",
     display:"flex",
+    position:"relative",
     flexDirection:"row",
     justifyContent:"center",
     alignItems:"center",
+    backgroundColor:"#F5FAF9",
     [theme.breakpoints.down("lg")]: {
         flexDirection:"column",
     },
 }));
-const HomeHeroBG=styled("div")(()=>({
+const HomeHeroBG=styled("div")(({theme})=>({
     width:"100%",
-    height:"800px",
-    backgroundColor:"#F5FAF9",
+    height:"100%",
+    // backgroundColor:"#F5FAF9",
     position:"absolute",
+    [theme.breakpoints.down("md")]: {
+        display:"none",
+    },
 }));
 const HomeHeroContainerLeft=styled("div")(({theme})=>({
     minWidth:"600px",
@@ -34,6 +39,7 @@ const HomeHeroContainerLeft=styled("div")(({theme})=>({
     minHeight:"500px",
     margin:"40px",
     display:"flex",
+    paddingTop:"75px",
     flexDirection:"column",
     justifyContent:"center",
     [theme.breakpoints.down("md")]: {
@@ -71,11 +77,13 @@ const HomeHeroLeftTitle=styled(Typography)(({theme})=>({
     },
 }));
 const HeroImage=styled("img")(({theme})=>({
-    width:"100%",
-    borderRadius:"8px",
+    position:"absolute",
+    width:"42%",
+    height:"550px",
+    marginTop:"50px",
+    borderRadius:"10px",
     [theme.breakpoints.down("md")]: {
-        width:"125%",
-        textAlign:"center"
+        display:"none",
     },
 }));
 const HomeHeroLeftSubTitle=styled(Typography)(({theme})=>({
@@ -104,13 +112,16 @@ const HomeHeroLeftText=styled(Typography)(({theme})=>({
 function HomeHero() {
     return (
         <HomeHeroContainer>
-            {/* <HomeHeroBG/> */}
-            {/* <ImageComponent image={"assets/images/BigA.png "} sx={{position:"absolute", width:"98%",height:"100%", opacity:0.3, fill:"#F5FAF9"}} />
-            <ImageComponent image={"assets/images/LittleTree.png "} sx={{position:"absolute",fill:"#F5FAF9"}} />
-            <ImageComponent image={"assets/images/SmallEllipse.png "} sx={{position:"absolute", fill:"#F5FAF9", marginLeft:"175px",marginTop:"95px"}} />
-            <ImageComponent image={"assets/images/leaf1.png "} sx={{position:"absolute", fill:"#F5FAF9", marginTop:"500px", marginLeft:"500px"}} />
-            <ImageComponent image={"assets/images/DaughtGroup1.png "} sx={{position:"absolute", marginTop:"250px",marginLeft:"1300px",fill:"#F5FAF9"}} />
-            <ImageComponent image={"assets/images/DaughtGroup2.png "} sx={{position:"absolute",marginTop:"600px",marginLeft:"50px", fill:"#F5FAF9"}} /> */}
+            <HomeHeroBG>
+                <ImageComponent image={"assets/images/BigA.png "} sx={{position:"absolute", width:"100%",height:"100%", opacity:0.3,}} />
+                <ImageComponent image={"assets/images/LittleTree.png "} sx={{position:"absolute", }} />
+                <ImageComponent image={"assets/images/SmallEllipse.png "} sx={{position:"absolute", marginTop:"125px", marginLeft:"500px"}} />
+                <ImageComponent image={"assets/images/leaf1.png "} sx={{position:"absolute", marginTop:"600px", marginLeft:"425px"}} />
+                <ImageComponent image={"assets/images/DaughtGroup1.png "} sx={{position:"absolute", right:"0px", marginTop:"500px" }} />
+                <ImageComponent image={"assets/images/DaughtGroup2.png "} sx={{position:"absolute", marginTop:"725px", marginLeft:"20px"}} />
+                <ImageComponent image={"assets/images/bottomShape.png "} sx={{position:"absolute", bottom:"0px", width:"100%", height:"50px"}} />
+            </HomeHeroBG>
+            
             {/* <TestimonyCard  text={"Super accueil super service un super courtier qui saura trouvé la bonne réponse à vos questions d'assurance et cerise sur le gâteau chez Artemis on vous fait une audit de tout vos contrats assurance quand vous êtes pro oui oui."} profilImage={"assets/images/profile.jpg"} name={"Mohamad D"}/> */}
             
             <HomeHeroContainerLeft>
@@ -122,7 +133,7 @@ function HomeHero() {
                 Bienvenue chez ARTEMIS !
                 </HomeHeroLeftTitle>
                 <HomeHeroLeftSubTitle>
-                Artémis Assurance, ça Rassure !
+                <Typography component={"span"}>Artémis </Typography><Typography component={"span"}>Assurance, ça Rassure !</Typography>
                 </HomeHeroLeftSubTitle>
                 <HomeHeroLeftText>
                 Artémis est une entreprise inscrite au registre du commerce et des sociétés, dont la vocation est d'analyser l'ensemble des contrats que vous avez souscrit (tant auprès d'assureurs que de banquiers ou autres) et de vous représenter auprès des sociétés d'assurances afin de négocier au mieux les garanties adaptées à vos besoins et négocier les conditions de tarif en faisant jouer la concurrence.

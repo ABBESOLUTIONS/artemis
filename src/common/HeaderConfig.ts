@@ -1,6 +1,6 @@
 export const HEADER = {
-    MOBILE_HEIGHT: "60px",
-    DESKTOP_HEIGHT: "80px",
+    MOBILE_HEIGHT: "75px",
+    DESKTOP_HEIGHT: "150px",
   };
 
   export const HeaderConfig = {

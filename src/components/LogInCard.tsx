@@ -1,89 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled, SxProps, Typography,Container,Grid, Card, TextField, Box, FormControl, InputLabel, Input, IconButton, InputAdornment, Link} from '@mui/material';
 import ImageComponent from './ImageComponent';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Visibility, VisibilityOff, VpnKeyRounded } from '@mui/icons-material';
 import TextButton from './TextButton';
 import { CLIENT_PAGES } from '../routes/paths';
 import PasswordIcon from '@mui/icons-material/Password';
+import { useAppDispatch } from '../redux/store';
+import { useNavigate } from 'react-router-dom';
+// import LoadingButton from "@mui/lab/LoadingButton";
+import { LoadingButton } from '@mui/lab';
+import { signInWithEmailAndPassword } from '../redux/slices/auth';
 
 
 
 const LogInCardContainer=styled(Card)(()=>({
     width:"400px",
-    height:"475px",
+    height:"450px",
     backgroundColor:"#F3F9F8",
     display:"flex",
     flexDirection:"column",
     alignItems:"center",
     justifyContent:"center",
+    marginBottom:"100px",
 }));
 
-interface State {
-    password: string;
-    showPassword: boolean;
-  }
-  
-
 function LogInCard() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [pwd, setPwd] = useState("");
 
-    const [values, setValues] = React.useState<State>({
-        password: '',
-        showPassword: false,
+  const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+
+    const onSubmit = (event: React.SyntheticEvent) => {
+      event.preventDefault();
+      setIsLoading(true);
+      dispatch(signInWithEmailAndPassword({email, pwd})).unwrap().then((res) => {
+        navigate("/autoMoto");
+      }).catch(error => {
+        console.log(error);
       });
-
-      const handleChange =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValues({ ...values, [prop]: event.target.value });
     };
+  
+    const handleEmailChange = (event: any) => setEmail(event.target.value);
+    const handlePwdChange = (event: any) => setPwd(event.target.value);
 
-    const handleClickShowPassword = () => {
-        setValues({
-          ...values,
-          showPassword: !values.showPassword,
-        });
-      };
-
-      const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-      };
     return (
         <LogInCardContainer>
             <ImageComponent image={"assets/images/logo.gif"} sx={{marginBottom:"50px"}}/>
-            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                <TextField id="input-with-sx" label="E-Mail" variant="standard" sx={{width:"30ch"}}/>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                <PasswordIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                <FormControl sx={{ m: 1, width: '30ch' }} variant="standard">
-                    <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-                    <Input
-                    id="standard-adornment-password"
-                    type={values.showPassword ? 'text' : 'password'}
-                    value={values.password}
-                    onChange={handleChange('password')}
-                    endAdornment={
-                        <InputAdornment position="end">
-                        <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                                >
-                            {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                        </InputAdornment>
-            }
-          />
-        </FormControl>
+            <Box component="form" sx={{ m: 1, width: "90%"}} noValidate autoComplete="off">
+                {/* <AccountCircle sx={{ color: 'action.active', }} /> */}
+                <TextField value={email} onChange={handleEmailChange} fullWidth size="small" label="Email" helperText=" " variant="standard" InputProps={{startAdornment: <InputAdornment position="start"><AccountCircle sx={{ color: 'action.active', }} /></InputAdornment>}}/>
+                {/* <VpnKeyRounded sx={{ color: 'action.active', mr: 1, my: 0.5 }} /> */}
+                <TextField value={pwd} onChange={handlePwdChange} fullWidth size="small" label="Mot de passe" helperText=" " variant="standard" type={"password"} InputProps={{startAdornment: <InputAdornment position="start"><VpnKeyRounded sx={{ color: 'action.active' }} /></InputAdornment>}}/>
             </Box>
 
                 {/* <Typography variant="caption" display="block" >
             <Link>
-                caption text
+            caption text
             </Link>
-            </Typography> */}
+          </Typography> */}
             <TextButton title={"Vous n'avez pas de compte?"} path={CLIENT_PAGES.signUp} sx={{ fontSize:"10px"}}/>
+          <LoadingButton sx={{}}  loading={isLoading} onClick={onSubmit} variant="outlined" color="success" type="submit">Valider</LoadingButton>
         </LogInCardContainer>
     );
 }

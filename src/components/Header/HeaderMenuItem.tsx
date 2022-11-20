@@ -1,6 +1,7 @@
 import { Container, styled, Typography } from "@mui/material";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { MenuItemModel } from "../../models/MenuItemModel";
+import TextButton from "../TextButton";
 
 const HeaderMenuItemContainer = styled("div")(() => ({
     marginRight: "40px",
@@ -21,8 +22,13 @@ const HeaderMenuItemIndicator = styled("div")(() => ({
 const HeaderMenuItemLink = styled(Link)(() => ({
     textDecoration: "none",
 }));
-const subMenuContainer = styled("div")(() => ({
-    display: "none",
+const SubMenuItemContainer = styled("div")(() => ({
+    position:"absolute",
+    width:"200px",
+    height:"100px",
+    backgroundColor:"white",
+    marginRight:"15px",
+
 }));
 interface Pops {
     title: string,
@@ -36,11 +42,13 @@ function HeaderMenuItem({title, path, subMenu}: Pops) {
 
     return (
         <HeaderMenuItemContainer>
-            <Typography component={HeaderMenuItemLink} to={path} variant="body1" style={{color: match ? "#138f82" : "black"}}>{title}</Typography>
+            <Typography component={HeaderMenuItemLink} to={path} variant="body1" style={{color: match ? "#138f82" : "black"}} sx={{fontWeight:"bold"}}>{title}</Typography>
             <HeaderMenuItemIndicator style={{backgroundColor: match ? "#138f82" : "rgba(0,0,0,0)"}}/>
             <Container id="subMenu" sx={{display:"none"}}>
             {
-                subMenu?.map((oneMenu, index)=> <div key={index}>{oneMenu.title}</div>)
+                subMenu?.map((oneMenu, index)=> <SubMenuItemContainer>
+                    <TextButton title={oneMenu.title} path={""} />
+                </SubMenuItemContainer>)
             }
             </Container>
         </HeaderMenuItemContainer>

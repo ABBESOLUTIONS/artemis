@@ -1,6 +1,11 @@
 import { UserModel } from "../../models/UserModel";
 import * as auth from "./auth";
 
+const createUserWithEmailAndPassword = (email: string, pwd: string) => {
+    return auth.createUserWithEmailAndPassword(auth.auth, email, pwd).then(({ user }) => {
+        return user.toJSON() as UserModel;
+    });
+};
 const signInWithEmailAndPassword = (email: string, pwd: string) => {
     return auth.signInWithEmailAndPassword(auth.auth, email, pwd).then(({ user }) => {
         return user.toJSON() as UserModel;
@@ -38,4 +43,4 @@ const updateEmail = (email: string) => {
     // });
 };
 
-export { signInWithEmailAndPassword, sendPasswordResetEmail, signOut, getCurentUser, updatePassword, updateEmail  };
+export { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut, getCurentUser, updatePassword, updateEmail  };

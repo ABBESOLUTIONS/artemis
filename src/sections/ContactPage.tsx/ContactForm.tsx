@@ -1,15 +1,26 @@
 import React from 'react';
-import { Box, Button, Card, Container, FormControl, Grid, Input, InputLabel, Stack, styled, TextField, Typography, OutlinedInput, FormControlLabel, Checkbox } from '@mui/material';
+import { Box, Button, Card, Container, FormControl, Grid, Input, InputLabel, Stack, styled, TextField, Typography, OutlinedInput, FormControlLabel, Checkbox, TextareaAutosize } from '@mui/material';
 import SectionStyle from '../../styles/SectionStyle';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import { PROJECT_COLORS } from '../../common/colors';
 
 const ContactElementsContainer=styled(SectionStyle)(()=>({
-    height:"600px",
+    minHeight:"600px",
     display:"flex",
     flexDirection:"column",
     alignItems:"center",
     justifyContent:"center",
+}));
+const CommentArea=styled(TextareaAutosize)(({theme})=>({
+    minHeight:"100px",
+    maxWidth:"850px",
+    [theme.breakpoints.down("lg")]: {
+        maxWidth:"450px"
+    },
+    [theme.breakpoints.down("md")]: {
+        maxWidth:"400px"
+    },
+   
 }));
 
 function ContactForm() {
@@ -28,14 +39,10 @@ function ContactForm() {
                 </div>
                 <div>
                 <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                {/* <TextField required id="outlined-disabled" label="Sujet" defaultValue="Sujet" multiline rows={6}/> */}
+                <CommentArea placeholder="Comment pouvons vous vous aider?"/>
                 {/* <TextField variant="standard" label={"Comment pouvons nous vous aidé"} /> */}
                 {/* <TextField variant="outlined" label={"Comment pouvons nous vous aidé"} fullWidth  multiline rows={6} /> */}
-
-
-                    {/* <InputLabel htmlFor="standard-adornment-amount" >Amount</InputLabel> */}
-                    <OutlinedInput
-                        id="standard-adornment-amount" label="Comment pouvins nous vous aidé?" />
-                   
         <Typography sx={{margin:"10px"}}>
                 Selectionner tous vos documents à envoyer
             </Typography>

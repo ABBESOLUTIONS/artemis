@@ -18,16 +18,16 @@ import SinistreForm from '../sections/SinistrePage/SinistreForm';
 function HomePage() {
     return (
         <div>
-        <SinistreForm/>
-        {/* <HomeHero/> */}
-        {/* <Qualities/> */}
-        {/* <ServicesOverview/> */}
-        {/* <ServiceOverview/> */}
-        {/* <Experience/> */}
-        {/* <Members/> */}
-        {/* <TestimonyOverview/> */}
-        {/* <BlogOverview/> */}
-        {/* <AbonnementBanner/> */}
+        {/* <SinistreForm/> */}
+        <HomeHero/>
+        <Qualities/>
+        <ServicesOverview/>
+        <ServiceOverview/>
+        <Experience/>
+        <Members/>
+        <TestimonyOverview/>
+        <BlogOverview/>
+        <AbonnementBanner/>
         {/* <HeroComponent/> */}
         {/* <AutoMoto/> */}
         {/* <Habitation/> */}

@@ -5,14 +5,14 @@ import ImageComponent from '../../components/ImageComponent';
 import TextButton from '../../components/TextButton';
 
 const ContactElementsContainer=styled(SectionStyle)(()=>({
-    height:"400px",
+    minHeight:"400px",
     display:"flex",
     alignItems:"center",
     justifyContent:"center",
 }));
 
-const OneContactElementStyle=styled(Card)(()=>({
-    width:"300px",
+const OneContactElementStyle=styled(Card)(({theme})=>({
+    minWidth:"255px",
     height:"200px",
     boxShadow:"none",
     backgroundColor:"#F5F5F5",
@@ -20,22 +20,25 @@ const OneContactElementStyle=styled(Card)(()=>({
     flexDirection:"column",
     alignItems:"center",
     justifyContent:"center",
-    padding:"20px",
-    margin:"15px"
+    padding:"18px",
+    margin:"12px",
+    [theme.breakpoints.down("lg")]: {
+        padding:"12px"
+    },
 }))
 
 function ContactElements() {
     return (
         <ContactElementsContainer>
-            <Grid container spacing={2}>
-                <Grid item xs={3}>
+            <Grid container spacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                <Grid item xs={12} md={6} lg={3} >
                     <OneContactElementStyle>
                         <ImageComponent image={"assets/images/adress.png"}/>
                         <Typography sx={{fontWeight:"bold", fontSize:"25px"}}>Adresse</Typography>
                         <Typography sx={{width:"275px" ,fontSize:"18px", color:"#6F716F", textAlign:"center"}}>19, avenue Abel Sarnette, 84300 Cavaillon | France</Typography>
                     </OneContactElementStyle>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={12} md={3} lg={3} >
                     <OneContactElementStyle>
                         <ImageComponent image={"assets/images/telephone.png"}/>
                         <Typography sx={{fontWeight:"bold", fontSize:"25px"}}>Téléphone</Typography>
@@ -43,7 +46,7 @@ function ContactElements() {
                         <Typography sx={{color:"#6F716F", fontSize:"18px", textAlign:"center"}}>(Lundi - vendredi, 09:00–12:00, 14:00–18:00)</Typography>
                     </OneContactElementStyle>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={12} md={3} lg={3} >
                     <OneContactElementStyle>
                         <ImageComponent image={"assets/images/email.png"}/>
                         <Typography sx={{fontWeight:"bold", fontSize:"25px"}}>E-Mail</Typography>
@@ -51,7 +54,7 @@ function ContactElements() {
                         <TextButton title={"contact@artemisassurance.fr"} path={''} sx={{color:"#6F716F", fontSize:"18px"}}/>
                     </OneContactElementStyle>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={12} md={3} lg={3} >
                     <OneContactElementStyle>
                         <ImageComponent image={"assets/images/global.png"}/>
                         <Typography sx={{fontWeight:"bold", fontSize:"25px"}}>Site Internet</Typography>

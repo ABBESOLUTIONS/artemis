@@ -14,11 +14,14 @@ const FooterContainerCopirght=styled(FooterStyle)(()=>({
     backgroundColor: "#DFF1F1",
 }));
 
-const FooterContainer=styled("div")(()=>({
-    height: "275px",
+const FooterContainer=styled("div")(({theme})=>({
+    minHeight: "275px",
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
+    [theme.breakpoints.down("md")]: {
+        flexDirection:"column",
+    },
 }));
 
 const FooterContainerPart=styled("div")(()=>({

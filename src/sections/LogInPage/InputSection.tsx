@@ -9,6 +9,7 @@ const InputSectionStyle=styled(SectionStyle)(()=>({
     flexDirection:"column",
     alignItems:"center",
     justifyContent:"center",
+    paddingTop:"100px",
 }));
 
 
