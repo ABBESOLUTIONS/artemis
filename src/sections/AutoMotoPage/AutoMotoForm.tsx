@@ -247,13 +247,13 @@ function AutoMotoForm() {
                 <TextFieldPersonnalise id={''} required={true} label={"Date"} value={"date"} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" select label="Nature" value={natureScnd} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined" sx={{borderColor:"green"}}>
+                <TextField  id="outlined-required" select label="Nature" value={natureFirst} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined" sx={{borderColor:"green"}}>
                     {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
                 <TextFieldPersonnalise id={''} required={true} label={"Date"} value={"date"} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" select label="Nature" value={natureThird} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
+                <TextField  id="outlined-required" select label="Nature" value={natureScnd} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
                     {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
                 <TextFieldPersonnalise id={''} required={true} label={"Date"} value={"date"} />
