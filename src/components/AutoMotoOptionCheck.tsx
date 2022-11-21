@@ -31,35 +31,6 @@ function AutoMotoOptionCheck() {
                 <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
                     <FormLabel component="legend">Garanties Souhaitées</FormLabel>
                     <FormGroup>
-                        {/* <Grid container spacing={1}>
-                            <Grid item xs={6}>
-                                <FormControlLabel control={<Checkbox checked={vehiculeRemplacement} onChange={handleChange} name="vehiculeRemplacement" />} label="Véhicule de Remplacement"/>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControlLabel control={<Checkbox checked={vehiculeRemplacement} onChange={handleChange} name="vehiculeRemplacement" />} label="Véhicule de Remplacement"/>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControlLabel control={<Checkbox checked={vehiculeRemplacement} onChange={handleChange} name="vehiculeRemplacement" />} label="Véhicule de Remplacement"/>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControlLabel control={<Checkbox checked={vehiculeRemplacement} onChange={handleChange} name="vehiculeRemplacement" />} label="Véhicule de Remplacement"/>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControlLabel control={<Checkbox checked={vehiculeRemplacement} onChange={handleChange} name="vehiculeRemplacement" />} label="Véhicule de Remplacement"/>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControlLabel control={<Checkbox checked={vehiculeRemplacement} onChange={handleChange} name="vehiculeRemplacement" />} label="Véhicule de Remplacement"/>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControlLabel control={<Checkbox checked={vehiculeRemplacement} onChange={handleChange} name="vehiculeRemplacement" />} label="Véhicule de Remplacement"/>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControlLabel control={<Checkbox checked={vehiculeRemplacement} onChange={handleChange} name="vehiculeRemplacement" />} label="Véhicule de Remplacement"/>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControlLabel control={<Checkbox checked={vehiculeRemplacement} onChange={handleChange} name="vehiculeRemplacement" />} label="Véhicule de Remplacement"/>
-                            </Grid>
-                        </Grid> */}
                         <FormControlLabel control={<Checkbox checked={assistance} onChange={handleChange} name="resposableCivile" />} label="  Assistance 0km"/>
                         <FormControlLabel control={<Checkbox checked={vehiculeRemplacement} onChange={handleChange} name="vehiculeRemplacement" />} label="Véhicule de Remplacement"/>
                         <FormControlLabel control={<Checkbox checked={limite} onChange={handleChange} name="limite" />}label="Limite Km"/>
