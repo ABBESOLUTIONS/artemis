@@ -8,7 +8,7 @@ const   AutoMotoGarantieCheckContainer=styled("div")(()=>({
 
 function AutoMotoGarantieCheck() {
     const [state, setState] = React.useState({
-        responsableCivile: true,
+        responsableCivile: false,
         volIncendie: false,
         briseDeGlace: false,
         tousDommage: false,

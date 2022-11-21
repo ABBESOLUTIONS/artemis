@@ -7,7 +7,7 @@ const   AutoMotoGarageCheckContainer=styled("div")(()=>({
 
 function AutoMotoGarageCheck() {
     const [state, setState] = React.useState({
-        boxFermé: true,
+        boxFermé: false,
         terrainClos: false,
         parkingSecurité: false,
         voiePublique: false,
@@ -20,12 +20,15 @@ function AutoMotoGarageCheck() {
         });
       };
 
+      // const handleChangeChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
+      //   setData((prev) => ({...prev, [e.target.name]: e.target.checked}));
+      // };
+
       const { boxFermé, terrainClos, parkingSecurité, voiePublique } = state;
     return (
         <AutoMotoGarageCheckContainer>
             <Box sx={{ display: 'flex' }}>
             <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-        {/* <FormLabel component="legend">Assign responsibility</FormLabel> */}
         <FormGroup>
           <FormControlLabel
             control={
