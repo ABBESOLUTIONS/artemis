@@ -50,17 +50,9 @@ function LogInCard() {
         <LogInCardContainer>
             <ImageComponent image={"assets/images/logo.gif"} sx={{marginBottom:"50px"}}/>
             <Box component="form" sx={{ m: 1, width: "90%"}} noValidate autoComplete="off">
-                {/* <AccountCircle sx={{ color: 'action.active', }} /> */}
                 <TextField value={email} onChange={handleEmailChange} fullWidth size="small" label="Email" helperText=" " variant="standard" InputProps={{startAdornment: <InputAdornment position="start"><AccountCircle sx={{ color: 'action.active', }} /></InputAdornment>}}/>
-                {/* <VpnKeyRounded sx={{ color: 'action.active', mr: 1, my: 0.5 }} /> */}
                 <TextField value={pwd} onChange={handlePwdChange} fullWidth size="small" label="Mot de passe" helperText=" " variant="standard" type={"password"} InputProps={{startAdornment: <InputAdornment position="start"><VpnKeyRounded sx={{ color: 'action.active' }} /></InputAdornment>}}/>
             </Box>
-
-                {/* <Typography variant="caption" display="block" >
-            <Link>
-            caption text
-            </Link>
-          </Typography> */}
             <TextButton title={"Vous n'avez pas de compte?"} path={CLIENT_PAGES.signUp} sx={{ fontSize:"10px"}}/>
           <LoadingButton sx={{}}  loading={isLoading} onClick={onSubmit} variant="outlined" color="success" type="submit">Valider</LoadingButton>
         </LogInCardContainer>

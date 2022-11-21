@@ -57,20 +57,24 @@ const AccueilButton=styled(Link)(({theme})=>({
 }));
 const LeafHero=styled("img")(({theme})=>({
    position:"absolute",
+   marginRight:"700px",
+
     [theme.breakpoints.down("lg")]: {
         display:"none",
     },
 }));
 const DaughtHero=styled("img")(({theme})=>({
     position:"absolute",
-   
+    marginRight:"1000px",
+    marginTop:"150px",
     [theme.breakpoints.down("lg")]: {
         display:"none",
     },
 }));
 const DaughtLeafHero=styled("img")(({theme})=>({
    position:"absolute",
-    
+   marginLeft:"900px",
+   marginTop:"100px",
     [theme.breakpoints.down("lg")]: {
         display:"none",
     },
@@ -82,20 +86,26 @@ const TitleContent=styled("div")(({theme})=>({
     },
 }));
 
-function HeroComponent() {
+interface Props{
+    bigTitle:string,
+    littleTitle:string,
+
+}
+
+function HeroComponent({bigTitle, littleTitle}: Props) {
     return (
         <HeroComponentStyle>
                 <HeroTitleContent>
                     <HeroTitleContent2>
-                        <BigTitle>SERVICES</BigTitle>
+                        <BigTitle>{bigTitle}</BigTitle>
                         <Stack direction={"row"}>
                             {/* <AccueilButton title="Accueil" path=''/> */}
                             <AccueilButton><Typography>Accueil</Typography></AccueilButton>
-                            <LittleTitle>  /  service</LittleTitle>
+                            <LittleTitle>  /  {littleTitle}</LittleTitle>
                         </Stack>
-                        {/* <LeafHero src="assets/images/leaf2.png"/>
+                        <LeafHero src="assets/images/leaf2.png"/>
                         <DaughtHero src="assets/images/DaughtGroup2.png"/>
-                        <DaughtLeafHero src="assets/images/Leaf+daught.png"/> */}
+                        <DaughtLeafHero src="assets/images/Leaf+daught.png"/>
                     </HeroTitleContent2>
                 </HeroTitleContent>
         </HeroComponentStyle>

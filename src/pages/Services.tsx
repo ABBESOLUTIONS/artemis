@@ -7,7 +7,7 @@ import SmallContactBanner from '../sections/ServicePage/SmallContactBanner';
 function Services() {
     return (
        <div>
-         <HeroComponent/>
+         <HeroComponent bigTitle={"SERVICES"} littleTitle={'Services'}/>
         <ServiceDetails/>
         <SmallContactBanner/>
         <AbonnementBanner/>

@@ -10,6 +10,7 @@ const SignUpSectionStyle=styled(SectionStyle)(()=>({
     flexDirection:"column",
     alignItems:"center",
     justifyContent:"center",
+    paddingTop:"100px"
 }));
 
 function SignUpSection() {

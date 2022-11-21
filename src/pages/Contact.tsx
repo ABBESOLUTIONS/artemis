@@ -12,7 +12,7 @@ const ContactStyle= styled("div")(()=>({
 function Contact() {
     return (
        <ContactStyle>
-            <HeroComponent/>
+            <HeroComponent bigTitle={"CONTACT"} littleTitle={"Nous Contacter"}/>
             <ContactElements/>
             <ContactForm/>
        </ContactStyle>
