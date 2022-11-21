@@ -42,15 +42,15 @@ function HeaderMenuItem({title, path, subMenu}: Pops) {
 
     return (
         <HeaderMenuItemContainer>
-            <Typography component={HeaderMenuItemLink} to={path} variant="body1" style={{color: match ? "#138f82" : "black"}} sx={{fontWeight:"bold"}}>{title}</Typography>
+            <Typography component={HeaderMenuItemLink} to={path} variant="body1" style={{color: match ? "#138f82" : "black"}} sx={{fontWeight:"bold"}}>{subMenu?.length}</Typography>
             <HeaderMenuItemIndicator style={{backgroundColor: match ? "#138f82" : "rgba(0,0,0,0)"}}/>
-            <Container id="subMenu" sx={{display:"none"}}>
-            {
-                subMenu?.map((oneMenu, index)=> <SubMenuItemContainer>
-                    <TextButton title={oneMenu.title} path={""} />
-                </SubMenuItemContainer>)
-            }
-            </Container>
+            {subMenu?.length !== 0 && <SubMenuItemContainer id="subMenu" sx={{display:"none"}}>
+                {
+                    subMenu?.map((oneMenu, index)=> 
+                        <TextButton title={oneMenu.title} path={""} />
+                    )
+                }
+            </SubMenuItemContainer>}
         </HeaderMenuItemContainer>
     );
 }

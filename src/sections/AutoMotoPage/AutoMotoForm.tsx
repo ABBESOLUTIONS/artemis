@@ -26,7 +26,10 @@ function AutoMotoForm() {
       email: "",
     });
 
-    const [currency, setCurrency] = React.useState('Responsable');
+    const [natureFirst, setNatureFirst] = React.useState('Responsable');
+    const [natureScnd, setNatureSecond] = React.useState('Responsable');
+    const [natureThird, setNatureThird] = React.useState('Responsable');
+    const [natureFour, setNatureFour] = React.useState('Responsable');
 
 
   // const handleChange = (value: any, name: string) => {
@@ -183,59 +186,59 @@ function AutoMotoForm() {
                 </Grid> */}
                 <div>
                 <TextFieldPersonnalise  id={''} name="name" required={true} label={'Nom'} value={name} onChange={handleChange} />
-                <TextFieldPersonnalise id={''} required={true}  label={"Prénom"} value={prenom} />
+                <TextFieldPersonnalise id={''} name="prenom" required={true}  label={"Prénom"} value={prenom} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={'Adresse'} value={adresse} />
-                <TextFieldPersonnalise id={''} required={true} label={'N° Client'} value={numId} />
+                <TextFieldPersonnalise id={''} name={"adresse"} required={true} label={'Adresse'} value={adresse} />
+                <TextFieldPersonnalise id={''} name={"numId"} required={true} label={'N° Client'} value={numId} />
+ name={""}                </div>
+                <div>
+                <TextFieldPersonnalise id={''} name={"telFix"} required={true} label={'Téléphone Fixe'} value={telFix} />
+                <TextFieldPersonnalise id={''} name={"telMob"} required={true} label={'Téléphone Mobile'} value={telMob} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={'Téléphone Fixe'} value={telFix} />
-                <TextFieldPersonnalise id={''} required={true} label={'Téléphone Mobile'} value={telMob} />
+                <TextFieldPersonnalise id={''} name={"email"} required={true} label={'Email'} value={email} />
+                <TextFieldPersonnalise id={''} name={"situation"} required={true} label={'Situation Familial'} value={situation} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={'Email'} value={email} />
-                <TextFieldPersonnalise id={''} required={true} label={'Situation Familial'} value={situation} />
+                <TextFieldPersonnalise id={''} name={"nbInfSeize"} required={true} label={"Nombre d'enfants < 16"} value={nbInfSeize} />
+                <TextFieldPersonnalise id={''} name={"nbSupSeize"} required={true} label={"Nombre d'enfants > 16"} value={nbSupSeize} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Nombre d'enfants < 16"} value={nbInfSeize} />
-                <TextFieldPersonnalise id={''} required={true} label={"Nombre d'enfants > 16"} value={nbSupSeize} />
+                <TextFieldPersonnalise id={''} name={"profession"} required={true} label={'Profession'} value={profession} />
+                <TextFieldPersonnalise id={''} name={"dateNaiss"} required={true} label={'Date de Naissance'} value={dateNaiss} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={'Profession'} value={profession} />
-                <TextFieldPersonnalise id={''} required={true} label={'Date de Naissance'} value={dateNaiss} />
+                <TextFieldPersonnalise id={''} name={"datePermis"} required={true} label={'Date de Permis de Conduire'} value={'datePermis'} />
+                <TextFieldPersonnalise id={''} name={"marque"} required={true} label={"Marque (D1)"} value={"marque"} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={'Date de Permis de Conduire'} value={'datePermis'} />
-                <TextFieldPersonnalise id={''} required={true} label={"Marque (D1)"} value={"marque"} />
+                <TextFieldPersonnalise id={''} name={"modele"} required={true} label={"Modèle (D3)"} value={modele} />
+                <TextFieldPersonnalise id={''} name={"version"} required={true} label={"Version"} value={version} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Modèle (D3)"} value={modele} />
-                <TextFieldPersonnalise id={''} required={true} label={"Version"} value={version} />
+                <TextFieldPersonnalise id={''} name={"puissanceFisc"} required={true} label={"Puissance Fiscale (P6)"} value={puissanceFisc} />
+                <TextFieldPersonnalise id={''} name={"typeMine"} required={true} label={"Type Mines (D2)"} value={typeMine} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Puissance Fiscale (P6)"} value={puissanceFisc} />
-                <TextFieldPersonnalise id={''} required={true} label={"Type Mines (D2)"} value={typeMine} />
+                <TextFieldPersonnalise id={''} name={"miseCirc"} required={true} label={"Mise en Circulation (B)"} value={miseCirc} />
+                <TextFieldPersonnalise id={''} name={"immatric"} required={true} label={"Immatriculation (A)"} value={immatric} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Mise en Circulation (B)"} value={miseCirc} />
-                <TextFieldPersonnalise id={''} required={true} label={"Immatriculation (A)"} value={immatric} />
+                <TextFieldPersonnalise id={''} name={""} required={true} label={"Date d'Acquisition"} value={"dateAcquis"} />
+                <TextFieldPersonnalise id={''} name={"titulaireCarte"} required={true} label={"Titulaire Carte Grise"} value={titulaireCarte} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Date d'Acquisition"} value={"dateAcquis"} />
-                <TextFieldPersonnalise id={''} required={true} label={"Titulaire Carte Grise"} value={titulaireCarte} />
+                <TextFieldPersonnalise id={''} name={"autreConduct"} required={true} label={"Autres Conducteurs à désigner"} value={autreConduct} />
+                <TextFieldPersonnalise id={''} name={"coef"} required={true} label={"Coef. Bonus/Malus (CRM)"} value={coef} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Autres Conducteurs à désigner"} value={autreConduct} />
-                <TextFieldPersonnalise id={''} required={true} label={"Coef. Bonus/Malus (CRM)"} value={coef} />
-                </div>
-                <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Date d'Obtention du CRM"} value={"dateCrm"} />
+                <TextFieldPersonnalise id={''} name={"dateCrm"} required={true} label={"Date d'Obtention du CRM"} value={"dateCrm"} />
                 </div>
                 <Typography>Nombre de sinistres lors des dernières années(R.i)</Typography>
                 <Typography>Ordre = Responsable / Demi-Responsable / Non-Responsable / Bris de Glace</Typography>
                 <div>
-                <TextField  id="outlined-required" select label="Nature" value={currency} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
+                <TextField  id="outlined-required" select label="Nature" value={natureFirst} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
                     {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
                 {/* <TextFieldPersonnalise id={''} required={true} label={"Marque (D1)"} value={"marque"} variant={"outlined"}>
@@ -244,13 +247,13 @@ function AutoMotoForm() {
                 <TextFieldPersonnalise id={''} required={true} label={"Date"} value={"date"} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" select label="Nature" value={currency} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined" sx={{borderColor:"green"}}>
+                <TextField  id="outlined-required" select label="Nature" value={natureScnd} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined" sx={{borderColor:"green"}}>
                     {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
                 <TextFieldPersonnalise id={''} required={true} label={"Date"} value={"date"} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" select label="Nature" value={currency} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
+                <TextField  id="outlined-required" select label="Nature" value={natureThird} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
                     {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
                 <TextFieldPersonnalise id={''} required={true} label={"Date"} value={"date"} />

@@ -3,28 +3,23 @@ import { Button, Drawer } from '@mui/material';
 
 interface props {
   open: boolean,
-  onClose?: (event?: {}, reason?: "backdropClick" | "escapeKeyDown") => void
+  onClick:Function,
 }
 
-export default function AboutDrawer({open, onClose}: props) {
-
-  const handleClose = (event: React.MouseEvent<HTMLElement>) =>{
-    // onClose();
-  }
+export default function AboutDrawer({open, onClick}: props) {
 
   return (
     <div>
         <Drawer
           anchor={"right"}
           open={open}
-          onClose={onClose}
           PaperProps={{
             sx:{
               width: {xs:1, sm: 0.5, md: 700}
             }
           }}
         >
-          <Button onClick={handleClose}>X</Button>
+          <Button onClick={() => onClick()}>X</Button>
           Hervette le pervers
         </Drawer>
     </div>

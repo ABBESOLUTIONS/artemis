@@ -36,18 +36,20 @@ function SignUpCard() {
 
     const onSubmit = (event: React.SyntheticEvent) => {
         event.preventDefault();
-        setIsLoading(true);
-        dispatch(createUserWithEmailAndPassword({email, pwd})).unwrap().then((res) => {
-            if (pwd==confirmPwd) {
+        if (pwd==confirmPwd && pwd.length>= 8) {
+            setIsLoading(true);
+            dispatch(createUserWithEmailAndPassword({email, pwd})).unwrap().then((res) => {
                 navigate("/autoMoto");
                 alert ("ca marche!");
-                
-            } else {
-                alert("bah ca ne marche pas!")
-            }
-        }).catch(error => {
-          console.log(error);
-        });
+            }).catch(error => {
+            console.log(error);
+            });
+        } else if(pwd.length<8) {
+            alert ("Le")
+        } else {
+            alert("Mot de passe non comfnvhsghgviq")
+        }
+        
 
     };
     const handleEmailChange = (event: any) => setEmail(event.target.value);
