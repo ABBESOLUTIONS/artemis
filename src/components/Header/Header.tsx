@@ -11,6 +11,7 @@ import DevisButton from "../DevisButton";
 import Logo from "../Logo";
 import Search from "../Search";
 import HeaderMenuItem from "./HeaderMenuItem";
+import MenuIcon from '@mui/icons-material/Menu';
 
 const LogoContainer = styled("div")(() => ({
     height: "100%",
@@ -44,7 +45,7 @@ function Header() {
     return (
         <AppBar position="fixed" color="transparent" elevation={0} sx={{height: HEADER.DESKTOP_HEIGHT, display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
             
-            <HeaderAnim>
+            <HeaderAnim sx={{display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                 <LogoContainer>
                         <Logo sx={{marginLeft: "30px"}} logoImg="assets/images/logo.png"/>
                 </LogoContainer>
@@ -53,7 +54,7 @@ function Header() {
                     {ClientMenuItems.map((menu, index) => <HeaderMenuItem key={index} title={menu.title} path={menu.path} subMenu={menu.submenu}/>)}
                 </Box>
                 <DevisButton/>
-                <Button onClick={handleOpenDrawer}>Menu</Button>
+                <Button onClick={handleOpenDrawer}><MenuIcon fontSize="large" sx={{color:"black"}}/></Button>
                 <AboutDrawer open={open} onClick={handleCloseDrawer} />
                 {/* <Container maxWidth={false}>
                     <Grid container sx={{...(isMobile && {paddingLeft:"0px", paddingRight:"0px"})} && {...(!isMobile && {paddingLeft:"50pxpx", paddingRight:"50px"})}}>
