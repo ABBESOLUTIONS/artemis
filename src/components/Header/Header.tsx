@@ -1,8 +1,10 @@
-import { AppBar, Container, Grid, styled,} from "@mui/material";
+import { AppBar, Button, Container, Grid, styled,} from "@mui/material";
 import { Box } from "@mui/system";
+import React from "react";
 import { HEADER } from "../../common/HeaderConfig";
 import { ClientMenuItems } from "../../common/MenuConfig";
 import useResponsive from "../../hooks/useResponsive";
+import useToggle from "../../hooks/useToggle";
 import AboutDrawer from "../AboutDrawer";
 import HeaderAnim from "../animation/HeaderAnim";
 import DevisButton from "../DevisButton";
@@ -28,6 +30,16 @@ const LogoContainer = styled("div")(() => ({
 
 function Header() {
     const isMobile = useResponsive("down", "lg");
+    const [open, setOpen] = React.useState(false);
+
+
+    const handleCloseDrawer = (event: {}, reason: "backdropClick" | "escapeKeyDown") =>{
+        setOpen(false);
+    }
+
+    const handleOpenDrawer = (event: React.MouseEvent<HTMLElement>)=>{
+        setOpen(true);
+    }
 
     return (
         <AppBar position="fixed" color="transparent" elevation={0} sx={{height: HEADER.DESKTOP_HEIGHT, display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
@@ -41,7 +53,8 @@ function Header() {
                     {ClientMenuItems.map((menu, index) => <HeaderMenuItem key={index} title={menu.title} path={menu.path} subMenu={menu.submenu}/>)}
                 </Box>
                 <DevisButton/>
-                <AboutDrawer/>
+                <Button onClick={handleOpenDrawer}>Menu</Button>
+                {/* <AboutDrawer open={open} onClick={handleCloseDrawer} /> */}
                 {/* <Container maxWidth={false}>
                     <Grid container sx={{...(isMobile && {paddingLeft:"0px", paddingRight:"0px"})} && {...(!isMobile && {paddingLeft:"50pxpx", paddingRight:"50px"})}}>
                         <Grid item xs>

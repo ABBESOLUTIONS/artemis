@@ -37,16 +37,25 @@ const TextFieldPersonnaliseStyle= styled(TextField)({
 })
 interface Props {
     id:string,
+    name?: string,
     required:boolean,
     label:string,
     value:string,
     helperText?:string,
-
+    onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
 }
 
-function TextFieldPersonnalise({id, required, label, value, helperText}: Props) {
+function TextFieldPersonnalise({id, required, label, value, helperText, onChange, name}: Props) {
     return (
-        <TextFieldPersonnaliseStyle id={id} required={required} label={label} value={value} helperText={helperText} />
+        <TextFieldPersonnaliseStyle 
+          id={id} 
+          name={name}
+          required={required} 
+          label={label} 
+          value={value} 
+          helperText={helperText} 
+          onChange={onChange}
+        />
     );
 }
 

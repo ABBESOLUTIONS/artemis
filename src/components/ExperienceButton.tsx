@@ -1,6 +1,8 @@
-import { Button, styled, Typography } from '@mui/material';
+import React from 'react';
+import { Button, Stack, styled, Typography } from '@mui/material';
 import { PROJECT_COLORS } from '../common/colors';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
+import useToggle from '../hooks/useToggle';
 
 const ExperienceButtonStyle=styled("div")(({theme})=>({
     // boxShadow:"none",
@@ -30,12 +32,23 @@ interface Props {
 }
 
 function ExperienceButton({text}:Props) {
+    const [open, setOpen] = React.useState();
+
+    const handleOpen= (e:React.MouseEventHandler<HTMLDivElement>)=>{
+
+    }
+
     return (
+        <div 
+        // onMouseEnter={handleOpen} 
+        // onMouseLeave={endHover}
+        >
+            <ExperienceButtonStyle>
+                <DoneAllIcon sx={{margin:"12px", '&:hover':{color: "white"}}}/>
+                <Typography sx={{color:"black", margin:"12px",fontSize:18,'&:hover':{color:"white"}}}>{text}</Typography>
+            </ExperienceButtonStyle>
+        </div>
         // <ExperienceButtonStyle variant="contained" startIcon={<DoneAllIcon/>}>{text}</ExperienceButtonStyle>
-        <ExperienceButtonStyle>
-            <DoneAllIcon sx={{margin:"12px", '&:hover':{color:"white"}}}/>
-            <Typography sx={{color:"black", margin:"12px",fontSize:18,'&:hover':{color:"white"}}}>{text}</Typography>
-        </ExperienceButtonStyle>
     );
 }
 

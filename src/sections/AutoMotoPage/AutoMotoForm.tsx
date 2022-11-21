@@ -20,12 +20,28 @@ const AutoMotoFormContainer=styled(SectionStyle)(()=>({
 }));
 
 function AutoMotoForm() {
+    const [data, setData] = React.useState({
+      name: "",
+      prenom : "",
+      email: "",
+    });
 
     const [currency, setCurrency] = React.useState('Responsable');
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrency(event.target.value);
+
+  // const handleChange = (value: any, name: string) => {
+  //   setData((prev) => ({...prev, [name]: value}));
+  // };
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setData((prev) => ({...prev, [e.target.name]: e.target.value}));
   };
+
+  const handleChangeChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setData((prev) => ({...prev, [e.target.name]: e.target.checked}));
+  };
+
+
     const [name, setName] = React.useState("");
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -166,7 +182,7 @@ function AutoMotoForm() {
                     <Grid item xs={12}><TextField required label="Firstname"/></Grid>
                 </Grid> */}
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={'Nom'} value={name} />
+                <TextFieldPersonnalise  id={''} name="name" required={true} label={'Nom'} value={name} onChange={handleChange} />
                 <TextFieldPersonnalise id={''} required={true}  label={"Prénom"} value={prenom} />
                 </div>
                 <div>
