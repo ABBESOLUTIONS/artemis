@@ -9,7 +9,10 @@ const TestimonyCardContainer=styled(Card)(({theme})=>({
     flexDirection:"column",
     justifyContent:"space-around",
     [theme.breakpoints.down("lg")]: {
-        width:"350px"
+        width:"325px"
+    },
+    [theme.breakpoints.down("md")]: {
+        width:"300px"
     },
 }));
 const TestimonyCardProfilImg= styled("img")(()=>({

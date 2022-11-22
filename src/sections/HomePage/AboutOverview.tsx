@@ -14,6 +14,7 @@ const AboutOverviewContainer=styled(SectionStyle)(({theme})=>({
     justifyContent:"space-around",
     [theme.breakpoints.down("md")]: {
         flexDirection:"column",
+        width:"100%",
         height:"auto",
     },
 }));
@@ -36,7 +37,7 @@ const AboutOverviewRight=styled("div")(({theme})=>({
     flexDirection:"row",
     [theme.breakpoints.down("lg")]: {
         flexDirection:"column",
-        maxWidth:"100%",
+        // maxWidth:"100%",
     },
 }));
 const ImageRight=styled("div")(({theme})=>({
@@ -44,6 +45,25 @@ const ImageRight=styled("div")(({theme})=>({
     display:"flex",
     justifyContent:"center",
     alignItems:"center",
+}));
+const QualityTitle = styled(Typography)(({theme}) => ({
+    // fontFamily: "InterBold,sans-serif !important",
+    fontSize: "35px",
+    fontWeight: 800,
+    width:"100%",
+    [theme.breakpoints.down("lg")]: {
+        fontSize: "25px",
+        fontWeight: 400,
+        textAlign: "center",
+    width:"100%",
+        
+
+    },
+    [theme.breakpoints.down("lg")]: {
+        fontSize: "30px",
+        fontWeight: 400,
+        textAlign: "center"
+    },
 }));
 
 
@@ -53,7 +73,8 @@ function AboutOverview() {
         <AboutOverviewContainer>
             <AboutOverviewLeft>
                 <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>A PROPOS DE NOUS</Typography>
-                <Typography variant='h3' sx={{textAlign:"center", fontWeight:"bold", fontSize:"45px", marginBottom:"50px"}}>Les missions que nous nous sommes fixées</Typography>
+                {/* <Typography variant='h3' sx={{textAlign:"center", fontWeight:"bold", fontSize:"45px", marginBottom:"50px"}}>Les missions que nous nous sommes fixées</Typography> */}
+                <QualityTitle>Les missions que nous nous sommes fixées</QualityTitle>
                 {
                     servicesOverview.map((oneService,index) => <ServiceOverviewCard icone={''} detail={oneService.subtitle}/>)
                 }

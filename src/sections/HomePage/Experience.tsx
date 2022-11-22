@@ -32,13 +32,15 @@ const ExperienceImg=styled("img")(({theme})=>({
     position:"absolute",
     width:"575px",
     [theme.breakpoints.down("lg")]: {
-        width:"450px"
+        width:"325px"
     },
 }));
-const LeafImage=styled("img")(()=>({
+const LeafImage=styled("img")(({theme})=>({
     position:"absolute",
     marginLeft:"275px",
-    marginTop:"-25px"
+    marginTop:"-25px",
+    [theme.breakpoints.down("lg")]: {
+display:"none"    },
 }));
 
 function Experience() {

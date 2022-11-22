@@ -22,14 +22,26 @@ const HeaderMenuItemIndicator = styled("div")(() => ({
 const HeaderMenuItemLink = styled(Link)(() => ({
     textDecoration: "none",
 }));
-const SubMenuItemContainer = styled("div")(() => ({
+const SubMenuItemContainer = styled(Container)(() => ({
     position:"absolute",
     width:"200px",
     height:"100px",
-    backgroundColor:"white",
+    // backgroundColor:"red",
     marginRight:"15px",
+    marginTop:"100px",
 
 }));
+const OneSubMenuItem = styled(Container)(() => ({
+    position:"absolute",
+    width:"200px",
+    height:"100px",
+    // backgroundColor:"red",
+    marginRight:"15px",
+    
+
+}));
+
+
 interface Pops {
     title: string,
     path: string,
@@ -44,13 +56,12 @@ function HeaderMenuItem({title, path, subMenu}: Pops) {
         <HeaderMenuItemContainer>
             <Typography component={HeaderMenuItemLink} to={path} variant="body1" style={{color: match ? "#138f82" : "black"}} sx={{fontWeight:"bold"}}>{title}</Typography>
             <HeaderMenuItemIndicator style={{backgroundColor: match ? "#138f82" : "rgba(0,0,0,0)"}}/>
-            <Container id="subMenu" sx={{display:"none"}}>
+            <SubMenuItemContainer id="subMenu" sx={{display:"none"}}>
             {
-                subMenu?.map((oneMenu, index)=> <SubMenuItemContainer>
-                    <TextButton title={oneMenu.title} path={""} />
-                </SubMenuItemContainer>)
+                subMenu?.map((oneMenu, index)=> 
+                    <Container key={index} sx={{ width:"200px", height:"50px", boxShadow:"0px 0px 1px 1px grey", display:"flex", justifyContent:"center", alignItems:"center",fontSize:"18px" }}><TextButton title={oneMenu.title} path={""} /></Container>)
             }
-            </Container>
+            </SubMenuItemContainer>
         </HeaderMenuItemContainer>
     );
 }

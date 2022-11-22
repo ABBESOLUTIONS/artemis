@@ -20,7 +20,12 @@ const QualityTitle = styled(Typography)(({theme}) => ({
     fontWeight: 800,
     [theme.breakpoints.down("md")]: {
         fontSize: "25px",
-        fontWeight: "400",
+        fontWeight: 400,
+        textAlign: "center"
+    },
+    [theme.breakpoints.down("lg")]: {
+        fontSize: "30px",
+        fontWeight: 400,
         textAlign: "center"
     },
 }));
@@ -42,7 +47,7 @@ function Qualities() {
             <QualityTitle>Ce qui nous distingue</QualityTitle>
             <QualitiesCardContainer>
                 {
-                    qualitiesInfo.map((oneQualitie,index)=> <Grid key={index} item xs={3} ><QualitieCard illus={oneQualitie.icone} titre={oneQualitie.title} texte={oneQualitie.text}/></Grid>)
+                    qualitiesInfo.map((oneQualitie,index)=> <Grid key={index} item xs={6} md={4}  ><QualitieCard illus={oneQualitie.icone} titre={oneQualitie.title} texte={oneQualitie.text}/></Grid>)
                 }
             </QualitiesCardContainer>
             {/* <Grid container sx={{margintop:""}} spacing={1}>

@@ -8,8 +8,13 @@ const GoogleRatingStyle=styled(Card)(({theme})=>({
     flexDirection:"column",
     marginTop:"20px",
     [theme.breakpoints.down("lg")]: {
-        width:"390px",
+        width:"370px",
         marginBottom:"-50px"
+        
+    },
+    [theme.breakpoints.down("md")]: {
+        width:"330px",
+        // marginBottom:"-50px"
         
     },
 }))

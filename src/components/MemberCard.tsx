@@ -12,7 +12,7 @@ const MemberCardContainer= styled(Card)(({theme})=>({
     position:"relative",
     margin:"1px",
     [theme.breakpoints.down("md")]: {
-        width:"450px",
+        width:"350px",
         margin:"8px"
     },
 }));

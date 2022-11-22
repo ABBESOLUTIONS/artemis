@@ -4,16 +4,16 @@ import ImageComponent from './ImageComponent';
 
 
 const QualitieCardContainer=styled(Card)(({theme})=>({
-    width:"225px",
+    width:"250px",
     minHeight:"450px",
     display:"flex",
     flexDirection:"column",
     justifyContent:"space-around",
     padding:"15px",
-    margin:"15px",
+    margin:"10px",
     [theme.breakpoints.down("sm")]: {
-        width:"auto",
-        minWidth:"315px",
+        // width:"auto",
+        Width:"315px",
         height:"275px"
     }
 }))

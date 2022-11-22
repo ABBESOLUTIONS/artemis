@@ -7,6 +7,7 @@ import PlaceIcon from '@mui/icons-material/Place';
 import CallIcon from '@mui/icons-material/Call';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import AlarmIcon from '@mui/icons-material/Alarm';
+import SizesText from './SizesText';
 
 interface props {
   open: boolean,
@@ -50,29 +51,30 @@ export default function AboutDrawer({open, onClick}: props) {
           <DrawerContentStyle>
           <Divider orientation="horizontal" flexItem></Divider>
           <Typography sx={{fontWeight:700, fontSize:"30px", width:"300px"}}>A propos de nous</Typography>
-          <Typography variant="body2" sx={{fontSize:"16px"}}>Artémis est une entreprise inscrite au registre du commerce et des sociétés, dont la vocation est d'analyser l'ensemble des contrats que vous avez souscrit (tant auprès d'assureurs que de banquiers ou autres) et de vous représenter auprès des sociétés d'assurances afin de négocier au mieux les garanties adaptées à vos besoins et négocier les conditions de tarif en faisant jouer la concurrence.</Typography>
-          <Typography sx={{fontWeight:700, fontSize:"30px", width:"300px"}}>Contact Info</Typography>
+          {/* <Typography variant="body2" sx={{fontSize:"16px"}}>Artémis est une entreprise inscrite au registre du commerce et des sociétés, dont la vocation est d'analyser l'ensemble des contrats que vous avez souscrit (tant auprès d'assureurs que de banquiers ou autres) et de vous représenter auprès des sociétés d'assurances afin de négocier au mieux les garanties adaptées à vos besoins et négocier les conditions de tarif en faisant jouer la concurrence.</Typography> */}
+          <SizesText sx={{marginTop:"15px"}} text={"Artémis est une entreprise inscrite au registre du commerce et des sociétés, dont la vocation est d'analyser l'ensemble des contrats que vous avez souscrit (tant auprès d'assureurs que de banquiers ou autres) et de vous représenter auprès des sociétés d'assurances afin de négocier au mieux les garanties adaptées à vos besoins et négocier les conditions de tarif en faisant jouer la concurrence."}></SizesText>
+          <Typography sx={{fontWeight:700, fontSize:"30px", width:"300px", marginTop:"15px"}}>Contact Info</Typography>
           <ContactLinkStyle to={''}>
             <Stack direction={"row"} sx={{marginTop:"15px"}}>
               <PlaceIcon/>
-              <Typography sx={{fontSize:"18px", color:"black", marginLeft:"10px"}}>19, avenue Abel Sarnette, 84300 Cavaillon | France</Typography>
+              <SizesText text={"19, avenue Abel Sarnette, 84300 Cavaillon | France"} sx={{fontSize:"18px", color:"black", marginLeft:"10px"}}/>
             </Stack>
           </ContactLinkStyle>
           <ContactLinkStyle to={''}>
             <Stack direction={"row"} sx={{marginTop:"15px"}}>
               <CallIcon/>
-              <Typography sx={{fontSize:"18px", color:"black", marginLeft:"10px"}}>+33 4 90 35 47</Typography>
+              <SizesText text={"+33 4 90 35 47"} sx={{fontSize:"18px", color:"black", marginLeft:"10px"}}/>
             </Stack>
           </ContactLinkStyle>
           <ContactLinkStyle to={''}>
             <Stack direction={"row"} sx={{marginTop:"15px"}}>
               <MailOutlineIcon/>
-              <Typography sx={{fontSize:"18px", color:"black", marginLeft:"10px"}}>contact@artemisassurance.fr</Typography>
+              <SizesText text={"contact@artemisassurance.fr"} sx={{fontSize:"18px", color:"black", marginLeft:"10px"}}/>
             </Stack>
           </ContactLinkStyle>
             <Stack direction={"row"} sx={{marginTop:"15px"}}>
               <AlarmIcon />
-              <Typography sx={{fontSize:"18px", color:"black", marginLeft:"10px"}}>Lundi - vendredi, 09:00–12:00, 14:00–18:00</Typography>
+              <SizesText text={"Lundi - vendredi, 09:00–12:00, 14:00–18:00"} sx={{fontSize:"18px", color:"black", marginLeft:"10px"}}/>
             </Stack>
           </DrawerContentStyle>
         </Drawer>

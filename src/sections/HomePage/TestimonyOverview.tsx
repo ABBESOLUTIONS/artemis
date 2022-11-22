@@ -16,7 +16,11 @@ const TestimonyOverviewStyle=styled(SectionStyle)(({theme})=>({
     flexDirection:"row",
     [theme.breakpoints.down("lg")]: {
         flexDirection:"column",
-        // maxWidth:"100%",
+        idth:"100%",
+    },
+    [theme.breakpoints.down("md")]: {
+        flexDirection:"column",
+        width:"100%",
     },
 }));
 const AboutOverviewRight=styled("div")(({theme})=>({

@@ -22,6 +22,7 @@ const HomeHeroContainer=styled(SectionStyle)(({theme})=>({
     backgroundColor:"#F5FAF9",
     [theme.breakpoints.down("lg")]: {
         flexDirection:"column",
+        minHeight:"120vh"
     },
 }));
 const HomeHeroBG=styled("div")(({theme})=>({
@@ -34,10 +35,10 @@ const HomeHeroBG=styled("div")(({theme})=>({
     },
 }));
 const HomeHeroContainerLeft=styled("div")(({theme})=>({
-    minWidth:"600px",
+    minWidth:"675px",
     maxWidth:"45%",
     minHeight:"500px",
-    margin:"40px",
+    margin:"20px",
     display:"flex",
     paddingTop:"75px",
     flexDirection:"column",
@@ -46,11 +47,12 @@ const HomeHeroContainerLeft=styled("div")(({theme})=>({
         maxWidth:"100%",
         minWidth:"300px",
     },
+    
 }));
 const HomeHeroContainerRight=styled("div")(({theme})=>({
     minWidth:"450px",
-    minHeight:"400Ppx",
-    margin:"25px",
+    minHeight:"400px",
+    margin:"15px",
     display:"flex",
     alignItems:"center",
     justifyContent:"center",
@@ -97,14 +99,23 @@ const HomeHeroLeftSubTitle=styled(Typography)(({theme})=>({
     },
 }));
 const HomeHeroLeftText=styled(Typography)(({theme})=>({
-    maxWidth:"700px",
+    minWidth:"  600px",
     fontSize:"20px",
+    fontWeight:75,
     marginTop:"15px",
-    color:"#000000",
+    color:"#616161",
     position:"relative",
     [theme.breakpoints.down("md")]: {
-        fontSize:"1.2em",
+        fontSize:"14px",
+        fontWeight:75,
         textAlign:"center"
+    },
+    [theme.breakpoints.down("lg")]: {
+        fontSize:"16px",
+        fontWeight:75,
+        textAlign:"center",
+        minWidth:"400px",
+        
     },
 }));
 
@@ -133,7 +144,7 @@ function HomeHero() {
                 Bienvenue chez ARTEMIS !
                 </HomeHeroLeftTitle>
                 <HomeHeroLeftSubTitle>
-                <Typography component={"span"}>Artémis </Typography><Typography component={"span"}>Assurance, ça Rassure !</Typography>
+                <Typography component={"span"} sx={{color:"green"}}>Artémis </Typography><Typography component={"span"}>Assurance, ça Rassure !</Typography>
                 </HomeHeroLeftSubTitle>
                 <HomeHeroLeftText>
                 Artémis est une entreprise inscrite au registre du commerce et des sociétés, dont la vocation est d'analyser l'ensemble des contrats que vous avez souscrit (tant auprès d'assureurs que de banquiers ou autres) et de vous représenter auprès des sociétés d'assurances afin de négocier au mieux les garanties adaptées à vos besoins et négocier les conditions de tarif en faisant jouer la concurrence.
