@@ -1,13 +1,14 @@
 import React from 'react';
 import LittleBlogTextContainer from '../components/LittleBlogTextContainer';
+import Page from '../components/Pages';
 import ImageSection from '../sections/ActualitePage/ImageSection';
 
 
 function Actualites() {
     return (
-        <div>
-           <ImageSection/>
-        </div>
+        <Page title={"Actualites"}>
+            <ImageSection/>
+        </Page>
     );
 }
 

@@ -14,26 +14,27 @@ import Sante from './Sante';
 import Professionelle from './Professionelle';
 import AbonnementBanner from '../sections/HomePage/AbonnementBanner';
 import SinistreForm from '../sections/SinistrePage/SinistreForm';
+import Page from '../components/Pages';
 
 function HomePage() {
     return (
-        <div>
-        {/* <SinistreForm/> */}
-        <HomeHero/>
-        <Qualities/>
-        <ServicesOverview/>
-        <ServiceOverview/>
-        <Experience/>
-        <Members/>
-        <TestimonyOverview/>
-        <BlogOverview/>
-        <AbonnementBanner/>
-        {/* <HeroComponent/> */}
-        {/* <AutoMoto/> */}
-        {/* <Habitation/> */}
-        {/* <Sante/> */}
-        {/* <Professionelle/> */}
-        </div>
+        <Page title="Accueil" sx={{width: "100vw", marginLeft: "0px", padding: "0px"}}>
+            {/* <SinistreForm/> */}
+            <HomeHero/>
+            <Qualities/>
+            <ServicesOverview/>
+            <ServiceOverview/>
+            <Experience/>
+            <Members/>
+            <TestimonyOverview/>
+            <BlogOverview/>
+            <AbonnementBanner/>
+            {/* <HeroComponent/> */}
+            {/* <AutoMoto/> */}
+            {/* <Habitation/> */}
+            {/* <Sante/> */}
+            {/* <Professionelle/> */}
+        </Page>
     );
 }
 

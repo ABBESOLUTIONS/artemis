@@ -1,11 +1,12 @@
 import React from 'react';
+import Page from '../components/Pages';
 import AutoMotoForm from '../sections/AutoMotoPage/AutoMotoForm';
 
 function AutoMoto() {
     return (
-        <div>
-           <AutoMotoForm/> 
-        </div>
+        <Page title="Devis-AutoMoto">
+            <AutoMotoForm/> 
+        </Page>
     );
 }
 

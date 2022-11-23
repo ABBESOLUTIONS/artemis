@@ -1,11 +1,12 @@
 import React from 'react';
+import Page from '../components/Pages';
 import DevisOptionSection from '../sections/DevisOptionPage/DevisOptionSection';
 
 function DevisOption() {
     return (
-        <div>
+        <Page title="Devis">
             <DevisOptionSection/>
-        </div>
+        </Page>
     );
 }
 

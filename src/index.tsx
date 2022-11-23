@@ -6,13 +6,15 @@ import { BrowserRouter } from 'react-router-dom';
 import AuthProvider from './components/AuthProvider';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import { HelmetProvider } from 'react-helmet-async';
 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <HelmetProvider>
+    <React.StrictMode>
       <BrowserRouter>
         <Provider store={store}>
         <AuthProvider>
@@ -20,7 +22,8 @@ root.render(
         </AuthProvider>
         </Provider>
       </BrowserRouter>
-  </React.StrictMode>
+    </React.StrictMode>
+  </HelmetProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

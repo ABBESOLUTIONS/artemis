@@ -22,7 +22,7 @@ function FooterItems({title, path, sx={}}: Pops) {
 
     return (
         <FooterItemContainer>
-            <Typography component={FooterItemLink} to={path} variant="body1" style={{color: match ? "black" : "white"}} sx={{...sx}}>{title}</Typography>
+            <Typography component={FooterItemLink} to={path} variant="body1" style={{color: match ? "black" : "black"}} sx={{...sx}}>{title}</Typography>
         </FooterItemContainer>
     );
 }

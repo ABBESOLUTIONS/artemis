@@ -1,11 +1,12 @@
 import React from 'react';
+import Page from '../components/Pages';
 import HabitationForm from '../sections/HabitationPage/HabitationForm';
 
 function Habitation() {
     return (
-        <div>
+        <Page title="Devis-Habitation">
             <HabitationForm/>
-        </div>
+        </Page>
     );
 }
 
