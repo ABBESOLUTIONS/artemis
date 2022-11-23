@@ -8,11 +8,26 @@ const SmallContactBannerStyle=styled(SectionStyle)(()=>({
     height:"300px",
     backgroundColor:"#497774",
     display:"flex",
+    position:"relative",
     flexDirection:"column",
     alignItems:"center",
     justifyContent:"center",
 
-}))
+}));
+
+const EllipseWhite=styled("img")(({theme})=>({
+    
+    [theme.breakpoints.down("md")]: {
+        display:"none",
+    },
+}));
+const LeafDaught=styled("img")(({theme})=>({
+    position:"absolute", 
+    
+    [theme.breakpoints.down("md")]: {
+        display:"none",
+    },
+}));
 
 function SmallContactBanner() {
     return (
@@ -22,8 +37,8 @@ function SmallContactBanner() {
                 <Button variant="contained" sx={{bgcolor:PROJECT_COLORS.primarySwatch, fontSize:13, padding:"15px",margin:"15px" }}>Nous joindre</Button>
                 <Button variant="outlined" sx={{color:"white", borderColor:"white", fontSize:13, padding:"15px",margin:"15px"}}>Demander un devis</Button>
             </Stack>
-            <ImageComponent image={"assets/images/ellipseWhite.png"} sx={{position:"absolute",marginLeft:"450px",}}/>
-            <ImageComponent image={"assets/images/Leaf+daught.png"} sx={{position:"absolute", marginLeft:"-450px", marginTop:"70px"}}/>
+            <EllipseWhite src="assets/images/ellipseWhite.png" sx={{}}/>
+            <LeafDaught src="assets/images/Leaf+daught.png" sx={{}}/>
         </SmallContactBannerStyle>
     );
 }

@@ -4,13 +4,16 @@ import React from 'react';
 import ImageComponent from '../../components/ImageComponent';
 import SectionStyle from '../../styles/SectionStyle';
 
-const AbonnementBannerContainer=styled(SectionStyle)(()=>({
-    // width:"100%",
+const AbonnementBannerContainer=styled(SectionStyle)(({theme})=>({
+    // minWidth:"100%",
     height:"400px",
     display:"flex",
     flexDirection:"column",
     alignItems:"center",
     justifyContent:"center",
+    [theme.breakpoints.up("md")]: {
+        // minWidth:"100%"
+    },
 }));
 const FirstTitle=styled(Typography)(({theme})=>({
     color:"#138F82",
@@ -65,8 +68,6 @@ function AbonnementBanner() {
             <SecondTitle>Restez informé de nos dernières infos</SecondTitle>
             <TheSubTitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus..</TheSubTitle>
             <Typography sx={{color:"#138F82", }}></Typography>
-            <Typography sx={{}}></Typography>
-            <Typography sx={{}}></Typography>
             <Stack direction={"row"} sx={{margin:"25px"}}>
                 <TextField/>
                 <Button variant='contained' startIcon={<Send/>} sx={{backgroundColor:"#138F82", '&:hover':{backgroundColor:"black"}}}>S'abonner</Button>
