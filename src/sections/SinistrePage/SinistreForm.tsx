@@ -1,51 +1,57 @@
 import React from 'react';
 import SectionStyle from '../../styles/SectionStyle';
-import { Box, Button, Card, Container, FormControl, Grid, Input, InputLabel, Stack, styled, TextField, Typography, OutlinedInput, FormControlLabel, Checkbox, FormGroup } from '@mui/material';
+import { Box, Button, Card, Container, FormControl, Grid, Input, InputLabel, Stack, styled, TextField, Typography, OutlinedInput, FormControlLabel, Checkbox, FormGroup, TextareaAutosize } from '@mui/material';
 import TextButton from '../../components/TextButton';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
+import { PROJECT_COLORS } from '../../common/colors';
 
 
-const SinistreFormContainer=styled(SectionStyle)(()=>({
-    // height:"900px",
+ const SinistreFormContainer=styled(SectionStyle)(()=>({
+    minHeight:"600px",
     display:"flex",
     flexDirection:"column",
-    aligneItems:"center",
-    jsutifyContent:"center",
+    alignItems:"center",
+    justifyContent:"center",
+}));
+const CommentArea=styled(TextareaAutosize)(({theme})=>({
+    minHeight:"100px",
+    maxWidth:"850px",
+    [theme.breakpoints.down("lg")]: {
+        maxWidth:"450px"
+    },
+    [theme.breakpoints.down("md")]: {
+        maxWidth:"400px"
+    },
 }))
 
 function SinistreForm() {
     return (
         <SinistreFormContainer>
-                <Container>
-                    <Grid container xs sx={{padding:"75px"}}>
-                        <Grid item xs={24} md={12} sx={{display:"flex", flexDirection:"row", '& .MuiTextField-root': { m: 2, width: '61ch' },}}>
-                            <TextField variant="outlined" label={"Nom"}/>
-                            <TextField variant="outlined" label={"Prénoms"}/>
-                        </Grid>
-                        <Grid item xs={24} md={12} sx={{display:"flex", flexDirection:"row", '& .MuiTextField-root': { m: 2, width: '61ch' },}}>
-                            <TextField variant="outlined" label={"Télephone"}/>
-                            <TextField variant="outlined" label={"Email"}/>
-                        </Grid>
-                        <Grid item xs={24} md={12} sx={{'& .MuiTextField-root': { m: 2, },}}>
-                            <TextField variant="outlined" label={"Nom de société"} fullWidth />
-                        </Grid>
-                        <Grid item xs={24} md={12} sx={{'& .MuiTextField-root': { m: 2, },}}>
-                            <TextField variant="outlined" label={"Comment pouvons nous vous aidé"} fullWidth  multiline rows={6} />
-                        </Grid>
+                <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Nous envoyer un message</Typography>
+                <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"45px", marginBottom:"50px", textAlign:"center" }}>Veuillez renseigner le formulaire</Typography>
+                <Box component={"form"} sx={{'& .MuiTextField-root': { m:2, width: '50ch' },}}>
+                    <div>
+                    <TextField required id="outlined-required" label="Nom" defaultValue=""/>
+                    <TextField required id="outlined-disabled" label="Prénom (s)" defaultValue=""/>
+                    </div>
+                    <div>
+                    <TextField required id="outlined-disabled" label="Email" defaultValue=""/>
+                    <TextField required id="outlined-required" label="N° de Télephone" defaultValue=""/>
+                    </div>
+                    <div>
+                    <TextField required id="outlined-required" label="Numéro Contrat" defaultValue=""/>
+                    <TextField required id="outlined-disabled" label="Sujet" defaultValue=""/>
+                    </div>
+                    <div>
+                    <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                        <CommentArea placeholder="Votre message"/>
                         <Typography sx={{margin:"10px"}}>Selectionner tous vos documents à envoyer</Typography>
-                        <Grid item xs={24} sx={{'& .MuiTextField-root': { m: 2, },}}>
-                        <OutlinedInput type='file'fullWidth id="upload" sx={{margin:"10px"}}></OutlinedInput>
-                        </Grid>
-                        <FormGroup>
-                            <Stack direction={"row"}>
-                                <Checkbox  />
-                                <Typography component={"span"}> J'accepte les </Typography>
-                                <TextButton  title={" termes & conditions"} path={''}/>
-                            </Stack>
-                        </FormGroup>
-                    <Button startIcon={<ArrowForwardIos/>}  variant="contained" sx={{width:"100px"}}>Envoyer</Button>
-                    </Grid>
-                </Container>
+                        <OutlinedInput type='file' id="upload"></OutlinedInput>
+                        <FormControlLabel value="end" control={<Checkbox />} label={<TextButton title={"J'accepte les termes et conditions"} path={''}></TextButton>} labelPlacement="end"/>
+            </FormControl>
+                </div>
+            </Box>
+                <Button startIcon={<ArrowForwardIos/>} sx={{color:"white", backgroundColor:"#138F82", padding:"18px"}}> Envoyer </Button>
         </SinistreFormContainer>
     );
 }

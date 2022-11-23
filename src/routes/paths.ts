@@ -15,5 +15,6 @@ export const CLIENT_PAGES = {
     professionelle:"/devisOption/professionelle",
     logIn:"/logIn",
     signUp:"/signUp",
-    actualite:"/actualite"
+    actualite:"/actualite",
+    declarationSinistre:"/declarationSinistre",
 };

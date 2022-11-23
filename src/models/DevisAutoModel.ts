@@ -1,14 +1,15 @@
-export interface AutoFormModel {
-      Name:string,
-      LastName : string,
+export interface DevisAutoModel {
+      id_client:string,
+      Nom:string,
+      Prenom : string,
       Adresse:string,
-      Num_Client:Number | null ,
+      Num_Client:string | null ,
       Telephone_Fix:string,
       Telephone_Mobile:string,
       Email:string,
       Situation_Familial:string,
-      Nombre_Enfants_Inférieur_16ans:number,
-      Nombre_Enfants_Superieur_16ans:number,
+      Nombre_Enfants_Inférieur_16ans:string,
+      Nombre_Enfants_Superieur_16ans:string,
       Profession:string,
       Date_Naissance:string,
       Date_Permis_Conduite:string

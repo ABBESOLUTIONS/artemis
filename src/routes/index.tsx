@@ -6,6 +6,7 @@ import AutoMoto from "../pages/AutoMoto";
 import Blog from "../pages/Blog";
 import Contact from "../pages/Contact";
 import Declaration from "../pages/Declaration";
+import DeclarationSinistre from "../pages/DeclarationSinistre";
 import DevisOption from "../pages/DevisOption";
 import Habitation from "../pages/Habitation";
 import HomePage from "../pages/HomePage";
@@ -14,6 +15,7 @@ import Professionelle from "../pages/Professionelle";
 import Sante from "../pages/Sante";
 import Services from "../pages/Services";
 import SignUp from "../pages/SignUp";
+import SinistreForm from "../sections/SinistrePage/SinistreForm";
 import { CLIENT_PAGES } from "./paths";
 
 export default function Router() {
@@ -43,6 +45,7 @@ export default function Router() {
           { path: CLIENT_PAGES.logIn, element: <LogIn /> },
           { path: CLIENT_PAGES.signUp, element: <SignUp /> },
           { path: CLIENT_PAGES.actualite, element: <Actualites /> },
+          { path: CLIENT_PAGES.declarationSinistre, element: <DeclarationSinistre /> },
         ],
       },
 

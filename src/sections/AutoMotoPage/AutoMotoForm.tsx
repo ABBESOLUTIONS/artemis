@@ -1,4 +1,4 @@
-import { styled, Typography, Box, Grid, TextField, MenuItem, FormHelperText, FormControl, FormGroup, Checkbox, FormControlLabel, FormLabel} from '@mui/material';
+import { styled, Typography, Box, Grid, TextField, MenuItem, FormHelperText, FormControl, FormGroup, Checkbox, FormControlLabel, FormLabel, Button} from '@mui/material';
 import React from 'react';
 import { PROJECT_COLORS } from '../../common/colors';
 import { currencies } from '../../common/Data';
@@ -8,7 +8,14 @@ import AutoMotoOptionCheck from '../../components/AutoMotoOptionCheck';
 import AutoMotoPaiementCheck from '../../components/AutoMotoPaiementCheck';
 import AutoMotoUsageVehiculaireCheck from '../../components/AutoMotoUsageVehiculaireCheck';
 import ButtonComponent from '../../components/ButtonComponent';
+import { Garage } from '../../components/Ennum/Garage';
+import { Garantie } from '../../components/Ennum/Garantie';
+import { ModePaiement } from '../../components/Ennum/ModePaiement';
+import { Options } from '../../components/Ennum/Option';
 import TextFieldPersonnalise from '../../components/TextFieldPersonnalise';
+import { DevisAutoModel } from '../../models/DevisAutoModel';
+import { addDevisAuto } from '../../redux/slices/DevisAutoRed';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
 import SectionStyle from '../../styles/SectionStyle';
 
 const AutoMotoFormContainer=styled(SectionStyle)(()=>({
@@ -21,66 +28,69 @@ const AutoMotoFormContainer=styled(SectionStyle)(()=>({
 }));
 
 function AutoMotoForm() {
-    const [data, setData] = React.useState({
-      name: "",
-      prenom : "",
-      adresse:"",
-      numId: "",
-      telFix:"",
-      telMob:"",
-      email:"",
-      situation:"",
-      nbInfSeize:"",
-      nbSupSeize:"",
-      profession:"",
-      dateNaiss:"",
-      datePermis:"",
-      marque:"",
-      modele:"",
-      version:"",
-      puissanceFisc:"",
-      typeMine:"",
-      miseCirc:"",
-      immatric:"",
-      dateAcquis:"",
-      titulaireCarte:"",
-      autreConduct:"",
-      coef:"",
-      dateCrm:"",
-      natureFirst:"",
-      dateFirst:"",
-      natureScnd:"",
-      dateScnd:"",
-      natureThird:"",
-      dateThird:"",
-      resiliation:"",
-      motifResil:"",
-      dateResil:"",
-      suspension:"",
-      dateSuspens:"",
-      dateMotifSuspens:"",
-      boxFermé: false,
-      terrainClos: false,
-      parkingSecurité: false,
-      voiePublique: false,
-      responsableCivile: false,
-      volIncendie: false,
-      briseDeGlace: false,
-      tousDommage: false,
-      assistance: false,
-      vehiculeRemplacement: false,
-      limite: false,
-      conduiteEx: false,
-      equipement: false,
-      protection: false,
-      permis: false,
-      perte: false,
-      marchandise: false, 
-      prelevement: false,
-      cheque: false,
-      cb: false,
-      virement: false,
-    });
+    // const [data, setData] = React.useState({
+    //   name: "",
+    //   prenom : "",
+    //   adresse:"",
+    //   numId: "",
+    //   telFix:"",
+    //   telMob:"",
+    //   email:"",
+    //   situation:"",
+    //   nbInfSeize:"",
+    //   nbSupSeize:"",
+    //   profession:"",
+    //   dateNaiss:"",
+    //   datePermis:"",
+    //   marque:"",
+    //   modele:"",
+    //   version:"",
+    //   puissanceFisc:"",
+    //   typeMine:"",
+    //   miseCirc:"",
+    //   immatric:"",
+    //   dateAcquis:"",
+    //   titulaireCarte:"",
+    //   autreConduct:"",
+    //   coef:"",
+    //   dateCrm:"",
+    //   natureFirst:"",
+    //   dateFirst:"",
+    //   natureScnd:"",
+    //   dateScnd:"",
+    //   natureThird:"",
+    //   dateThird:"",
+    //   resiliation:"",
+    //   motifResil:"",
+    //   dateResil:"",
+    //   suspension:"",
+    //   dateSuspens:"",
+    //   dateMotifSuspens:"",
+    //   boxFermé: false,
+    //   terrainClos: false,
+    //   parkingSecurité: false,
+    //   voiePublique: false,
+    //   responsableCivile: false,
+    //   volIncendie: false,
+    //   briseDeGlace: false,
+    //   tousDommage: false,
+    //   assistance: false,
+    //   vehiculeRemplacement: false,
+    //   limite: false,
+    //   conduiteEx: false,
+    //   equipement: false,
+    //   protection: false,
+    //   permis: false,
+    //   perte: false,
+    //   marchandise: false, 
+    //   prelevement: false,
+    //   cheque: false,
+    //   cb: false,
+    //   virement: false,
+    // });
+
+    const [data, setData] = React.useState<DevisAutoModel>();
+    const user = useAppSelector(state => state.auth.user);
 
     const [natureFirst, setNatureFirst] = React.useState('Responsable');
     const [natureScnd, setNatureSecond] = React.useState('Responsable');
@@ -106,10 +116,10 @@ function AutoMotoForm() {
     //     [event.target.name]: event.target.checked,
     //   });
     // };
-    const { boxFermé, terrainClos, parkingSecurité, voiePublique } = data;
-    const { responsableCivile, volIncendie, briseDeGlace, tousDommage } = data;
-    const { assistance, vehiculeRemplacement, limite, conduiteEx, equipement, protection, permis, perte, marchandise } = data;
-    const { prelevement, cheque, cb, virement } = data;
+    // const { boxFermé, terrainClos, parkingSecurité, voiePublique } = data;
+    // const { responsableCivile, volIncendie, briseDeGlace, tousDommage } = data;
+    // const { assistance, vehiculeRemplacement, limite, conduiteEx, equipement, protection, permis, perte, marchandise } = data;
+    // const { prelevement, cheque, cb, virement } = data;
 
 
 
@@ -119,12 +129,67 @@ function AutoMotoForm() {
   // };
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setData((prev) => ({...prev, [e.target.name]: e.target.value}));
+    setData((prev) => ({...prev, [e.target.name]: e.target.value} as DevisAutoModel));
+    console.log(data);
   };
 
-   const handleChangeChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setData((prev) => ({...prev, [e.target.name]: e.target.checked}));
+   const handleChangeCheckedGarantie = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let gara: Array<string> = Array.from(data?.Garanties_Souhaitées ?? []);
+    if(e.target.checked) {
+      gara?.push(e.target.name);
+      setData((prev) => ({ ...prev, Garanties_Souhaitées: gara } as DevisAutoModel));
+    }
+    else
+      if(data?.Garanties_Souhaitées.filter(one => one != e.target.name).length) {
+        setData((prev) => ({ ...prev, Garanties_Souhaitées: data?.Garanties_Souhaitées.filter(one => one != e.target.name) } as DevisAutoModel));
+      }
+    console.log(data);
   };
+   const handleChangeCheckedGarage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let gara: Array<string> = Array.from(data?.Garage ?? []);
+    if(e.target.checked) {
+      gara?.push(e.target.name);
+      setData((prev) => ({ ...prev, Garage: gara } as DevisAutoModel));
+    }
+    else
+      if(data?.Garage.filter(one => one != e.target.name).length) {
+        setData((prev) => ({ ...prev, Garage: data?.Garage.filter(one => one != e.target.name) } as DevisAutoModel));
+      }
+    console.log(data);
+  };
+   const handleChangeCheckedOptions = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let gara: Array<string> = Array.from(data?.Option ?? []);
+    if(e.target.checked) {
+      gara?.push(e.target.name);
+      setData((prev) => ({ ...prev, Option: gara } as DevisAutoModel));
+    }
+    else
+      if(data?.Option.filter(one => one != e.target.name).length) {
+        setData((prev) => ({ ...prev, Option: data?.Option.filter(one => one != e.target.name) } as DevisAutoModel));
+      }
+    console.log(data);
+  };
+   const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let gara: Array<string> = Array.from(data?.Mode_Paiement ?? []);
+    if(e.target.checked) {
+      gara?.push(e.target.name);
+      setData((prev) => ({ ...prev, Mode_Paiement: gara } as DevisAutoModel));
+    }
+    else
+      if(data?.Mode_Paiement.filter(one => one != e.target.name).length) {
+        setData((prev) => ({ ...prev, Mode_Paiement: data?.Mode_Paiement.filter(one => one != e.target.name) } as DevisAutoModel));
+      }
+    console.log(data);
+  };
+
+  const dispatch = useAppDispatch();
+
+  const validate = () => {
+    if (data && user?.uid) {
+      data.id_client = user?.uid;
+      dispatch(addDevisAuto({oneDevisAuto: data})).unwrap();
+    }
+}
 
 
     const [name, setName] = React.useState("");
@@ -268,116 +333,95 @@ function AutoMotoForm() {
                     <Grid item xs={12}><TextField required label="Firstname"/></Grid>
                 </Grid> */}
                 <div>
-                <TextFieldPersonnalise  id={''} name="name" required={true} label={'Nom'} value={name} onChange={handleChange} />
-                <TextFieldPersonnalise id={''} name="prenom" required={true}  label={"Prénom"} onChange={handleChange} value={prenom} />
+                <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Nom'} value={data?.Nom ?? ""} onChange={handleChange} />
+                <TextFieldPersonnalise id={''} name="Prenom" required={true}  label={"Prénom"} onChange={handleChange} value={data?.Prenom ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"adresse"} required={true} label={'Adresse'} onChange={handleChange} value={adresse} />
-                <TextFieldPersonnalise id={''} name={"numId"} required={true} label={'N° Client'} onChange={handleChange} value={numId} /> 
+                <TextFieldPersonnalise id={''} name={"Adresse"} required={true} label={'Adresse'} onChange={handleChange} value={data?.Adresse ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Num_Client"} required={true} label={'N° Client'} onChange={handleChange} value={data?.Num_Client ?? ""} /> 
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"telFix"} required={true} label={'Téléphone Fixe'} onChange={handleChange} value={telFix} />
-                <TextFieldPersonnalise id={''} name={"telMob"} required={true} label={'Téléphone Mobile'} onChange={handleChange} value={telMob} />
+                <TextFieldPersonnalise id={''} name={"Telephone_Fix"} required={true} label={'Téléphone Fixe'} onChange={handleChange} value={data?.Telephone_Fix ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Telephone_Mobile"} required={true} label={'Téléphone Mobile'} onChange={handleChange} value={data?.Telephone_Mobile ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"email"} required={true} label={'Email'} onChange={handleChange} value={email} />
-                <TextFieldPersonnalise id={''} name={"situation"} required={true} label={'Situation Familial'} onChange={handleChange} value={situation} />
+                <TextFieldPersonnalise id={''} name={"Email"} required={true} label={'Email'} onChange={handleChange} value={data?.Email ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Situation_Familial"} required={true} label={'Situation Familial'} onChange={handleChange} value={data?.Situation_Familial?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"nbInfSeize"} required={true} label={"Nombre d'enfants < 16"} onChange={handleChange} value={nbInfSeize} />
-                <TextFieldPersonnalise id={''} name={"nbSupSeize"} required={true} label={"Nombre d'enfants > 16"} onChange={handleChange} value={nbSupSeize} />
+                <TextFieldPersonnalise id={''} name={"Nombre_Enfants_Inférieur_16ans"} required={true} label={"Nombre d'enfants < 16"} onChange={handleChange} value={data?.Nombre_Enfants_Inférieur_16ans ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Nombre_Enfants_Superieur_16ans"} required={true} label={"Nombre d'enfants > 16"} onChange={handleChange} value={data?.Nombre_Enfants_Superieur_16ans ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"profession"} required={true} label={'Profession'} onChange={handleChange} value={profession} />
-                <TextFieldPersonnalise id={''} name={"dateNaiss"} required={true} label={'Date de Naissance'} onChange={handleChange} value={dateNaiss} />
+                <TextFieldPersonnalise id={''} name={"Profession"} required={true} label={'Profession'} onChange={handleChange} value={data?.Profession ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Date_Naissance"} required={true} label={'Date de Naissance'} onChange={handleChange} value={data?.Date_Naissance ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"datePermis"} required={true} label={'Date de Permis de Conduire'} onChange={handleChange} value={datePermis} />
-                <TextFieldPersonnalise id={''} name={"marque"} required={true} label={"Marque (D1)"} onChange={handleChange} value={marque} />
+                <TextFieldPersonnalise id={''} name={"Date_Permis_Conduite"} required={true} label={'Date de Permis de Conduire'} onChange={handleChange} value={data?.Date_Permis_Conduite ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Marque_D1"} required={true} label={"Marque (D1)"} onChange={handleChange} value={data?.Marque_D1 ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"modele"} required={true} label={"Modèle (D3)"} onChange={handleChange} value={modele} />
-                <TextFieldPersonnalise id={''} name={"version"} required={true} label={"Version"} onChange={handleChange} value={version} />
+                <TextFieldPersonnalise id={''} name={"Modele_D3"} required={true} label={"Modèle (D3)"} onChange={handleChange} value={data?.Modele_D3 ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Version"} required={true} label={"Version"} onChange={handleChange} value={data?.Version ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"puissanceFisc"} required={true} label={"Puissance Fiscale (P6)"} onChange={handleChange} value={puissanceFisc} />
-                <TextFieldPersonnalise id={''} name={"typeMine"} required={true} label={"Type Mines (D2)"} onChange={handleChange} value={typeMine} />
+                <TextFieldPersonnalise id={''} name={"Puissance_Fiscale"} required={true} label={"Puissance Fiscale (P6)"} onChange={handleChange} value={data?.Puissance_Fiscale ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Type_Mine_D2"} required={true} label={"Type Mines (D2)"} onChange={handleChange} value={data?.Type_Mine_D2 ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"miseCirc"} required={true} label={"Mise en Circulation (B)"} onChange={handleChange} value={miseCirc} />
-                <TextFieldPersonnalise id={''} name={"immatric"} required={true} label={"Immatriculation (A)"} onChange={handleChange} value={immatric} />
+                <TextFieldPersonnalise id={''} name={"Mise_Circulation_B"} required={true} label={"Mise en Circulation (B)"} onChange={handleChange} value={data?.Mise_Circulation_B ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Immatriculation"} required={true} label={"Immatriculation (A)"} onChange={handleChange} value={data?.Immatriculation ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={""} required={true} label={"Date d'Acquisition"} onChange={handleChange} value={"dateAcquis"} />
-                <TextFieldPersonnalise id={''} name={"titulaireCarte"} required={true} label={"Titulaire Carte Grise"} onChange={handleChange} value={titulaireCarte} />
+                <TextFieldPersonnalise id={''} name={"Date_Acquisition"} required={true} label={"Date d'Acquisition"} onChange={handleChange} value={data?.Date_Acquisition ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Titulaire_Carte_Grise"} required={true} label={"Titulaire Carte Grise"} onChange={handleChange} value={data?.Titulaire_Carte_Grise ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"autreConduct"} required={true} label={"Autres Conducteurs à désigner"} onChange={handleChange} value={autreConduct} />
-                <TextFieldPersonnalise id={''} name={"coef"} required={true} label={"Coef. Bonus/Malus (CRM)"} onChange={handleChange} value={coef} />
+                <TextFieldPersonnalise id={''} name={"Autres_Conducteurs"} required={true} label={"Autres Conducteurs à désigner"} onChange={handleChange} value={data?.Autres_Conducteurs ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Coefficient_Bonus_CRM"} required={true} label={"Coef. Bonus/Malus (CRM)"} onChange={handleChange} value={data?.Coefficient_Bonus_CRM ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"dateCrm"} required={true} label={"Date d'Obtention du CRM"} onChange={handleChange} value={dateCrm} />
+                <TextFieldPersonnalise id={''} name={"Date_Obtention_CRM"} required={true} label={"Date d'Obtention du CRM"} onChange={handleChange} value={data?.Date_Obtention_CRM?? ""} />
                 </div>
                 <Typography>Nombre de sinistres lors des dernières années(R.i)</Typography>
                 <Typography>Ordre = Responsable / Demi-Responsable / Non-Responsable / Bris de Glace</Typography>
                 <div>
-                <TextField  id="outlined-required" select name={"natureFirst"} label="Nature" value={natureFirst} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
+                <TextField  id="outlined-required" select name={"Nature_Sinistre_1"} label="Nature" value={data?.Nature_Sinistre_1 ?? ""} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
                     {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
-                <TextFieldPersonnalise id={''} required={true} name={"dateFirst"} label={"Date"} onChange={handleChange} value={dateFirst} />
+                <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_1"} label={"Date"} onChange={handleChange} value={data?.Date_Sinistre_1 ?? ""} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" select name={"natureScnd"} label="Nature" value={natureScnd} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined" sx={{borderColor:"green"}}>
+                <TextField  id="outlined-required" select name={"Nature_Sinistre_2"} label="Nature" value={data?.Nature_Sinistre_2 ?? ""} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined" sx={{borderColor:"green"}}>
                     {currencies.map((option) => (<MenuItem key={option.value}  value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
-                <TextFieldPersonnalise id={''} required={true} name={"dateScnd"} label={"Date"} onChange={handleChange} value={dateScnd} />
+                <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_2"} label={"Date"} onChange={handleChange} value={data?.Date_Sinistre_2 ?? ""} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" select name={"natureThird"} label="Nature" value={natureThird} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
+                <TextField  id="outlined-required" select name={"Nature_Sinistre_3"} label="Nature" value={data?.Nature_Sinistre_3 ?? ""} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
                     {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
-                <TextFieldPersonnalise id={''} required={true} name={"dateThird"} label={"Date"} onChange={handleChange} value={dateThird} />
+                <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_3"} label={"Date"} onChange={handleChange} value={data?.Date_Sinistre_3 ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} name={"resiliation"} label={"Résiliaton de la Compagnie"} onChange={handleChange} value={resiliation} />
-                <TextFieldPersonnalise id={''} required={true} name={"motifResil"} label={"Motif de Résiliation"} onChange={handleChange} value={motifResil} />
+                <TextFieldPersonnalise id={''} required={true} name={"Resiliation_Compagnie"} label={"Résiliaton de la Compagnie"} onChange={handleChange} value={data?.Resiliation_Compagnie ?? ""} />
+                <TextFieldPersonnalise id={''} required={true} name={"Motif_Resiliation"} label={"Motif de Résiliation"} onChange={handleChange} value={data?.Motif_Resiliation ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} name={"dateResil"} label={"Date de Résiliation"} onChange={handleChange} value={dateResil} />
-                <TextFieldPersonnalise id={''} required={true} name={"suspension"} label={"Suspension/Annulation de Permis"} onChange={handleChange} value={suspension} />
+                <TextFieldPersonnalise id={''} required={true} name={"Date_Resiliation"} label={"Date de Résiliation"} onChange={handleChange} value={data?.Date_Resiliation ?? ""} />
+                <TextFieldPersonnalise id={''} required={true} name={"Suspension_ou_Annulation_Permis"} label={"Suspension/Annulation de Permis"} onChange={handleChange} value={data?.Suspension_ou_Annulation_Permis?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} name={"dateSuspens"} label={"Date & motif de la suspension / Annulation"} onChange={handleChange} value={dateSuspens} />
-                <TextFieldPersonnalise  id="outlined-required" required={true} name={"dateMotifSuspens"} label="Date & motif de la suspension / Annulation" onChange={handleChange} value={dateMotifSuspens}/>
+                <TextFieldPersonnalise id={''} required={true} name={"dateSuspens"} label={"Date & motif de la suspension / Annulation"} onChange={handleChange} value={data?.Date_Motif_Suspension ?? ""} />
+                {/* <TextFieldPersonnalise  id="outlined-required" required={true} name={"dateMotifSuspens"} label="Date & motif de la suspension / Annulation" onChange={handleChange} value={data?.Nature_Sinistre_1 ?? ""}/> */}
                 </div>
                 <Typography>Garage:</Typography>
             <Box sx={{ display: 'flex' }}>
             <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
               <FormGroup>
-              <FormControlLabel
-              control={
-              <Checkbox checked={boxFermé} onChange={handleChangeChecked} name="boxFermé" />
-            }
-            label="Box Fermé"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={terrainClos} onChange={handleChangeChecked} name="terrainClos" />
-            }
-            label="Terrain Clos"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={parkingSecurité} onChange={handleChangeChecked} name="parkingSecurité" />
-            }
-            label="Parking Sécurité"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={voiePublique} onChange={handleChangeChecked} name="voiePublique" />
-            }
-            label="Voie PUBLIQUE"
-          />
+                  {
+                    Object.keys(Garage).map((oneGarage, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedGarage} name={Garage[oneGarage as keyof typeof Garage]}/>} label={Garage[oneGarage as keyof typeof Garage]}/>)
+                  }
         </FormGroup>
         <FormHelperText>Veuillez sélectioner une case</FormHelperText>
       </FormControl>
@@ -386,19 +430,21 @@ function AutoMotoForm() {
                 <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
                     <FormLabel component="legend">Garanties Souhaitées</FormLabel>
                     <FormGroup>
-                        <FormControlLabel control={<Checkbox checked={responsableCivile} onChange={handleChangeChecked} name="resposableCivile" />} label="Responsable Civile"/>
-                        <FormControlLabel control={<Checkbox checked={volIncendie} onChange={handleChangeChecked} name="volIncendie" />} label="Vol, Icendie"/>
-                        <FormControlLabel control={<Checkbox checked={briseDeGlace} onChange={handleChangeChecked} name="briseDeGlace" />}label="Brise de Glace"/>
-                        <FormControlLabel control={<Checkbox checked={tousDommage} onChange={handleChangeChecked} name="tousDommage" />}label="Dommages tous Accidant"/>
+                      {
+                        Object.keys(Garantie).map((oneGarantie, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedGarantie} name={Garantie[oneGarantie as keyof typeof Garantie]}/>} label={Garantie[oneGarantie as keyof typeof Garantie]}/>)
+                      }
                     </FormGroup>
                     <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                 </FormControl>
             </Box>
             <Box sx={{ display: 'flex' }}>
                 <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
-                    <FormLabel component="legend">Garanties Souhaitées</FormLabel>
+                    <FormLabel component="legend">Option</FormLabel>
                     <FormGroup>
-                        <FormControlLabel control={<Checkbox checked={assistance} onChange={handleChangeChecked} name="resposableCivile" />} label="  Assistance 0km"/>
+                      {
+                        Object.keys(Options).map((oneOptions, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedOptions} name={Options[oneOptions as keyof typeof Options]}/>} label={Options[oneOptions as keyof typeof Options]}/>)
+                      }
+                        {/* <FormControlLabel control={<Checkbox checked={assistance} onChange={handleChangeChecked} name="resposableCivile" />} label="  Assistance 0km"/>
                         <FormControlLabel control={<Checkbox checked={vehiculeRemplacement} onChange={handleChangeChecked} name="vehiculeRemplacement" />} label="Véhicule de Remplacement"/>
                         <FormControlLabel control={<Checkbox checked={limite} onChange={handleChangeChecked} name="limite" />}label="Limite Km"/>
                         <FormControlLabel control={<Checkbox checked={conduiteEx} onChange={handleChangeChecked} name="conduiteEx" />}label="Conduite Exclusive"/>
@@ -406,7 +452,7 @@ function AutoMotoForm() {
                         <FormControlLabel control={<Checkbox checked={protection} onChange={handleChangeChecked} name="protection" />}label="Protection Juridique"/>
                         <FormControlLabel control={<Checkbox checked={permis} onChange={handleChangeChecked} name="permis" />}label="Permis de Conduire"/>
                         <FormControlLabel control={<Checkbox checked={perte} onChange={handleChangeChecked} name="perte" />}label="Perte Financière tous Accidant"/>
-                        <FormControlLabel control={<Checkbox checked={marchandise} onChange={handleChangeChecked} name="marchandise" />}label="Marchandises Transportées"/>
+                        <FormControlLabel control={<Checkbox checked={marchandise} onChange={handleChangeChecked} name="marchandise" />}label="Marchandises Transportées"/> */}
                     </FormGroup>
                     <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                 </FormControl>
@@ -415,23 +461,27 @@ function AutoMotoForm() {
                 <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
                     <FormLabel component="legend">Modes de Paiement possible</FormLabel>
                     <FormGroup>
-                        <FormControlLabel control={<Checkbox checked={prelevement} onChange={handleChangeChecked} name="prelevement" />} label="Prélèvement"/>
+                      {
+                        Object.keys(ModePaiement).map((oneModePaiement, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>)
+                      }
+                        {/* <FormControlLabel control={<Checkbox checked={prelevement} onChange={handleChangeChecked} name="prelevement" />} label="Prélèvement"/>
                         <FormControlLabel control={<Checkbox checked={cheque} onChange={handleChangeChecked} name="cheque" />} label="Chèque"/>
                         <FormControlLabel control={<Checkbox checked={cb} onChange={handleChangeChecked} name="cb" />}label="CB"/>
-                        <FormControlLabel control={<Checkbox checked={virement} onChange={handleChangeChecked} name="virement" />}label="Virement"/>
+                        <FormControlLabel control={<Checkbox checked={virement} onChange={handleChangeChecked} name="virement" />}label="Virement"/> */}
                     </FormGroup>
                     <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                 </FormControl>
             </Box>
         
                 {/* <div><AutoMotoGarantieCheck/></div> */}
-                {/* <div><AutoMotoOptionCheck/></div> */}
+                {/* <div><AutoMotoOptionsCheck/></div> */}
                 {/* <div><AutoMotoPaiementCheck/></div> */}
                 {/* <div><AutoMotoUsageVehiculaireCheck/></div>
                 <div>
                 <TextField  id="outlined-required" label="Date & motif de la suspension / Annulation" defaultValue="" variant="outlined"/>
                 </div> */}
-                <ButtonComponent libele={''} children={undefined} settings={''}/>
+                {/* <ButtonComponent libele={''} children={undefined} settings={''}/> */}
+                <Button variant='outlined' onClick={validate}>valider</Button>
             </Box>
         </AutoMotoFormContainer>
     );

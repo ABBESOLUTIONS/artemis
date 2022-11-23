@@ -3,9 +3,13 @@ import SectionStyle from '../styles/SectionStyle';
 import ImageComponent from './ImageComponent';
 import TextButton from './TextButton';
 
-const HeroComponentStyle=styled(SectionStyle)(()=>({
+const HeroComponentStyle=styled(SectionStyle)(({theme})=>({
     height:"320px",
     backgroundColor:"#F3F9F8",
+    [theme.breakpoints.down("lg")]: {
+        height:"275px"
+
+    },
 }));
 const HeroTitleContent=styled("div")(()=>({
     position:"relative",
@@ -46,7 +50,7 @@ const LittleTitle=styled(Typography)(({theme})=>({
 
     },
 }));
-const AccueilButton=styled(Link)(({theme})=>({
+const AccueilButton=styled(Typography)(({theme})=>({
     // fontSize:"50px", 
     color:"black",
     textDecoration:"none",
@@ -100,7 +104,10 @@ function HeroComponent({bigTitle, littleTitle}: Props) {
                         <BigTitle>{bigTitle}</BigTitle>
                         <Stack direction={"row"}>
                             {/* <AccueilButton title="Accueil" path=''/> */}
-                            <AccueilButton><Typography>Accueil</Typography></AccueilButton>
+                            {/* <AccueilButton><Typography>Accueil</Typography></AccueilButton> */}
+                            <Link>
+                                <AccueilButton sx={{textDecoration:"none"}}>Accueil</AccueilButton>
+                            </Link>
                             <LittleTitle>  /  {littleTitle}</LittleTitle>
                         </Stack>
                         <LeafHero src="assets/images/leaf2.png"/>

@@ -1,11 +1,17 @@
+import { styled } from '@mui/material';
 import React from 'react';
 import SinistreForm from '../sections/SinistrePage/SinistreForm';
 
+const DeclarationSinistreContainer= styled("div")(()=>({
+
+}))
+
 function DeclarationSinistre() {
     return (
-        <div>
-            <SinistreForm />
-        </div>
+            <DeclarationSinistreContainer>
+                <SinistreForm />
+            </DeclarationSinistreContainer>
+        
     );
 }
 

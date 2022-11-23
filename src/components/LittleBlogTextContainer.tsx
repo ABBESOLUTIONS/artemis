@@ -4,7 +4,7 @@ import ImageComponent from './ImageComponent';
 
 const LittleBlogTextContainerStyle=styled("div")(()=>({
     width:"60%",
-    height:"175px",
+    minHeight:"175px",
     display:"flex",
     flexDirection:"row",
     alignItems:"center",
@@ -19,7 +19,7 @@ function LittleBlogTextContainer() {
         <LittleBlogTextContainerStyle>
             <ImageComponent image={"assets/images/doubleQuotes.png"}/>
             <Stack direction={"column"} sx={{margin:"20px"}}>
-                <Typography sx={{color:"#616161"}}>
+                <Typography sx={{color:"#616161", fontSize:"1em"}}>
                     Lorem ipsum dolor sit amet, sectetur adipiscing elit. Quis placrat arcu amet rem ipsum dolor sit amecon. Lacerat arcu is a rem ipsum dolor. Lorem ipsum dolor sit amet, sectetur adipiscing elit. Quis placerat arcu amet rem ipsum dolor sit amecon.
                 </Typography>
                 <Typography sx={{fontWeight:"bold", fontSize:"20px"}}>

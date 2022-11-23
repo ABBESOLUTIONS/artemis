@@ -1,6 +1,7 @@
 import { Container, styled, Typography } from "@mui/material";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { MenuItemModel } from "../../models/MenuItemModel";
+import { CLIENT_PAGES } from "../../routes/paths";
 import TextButton from "../TextButton";
 
 const HeaderMenuItemContainer = styled("div")(() => ({
@@ -59,7 +60,7 @@ function HeaderMenuItem({title, path, subMenu}: Pops) {
             <SubMenuItemContainer id="subMenu" sx={{display:"none"}}>
             {
                 subMenu?.map((oneMenu, index)=> 
-                    <Container key={index} sx={{ width:"200px", height:"50px", boxShadow:"0px 0px 1px 1px grey", display:"flex", justifyContent:"center", alignItems:"center",fontSize:"18px" }}><TextButton title={oneMenu.title} path={""} /></Container>)
+                    <Container key={index} sx={{ width:"200px", height:"50px", boxShadow:"0px 0px 1px 1px grey", display:"flex", justifyContent:"center", alignItems:"center",fontSize:"18px" }}><TextButton title={oneMenu.title} path={CLIENT_PAGES.declarationSinistre} /></Container>)
             }
             </SubMenuItemContainer>
         </HeaderMenuItemContainer>
