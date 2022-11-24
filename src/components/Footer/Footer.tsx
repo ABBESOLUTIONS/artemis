@@ -24,11 +24,14 @@ const FooterContainer=styled("div")(({theme})=>({
     },
 }));
 
-const FooterContainerPart=styled("div")(()=>({
+const FooterContainerPart=styled("div")(({theme})=>({
     height:"200px",
     display:"flex",
     flexDirection:"column",
     justifyContent: "space-around",
+    [theme.breakpoints.down("md")]: {
+        // width:"20%"
+    },
 }));
 
 const SocialMediaContainer=styled("div")(()=>({

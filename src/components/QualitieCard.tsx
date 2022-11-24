@@ -11,9 +11,9 @@ const QualitieCardContainer=styled(Card)(({theme})=>({
     justifyContent:"space-around",
     padding:"15px",
     margin:"10px",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("lg")]: {
         // width:"auto",
-        Width:"315px",
+        width:"80%",
         height:"275px"
     }
 }))

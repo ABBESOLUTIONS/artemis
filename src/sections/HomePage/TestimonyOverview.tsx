@@ -16,12 +16,20 @@ const TestimonyOverviewStyle=styled(SectionStyle)(({theme})=>({
     flexDirection:"row",
     [theme.breakpoints.down("lg")]: {
         flexDirection:"column",
-        idth:"100%",
+        width:"calc(100% - 20px)",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        
     },
-    [theme.breakpoints.down("md")]: {
-        flexDirection:"column",
-        width:"100%",
-    },
+    // [theme.breakpoints.down("md")]: {
+    //     flexDirection:"column",
+    //     width:"100%",
+    // },
+    // [theme.breakpoints.down("xs")]: {
+    //     flexDirection:"column",
+    //     width:"100%",
+    // },
 }));
 const AboutOverviewRight=styled("div")(({theme})=>({
     maxWidth:"50%",
@@ -63,13 +71,63 @@ const TestimonyOverviewLeft=styled("div")(({theme})=>({
         justifyContent:"center",
     },
 }));
-const TestimonyOverviewRight=styled("div")(()=>({
+const TestimonyOverviewRight=styled("div")(({theme})=>({
     width:"45%",
     height:"100%",
     display:"flex",
     flexDirection:"column",
     justifyContent:"center",
     padding:"20px",
+    [theme.breakpoints.down("lg")]: {
+        right:"15px",
+        flexDirection:"column",
+        width:"100%",
+        alignItems:"flex-start",
+        justifyContent:"center",
+        padding:"0px",
+    },
+}));
+const   Title=styled(Typography)(({theme})=>({
+    textAlign:"start", 
+    fontSize:'', 
+    color:"white",
+    [theme.breakpoints.down("lg")]: {
+        fontSize:"35px",
+        // marginBottom:"25px",
+    },
+}));
+const Subtitle=styled(Typography)(({theme})=>({
+    textAlign:"start", 
+    fontWeight:"bold", 
+    fontSize:"45px",
+    marginBottom:"50px",
+    color:"white",
+    width:"475px",
+    [theme.breakpoints.down("md")]: {
+        fontSize:"30px",
+        width:"275px",
+
+        // marginBottom:"25px",
+        // textAlign:"start", 
+        // fontWeight:"bold", 
+        // color:"white",
+    },
+}));
+const TextDesc=styled(Typography)(({theme})=>({
+    textAlign:"start", 
+    fontSize:'18px', 
+    marginBottom:"50px",
+    color:"white",
+    width:"475px",
+    [theme.breakpoints.down("md")]: {
+        width:"75%",
+    textAlign:"start", 
+    fontSize:'16px', 
+
+    // backgroundColor:"red"
+
+
+    },
 }));
 
 function TestimonyOverview() {
@@ -86,9 +144,9 @@ function TestimonyOverview() {
             </TestimonyOverviewLeft>
             <TestimonyOverviewRight>
                 <LeafImgTestimony src="assets/images/leaf2.png"/>
-                <Typography variant="h6" sx={{textAlign:"start", fontSize:'', color:"white"}}>LES AVIS</Typography>
-                <Typography variant='h3' sx={{textAlign:"start", fontWeight:"bold", fontSize:"45px", marginBottom:"50px",color:"white",width:"475px"}}>Ce que disent les clients de nous</Typography>
-                <Typography variant="h6" sx={{textAlign:"start", fontSize:'18px', marginBottom:"50px",color:"white",width:"475px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus</Typography>
+                <Title variant="h6" >LES AVIS</Title>
+                <Subtitle variant='h3' sx={{}}>Ce que disent les clients de nous</Subtitle>
+                <TextDesc variant="h6" sx={{}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus</TextDesc>
                 <Button startIcon={<ArrowForwardIosIcon sx={{fontSize:"10px"}}/>} sx={{color:"white", backgroundColor:PROJECT_COLORS.primarySwatch, padding:"15px", fontSize:13, width:"150px"}} variant="contained">lire plus...</Button>
                 <DaughtTestimony src="assets/images/DaughtGroup1.png"/>
             </TestimonyOverviewRight>

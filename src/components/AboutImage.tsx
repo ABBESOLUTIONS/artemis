@@ -7,8 +7,12 @@ const AboutOverViewContainerImg= styled("img")(({theme})=>({
     margin:"8px",
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     [theme.breakpoints.down("lg")]: {
-        width:"425px",
-        height:"350px"
+        // width:"98%",
+        // height:"98%"
+    },
+    [theme.breakpoints.down("md")]: {
+        width:"98%",
+        height:"98%",
     },
 }));
 interface Props {

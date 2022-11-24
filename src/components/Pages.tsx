@@ -3,9 +3,9 @@ import { styled, SxProps } from "@mui/material";
 import { Helmet } from "react-helmet-async";
 
 const PageBaseStyle = styled("div")(() => ({
-    maxWidth: "1800px",
-    width: "100%",
-    margin: "auto"
+    // maxWidth: "1800px",
+    // width: "100%",
+    // margin: "auto"
 }));
 interface Props {
     children: React.ReactNode,

@@ -8,7 +8,7 @@ import ServiceCarousel from '../../components/ServiceCarousel';
 
 const ServiceOverviewContainer=styled(SectionStyle)(()=>({
     height:"600px",
-    width:"calc(100% - 50px)"
+    width:"calc(100% - 30px)"
 }))
 
 function ServiceOverview() {

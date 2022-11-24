@@ -12,9 +12,9 @@ const AboutOverviewContainer=styled(SectionStyle)(({theme})=>({
     display:"flex",
     flexDirection:"row",
     justifyContent:"space-around",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
         flexDirection:"column",
-        width:"100%",
+        width:"calc(100% - 20px)",
         height:"auto",
     },
 }));
@@ -25,9 +25,14 @@ const AboutOverviewLeft=styled("div")(({theme})=>({
     display:"flex",
     flexDirection:"column",
     padding:"10px",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
+    padding:"0px",
+        maxWidth:"100%",
+        display:"flex",
         flexDirection:"column",
-        minHeight:"auto"    
+        justifyContent:"center",
+        alignItems:"center",
+        // minHeight:"auto"    
     },
 }));
 const AboutOverviewRight=styled("div")(({theme})=>({
@@ -36,7 +41,14 @@ const AboutOverviewRight=styled("div")(({theme})=>({
     display:"flex",
     flexDirection:"row",
     [theme.breakpoints.down("lg")]: {
-        flexDirection:"column",
+        // flexDirection:"column",
+        maxWidth:"70%",
+        marginLeft:"100px",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+
+
         // maxWidth:"100%",
     },
 }));
@@ -55,7 +67,7 @@ const QualityTitle = styled(Typography)(({theme}) => ({
         fontSize: "25px",
         fontWeight: 400,
         textAlign: "center",
-    width:"100%",
+         width:"100%",
         
 
     },

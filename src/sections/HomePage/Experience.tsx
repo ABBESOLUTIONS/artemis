@@ -15,24 +15,35 @@ const ExperienceContainer=styled(SectionStyle)(({theme})=>({
     flexDirection:"row",
     // padding:"25px",
     [theme.breakpoints.down("lg")]: {
-        flexDirection:"column"
+        flexDirection:"column",
+    width:"calc(100% - 20px)",
+
     },
 }));
 
-const ExperienceContainerLeft=styled("div")(()=>({
+const ExperienceContainerLeft=styled("div")(({theme})=>({
     width:"50%",
+    [theme.breakpoints.down("lg")]: {
+        // flexDirection:"column"
+        width:"100%"
+
+    },
 }));
-const ExperienceContainerRight=styled("div")(()=>({
+const ExperienceContainerRight=styled("div")(({theme})=>({
     width:"50%",
     display:"flex",
     flexDirection:"column",
     // justifyContent:"space-around"
+    [theme.breakpoints.down("md")]: {
+        width:"75%"
+    },
 }));
 const ExperienceImg=styled("img")(({theme})=>({
-    position:"absolute",
+    // position:"absolute",
     width:"575px",
     [theme.breakpoints.down("lg")]: {
-        width:"325px"
+
+        width:"100%"
     },
 }));
 const LeafImage=styled("img")(({theme})=>({
@@ -41,6 +52,16 @@ const LeafImage=styled("img")(({theme})=>({
     marginTop:"-25px",
     [theme.breakpoints.down("lg")]: {
 display:"none"    },
+}));
+const SubtitleExp =styled(Typography)(({theme})=>({
+    textAlign:"start", 
+    fontWeight:"bold", 
+    fontSize:"45px", 
+    marginBottom:"50px",
+
+    [theme.breakpoints.down("lg")]: {
+        fontSize:"2em", 
+    },
 }));
 
 function Experience() {
@@ -52,7 +73,7 @@ function Experience() {
             </ExperienceContainerLeft>
             <ExperienceContainerRight>
                 <Typography variant="h6" sx={{textAlign:"start", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>POURQUOI NOUS CHOISIR</Typography>
-                <Typography variant='h3' sx={{textAlign:"start", fontWeight:"bold", fontSize:"45px", marginBottom:"50px"}}>30 années d'expérience que nous mettons à votre service</Typography>
+                <SubtitleExp variant='h3' >30 années d'expérience que nous mettons à votre service</SubtitleExp>
                 <Typography variant="h6" sx={{textAlign:"start", fontSize:'15px', color:"#616179", marginBottom:"50px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus. Id nisl quis arcu nulla leo.</Typography>
                 <Container>
                     <Grid container spacing={3}>

@@ -11,7 +11,9 @@ const AbonnementBannerContainer=styled(SectionStyle)(({theme})=>({
     flexDirection:"column",
     alignItems:"center",
     justifyContent:"center",
-    [theme.breakpoints.up("md")]: {
+    // backgroundColor:"blue",
+    [theme.breakpoints.down("lg")]: {
+        width:"calc(100% - 20px)",
         // minWidth:"100%"
     },
 }));
@@ -29,7 +31,7 @@ const SecondTitle=styled(Typography)(({theme})=>({
     [theme.breakpoints.down("md")]: {
         fontWeight:500,
         fontSize:"28px",
-        width:"400px",
+        width:"300px",
         textAlign:"center",
 
     },
@@ -41,7 +43,7 @@ const TheSubTitle=styled(Typography)(({theme})=>({
     textAlign:"center",
     [theme.breakpoints.down("md")]: {
         fontSize:"12px",
-        width:"400px",
+        width:"75%",
         textAlign:"center",
 
     },
@@ -49,15 +51,24 @@ const TheSubTitle=styled(Typography)(({theme})=>({
 const LeafDaught=styled("img")(({theme})=>({
     position:"absolute", 
     marginLeft:"450px",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
         display:"none",
     },
 }));
 const DaughtGroup=styled("img")(({theme})=>({
     position:"absolute", 
     marginLeft:"-450px",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
         display:"none",
+    },
+}));
+const FieldButton=styled(Stack)(({theme})=>({
+    margin:"25px",
+    [theme.breakpoints.down("md")]: {
+    margintop:"10px",
+    width:"85%",
+    // backgroundColor:"red",
+        
     },
 }));
 
@@ -68,10 +79,10 @@ function AbonnementBanner() {
             <SecondTitle>Restez informé de nos dernières infos</SecondTitle>
             <TheSubTitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus..</TheSubTitle>
             <Typography sx={{color:"#138F82", }}></Typography>
-            <Stack direction={"row"} sx={{margin:"25px"}}>
+            <FieldButton direction={"row"} sx={{}}>
                 <TextField/>
                 <Button variant='contained' startIcon={<Send/>} sx={{backgroundColor:"#138F82", '&:hover':{backgroundColor:"black"}}}>S'abonner</Button>
-            </Stack>
+            </FieldButton>
             <DaughtGroup src="assets/images/DaughtGroup2.png"/>
             <LeafDaught src="assets/images/Leaf+Daught.png"/>
         </AbonnementBannerContainer>

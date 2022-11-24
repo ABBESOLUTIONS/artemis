@@ -10,15 +10,10 @@ const AboutOverviewCardContainer=styled(Card)(({theme})=>({
     justifyContent:"space-around",
     padding:"10px",
     margin:"10px",
-    [theme.breakpoints.down("md")]: {
-        minWidth:"215px",
-        height:"200px",
-        flexDirection:"column",   
-    },
     [theme.breakpoints.down("lg")]: {
-        minWidth:"390px",
-        height:"200px",
-        flexDirection:"column",   
+        minWidth:"75%",
+        height:"100px",
+        // flexDirection:"column",   
     },
 }));
 
@@ -27,16 +22,16 @@ const AboutIconeCircle= styled("div")(({theme})=>({
     height:"85px",
     borderRadius:"50%",
     backgroundColor:"#E7F4F2",
-    [theme.breakpoints.down("md")]: {
-       width:"75px",
-       height:"75px",
-        borderRadius:"50%",
-    },
     [theme.breakpoints.down("lg")]: {
         width:"80px",
         height:"80px",
          borderRadius:"50%",
     },
+    // [theme.breakpoints.down("md")]: {
+    //    width:"75px",
+    //    height:"75px",
+    //     borderRadius:"50%",
+    // },
 }));
 
 const AboutTextStyle = styled(Typography)(({theme}) => ({
@@ -63,12 +58,10 @@ interface Props {
 
 function AboutOverviewCard({icone,detail}: Props) {
     return (
-        <Container>
             <AboutOverviewCardContainer>
                 <AboutIconeCircle/>
                 <AboutTextStyle>{detail}</AboutTextStyle>
             </AboutOverviewCardContainer>
-        </Container>
     );
 }
 

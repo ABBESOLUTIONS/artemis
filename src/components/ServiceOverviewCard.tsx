@@ -4,14 +4,17 @@ import FooterItems from './Footer/FooterItems';
 import TextButton from './TextButton';
 
 
-const ServiceOverviewCardStyle=styled(Card)(()=>({
-    minWidth:"375px",
+const ServiceOverviewCardStyle=styled(Card)(({theme})=>({
+    minWidth:"370px",
     height:"450px",
     display:"flex",
-    margin:"8px",
+    margin:"0px",
     boxShadow:"none",
     position:"relative",
-    // padding:"10px"
+    [theme.breakpoints.down("lg")]: {
+        // fontSize:"2em", 
+        minWidth:"98%"
+    },
 
 }));
 const ServiceOverviewImgStyle=styled("img")(()=>({

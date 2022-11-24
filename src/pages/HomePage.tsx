@@ -18,17 +18,17 @@ import Page from '../components/Pages';
 
 function HomePage() {
     return (
-        <Page title="Accueil" sx={{width: "100vw", marginLeft: "0px", padding: "0px"}}>
+        <Page title="Accueil">
             {/* <SinistreForm/> */}
             <HomeHero/>
-            {/* <Qualities/> */}
-            {/* <ServicesOverview/> */}
-            {/* <ServiceOverview/> */}
-            {/* <Experience/> */}
-            {/* <Members/> */}
-            {/* <TestimonyOverview/> */}
-            {/* <BlogOverview/> */}
-            {/* <AbonnementBanner/> */}
+            <Qualities/>
+            <ServicesOverview/>
+            <ServiceOverview/>
+            <Experience/>
+            <Members/>
+            <TestimonyOverview/>
+            <BlogOverview/>
+            <AbonnementBanner/>
             {/* <HeroComponent/> */}
             {/* <AutoMoto/> */}
             {/* <Habitation/> */}

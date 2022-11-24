@@ -30,7 +30,7 @@ const HomeHeroBG=styled("div")(({theme})=>({
     height:"100%",
     // backgroundColor:"#F5FAF9",
     position:"absolute",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
         display:"none",
     },
 }));
@@ -45,9 +45,8 @@ const HomeHeroContainerLeft=styled("div")(({theme})=>({
     justifyContent:"center",
     [theme.breakpoints.down("md")]: {
         maxWidth:"100%",
-        minWidth:"300px",
+        minWidth:"150px",
     },
-    
 }));
 const HomeHeroContainerRight=styled("div")(({theme})=>({
     minWidth:"450px",
@@ -85,7 +84,9 @@ const HeroImage=styled("img")(({theme})=>({
     marginTop:"50px",
     borderRadius:"10px",
     [theme.breakpoints.down("md")]: {
-        display:"none",
+        // display:"none",
+        width:"90%",
+        height:"auto"
     },
 }));
 const HomeHeroLeftSubTitle=styled(Typography)(({theme})=>({
@@ -105,18 +106,20 @@ const HomeHeroLeftText=styled(Typography)(({theme})=>({
     marginTop:"15px",
     color:"#616161",
     position:"relative",
+    // backgroundColor:"red",
     [theme.breakpoints.down("md")]: {
-        fontSize:"14px",
+        minWidth:"95%",
+        fontSize:"16px",
         fontWeight:75,
         textAlign:"center"
     },
-    [theme.breakpoints.down("lg")]: {
-        fontSize:"16px",
-        fontWeight:75,
-        textAlign:"center",
-        minWidth:"400px",
+    // [theme.breakpoints.down("lg")]: {
+    //     fontSize:"16px",
+    //     fontWeight:75,
+    //     textAlign:"center",
+    //     minWidth:"400px",
         
-    },
+    // },
 }));
 
 
