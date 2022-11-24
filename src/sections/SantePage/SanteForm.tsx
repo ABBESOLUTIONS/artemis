@@ -1,11 +1,16 @@
 import React from 'react';
-import { styled, Typography, Box, Grid, TextField, MenuItem} from '@mui/material';
+import { styled, Typography, Box, Grid, TextField, MenuItem, FormControl, FormGroup, FormControlLabel, Checkbox, FormHelperText, Button} from '@mui/material';
 import SectionStyle from '../../styles/SectionStyle';
 import { PROJECT_COLORS } from '../../common/colors';
 import SanteGarantieCheck from '../../components/SanteGarantieCheck';
 import SanteOptionCheck from '../../components/SanteOptionCheck';
 import AutoMotoPaiementCheck from '../../components/AutoMotoPaiementCheck';
 import TextFieldPersonnalise from '../../components/TextFieldPersonnalise';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { DevisSanteModel } from '../../models/DevisSanteModel';
+import { GarantieSante } from '../../components/Ennum/GarantiesSante';
+import { OptionsSante } from '../../components/Ennum/OptionsSante';
+import { ModePaiement } from '../../components/Ennum/ModePaiement';
 
 
 const SanteFormContainer=styled(SectionStyle)(()=>({
@@ -22,96 +27,59 @@ const BgFormeStyle=styled("img")(()=>({
 }));
 
 function SanteForm() {
-    const [currency, setCurrency] = React.useState('Responsable');
+  const [data, setData] = React.useState<DevisSanteModel>();
+    const user = useAppSelector(state => state.auth.user);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrency(event.target.value);
-  };
-  const [name, setName] = React.useState("");
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setData((prev) => ({...prev, [e.target.name]: e.target.value} as DevisSanteModel));
+      console.log(data);
+    };
 
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  };
-    const [prenom, setPrenom] = React.useState("");
+    const handleChangeCheckedGarantie = (e: React.ChangeEvent<HTMLInputElement>) => {
+      let gara: Array<string> = Array.from(data?.Garantie_Souhaitées ?? []);
+      if(e.target.checked) {
+        gara?.push(e.target.name);
+        setData((prev) => ({ ...prev, Garanties_Souhaitées: gara } as DevisSanteModel));
+      }
+        else
+        if(data?.Garantie_Souhaitées.filter(one => one != e.target.name).length) {
+          setData((prev) => ({ ...prev, Garantie_Souhaitées: data?.Garantie_Souhaitées.filter(one => one != e.target.name) } as DevisSanteModel));
+        }
+      console.log(data);
+};
+    const handleChangeCheckedOptions = (e: React.ChangeEvent<HTMLInputElement>) => {
+      let gara: Array<string> = Array.from(data?.Garantie_Souhaitées ?? []);
+      if(e.target.checked) {
+        gara?.push(e.target.name);
+        setData((prev) => ({ ...prev, Garanties_Souhaitées: gara } as DevisSanteModel));
+      }
+        else
+        if(data?.Garantie_Souhaitées.filter(one => one != e.target.name).length) {
+          setData((prev) => ({ ...prev, Garantie_Souhaitées: data?.Garantie_Souhaitées.filter(one => one != e.target.name) } as DevisSanteModel));
+        }
+      console.log(data);
+};
 
-  const handlePrenomChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPrenom(event.target.value);
-  };
-  const [adresse, setAdresse] = React.useState("");
+const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>) => {
+  let gara: Array<string> = Array.from(data?.Mode_Paiement ?? []);
+  if(e.target.checked) {
+    gara?.push(e.target.name);
+    setData((prev) => ({ ...prev, Mode_Paiement: gara } as DevisSanteModel));
+  }
+  else
+    if(data?.Mode_Paiement.filter(one => one != e.target.name).length) {
+      setData((prev) => ({ ...prev, Mode_Paiement: data?.Mode_Paiement.filter(one => one != e.target.name) } as DevisSanteModel));
+    }
+  console.log(data);
 
-  const handleAdresseChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAdresse(event.target.value);
-  };
-    const [numId, setNumId] = React.useState("");
+  const dispatch = useAppDispatch();
 
-  const handleNumIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNumId(event.target.value);
-  };
-  const [telFix, setTelFix] = React.useState("");
-
-  const handleTelFixChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTelFix(event.target.value);
-  };
-    const [telMob, setTelMob] = React.useState("");
-
-  const handleTelMobChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTelMob(event.target.value);
-  };
-  const [email, setEmail] = React.useState("");
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-  const [numSecu, setNumSecu] = React.useState("");
-
-  const handleNumSecuChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNumSecu(event.target.value);
-  };
-  const [profession, setprofession] = React.useState("");
-
-  const handleprofessionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setprofession(event.target.value);
-  };
-  const [caisseDateCreat, setCaisseDateCreat] = React.useState("");
-
-  const handleCaisseDateCreatChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCaisseDateCreat(event.target.value);
-  };
-  const [situFami, setSituFami] = React.useState("");
-
-  const handleSituFamiChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSituFami(event.target.value);
-  };
-  const [nomConj, setNomConj] = React.useState("");
-
-  const handleNomConjChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNomConj(event.target.value);
-  };
-  const [numSecuConj, setNumSecuConj] = React.useState("");
-
-  const handleNumSecuConjChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNumSecuConj(event.target.value);
-  };
-  const [nbEftSouscript, setNbEftSouscript] = React.useState("");
-
-  const handleNbEftSouscriptChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNbEftSouscript(event.target.value);
-  };
-  const [nbEftConj, setNbEftConj] = React.useState("");
-
-  const handleNbEftConjChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNbEftConj(event.target.value);
-  };
-  const [nomEftSouscript, setNomEftSouscript] = React.useState("");
-
-  const handleNomEftSouscriptChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNomEftSouscript(event.target.value);
-  };
-  const [dateNaissSex, setDateNaissSex] = React.useState("");
-
-  const handleDateNaissSexChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDateNaissSex(event.target.value);
-  };
+//   const validate = () => {
+//     if (data && user?.uid) {
+//       data.id_client = user?.uid;
+//       dispatch(addDevisAuto({oneDevisAuto: data})).unwrap();
+//     }
+// };
   
     return (
         <SanteFormContainer>
@@ -120,74 +88,102 @@ function SanteForm() {
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"35px", marginBottom:"50px", textAlign:"center" }}>Etude Assurance Sante</Typography>
             <Box component="form" sx={{'& .MuiTextField-root': { m: 2, width: '50ch' },}}>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={'Nom'} value={name} />
-                <TextFieldPersonnalise id={''} required={true}  label={"Prénom"} value={prenom} />
+                <TextFieldPersonnalise id={''}  name="Nom" required={true} onChange={handleChange} label={'Nom'} value={data?.Nom ?? ""} />
+                <TextFieldPersonnalise id={''}  name="Prenom" required={true} onChange={handleChange}  label={"Prénom"} value={data?.Prenom ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={'Adresse'} value={adresse} />
-                <TextFieldPersonnalise id={''} required={true} label={'N° Client'} value={numId} />
+                <TextFieldPersonnalise id={''}  name="Adresse" required={true} onChange={handleChange} label={'Adresse'} value={data?.Adresse ?? ""} />
+                <TextFieldPersonnalise id={''}  name="Num_Client" required={true} onChange={handleChange} label={'N° Client'} value={data?.Num_Client ?? ""} />
+                 </div>
+                <div>
+                <TextFieldPersonnalise id={''}  name="Telephone_Fix" required={true} onChange={handleChange} label={'Téléphone Fixe'} value={data?.Telephone_Fix ?? ""} />
+                <TextFieldPersonnalise id={''}  name="Telephone_Mobile" required={true} onChange={handleChange} label={'Téléphone Mobile'} value={data?.Telephone_Mobile ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={'Téléphone Fixe'} value={telFix} />
-                <TextFieldPersonnalise id={''} required={true} label={'Téléphone Mobile'} value={telMob} />
+                <TextFieldPersonnalise id={''}  name="Email" required={true} onChange={handleChange} label={"Email"} value={data?.Email ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Email"} value={email} />
+                <TextFieldPersonnalise id={''}  name="Num_Secu_Social" required={true} onChange={handleChange} label={"Numéro de sécurité social"} value={data?.Num_Secu_Social ?? ""} />
+                <TextFieldPersonnalise id={''}  name="Date_Naissance" required={true} onChange={handleChange} label={"Date de naissance"} value={data?.Date_Naissance ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Numéro de sécurité social"} value={numSecu} />
-                <TextFieldPersonnalise id={''} required={true} label={"Date de naissance"} value={"dateNaiss"} />
-                </div>
-                <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Profession"} value={profession} />
-                <TextFieldPersonnalise id={''} required={true} label={"Statut Pro. (Si Indépendant :Caisse + Date de Création"} value={caisseDateCreat} />
+                <TextFieldPersonnalise id={''}  name="Professionel" required={true} onChange={handleChange} label={"Profession"} value={data?.Professionel ?? ""} />
+                <TextFieldPersonnalise id={''}  name="Statut_Pro_Date_Creation" required={true} onChange={handleChange} label={"Statut Pro. (Si Indépendant :Caisse + Date de Création"} value={data?.Statut_Pro_Date_Creation ?? ""} />
                 </div>                
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Situation Familial"} value={situFami} />
-                <TextFieldPersonnalise id={''} required={true} label={"Nom , Prénom Conjoint"} value={nomConj} />
+                <TextFieldPersonnalise id={''}  name="Situation_Familial" required={true} onChange={handleChange} label={"Situation Familial"} value={data?.Situation_Familial ?? ""} />
+                <TextFieldPersonnalise id={''}  name="Nom_Prenom_Conjoint" required={true} onChange={handleChange} label={"Nom , Prénom Conjoint"} value={data?.Nom_Prenom_Conjoint ?? ""} />
                 </div>                
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Date Naiss. Conjoint"} value={"nomConj"} />
-                <TextFieldPersonnalise id={''} required={true} label={"N° Sécurité Social du Conjoint"} value={numSecuConj} />
+                <TextFieldPersonnalise id={''}  name="Date_Naiss_Conjoint" required={true} onChange={handleChange} label={"Date Naiss. Conjoint"} value={data?.Date_Naiss_Conjoint ?? ""} />
+                <TextFieldPersonnalise id={''}  name="Num_Secu_Social_Conjoint" required={true} onChange={handleChange} label={"N° Sécurité Social du Conjoint"} value={data?.Num_Secu_Social_Conjoint ?? ""} />
                 </div>                
-                {/* <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Nombre enfants rattachés du souscripteur"} value={nbEftSouscript} />
-                <TextFieldPersonnalise id={''} required={true} label={"Nombre enfants rattachés du conjoint"} value={nbEftConj} />
+                <div>
+                <TextFieldPersonnalise id={''}  name="Nbre_Enfants_rattaché_Souscripteur" required={true} onChange={handleChange} label={"Nombre enfants rattachés du souscripteur"} value={data?.Nbre_Enfants_rattaché_Souscripteur?? ""} />
+                <TextFieldPersonnalise id={''}  name="Nbre_Enfants_rattaché_Conjoint" required={true} onChange={handleChange} label={"Nombre enfants rattachés du conjoint"} value={data?.Nbre_Enfants_rattaché_Conjoint ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Nom et Prénom (enfant du souscripteur)"} value={nomEftSouscript} />
-                <TextFieldPersonnalise id={''} required={true} label={"Date de Naissance (Sexe)"} value={dateNaissSex} />
+                <TextFieldPersonnalise id={''}  name="Nom_Prenom_EnfantUn_Souscripteur" required={true} onChange={handleChange} label={"Nom et Prénom (enfant du souscripteur)"} value={data?.Nom_Prenom_EnfantUn_Souscripteur?? ""} />
+                <TextFieldPersonnalise id={''}  name="Date_Naiss_EnfantUn" required={true} onChange={handleChange} label={"Date de Naissance (Sexe)"} value={data?.Date_Naiss_EnfantUn ?? ""} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Nom et Prénom (enfant du souscripteur)" value={} variant="outlined"/>
-                <TextField  id="outlined-required" label="Date de Naissance (Sexe)" value={} variant="outlined"/>
+                <TextFieldPersonnalise id={''}  name="Nom_Prenom_EnfantDeux_Souscripteur" required={true} onChange={handleChange} label={"Nom et Prénom (enfant du souscripteur)"} value={data?.Nom_Prenom_EnfantDeux_Souscripteur?? ""} />
+                <TextFieldPersonnalise id={''}  name="Date_Naiss_EnfantDeux" required={true} onChange={handleChange} label={"Date de Naissance (Sexe)"} value={data?.Date_Naiss_EnfantDeux ?? ""} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Nom et Prénom (enfant du souscripteur)" value={} variant="outlined"/>
-                <TextField  id="outlined-required" label="Date de Naissance (Sexe)" value={} variant="outlined"/>
+                <TextFieldPersonnalise id={''}  name="Nom_Prenom_EnfantTrois_Souscripteur" required={true} onChange={handleChange} label={"Nom et Prénom (enfant du souscripteur)"} value={data?.Nom_Prenom_EnfantTrois_Souscripteur?? ""} />
+                <TextFieldPersonnalise id={''}  name="Date_Naiss_EnfantTrois" required={true} onChange={handleChange} label={"Date de Naissance (Sexe)"} value={data?.Date_Naiss_EnfantTrois ?? ""} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Nom et Prénom (enfant du souscripteur)" value={} variant="outlined"/>
-                <TextField  id="outlined-required" label="Date de Naissance (Sexe)" value={} variant="outlined"/>
+                <TextFieldPersonnalise id={''}  name="Nom_Prenom_EnfantQuatre_Souscripteur" required={true} onChange={handleChange} label={"Nom et Prénom (enfant du souscripteur)"} value={data?.Nom_Prenom_EnfantQuatre_Souscripteur?? ""} />
+                <TextFieldPersonnalise id={''}  name="Date_Naiss_EnfantQuatre" required={true} onChange={handleChange} label={"Date de Naissance (Sexe)"} value={data?.Date_Naiss_EnfantQuatre ?? ""} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Nom et Prénom (enfant du souscripteur)" value={} variant="outlined"/>
-                <TextField  id="outlined-required" label="Date de Naissance (Sexe)" value={} variant="outlined"/>
+                <TextFieldPersonnalise id={''}  name="Nom_Prenom_EnfantUn_Conjoint" required={true} onChange={handleChange} label={"Nom et Prénom (enfant du Conjoint)"} value={data?.Nom_Prenom_EnfantUn_Conjoint?? ""} />
+                <TextFieldPersonnalise id={''}  name="Date_Naiss_EnfantUn_Conjoint" required={true} onChange={handleChange} label={"Date de Naissance (Sexe)"} value={data?.Date_Naiss_EnfantUn_Conjoint ?? ""} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Nom et Prénom (enfant du souscripteur)" value={} variant="outlined"/>
-                <TextField  id="outlined-required" label="Date de Naissance (Sexe)" value={} variant="outlined"/>
+                <TextFieldPersonnalise id={''}  name="Nom_Prenom_EnfantDeux_Conjoint" required={true} onChange={handleChange} label={"Nom et Prénom (enfant du Conjoint)"} value={data?.Nom_Prenom_EnfantDeux_Conjoint?? ""} />
+                <TextFieldPersonnalise id={''}  name="Date_Naiss_Enfantdeux_Conjoint" required={true} onChange={handleChange} label={"Date de Naissance (Sexe)"} value={data?.Date_Naiss_Enfantdeux_Conjoint ?? ""} />
                 </div>
                 <div>
-                <TextField  id="outlined-required" label="Nom et Prénom (enfant du souscripteur)" value={} variant="outlined"/>
-                <TextField  id="outlined-required" label="Date de Naissance (Sexe)" value={} variant="outlined"/>
-                </div> */}
-                <SanteGarantieCheck/>
-                <SanteOptionCheck/>
-                <AutoMotoPaiementCheck/>
+                <TextFieldPersonnalise id={''}  name="Nom_Prenom_EnfantTrois_Conjoint" required={true} onChange={handleChange} label={"Nom et Prénom (enfant du Conjoint)"} value={data?.Nom_Prenom_EnfantTrois_Conjoint?? ""} />
+                <TextFieldPersonnalise id={''}  name="Date_Naiss_EnfantTrois_Conjoint" required={true} onChange={handleChange} label={"Date de Naissance (Sexe)"} value={data?.Date_Naiss_EnfantTrois_Conjoint?? ""} />
+                </div>
+                <Box sx={{ display: 'flex' }}>
+                  <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
+                    <FormGroup>
+                      {
+                        Object.keys(GarantieSante).map((oneGarantie, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedGarantie} name={GarantieSante[oneGarantie as keyof typeof GarantieSante]}/>} label={GarantieSante[oneGarantie as keyof typeof GarantieSante]}/>)
+                      }
+                    </FormGroup>
+                  <FormHelperText>Veuillez sélectioner une case</FormHelperText>
+                  </FormControl>
+                </Box>
+                <Box sx={{ display: 'flex' }}>
+                  <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
+                    <FormGroup>
+                      {
+                        Object.keys(OptionsSante).map((oneOptionSante, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedOptions} name={OptionsSante[oneOptionSante as keyof typeof OptionsSante]}/>} label={OptionsSante[oneOptionSante as keyof typeof OptionsSante]}/>)
+                      }
+                    </FormGroup>
+                  <FormHelperText>Veuillez sélectioner une case</FormHelperText>
+                  </FormControl>
+                </Box>
+                <Box sx={{ display: 'flex' }}>
+                  <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
+                    <FormGroup>
+                      {
+                        Object.keys(ModePaiement).map((oneModePaiement, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>)
+                      }
+                    </FormGroup>
+                  <FormHelperText>Veuillez sélectioner une case</FormHelperText>
+                  </FormControl>
+                </Box>
+                {/* <Button variant='outlined' onClick={validate}>valider</Button> */}
             </Box>
         </SanteFormContainer>
     );
-}
+                    }}
 
 export default SanteForm;

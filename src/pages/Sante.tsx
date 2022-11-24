@@ -5,7 +5,7 @@ import SanteForm from '../sections/SantePage/SanteForm';
 function Sante() {
     return (
         <Page title="Formulaire-Sante">
-            <SanteForm/>
+            {/* <SanteForm/> */}
         </Page>
     );
 }
