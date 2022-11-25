@@ -17,4 +17,5 @@ export const CLIENT_PAGES = {
     signUp:"/signUp",
     actualite:"/actualite",
     declarationSinistre:"/declarationSinistre",
+    authentification:"/authentification",
 };

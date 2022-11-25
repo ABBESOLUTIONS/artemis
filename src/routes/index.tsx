@@ -2,6 +2,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 import ClientLayout from "../layouts/ClientLayout";
 import OthersLayout from "../layouts/OthersLayout";
 import Actualites from "../pages/Actualites";
+import AuthEmail from "../pages/AuthEmail";
 import AutoMoto from "../pages/AutoMoto";
 import Blog from "../pages/Blog";
 import Contact from "../pages/Contact";
@@ -46,6 +47,7 @@ export default function Router() {
           { path: CLIENT_PAGES.signUp, element: <SignUp /> },
           { path: CLIENT_PAGES.actualite, element: <Actualites /> },
           { path: CLIENT_PAGES.declarationSinistre, element: <DeclarationSinistre /> },
+          { path: CLIENT_PAGES.authentification, element: <AuthEmail /> },
         ],
       },
 

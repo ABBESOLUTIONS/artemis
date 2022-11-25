@@ -42,5 +42,17 @@ const updateEmail = (email: string) => {
     //     });
     // });
 };
+const sendEmailVerification = () => {
+    return new Promise<boolean>((resolve) => {
+        auth.onAuthStateChanged(auth.auth,(user) => {
+            if(user)
+                auth.sendEmailVerification(user).then(() => {
+                    resolve(true);
+                });
+            else
+                resolve(false);
+        });
+    });
+};
 
-export { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut, getCurentUser, updatePassword, updateEmail  };
+export { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut, getCurentUser, updatePassword, updateEmail, sendEmailVerification  };

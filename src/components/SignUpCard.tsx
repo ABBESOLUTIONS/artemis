@@ -39,7 +39,7 @@ function SignUpCard() {
         if (pwd==confirmPwd && pwd.length>= 8) {
             setIsLoading(true);
             dispatch(createUserWithEmailAndPassword({email, pwd})).unwrap().then((res) => {
-                navigate("/autoMoto");
+                navigate("/authentification");
                 alert ("ca marche!");
             }).catch(error => {
             console.log(error);
