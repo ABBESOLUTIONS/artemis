@@ -5,13 +5,14 @@ import { PROJECT_COLORS } from '../../common/colors';
 import { servicesOverview } from '../../common/Data';
 import AboutImage from '../../components/AboutImage';
 import SectionStyle from '../../styles/SectionStyle';
+import ImageComponent from '../../components/ImageComponent';
 
 const AboutOverviewContainer=styled(SectionStyle)(({theme})=>({
     height:"750px",
     backgroundColor:"#F8F8F8",
     display:"flex",
     flexDirection:"row",
-    justifyContent:"space-around",
+    justifyContent:"space-evenly",
     [theme.breakpoints.down("lg")]: {
         flexDirection:"column",
         width:"calc(100% - 20px)",
@@ -42,7 +43,7 @@ const AboutOverviewRight=styled("div")(({theme})=>({
     flexDirection:"row",
     [theme.breakpoints.down("lg")]: {
         // flexDirection:"column",
-        maxWidth:"70%",
+        maxWidth:"80%",
         marginLeft:"100px",
         display:"flex",
         justifyContent:"center",
@@ -51,12 +52,20 @@ const AboutOverviewRight=styled("div")(({theme})=>({
 
         // maxWidth:"100%",
     },
+    [theme.breakpoints.down("md")]: {
+        flexDirection:"column",
+        maxWidth:"100%",   
+     },
 }));
 const ImageRight=styled("div")(({theme})=>({
     width:"100%",
     display:"flex",
     justifyContent:"center",
     alignItems:"center",
+    // backgroundColor:"red",
+    [theme.breakpoints.down("lg")]: {
+        width:"100%",
+    },
 }));
 const QualityTitle = styled(Typography)(({theme}) => ({
     // fontFamily: "InterBold,sans-serif !important",
@@ -78,6 +87,28 @@ const QualityTitle = styled(Typography)(({theme}) => ({
     },
 }));
 
+const LastImg= styled("img")(({theme})=>({
+    width: "285px",
+    height: "320px",
+    borderRadius: "15px",
+    margin:"8px",
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    [theme.breakpoints.down("lg")]: {
+        width:"98%",
+        height:"98%"
+    },
+    [theme.breakpoints.down("md")]: {
+        width:"90%",
+        height:"90%",
+        marginRight:"50px"
+    },
+    [theme.breakpoints.down("sm")]: {
+        width:"90%",
+        height:"90%",
+        marginRight:"100px"
+    },
+}));
+
 
 
 function AboutOverview() {
@@ -88,7 +119,7 @@ function AboutOverview() {
                 {/* <Typography variant='h3' sx={{textAlign:"center", fontWeight:"bold", fontSize:"45px", marginBottom:"50px"}}>Les missions que nous nous sommes fixées</Typography> */}
                 <QualityTitle>Les missions que nous nous sommes fixées</QualityTitle>
                 {
-                    servicesOverview.map((oneService,index) => <ServiceOverviewCard icone={''} detail={oneService.subtitle}/>)
+                    servicesOverview.map((oneService,index) => <ServiceOverviewCard icone={oneService.icone} detail={oneService.subtitle}/>)
                 }
             </AboutOverviewLeft>
             <AboutOverviewRight>
@@ -97,8 +128,8 @@ function AboutOverview() {
                 <AboutImage image={"assets/images/about/about-2.jpg"} />
                 </div>
                 <ImageRight>
-                {/* <AboutImage image={'assets/images/about/about-3.jpg'} /> */}
-                <AboutImage image={"assets/images/about/about-2.jpg"} />
+                <LastImg src='assets/images/about/about-3.jpg' />
+                {/* <AboutImage image={"assets/images/about/about-2.jpg"} /> */}
                 </ImageRight>
             </AboutOverviewRight>
         </AboutOverviewContainer>

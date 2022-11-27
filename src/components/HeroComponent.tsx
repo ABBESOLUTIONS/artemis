@@ -6,12 +6,13 @@ import TextButton from './TextButton';
 const HeroComponentStyle=styled(SectionStyle)(({theme})=>({
     height:"320px",
     backgroundColor:"#F3F9F8",
+    position:"relative",
     [theme.breakpoints.down("lg")]: {
-        height:"275px"
+        height:"250px"
 
     },
 }));
-const HeroTitleContent=styled("div")(()=>({
+const HeroTitleContent=styled("div")(({theme})=>({
     position:"relative",
     height:"300px",
     backgroundColor:"#497774",
@@ -20,9 +21,13 @@ const HeroTitleContent=styled("div")(()=>({
     borderRadius:"0px 161px 161px 161px",
     paddingTop:"6px",
     paddingLeft:"6px",
+    [theme.breakpoints.down("lg")]: {
+        height:"230px"
+
+    },
 
 }));
-const HeroTitleContent2=styled("div")(()=>({
+const HeroTitleContent2=styled("div")(({theme})=>({
     position:"relative",
     height:"305px",
     backgroundColor:"#F3F9F8",
@@ -33,6 +38,10 @@ const HeroTitleContent2=styled("div")(()=>({
     flexDirection:"column",
     alignItems:"center",
     justifyContent:"center",
+    [theme.breakpoints.down("lg")]: {
+        height:"235px"
+
+    },
 }));
 const BigTitle=styled(Typography)(({theme})=>({
     fontSize:"50px", 

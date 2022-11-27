@@ -12,9 +12,16 @@ const QualitieCardContainer=styled(Card)(({theme})=>({
     padding:"15px",
     margin:"10px",
     [theme.breakpoints.down("lg")]: {
-        // width:"auto",
-        width:"80%",
-        height:"275px"
+        // // width:"auto",
+        // width:"100%",
+        // minHeight:"175px"
+    },
+    [theme.breakpoints.down("sm")]: {
+        width:"320px",
+    },
+    '&:hover':{
+        // backgroundColor:"red",
+        scale:"10px"
     }
 }))
 

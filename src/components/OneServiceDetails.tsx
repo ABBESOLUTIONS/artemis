@@ -7,25 +7,25 @@ import ImageComponent from './ImageComponent';
 
 const OneServiceDetailsContainer=styled(Card)(({theme})=>({
     minWidth:"525px",
-    minHeight:"135px",
+    // minHeight:"135px",
     display:"flex",
     flexDirection:"row",
     justifyContent:"space-around",
     padding:"15px",
     margin:"10px",
+    [theme.breakpoints.down("lg")]: {
+        flexDirection:"column",
+        minWidth:"50%",
+        minHeight:"250px",
+    },
+    [theme.breakpoints.down("md")]: {
+        flexDirection:"column",
+        minWidth:"60%",
+        minHeight:"300px",
+    },
     [theme.breakpoints.down("xs")]: {
         flexDirection:"column",
         minWidth:"100%",
-        minHeight:"80px",
-    },
-    [theme.breakpoints.down("md")]: {
-        // flexDirection:"column",
-        minWidth:"100%",
-        minHeight:"80px",
-    },
-    [theme.breakpoints.down("lg")]: {
-        // flexDirection:"column",
-        minWidth:"200px",
         minHeight:"80px",
     },
 
@@ -43,6 +43,14 @@ const AboutIconeCircle= styled("div")(()=>({
     justifyContent:"center",
     alignItems:"center",
     // position:"absolute",
+}));
+const DetailsStyle= styled(Typography)(({theme})=>({
+    width:"375px",
+    marginTop:"10px",
+    [theme.breakpoints.down("md")]: {
+    width:"100%",
+        
+    },
 }));
 
 interface Props {
@@ -62,7 +70,7 @@ function OneServiceDetails({icone, title, detail}:Props) {
                 </AboutIconeCircle>
                 <Stack direction={"column"} sx={{}}>
                     <TextButton title={title} path={''} sx={{fontWeight:"bold", fontSize:"18px",textDecoration:"none",color:"black", '&hover':{color:PROJECT_COLORS.primarySwatch}}}/>
-                    <Typography sx={{width:"375px", marginTop:"10px"}}>{detail}</Typography>
+                    <DetailsStyle>{detail}</DetailsStyle>
                 </Stack>
             </OneServiceDetailsContainer>
         </Container>

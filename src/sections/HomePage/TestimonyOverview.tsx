@@ -15,6 +15,14 @@ const TestimonyOverviewStyle=styled(SectionStyle)(({theme})=>({
     display:"flex",
     flexDirection:"row",
     [theme.breakpoints.down("lg")]: {
+        // flexDirection:"column",
+        width:"calc(100% - 20px)",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        
+    },
+    [theme.breakpoints.down("md")]: {
         flexDirection:"column",
         width:"calc(100% - 20px)",
         display:"flex",
@@ -65,6 +73,12 @@ const TestimonyOverviewLeft=styled("div")(({theme})=>({
     display:"flex",
     flexDirection:"row",
     [theme.breakpoints.down("lg")]: {
+        // flexDirection:"column",
+        maxWidth:"90%",
+        alignItems:"center",
+        justifyContent:"center",
+    },
+    [theme.breakpoints.down("md")]: {
         flexDirection:"column",
         maxWidth:"100%",
         alignItems:"center",
@@ -123,10 +137,19 @@ const TextDesc=styled(Typography)(({theme})=>({
         width:"75%",
     textAlign:"start", 
     fontSize:'16px', 
-
-    // backgroundColor:"red"
-
-
+    },
+}));
+const TestimonyLastCard=styled("div")(({theme})=>({
+    margin:"20px",
+    marginTop:"85px",
+    [theme.breakpoints.down("lg")]: {
+        margin:"10px",
+        marginTop:"75px",
+    },
+    [theme.breakpoints.down("md")]: {
+        // margin:"10px",
+        marginTop:"15px",
+        width:"100%",
     },
 }));
 
@@ -138,9 +161,9 @@ function TestimonyOverview() {
                 <TestimonyCard text={"Client fidèle d'un courtier comme on aimerait en voir plus souvent, qui est toujours à la recherche de la solution la plus adéquate. Réactivité, disponibilité, proximité et bienveillance . Madame Battini et son équipe sont très à l’écoute et impliqués, toujours de bon conseil et très professionnels. Une équipe de confiance. Je recommande vivement."} profilImage={"assets/images/profile.jpg"} name={"Philippe Chabat"}/>
                 <GoogleRatings />
                 </div>
-                <div>
-                <TestimonyCard text={"Super accueil super service un super courtier qui saura trouvé la bonne réponse à vos questions d'assurance et cerise sur le gâteau chez Artemis on vous fait une audit de tout vos contrats assurance quand vous êtes pro oui oui."} profilImage={"assets/images/profile.jpg"} name={"Mohamad D"} sx={{margin:"20px",marginTop:"85px"}}/>
-                </div>
+                <TestimonyLastCard>
+                <TestimonyCard text={"Super accueil super service un super courtier qui saura trouvé la bonne réponse à vos questions d'assurance et cerise sur le gâteau chez Artemis on vous fait une audit de tout vos contrats assurance quand vous êtes pro oui oui."} profilImage={"assets/images/profile.jpg"} name={"Mohamad D"} sx={{}}/>
+                </TestimonyLastCard>
             </TestimonyOverviewLeft>
             <TestimonyOverviewRight>
                 <LeafImgTestimony src="assets/images/leaf2.png"/>

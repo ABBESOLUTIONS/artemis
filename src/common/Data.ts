@@ -23,15 +23,15 @@ export const members = [
 
 export const servicesOverview = [
     {
-        icone:"",
+        icone:"assets/images/conseil.png",
         subtitle:"Conseiller les clients : après avoir établi un diagnostic de leurs risques, leur proposer les garanties adéquates et concevoir leurs contrats",
     },
     {
-        icone:"",
+        icone:"assets/images/verifier.png",
         subtitle:"Suivre les besoins des clients en fonction de l'évolution de leur situation personnelle ou professionnelle, et adapter en conséquence l'offre de produits d'assurance ou financiers ;",
     },
     {
-        icone:"",
+        icone:"assets/images/une-entente.png",
         subtitle:"Accompagner les clients de la signature du contrat au versement des indemnités en cas de sinistre",
     },
 ];

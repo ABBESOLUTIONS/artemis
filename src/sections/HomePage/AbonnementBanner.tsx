@@ -68,6 +68,7 @@ const FieldButton=styled(Stack)(({theme})=>({
     [theme.breakpoints.down("md")]: {
     margintop:"10px",
     width:"85%",
+    justifyContent:"center",
     // backgroundColor:"red",
         
     },

@@ -45,10 +45,16 @@ const updateEmail = (email: string) => {
 const sendEmailVerification = () => {
     return new Promise<boolean>((resolve) => {
         auth.onAuthStateChanged(auth.auth,(user) => {
-            if(user)
+            if(user) {
+                console.log(user);
                 auth.sendEmailVerification(user).then(() => {
+                    console.log("sended");
                     resolve(true);
+                }).catch(err => {
+                    console.log(err);
+                    resolve(false);
                 });
+            }
             else
                 resolve(false);
         });

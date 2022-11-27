@@ -5,15 +5,15 @@ import TextButton from './TextButton';
 
 
 const ServiceOverviewCardStyle=styled(Card)(({theme})=>({
-    minWidth:"370px",
+    minWidth:"270px",
     height:"450px",
     display:"flex",
-    margin:"0px",
+    margin:"8px",
     boxShadow:"none",
     position:"relative",
     [theme.breakpoints.down("lg")]: {
         // fontSize:"2em", 
-        minWidth:"98%"
+        minWidth:"95%"
     },
 
 }));

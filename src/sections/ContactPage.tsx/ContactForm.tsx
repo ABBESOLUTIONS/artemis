@@ -14,11 +14,14 @@ const ContactElementsContainer=styled(SectionStyle)(()=>({
 const CommentArea=styled(TextareaAutosize)(({theme})=>({
     minHeight:"100px",
     maxWidth:"850px",
+    border:"solid 0.5px",
+    borderColor:"#919191",
+    borderRadius:"5px",
     [theme.breakpoints.down("lg")]: {
-        maxWidth:"450px"
+        maxWidth:"850px"
     },
     [theme.breakpoints.down("md")]: {
-        maxWidth:"400px"
+        maxWidth:"850px"
     },
    
 }));

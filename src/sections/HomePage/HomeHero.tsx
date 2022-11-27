@@ -17,7 +17,7 @@ const HomeHeroContainer=styled(SectionStyle)(({theme})=>({
     display:"flex",
     position:"relative",
     flexDirection:"row",
-    justifyContent:"center",
+    justifyContent:"space-evenly",
     alignItems:"center",
     backgroundColor:"#F5FAF9",
     [theme.breakpoints.down("lg")]: {
@@ -68,11 +68,11 @@ const ButtonsContainer=styled("div")(()=>({
     justifyContent:"space-evenly"
 }));
 const HomeHeroLeftTitle=styled(Typography)(({theme})=>({
-    fontSize:"64px",
+    fontSize:"60px",
     fontWeight:800,
     color:"#000000",
     position:"relative",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
         fontSize:"2.5em",
         textAlign:"center"
     },
@@ -83,29 +83,53 @@ const HeroImage=styled("img")(({theme})=>({
     height:"550px",
     marginTop:"50px",
     borderRadius:"10px",
+    [theme.breakpoints.down("lg")]: {
+        // display:"none",
+        width:"50%",
+        // height:"auto"
+    },
     [theme.breakpoints.down("md")]: {
         // display:"none",
-        width:"90%",
-        height:"auto"
+        width:"80%",
+        height:"400px",
+        marginTop:"-20px"
     },
 }));
-const HomeHeroLeftSubTitle=styled(Typography)(({theme})=>({
+const HomeHeroLeftSubTitle=styled(Stack)(({theme})=>({
+    // backgroundColor:"red",
+    marginBottom:"50px",
+    [theme.breakpoints.down("lg")]: {
+        justifyContent:"center",
+    alignItems:"center",
+    },
+    [theme.breakpoints.down("lg")]: {
+        justifyContent:"center",
+    alignItems:"center",
+    },
+}));
+const LeftSubTitle=styled(Typography)(({theme})=>({
     fontSize:"30px",
-    fontWeight:600,
+    fontWeight:500,
     color:"#000000",
     position:"relative",
     [theme.breakpoints.down("md")]: {
         fontSize:"1.6em",
         textAlign:"center"
     },
+    [theme.breakpoints.down("lg")]: {
+        fontSize:"1.1em",
+        textAlign:"center"
+    },
 }));
 const HomeHeroLeftText=styled(Typography)(({theme})=>({
-    minWidth:"  600px",
-    fontSize:"20px",
-    fontWeight:75,
+    minWidth:"  200px",
+    fontSize:"22px",
+    // fontWeight:75,
+    // height:"40%",
     marginTop:"15px",
     color:"#616161",
     position:"relative",
+    // fontFamily: "Red Hat Display" ,
     // backgroundColor:"red",
     [theme.breakpoints.down("md")]: {
         minWidth:"95%",
@@ -146,8 +170,8 @@ function HomeHero() {
                 <HomeHeroLeftTitle>
                 Bienvenue chez ARTEMIS !
                 </HomeHeroLeftTitle>
-                <HomeHeroLeftSubTitle>
-                <Typography component={"span"} sx={{color:"green"}}>Artémis </Typography><Typography component={"span"}>Assurance, ça Rassure !</Typography>
+                <HomeHeroLeftSubTitle direction={"row"}>
+                <LeftSubTitle  sx={{color:"green", marginRight:"8px"}}>Artémis </LeftSubTitle><LeftSubTitle >Assurance, ça Rassure !</LeftSubTitle>
                 </HomeHeroLeftSubTitle>
                 <HomeHeroLeftText>
                 Artémis est une entreprise inscrite au registre du commerce et des sociétés, dont la vocation est d'analyser l'ensemble des contrats que vous avez souscrit (tant auprès d'assureurs que de banquiers ou autres) et de vous représenter auprès des sociétés d'assurances afin de négocier au mieux les garanties adaptées à vos besoins et négocier les conditions de tarif en faisant jouer la concurrence.
@@ -157,10 +181,10 @@ function HomeHero() {
                     <ButtonComponent libele={"Nous contacter"} children={<SendIcon/>}/> */}
                     
                 </ButtonsContainer>
-                <Stack spacing={4} direction="row" sx={{margin:"25px"}}>
-                <Button variant="contained" startIcon={<ArrowForwardIosIcon sx={{fontSize:"large"}}/>} sx={{color:"white", backgroundColor:PROJECT_COLORS.primarySwatch, padding:"15px", fontSize:13}}>Lire plus...</Button>
+                <HomeHeroLeftSubTitle spacing={4} direction="row" sx={{margin:"25px"}}>
+                    <Button variant="contained" startIcon={<ArrowForwardIosIcon sx={{fontSize:"large"}}/>} sx={{color:"white", backgroundColor:PROJECT_COLORS.primarySwatch, padding:"15px", fontSize:13}}>Lire plus...</Button>
                     <Button variant="outlined" startIcon={<SendIcon/>} sx={{color:PROJECT_COLORS.primarySwatch, borderColor:PROJECT_COLORS.primarySwatch, fontSize:13}}>Nous contacter</Button>
-                </Stack>
+                </HomeHeroLeftSubTitle>
             </HomeHeroContainerLeft>
             <HomeHeroContainerRight>
                 <HeroImage src="assets/images/homeHeroImg.png" />

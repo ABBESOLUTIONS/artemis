@@ -7,8 +7,8 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const BlogOverviewCardContainer=styled(Card)(({theme})=>({
     // position:"relative",
-    width:"400px",
-    height:"450px",
+    width:"375px",
+    height:"425px",
     padding:"10px",
     display:"flex",
     flexDirection:"column",
@@ -16,21 +16,25 @@ const BlogOverviewCardContainer=styled(Card)(({theme})=>({
     paddingTop:"-20px",
     boxShadow:"none",
     position:"relative",
-    margin:"25px",
+    // margin:"25px",
     [theme.breakpoints.down("lg")]: {
+        width:"100%",
         
     },
 }));
- const DateContainer=styled("div")(()=>({
+ const DateContainer=styled("div")(({theme})=>({
     width:"125px",
     height:"50px",
     position:"absolute",
     backgroundColor:PROJECT_COLORS.primarySwatch,
     borderRadius:"5px",
     marginLeft:"250px",
-    marginTop:"75px",
+    marginTop:"-55px",
     display:"flex",
-    alignItems:"center"
+    alignItems:"center",
+    [theme.breakpoints.down("lg")]: {
+        
+    },
  }))
 
 function BlogOverviewCard() {
@@ -38,16 +42,17 @@ function BlogOverviewCard() {
         <BlogOverviewCardContainer>
             <CardMedia component={"img"} image="assets/images/women.png" >
             </CardMedia>
+            <CardContent sx={{}}>
             <DateContainer>
                 <Typography sx={{fontSize:"15px", color:"white",marginLeft:"15px"}}>22 Jul 2022</Typography>
             </DateContainer>
-            <CardContent sx={{}}>
                 <Stack direction={"row"} sx={{}} >
-                    <TextButton title={'PAR FLOBERT'} path={''}/>
-                    <Divider ></Divider>
-                    <TextButton title={'ASSURANCE'} path={''}/>
+                    <TextButton title={'PAR FLOBERT  |  '} path={''}/>
+                    <Divider  ></Divider>
+                    
+                    <TextButton title={'   |  ASSURANCE'} path={''}/>
                 </Stack>
-                <TextButton title={"Je viens d'avoir mon Permis de Conduire, comment m'y prendre?"} path={''} sx={{fontWeight:"bold", fontSize:"20px",color:"black", marginTop:"30px"}}/>
+                <TextButton title={"Je viens d'avoir mon Permis de Conduire, comment m'y prendre? "} path={''} sx={{fontWeight:"bold", fontSize:"20px",color:"black", marginTop:"30px"}}/>
                 <Button variant="outlined" startIcon={<ArrowForwardIosIcon/>} sx={{color:PROJECT_COLORS.primarySwatch, borderColor:PROJECT_COLORS.primarySwatch, fontSize:13, padding:"10px", marginBottom:"-25px", marginTop:"10px"}}>Continuer</Button>
             </CardContent>
         </BlogOverviewCardContainer>

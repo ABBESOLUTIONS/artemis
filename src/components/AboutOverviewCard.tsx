@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled, SxProps, Typography, Card, Container} from '@mui/material';
+import ImageComponent from './ImageComponent';
 
 
 const AboutOverviewCardContainer=styled(Card)(({theme})=>({
@@ -12,7 +13,13 @@ const AboutOverviewCardContainer=styled(Card)(({theme})=>({
     margin:"10px",
     [theme.breakpoints.down("lg")]: {
         minWidth:"75%",
-        height:"100px",
+        minHeight:"150px",
+        flexDirection:"row",   
+    },
+    [theme.breakpoints.down("sm")]: {
+        minWidth:"75%",
+        minHeight:"200px",
+        flexDirection:"column",
         // flexDirection:"column",   
     },
 }));
@@ -22,6 +29,10 @@ const AboutIconeCircle= styled("div")(({theme})=>({
     height:"85px",
     borderRadius:"50%",
     backgroundColor:"#E7F4F2",
+    display:"flex",
+    flexDirection:"column",
+    justifyContent:"center",
+    alignItems:"center",
     [theme.breakpoints.down("lg")]: {
         width:"80px",
         height:"80px",
@@ -59,7 +70,9 @@ interface Props {
 function AboutOverviewCard({icone,detail}: Props) {
     return (
             <AboutOverviewCardContainer>
-                <AboutIconeCircle/>
+                <AboutIconeCircle>
+                    <ImageComponent image={icone} />
+                </AboutIconeCircle>
                 <AboutTextStyle>{detail}</AboutTextStyle>
             </AboutOverviewCardContainer>
     );

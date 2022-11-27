@@ -11,8 +11,13 @@ const AboutOverViewContainerImg= styled("img")(({theme})=>({
         // height:"98%"
     },
     [theme.breakpoints.down("md")]: {
-        width:"98%",
-        height:"98%",
+        width:"90%",
+        height:"90%",
+    },
+    [theme.breakpoints.down("sm")]: {
+        width:"90%",
+        height:"90%",
+        marginLeft:"-35px"
     },
 }));
 interface Props {

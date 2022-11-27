@@ -39,7 +39,7 @@ function Members() {
             <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>NOTRE EQUIPE</Typography>
             {/* <Typography variant='h3' sx={{textAlign:"center", fontWeight:"bold", fontSize:"55px", marginBottom:"50px"}}>Notre équipe de professionnels compétents</Typography> */}
             <QualityTitle>Notre équipe de professionnels compétents</QualityTitle>
-            <Grid container sx={{margintop:"50px"}} >
+            <Grid container sx={{margintop:"50px", justify:"center"}} >
                     {
                         members.map((OneMember, index) => <Grid key={index} item xs ><MemberCard image={OneMember.picture} nom={OneMember.name} poste={OneMember.job} /></Grid>)
                     }

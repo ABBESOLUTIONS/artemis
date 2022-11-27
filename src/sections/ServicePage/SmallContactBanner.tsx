@@ -16,14 +16,16 @@ const SmallContactBannerStyle=styled(SectionStyle)(()=>({
 }));
 
 const EllipseWhite=styled("img")(({theme})=>({
-    
+    position:"absolute", 
+    right:"50px",
     [theme.breakpoints.down("md")]: {
         display:"none",
     },
 }));
 const LeafDaught=styled("img")(({theme})=>({
-    position:"absolute", 
-    
+    position:"absolute",
+    marginTop:"75px", 
+    left:"10px",
     [theme.breakpoints.down("md")]: {
         display:"none",
     },
