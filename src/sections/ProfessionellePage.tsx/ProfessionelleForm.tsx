@@ -1,9 +1,15 @@
-import { Box, Grid, styled, TextField, Typography } from '@mui/material';
+import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Grid, styled, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { PROJECT_COLORS } from '../../common/colors';
+import { GarantiesPro } from '../../components/Ennum/GarantiesPro';
+import { ModePaiement } from '../../components/Ennum/ModePaiement';
+import { OptionsPro } from '../../components/Ennum/OptionsPro';
 import ProfessionelleGarantieCheck from '../../components/ProfessionelGarantieCheck';
 import ProfessionelleOptionCheck from '../../components/ProfessionelleOptionCheck';
 import TextFieldPersonnalise from '../../components/TextFieldPersonnalise';
+import { DevisProModel } from '../../models/DevisProModel';
+import { addDevisPro } from '../../redux/slices/DevisProRed';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
 import SectionStyle from '../../styles/SectionStyle';
 
 const ProfessionelleFormContainer=styled(SectionStyle)(()=>({
@@ -14,171 +20,63 @@ const ProfessionelleFormContainer=styled(SectionStyle)(()=>({
 }));
 
 function ProfessionelleForm() {
-    const [nameEtreprise, setNameEtreprise] = React.useState("");
+  const [data, setData] = React.useState<DevisProModel>();
+  const user = useAppSelector(state => state.auth.user);
 
-  const handleNameEtrepriseChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNameEtreprise(event.target.value);
-  };
-  const [nameSouscript, setNameSouscript] = React.useState("");
 
-  const handleNameSouscriptChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNameSouscript(event.target.value);
-  };
-    const [prenom, setPrenom] = React.useState("");
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setData((prev) => ({...prev, [e.target.name]: e.target.value} as DevisProModel));
+    console.log(data);
+   };
 
-  const handlePrenomChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPrenom(event.target.value);
-  };
-  const [adresse, setAdresse] = React.useState("");
+   const handleChangeCheckedGarantiePro = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let gara: Array<string> = Array.from(data?.Garanties_Souhaitées ?? []);
+    if(e.target.checked) {
+      gara?.push(e.target.name);
+      setData((prev) => ({ ...prev, Garanties_Souhaitées: gara } as DevisProModel));
+    }
+    else
+      if(data?.Garanties_Souhaitées.filter(one => one != e.target.name).length) {
+        setData((prev) => ({ ...prev, Garanties_Souhaitées: data?.Garanties_Souhaitées.filter(one => one != e.target.name) } as DevisProModel));
+      }
+    console.log(data);
+};
 
-  const handleAdresseChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAdresse(event.target.value);
-  };
-    const [numId, setNumId] = React.useState("");
+const handleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>) => {
+  let gara: Array<string> = Array.from(data?.Options ?? []);
+  if(e.target.checked) {
+    gara?.push(e.target.name);
+    setData((prev) => ({ ...prev, Options: gara } as DevisProModel));
+  }
+  else
+    if(data?.Options.filter(one => one != e.target.name).length) {
+      setData((prev) => ({ ...prev, Options: data?.Options.filter(one => one != e.target.name) } as DevisProModel));
+    }
+  console.log(data);
+};
 
-  const handleNumIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNumId(event.target.value);
-  };
-    const [formeJuri, setFormeJuri] = React.useState("");
+const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>) => {
+  let gara: Array<string> = Array.from(data?.Mode_Paiements ?? []);
+  if(e.target.checked) {
+    gara?.push(e.target.name);
+    setData((prev) => ({ ...prev, Mode_Paiements: gara } as DevisProModel));
+  }
+  else
+    if(data?.Mode_Paiements.filter(one => one != e.target.name).length) {
+      setData((prev) => ({ ...prev, Mode_Paiements: data?.Mode_Paiements.filter(one => one != e.target.name) } as DevisProModel));
+    }
+  console.log(data);
+};
 
-  const handleFormeJuriChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormeJuri(event.target.value);
-  };
-    const [dateNaiss, setDateNaiss] = React.useState("");
+const dispatch = useAppDispatch();
 
-  const handleDateNaissChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDateNaiss(event.target.value);
-  };  
-    const [telFix, setTelFix] = React.useState("");
+const validate = () => {
+    if (data && user?.uid) {
+      data.id_Client = user?.uid;
+      dispatch(addDevisPro({oneDevisPro: data})).unwrap();
+    }
+}
 
-  const handleTelFixChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTelFix(event.target.value);
-  };
-    const [telMob, setTelMob] = React.useState("");
-
-  const handleTelMobChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTelMob(event.target.value);
-  };
-  const [email, setEmail] = React.useState("");
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-  const [siret, setSiret] = React.useState("");
-
-  const handleSiretChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSiret(event.target.value);
-  };
-  const [ape, setApe] = React.useState("");
-
-  const handleApeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setApe(event.target.value);
-  };
-  const [activPrinci, setActivPrinci] = React.useState("");
-
-  const handleActivPrinciChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setActivPrinci(event.target.value);
-  };
-  const [ratioPrinci, setRatioPrinci] = React.useState("");
-
-  const handleRatioPrinciChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRatioPrinci(event.target.value);
-  };
-  const [activAnexe, setActivAnexe] = React.useState("");
-
-  const handleActivAnexeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setActivAnexe(event.target.value);
-  };
-  const [ratioAnexe, setRatioAnexe] = React.useState("");
-
-  const handleRatioAnexeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRatioAnexe(event.target.value);
-  };
-  const [activAnexeone, setActivAnexeone] = React.useState("");
-
-  const handleActivAnexeoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setActivAnexeone(event.target.value);
-  };
-  const [ratioAnexeone, setRatioAnexeone] = React.useState("");
-
-  const handleRatioAnexeoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRatioAnexeone(event.target.value);
-  };
-  const [activAnexetwo, setActivAnexetwo] = React.useState("");
-
-  const handleActivAnexetwoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setActivAnexetwo(event.target.value);
-  };
-  const [ratioAnexetwo, setRatioAnexetwo] = React.useState("");
-
-  const handleRatioAnexetwoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRatioAnexetwo(event.target.value);
-  };
-  const [activAnexethree, setActivAnexethree] = React.useState("");
-
-  const handleActivAnexethreeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setActivAnexethree(event.target.value);
-  };
-  const [ratioAnexethree, setRatioAnexethree] = React.useState("");
-
-  const handleRatioAnexethreeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRatioAnexethree(event.target.value);
-  };
-  const [activAnexefour, setActivAnexefour] = React.useState("");
-
-  const handleActivAnexefourChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setActivAnexefour(event.target.value);
-  };
-  const [ratioAnexefour, setRatioAnexefour] = React.useState("");
-
-  const handleRatioAnexefourChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRatioAnexefour(event.target.value);
-  };
-  const [nomConjoint, setNomConjoint] = React.useState("");
-
-  const handleNomConjointChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNomConjoint(event.target.value);
-  };
-  const [prenomConjoint, setPreNomConjoint] = React.useState("");
-
-  const handlePreNomConjointChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPreNomConjoint(event.target.value);
-  };
-  const [conjCollab, setConjCollab] = React.useState("");
-
-  const handleConjCollabChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setConjCollab(event.target.value);
-  };
-  const [dateNaissCollab, setDateNaissCollab] = React.useState("");
-
-  const handleDateNaissCollabChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDateNaissCollab(event.target.value);
-  };
-  const [chiffAff, setChiffAff] = React.useState("");
-
-  const handleChiffAffChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChiffAff(event.target.value);
-  };
-  const [effectif, setEffectif] = React.useState("");
-
-  const handleEffectifChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEffectif(event.target.value);
-  };
-  const [surface, setSurface] = React.useState("");
-
-  const handleSurfaceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSurface(event.target.value);
-  };
-  const [produits, setProduits] = React.useState("");
-
-  const handleProduitsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setProduits(event.target.value);
-  };
-  const [naturePdts, setNaturePdts] = React.useState("");
-
-  const handleNaturePdtsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNaturePdts(event.target.value);
-  };
   
     return (
         <ProfessionelleFormContainer>
@@ -187,76 +85,108 @@ function ProfessionelleForm() {
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"35px", marginBottom:"50px", textAlign:"center" }}>Etude Assurance RC Pro - Multi Risques Pro</Typography>
             <Box component="form" sx={{'& .MuiTextField-root': { m: 2, width: '50ch' },}}>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Nom de l'Entreprise"} value={nameEtreprise} />
+                <TextFieldPersonnalise id={''} name="Nom_Entreprise" required={true} onChange={handleChange} label={"Nom de l'Entreprise"} value={data?.Nom_Entreprise ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Adresse"} value={adresse} />
-                <TextFieldPersonnalise id={''} required={true} label={"N° Client"} value={numId} />
+                <TextFieldPersonnalise id={''} name="Adresse" required={true} onChange={handleChange} label={"Adresse"} value={data?.Adresse ?? ""} />
+                <TextFieldPersonnalise id={''} name="id_Client" required={true} onChange={handleChange} label={"N° Client"} value={data?.id_Client ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Nom du Souscripteur"} value={nameSouscript} />
-                <TextFieldPersonnalise id={''} required={true}  label={"Prénom"} value={prenom} />
+                <TextFieldPersonnalise id={''} name="Nom_Souscripteur" required={true} onChange={handleChange} label={"Nom du Souscripteur"} value={data?.Nom_Souscripteur ?? ""} />
+                <TextFieldPersonnalise id={''} name="Prenom" required={true} onChange={handleChange}  label={"Prénom"} value={data?.Prenom ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true}  label={"Forme Juridique de l'Entreprise"} value={formeJuri} />
-                <TextFieldPersonnalise id={''} required={true}  label={"Date de Naissance"} value={dateNaiss} />
+                <TextFieldPersonnalise id={''} name="Forme_Juridique" required={true} onChange={handleChange}  label={"Forme Juridique de l'Entreprise"} value={data?.Forme_Juridique ?? ""} />
+                <TextFieldPersonnalise id={''} name="Date_Naiss" required={true} onChange={handleChange}  label={"Date de Naissance"} value={data?.Date_Naiss ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Téléphone Fixe"} value={telFix} />
-                <TextFieldPersonnalise id={''} required={true} label={"Téléphone Mobile"} value={telMob} />
+                <TextFieldPersonnalise id={''} name="Telephone_Fix" required={true} onChange={handleChange} label={"Téléphone Fixe"} value={data?.Telephone_Fix ?? ""} />
+                <TextFieldPersonnalise id={''} name="Telephone_Mobile" required={true} onChange={handleChange} label={"Téléphone Mobile"} value={data?.Telephone_Mobile ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Email"} value={email} />
+                <TextFieldPersonnalise id={''} name="Email" required={true} onChange={handleChange} label={"Email"} value={data?.Email ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Siret"} value={siret} />
-                <TextFieldPersonnalise id={''} required={true} label={"APE"} value={ape} />
+                <TextFieldPersonnalise id={''} name="Siret" required={true} onChange={handleChange} label={"Siret"} value={data?.Siret ?? ""} />
+                <TextFieldPersonnalise id={''} name="APE" required={true} onChange={handleChange} label={"APE"} value={data?.APE ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Activité Principale"} value={activPrinci} />
-                <TextFieldPersonnalise id={''} required={true} label={"Ratio (%)"} value={ratioPrinci} />
+                <TextFieldPersonnalise id={''} name="Activite_Principal" required={true} onChange={handleChange} label={"Activité Principale"} value={data?.Activite_Principal ?? ""} />
+                <TextFieldPersonnalise id={''} name="Ratio_Principal" required={true} onChange={handleChange} label={"Ratio (%)"} value={data?.Ratio_Principal ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Activité Annexes"} value={activAnexe} />
-                <TextFieldPersonnalise id={''} required={true} label={"Ratio (%)"} value={ratioAnexe} />
+                <TextFieldPersonnalise id={''} name="Activite_AnnexeOne" required={true} onChange={handleChange} label={"Activité Annexes"} value={data?.Activite_AnnexeOne ?? ""} />
+                <TextFieldPersonnalise id={''} name="Ratio_AnnexeOne" required={true} onChange={handleChange} label={"Ratio (%)"} value={data?.Ratio_AnnexeOne ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Activité Annexes"} value={activAnexeone} />
-                <TextFieldPersonnalise id={''} required={true} label={"Ratio (%)"} value={ratioAnexeone} />
+                <TextFieldPersonnalise id={''} name="Activite_AnnexeTwo" required={true} onChange={handleChange} label={"Activité Annexes"} value={data?.Activite_AnnexeTwo ?? ""} />
+                <TextFieldPersonnalise id={''} name="Ratio_AnnexeTwo" required={true} onChange={handleChange} label={"Ratio (%)"} value={data?.Ratio_AnnexeTwo ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Activité Annexes"} value={activAnexetwo} />
-                <TextFieldPersonnalise id={''} required={true} label={"Ratio (%)"} value={ratioAnexetwo} />
+                <TextFieldPersonnalise id={''} name="Activite_AnnexeThree" required={true} onChange={handleChange} label={"Activité Annexes"} value={data?.Activite_AnnexeThree ?? ""} />
+                <TextFieldPersonnalise id={''} name="Ratio_AnnexeThree" required={true} onChange={handleChange} label={"Ratio (%)"} value={data?.Ratio_AnnexeThree ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Activité Annexes"} value={activAnexethree} />
-                <TextFieldPersonnalise id={''} required={true} label={"Ratio (%)"} value={ratioAnexethree} />
+                <TextFieldPersonnalise id={''} name="Activite_AnnexeFour" required={true} onChange={handleChange} label={"Activité Annexes"} value={data?.Activite_AnnexeFour ?? ""} />
+                <TextFieldPersonnalise id={''} name="Ratio_AnnexeFour" required={true} onChange={handleChange} label={"Ratio (%)"} value={data?.Ratio_AnnexeFour?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Activité Annexes"} value={activAnexefour} />
-                <TextFieldPersonnalise id={''} required={true} label={"Ratio (%)"} value={ratioAnexefour} />
+                <TextFieldPersonnalise id={''} name="Activite_AnnexeFive" required={true} onChange={handleChange} label={"Activité Annexes"} value={data?.Activite_AnnexeFive ?? ""} />
+                <TextFieldPersonnalise id={''} name="Ratio_AnnexeFive" required={true} onChange={handleChange} label={"Ratio (%)"} value={data?.Ratio_AnnexeFive ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Nom du Conjoint"} value={nomConjoint} />
-                <TextFieldPersonnalise id={''} required={true} label={"Prénom du Conjoint"} value={prenomConjoint} />
+                <TextFieldPersonnalise id={''} name="Nom_Conjoint" required={true} onChange={handleChange} label={"Nom du Conjoint"} value={data?.Nom_Conjoint ?? ""} />
+                <TextFieldPersonnalise id={''} name="Prenom_Conjoint" required={true} onChange={handleChange} label={"Prénom du Conjoint"} value={data?.Prenom_Conjoint ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Conjoint Collaborateur"} value={conjCollab} />
-                <TextFieldPersonnalise id={''} required={true} label={"Date Naissance du Conjoint"} value={dateNaissCollab} />
+                <TextFieldPersonnalise id={''} name="Conjoint_Collaborateur" required={true} onChange={handleChange} label={"Conjoint Collaborateur"} value={data?.Conjoint_Collaborateur ?? ""} />
+                <TextFieldPersonnalise id={''} name="Date_Naiss_Conjoint" required={true} onChange={handleChange} label={"Date Naissance du Conjoint"} value={data?.Date_Naiss_Conjoint ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Chiffre d'Affaire (en )"} value={chiffAff} />
-                <TextFieldPersonnalise id={''} required={true} label={"Effectif"} value={effectif} />
+                <TextFieldPersonnalise id={''} name="Chiffre_Affaire" required={true} onChange={handleChange} label={"Chiffre d'Affaire (en )"} value={data?.Chiffre_Affaire ?? ""} />
+                <TextFieldPersonnalise id={''} name="Effectif" required={true} onChange={handleChange} label={"Effectif"} value={data?.Effectif ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Surface en m2"} value={surface} />
-                <TextFieldPersonnalise id={''} required={true} label={"Produits Dangereux"} value={produits} />
+                <TextFieldPersonnalise id={''} name="Surface" required={true} onChange={handleChange} label={"Surface en m2"} value={data?.Surface ?? ""} />
+                <TextFieldPersonnalise id={''} name="Produits_Dangereux" required={true} onChange={handleChange} label={"Produits Dangereux"} value={data?.Produits_Dangereux ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} label={"Nature des Produits"} value={naturePdts} />
+                <TextFieldPersonnalise id={''} name="Nature_Produits" required={true} onChange={handleChange} label={"Nature des Produits"} value={data?.Nature_Produits ?? ""} />
                 </div>
-                <ProfessionelleGarantieCheck/>
-                <ProfessionelleOptionCheck/>
+                <Typography>Garanties Souhaitées:</Typography>
+                <Box sx={{ display: 'flex' }}>
+                  <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
+                    <FormGroup>
+                      {
+                        Object.keys(GarantiesPro).map((oneGaranti, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedGarantiePro} name={GarantiesPro[oneGaranti as keyof typeof GarantiesPro]}/>} label={GarantiesPro[oneGaranti as keyof typeof GarantiesPro]}/>)
+                      }
+                    </FormGroup>
+                  <FormHelperText>Veuillez sélectioner une case</FormHelperText>
+                  </FormControl>
+                </Box>
+                <Typography>Options:</Typography>
+                <Box sx={{ display: 'flex' }}>
+                  <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
+                    <FormGroup>
+                      {
+                        Object.keys(OptionsPro).map((oneOption, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedOptionPro} name={OptionsPro[oneOption as keyof typeof OptionsPro]}/>} label={OptionsPro[oneOption as keyof typeof OptionsPro]}/>)
+                      }
+                    </FormGroup>
+                  <FormHelperText>Veuillez sélectioner une case</FormHelperText>
+                  </FormControl>
+                </Box>
+                <Box sx={{ display: 'flex' }}>
+                    <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
+                        <FormLabel component="legend">Modes de Paiement possible</FormLabel>
+                        <FormGroup>
+                          {
+                            Object.keys(ModePaiement).map((oneModePaiement, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>)
+                          }
+                        </FormGroup>
+                        <FormHelperText>Veuillez sélectioner une case</FormHelperText>
+                    </FormControl>
+                </Box>
+                <Button variant='outlined' onClick={validate}>valider</Button>
             </Box>
         </ProfessionelleFormContainer>
     );

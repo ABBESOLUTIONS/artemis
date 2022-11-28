@@ -13,11 +13,12 @@ const ServicesDetailsStyle=styled(SectionStyle)(()=>({
     flexDirection:"column",
     // paddingTop:"80px"
 }));
-const ServiceBigTitle=styled(Typography)(({theme})=>({
+export const ServiceBigTitle=styled(Typography)(({theme})=>({
     fontWeight:"bold", 
     // fontSize:"45px", 
-    fontSize:"2em", 
-    marginBottom:"50px", 
+    fontSize:"2.5em", 
+    marginBottom:"50px",
+    justifyContent:"center", 
     textAlign:"center",
     [theme.breakpoints.down("md")]: {
         

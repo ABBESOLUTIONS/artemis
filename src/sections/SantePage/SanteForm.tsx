@@ -11,6 +11,7 @@ import { DevisSanteModel } from '../../models/DevisSanteModel';
 import { GarantieSante } from '../../components/Ennum/GarantiesSante';
 import { OptionsSante } from '../../components/Ennum/OptionsSante';
 import { ModePaiement } from '../../components/Ennum/ModePaiement';
+import { addDevisSante } from '../../redux/slices/DevisSanteRed';
 
 
 const SanteFormContainer=styled(SectionStyle)(()=>({
@@ -74,12 +75,12 @@ const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>)
 
   const dispatch = useAppDispatch();
 
-//   const validate = () => {
-//     if (data && user?.uid) {
-//       data.id_client = user?.uid;
-//       dispatch(addDevisAuto({oneDevisAuto: data})).unwrap();
-//     }
-// };
+  const validate = () => {
+    if (data && user?.uid) {
+      data.id_client = user?.uid;
+      dispatch(addDevisSante({oneDevisSante: data})).unwrap();
+    }
+};
   
     return (
         <SanteFormContainer>
@@ -180,7 +181,7 @@ const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>)
                   <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                   </FormControl>
                 </Box>
-                {/* <Button variant='outlined' onClick={validate}>valider</Button> */}
+                <Button variant='outlined' onClick={validate}>valider</Button>
             </Box>
         </SanteFormContainer>
     );

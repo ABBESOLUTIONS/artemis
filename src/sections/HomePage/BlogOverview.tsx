@@ -26,23 +26,6 @@ const CarouselElementStyle=styled("div")(()=>({
 function BlogOverview() {
     return (
        <BlogOverviewStyle>
-            {/* <Carousel sx={{width:"100%", height:"500px"}}>
-                <CarouselElementStyle>
-                    <BlogOverviewCard/>
-                    <BlogOverviewCard/>
-                    <BlogOverviewCard/>
-                </CarouselElementStyle>
-                <CarouselElementStyle>
-                    <BlogOverviewCard/>
-                    <BlogOverviewCard/>
-                    <BlogOverviewCard/>
-                </CarouselElementStyle>
-                <CarouselElementStyle>
-                    <BlogOverviewCard/>
-                    <BlogOverviewCard/>
-                </CarouselElementStyle>
-            </Carousel> */}
-                    {/* <BlogOverviewCard/> */}
                     <BlogCarousel/>
        </BlogOverviewStyle>
     );

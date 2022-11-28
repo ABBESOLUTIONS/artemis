@@ -1,13 +1,19 @@
 
-import { styled, Typography, Box, Grid, TextField, MenuItem, RadioGroup, FormLabel, FormControlLabel, Radio} from '@mui/material';
+import { styled, Typography, Box, Grid, TextField, MenuItem, RadioGroup, FormLabel, FormControlLabel, Radio, FormControl, FormGroup, Checkbox, FormHelperText, Button} from '@mui/material';
 import React from 'react';
 import { PROJECT_COLORS } from '../../common/colors';
 import AutoMotoPaiementCheck from '../../components/AutoMotoPaiementCheck';
+import { GarantiesHabitation } from '../../components/Ennum/GarantiesHabitation';
+import { InstallationsHabitation } from '../../components/Ennum/InstallationsHabitation';
+import { ModePaiement } from '../../components/Ennum/ModePaiement';
+import { OptionHabitation } from '../../components/Ennum/OptionsHabitation';
 import HabitationGarantieCheck from '../../components/HabitationGarantieCheck';
 import HabitationInstallationCheck from '../../components/HabitationInstallationCheck';
 import HabitationOptionCheck from '../../components/HabitationOptionCheck';
 import TextFieldPersonnalise from '../../components/TextFieldPersonnalise';
 import { DevisHabitationModel } from '../../models/DevisHabitationModel';
+import { addDevisHabitation } from '../../redux/slices/DevisHabitationRed';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
 import SectionStyle from '../../styles/SectionStyle';
 // import { PROJECT_COLORS } from '../../../common/colors';
 // import { currencies } from '../../../common/Data';
@@ -25,12 +31,72 @@ const HabitationFormContainer=styled(SectionStyle)(()=>({
 
 function HabitationForm() {
     const [data, setData] = React.useState<DevisHabitationModel>();
+    const user = useAppSelector(state => state.auth.user);
 
     
  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   setData((prev) => ({...prev, [e.target.name]: e.target.value} as DevisHabitationModel));
   console.log(data);
- }
+ };
+
+ const handleChangeCheckedInstallation = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let gara: Array<string> = Array.from(data?.Installation_Exterieures ?? []);
+    if(e.target.checked) {
+      gara?.push(e.target.name);
+      setData((prev) => ({ ...prev, Installation_Exterieures: gara } as DevisHabitationModel));
+    }
+    else
+      if(data?.Installation_Exterieures.filter(one => one != e.target.name).length) {
+        setData((prev) => ({ ...prev, Installation_Exterieures: data?.Installation_Exterieures.filter(one => one != e.target.name) } as DevisHabitationModel));
+      }
+    console.log(data);
+};
+ const handleChangeCheckedGarantieHabitat = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let gara: Array<string> = Array.from(data?.Granties_Souhaitées ?? []);
+    if(e.target.checked) {
+      gara?.push(e.target.name);
+      setData((prev) => ({ ...prev, Granties_Souhaitées: gara } as DevisHabitationModel));
+    }
+    else
+      if(data?.Granties_Souhaitées.filter(one => one != e.target.name).length) {
+        setData((prev) => ({ ...prev, Granties_Souhaitées: data?.Granties_Souhaitées.filter(one => one != e.target.name) } as DevisHabitationModel));
+      }
+    console.log(data);
+};
+ const handleChangeCheckedOptionHabitat = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let gara: Array<string> = Array.from(data?.Options ?? []);
+    if(e.target.checked) {
+      gara?.push(e.target.name);
+      setData((prev) => ({ ...prev, Options: gara } as DevisHabitationModel));
+    }
+    else
+      if(data?.Options.filter(one => one != e.target.name).length) {
+        setData((prev) => ({ ...prev, Options: data?.Options.filter(one => one != e.target.name) } as DevisHabitationModel));
+      }
+    console.log(data);
+};
+
+const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let gara: Array<string> = Array.from(data?.Modes_Paiement ?? []);
+    if(e.target.checked) {
+      gara?.push(e.target.name);
+      setData((prev) => ({ ...prev, Modes_Paiement: gara } as DevisHabitationModel));
+    }
+    else
+      if(data?.Modes_Paiement.filter(one => one != e.target.name).length) {
+        setData((prev) => ({ ...prev, Modes_Paiement: data?.Modes_Paiement.filter(one => one != e.target.name) } as DevisHabitationModel));
+      }
+    console.log(data);
+};
+
+const dispatch = useAppDispatch();
+
+const validate = () => {
+    if (data && user?.uid) {
+      data.id_client = user?.uid;
+      dispatch(addDevisHabitation({oneDevisHabitation: data})).unwrap();
+    }
+}
 
   //   const [name, setName] = React.useState("");
 
@@ -240,12 +306,63 @@ function HabitationForm() {
                     <FormControlLabel value="OUI" control={<Radio />} label="Oui" />
                     <FormControlLabel value="NON" control={<Radio />} label="Non" />
                 </RadioGroup>
-                <HabitationInstallationCheck/>
-                <HabitationGarantieCheck/>
-                <HabitationOptionCheck/>
-                <AutoMotoPaiementCheck/>
+                <Typography>Installations Extérieures:</Typography>
+                <Box sx={{ display: 'flex' }}>
+                  <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
+                    <FormGroup>
+                      {
+                        Object.keys(InstallationsHabitation).map((oneInstallation, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedInstallation} name={InstallationsHabitation[oneInstallation as keyof typeof InstallationsHabitation]}/>} label={InstallationsHabitation[oneInstallation as keyof typeof InstallationsHabitation]}/>)
+                      }
+                    </FormGroup>
+                  <FormHelperText>Veuillez sélectioner une case</FormHelperText>
+                  </FormControl>
+                </Box>
+                <div>
+                <TextFieldPersonnalise id={''} name="Autres_Installation" required={true} onChange={handleChange} label={"Autres Installations à Préciser"} value={data?.Autres_Installation ?? ""} />
+                </div>
+                <Typography>Garanties Souhaitées:</Typography>
+                <Box sx={{ display: 'flex' }}>
+                  <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
+                    <FormGroup>
+                      {
+                        Object.keys(GarantiesHabitation).map((oneHabitation, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedGarantieHabitat} name={GarantiesHabitation[oneHabitation as keyof typeof GarantiesHabitation]}/>} label={GarantiesHabitation[oneHabitation as keyof typeof GarantiesHabitation]}/>)
+                      }
+                    </FormGroup>
+                  <FormHelperText>Veuillez sélectioner une case</FormHelperText>
+                  </FormControl>
+                </Box>
+
+                {/* <Box sx={{ display: 'flex' }}> */}
+                <Typography>Options:</Typography>
+                <Box sx={{ display: 'flex' }}>
+                  <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
+                    <FormGroup>
+                      {
+                        Object.keys(OptionHabitation).map((oneOption, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedOptionHabitat} name={OptionHabitation[oneOption as keyof typeof OptionHabitation]}/>} label={OptionHabitation[oneOption as keyof typeof OptionHabitation]}/>)
+                      }
+                    </FormGroup>
+                  <FormHelperText>Veuillez sélectioner une case</FormHelperText>
+                  </FormControl>
+                </Box>
+                <div>
+                <TextFieldPersonnalise id={''} name="Autres_Options" required={true} onChange={handleChange} label={"Autres Installations à Préciser"} value={data?.Autres_Options ?? ""} />
+                </div>
+
+                <Box sx={{ display: 'flex' }}>
+                    <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
+                        <FormLabel component="legend">Modes de Paiement possible</FormLabel>
+                        <FormGroup>
+                          {
+                            Object.keys(ModePaiement).map((oneModePaiement, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>)
+                          }
+                        </FormGroup>
+                        <FormHelperText>Veuillez sélectioner une case</FormHelperText>
+                    </FormControl>
+                </Box>
                 {/* </Box> */}
+                <Button variant='outlined' onClick={validate}>valider</Button>
             </Box>
+            
         </HabitationFormContainer>
     );
 }

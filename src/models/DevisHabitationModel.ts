@@ -28,8 +28,10 @@ export interface DevisHabitationModel {
     Animaux:string,
     Carnet_de_Vaccination:string,
     Tatouages:string,
+    Installation_Exterieures:Array<string>
     Autres_Installation:string,
     Granties_Souhaitées:Array<string>,
     Options:Array<string>,
+    Autres_Options:string,
     Modes_Paiement:Array<string>,
 }

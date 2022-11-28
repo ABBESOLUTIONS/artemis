@@ -13,16 +13,25 @@ interface props {
   open: boolean,
   onClick:Function,
 }
-const DrawerHeader=styled("div")(()=>({
-  width:"35%",
+const DrawerHeader=styled("div")(({theme})=>({
+  width:"30%",
   height:"75px",
   position:"fixed",
   color:"white",
   display:"flex",
   flexDirection:"row",
   justifyContent:"space-between",
-  borderBottom:"solid 1px grey",
+  // borderBottom:"solid 1px grey",
   backgroundColor:"white",
+  [theme.breakpoints.down("lg")]: {
+    width:"40%",
+  },
+  [theme.breakpoints.down("md")]: {
+    width:"50%",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width:"75%",
+  }
 }));
 const DrawerContentStyle=styled("div")(()=>({
   height:"calc (100% - 55px)",
@@ -43,10 +52,10 @@ export default function AboutDrawer({open, onClick}: props) {
 
   return (
     <div>
-        <Drawer anchor={"right"} open={open}  PaperProps={{ sx:{ width: {xs:1, sm: 0.5, md: 450, backgroundColor:"white"}}}}>
+        <Drawer anchor={"right"} open={open}  PaperProps={{ sx:{ width: {xs:0.75, sm: 0.5, md: 425, backgroundColor:"white"}}}}>
           <DrawerHeader>
             <Logo sx={{marginLeft: "30px"}} logoImg="assets/images/logo.png"/>
-            <Button onClick={() => onClick()} sx={{width:"50px"}}>✖</Button>
+            <Button onClick={() => onClick()} sx={{width:"50px", right:"0px" }}>✖</Button>
           </DrawerHeader>
           <DrawerContentStyle>
           <Divider orientation="horizontal" flexItem></Divider>

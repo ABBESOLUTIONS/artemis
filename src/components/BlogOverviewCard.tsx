@@ -7,7 +7,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const BlogOverviewCardContainer=styled(Card)(({theme})=>({
     // position:"relative",
-    width:"375px",
+    width:"90%",
     height:"425px",
     padding:"10px",
     display:"flex",
@@ -16,9 +16,9 @@ const BlogOverviewCardContainer=styled(Card)(({theme})=>({
     paddingTop:"-20px",
     boxShadow:"none",
     position:"relative",
-    // margin:"25px",
+    margin:"15px",
     [theme.breakpoints.down("lg")]: {
-        width:"100%",
+        width:"90%",
         
     },
 }));
@@ -28,7 +28,7 @@ const BlogOverviewCardContainer=styled(Card)(({theme})=>({
     position:"absolute",
     backgroundColor:PROJECT_COLORS.primarySwatch,
     borderRadius:"5px",
-    marginLeft:"250px",
+    marginLeft:"55%",
     marginTop:"-55px",
     display:"flex",
     alignItems:"center",

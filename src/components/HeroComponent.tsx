@@ -1,4 +1,5 @@
 import { Link, Stack, styled, Typography } from '@mui/material';
+import { PROJECT_COLORS } from '../common/colors';
 import SectionStyle from '../styles/SectionStyle';
 import ImageComponent from './ImageComponent';
 import TextButton from './TextButton';
@@ -53,7 +54,9 @@ const BigTitle=styled(Typography)(({theme})=>({
     },
 }));
 const LittleTitle=styled(Typography)(({theme})=>({
+    color:PROJECT_COLORS.primarySwatch,
     [theme.breakpoints.down("md")]: {
+        
         fontSize:"12px",
         textAlign:"center",
 

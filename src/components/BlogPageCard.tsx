@@ -8,13 +8,13 @@ import TextButton from './TextButton';
 
 const BlogPageCardContainer=styled(Card)(()=>({
     // position:"relative",
-    width:"450px",
+    width:"90%",
     height:"500px",
     // padding:"10px",
     display:"flex",
     flexDirection:"column",
     justifyContent:"space-around",
-    margin:"60px",
+    margin:"20px",
     borderRadius:"0px"
 }));
 
