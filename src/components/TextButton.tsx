@@ -5,7 +5,7 @@ import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 const TextButtonContainer = styled('div')(() => ({
     
 }));
-const TextButtonLink = styled(Link)(() => ({
+export const TextButtonLink = styled(Link)(() => ({
     textDecoration: "none",
     // color:"black",
     // margin:"10px",

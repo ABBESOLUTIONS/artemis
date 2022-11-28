@@ -22,10 +22,10 @@ const OneContactElementStyle=styled(Card)(({theme})=>({
     justifyContent:"center",
     padding:"15px",
     // margin:"12px",
-    [theme.breakpoints.down("lg")]: {
-        minWidth:"100px"
-        // padding:"12px"
-    },
+    // [theme.breakpoints.down("lg")]: {
+    //     minWidth:"100%"
+    //     // padding:"12px"
+    // },
 }))
 
 function ContactElements() {
@@ -39,7 +39,7 @@ function ContactElements() {
                         <Typography sx={{width:"275px" ,fontSize:"18px", color:"#6F716F", textAlign:"center"}}>19, avenue Abel Sarnette, 84300 Cavaillon | France</Typography>
                     </OneContactElementStyle>
                 </Grid>
-                <Grid item xs={12} md={3} sm={6} lg={3} >
+                <Grid item xs={12} md={6} sm={6} lg={3} >
                     <OneContactElementStyle>
                         <ImageComponent image={"assets/images/telephone.png"}/>
                         <Typography sx={{fontWeight:"bold", fontSize:"25px"}}>Téléphone</Typography>
@@ -47,7 +47,7 @@ function ContactElements() {
                         <Typography sx={{color:"#6F716F", fontSize:"18px", textAlign:"center"}}>(Lundi - vendredi, 09:00–12:00, 14:00–18:00)</Typography>
                     </OneContactElementStyle>
                 </Grid>
-                <Grid item xs={12} md={3} sm={6} lg={3} >
+                <Grid item xs={12} md={6} sm={6} lg={3} >
                     <OneContactElementStyle>
                         <ImageComponent image={"assets/images/email.png"}/>
                         <Typography sx={{fontWeight:"bold", fontSize:"25px"}}>E-Mail</Typography>
@@ -55,7 +55,7 @@ function ContactElements() {
                         <TextButton title={"contact@artemisassurance.fr"} path={''} sx={{color:"#6F716F", fontSize:"18px"}}/>
                     </OneContactElementStyle>
                 </Grid>
-                <Grid item xs={12} md={3} sm={6} lg={3} >
+                <Grid item xs={12} md={6} sm={6} lg={3} >
                     <OneContactElementStyle>
                         <ImageComponent image={"assets/images/global.png"}/>
                         <Typography sx={{fontWeight:"bold", fontSize:"25px"}}>Site Internet</Typography>

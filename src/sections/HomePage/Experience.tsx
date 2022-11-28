@@ -22,6 +22,7 @@ const ExperienceContainer=styled(SectionStyle)(({theme})=>({
 }));
 
 const ExperienceContainerLeft=styled("div")(({theme})=>({
+    position:"relative",
     width:"50%",
     [theme.breakpoints.down("lg")]: {
         // flexDirection:"column"
@@ -48,7 +49,8 @@ const ExperienceImg=styled("img")(({theme})=>({
 }));
 const LeafImage=styled("img")(({theme})=>({
     position:"absolute",
-    marginLeft:"275px",
+    // marginLeft:"175px",
+    left:"250px",
     marginTop:"-25px",
     [theme.breakpoints.down("lg")]: {
 display:"none"    },

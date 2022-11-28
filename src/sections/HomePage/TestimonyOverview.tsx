@@ -52,7 +52,7 @@ const AboutOverviewRight=styled("div")(({theme})=>({
 const LeafImgTestimony=styled("img")(({theme})=>({
     position:"absolute", 
     marginLeft:"200px", 
-    marginTop:"-360px",
+    marginTop:"-200px",
     [theme.breakpoints.down("md")]: {
         display:"none",
     },
