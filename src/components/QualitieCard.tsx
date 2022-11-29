@@ -4,25 +4,28 @@ import ImageComponent from './ImageComponent';
 
 
 const QualitieCardContainer=styled(Card)(({theme})=>({
-    width:"250px",
+    width:"85%",
     minHeight:"450px",
     display:"flex",
     flexDirection:"column",
     justifyContent:"space-around",
     padding:"15px",
-    margin:"10px",
+    boxShadow: "1px 1px 7px 0px rgb(0 0 0 / 15%), 0px 0px 2px 0px rgb(0 0 0 / 5%)",
+    top:0,
+    transition: "all ease 300ms",
+    '&:hover':{
+        transform: "scale(1.03)"
+    },
+    // margin:"10px",
     [theme.breakpoints.down("lg")]: {
         // // width:"auto",
         // width:"100%",
         // minHeight:"175px"
     },
     [theme.breakpoints.down("sm")]: {
-        width:"320px",
+        
     },
-    '&:hover':{
-        // backgroundColor:"red",
-        scale:"10px"
-    }
+    
 }))
 
 interface Props {

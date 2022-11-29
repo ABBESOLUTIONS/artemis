@@ -6,6 +6,7 @@ function Sante() {
     return (
         <Page title="Formulaire-Sante">
             {/* <SanteForm/> */}
+            {/* <SanteForm/> */}
         </Page>
     );
 }
