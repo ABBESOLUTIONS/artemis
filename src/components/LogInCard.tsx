@@ -37,7 +37,7 @@ function LogInCard() {
       event.preventDefault();
       setIsLoading(true);
       dispatch(signInWithEmailAndPassword({email, pwd})).unwrap().then((res) => {
-        navigate("/autoMoto");
+        navigate("/devisOption");
       }).catch(error => {
         console.log(error);
       });

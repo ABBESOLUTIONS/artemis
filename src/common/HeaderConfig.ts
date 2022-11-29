@@ -5,5 +5,5 @@ export const HEADER = {
 
   export const HeaderConfig = {
     HEIGHT: 80,
-    MAX_HEIGHT: 90,
+    MAX_HEIGHT: 125,
   };

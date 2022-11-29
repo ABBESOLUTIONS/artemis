@@ -17,6 +17,7 @@ const QualityTitle = styled(Typography)(({theme}) => ({
     fontSize: "35px",
     fontWeight: 800,
     width:"100%",
+    textAlign: "center",
     [theme.breakpoints.down("lg")]: {
         fontSize: "25px",
         fontWeight: 400,
@@ -41,7 +42,7 @@ function Members() {
             <QualityTitle>Notre équipe de professionnels compétents</QualityTitle>
             <Grid container sx={{margintop:"50px", justify:"center"}} >
                     {
-                        members.map((OneMember, index) => <Grid key={index} item xs ><MemberCard image={OneMember.picture} nom={OneMember.name} poste={OneMember.job} /></Grid>)
+                        members.map((OneMember, index) => <Grid key={index} item xs={12} sm={6} md={6} lg={3} sx={{display:"flex", justifyContent:"center", alignItems:"center"}} ><MemberCard image={OneMember.picture} nom={OneMember.name} poste={OneMember.job} /></Grid>)
                     }
                 </Grid>
             <Typography sx={{textAlign:"center", fontWeight:"75", fontSize:"18px", marginTop:"30px"}}>Toute notre équipe est contituée de professionnels compétents et diplomés en Assurance.</Typography>

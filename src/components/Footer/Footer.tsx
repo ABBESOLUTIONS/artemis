@@ -12,6 +12,7 @@ const FooterContainerCopirght=styled(FooterStyle)(()=>({
     flexDirection: "column",
     justifyContent: "space-around",
     backgroundColor: "#DFF1F1",
+    // bottom:"0px",
 }));
 
 const FooterContainer=styled("div")(({theme})=>({

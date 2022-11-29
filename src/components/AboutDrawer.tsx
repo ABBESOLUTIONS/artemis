@@ -23,6 +23,9 @@ const DrawerHeader=styled("div")(({theme})=>({
   justifyContent:"space-between",
   // borderBottom:"solid 1px grey",
   backgroundColor:"white",
+  [theme.breakpoints.up("xl")]: {
+    width:"15%",
+  },
   [theme.breakpoints.down("lg")]: {
     width:"40%",
   },

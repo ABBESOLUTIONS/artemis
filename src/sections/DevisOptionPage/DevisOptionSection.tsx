@@ -30,7 +30,7 @@ function DevisOptionSection() {
                     <FormAccesButton nom={"SANTE"} desc={"(Mutuel et Prévoyance)"} chemin={CLIENT_PAGES.sante}/>
                 </Grid>
                 <Grid item xs={6}>
-                    <FormAccesButton nom={"PROFESSIONELLE"} desc={"(RCPRO,Multirisques et Decennal)"} chemin={CLIENT_PAGES.logIn}/>
+                    <FormAccesButton nom={"PROFESSIONELLE"} desc={"(RCPRO,Multirisques et Decennal)"} chemin={CLIENT_PAGES.professionelle}/>
                 </Grid>
             </Grid>
             

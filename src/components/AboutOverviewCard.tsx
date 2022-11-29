@@ -11,6 +11,10 @@ const AboutOverviewCardContainer=styled(Card)(({theme})=>({
     justifyContent:"space-around",
     padding:"10px",
     margin:"10px",
+    transition: "all ease 300ms",
+    '&:hover':{
+        transform: "scale(1.03)"
+    },
     [theme.breakpoints.down("lg")]: {
         minWidth:"75%",
         minHeight:"150px",

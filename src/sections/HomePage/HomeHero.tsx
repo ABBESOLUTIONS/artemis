@@ -9,11 +9,13 @@ import SendIcon from '@mui/icons-material/Send';
 import { PROJECT_COLORS } from '../../common/colors';
 import TestimonyCard from '../../components/TestimonyCard';
 import Testimony from '../../components/Testimony';
+import Fade from '../../components/animation/Fade';
+import FadeVariants from '../../variants/FadeVariants';
 
 const HomeHeroContainer=styled(SectionStyle)(({theme})=>({
     // width:"100%",
     // width:"calc(100% - 100px)",
-    minHeight:"150vh",
+    minHeight:"100vh",
     display:"flex",
     position:"relative",
     flexDirection:"row",
@@ -187,7 +189,7 @@ function HomeHero() {
                 </HomeHeroLeftSubTitle>
             </HomeHeroContainerLeft>
             <HomeHeroContainerRight>
-                <HeroImage src="assets/images/homeHeroImg.png" />
+            <HeroImage src="assets/images/homeHeroImg.png" />
             </HomeHeroContainerRight>
         </HomeHeroContainer>
     );

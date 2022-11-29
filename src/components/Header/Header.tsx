@@ -18,6 +18,12 @@ const LogoContainer = styled("div")(() => ({
     position: "relative",
     // backgroundImage: "url('assets/images/logo.png')",
 }));
+const HeaderContainer = styled(Container)(() => ({
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    // backgroundImage: "url('assets/images/logo.png')",
+}));
 // const LogoBgContainer = styled("div")(() => ({
 //     position: "absolute",
 //     top: "0px",
@@ -28,6 +34,7 @@ const LogoContainer = styled("div")(() => ({
     
 //     backgroundSize: "100% 100%",
 // }));
+
 
 function Header() {
     const isMobile = useResponsive("down", "lg");
@@ -43,19 +50,20 @@ function Header() {
     }
 
     return (
-        <AppBar position="fixed" color="transparent" elevation={0} sx={{height: HEADER.DESKTOP_HEIGHT, display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
+        // <AppBar position="fixed" color="transparent" elevation={0} sx={{height: HEADER.DESKTOP_HEIGHT, display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
             
-            <HeaderAnim sx={{display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
-                <LogoContainer>
+            <HeaderContainer>
+                {/* <HeaderAnim sx={{display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}> */}
+                {/* <LogoContainer>
                         <Logo sx={{marginLeft: "30px"}} logoImg="assets/images/logo.png"/>
-                </LogoContainer>
-                <Search />
+                </LogoContainer> */}
                 <Box sx={{display: "flex"}}>
+                {/* <Search /> */}
                     {ClientMenuItems.map((menu, index) => <HeaderMenuItem key={index} title={menu.title} path={menu.path} subMenu={menu.submenu}/>)}
+                {/* <DevisButton/> */}
                 </Box>
-                <DevisButton/>
-                <Button onClick={handleOpenDrawer}><MenuIcon fontSize="large" sx={{color:"black"}}/></Button>
-                <AboutDrawer open={open} onClick={handleCloseDrawer} />
+                {/* <Button onClick={handleOpenDrawer}><MenuIcon fontSize="large" sx={{color:"black"}}/></Button>
+                <AboutDrawer open={open} onClick={handleCloseDrawer} /> */}
                 {/* <Container maxWidth={false}>
                     <Grid container sx={{...(isMobile && {paddingLeft:"0px", paddingRight:"0px"})} && {...(!isMobile && {paddingLeft:"50pxpx", paddingRight:"50px"})}}>
                         <Grid item xs>
@@ -75,8 +83,9 @@ function Header() {
                         </Grid>
                     </Grid>
                 </Container> */}
-            </HeaderAnim>
-        </AppBar>
+            {/* </HeaderAnim> */}
+            </HeaderContainer>
+        // </AppBar>
     );
 }
 

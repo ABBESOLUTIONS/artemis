@@ -6,6 +6,8 @@ import { servicesOverview } from '../../common/Data';
 import AboutImage from '../../components/AboutImage';
 import SectionStyle from '../../styles/SectionStyle';
 import ImageComponent from '../../components/ImageComponent';
+import Fade from '../../components/animation/Fade';
+import FadeVariants from '../../variants/FadeVariants';
 
 const AboutOverviewContainer=styled(SectionStyle)(({theme})=>({
     height:"750px",
@@ -119,7 +121,7 @@ function AboutOverview() {
                 {/* <Typography variant='h3' sx={{textAlign:"center", fontWeight:"bold", fontSize:"45px", marginBottom:"50px"}}>Les missions que nous nous sommes fixées</Typography> */}
                 <QualityTitle>Les missions que nous nous sommes fixées</QualityTitle>
                 {
-                    servicesOverview.map((oneService,index) => <ServiceOverviewCard icone={oneService.icone} detail={oneService.subtitle}/>)
+                    servicesOverview.map((oneService,index) => <Fade variants={FadeVariants({}).inUp}><ServiceOverviewCard icone={oneService.icone} detail={oneService.subtitle}/></Fade>)
                 }
             </AboutOverviewLeft>
             <AboutOverviewRight>
