@@ -7,6 +7,7 @@ import FadeInRight from "./animation/FadeInRight";
 import LinearScaleSharpIcon from '@mui/icons-material/LinearScaleSharp';
 import DevisButton from "./DevisButton";
 import { Link } from "react-router-dom";
+import DeclarationMenu from "./Header/DeclarationMenu";
 
 const MenuMobileContainer = styled(Container)(() => ({
     position: "relative",
@@ -61,7 +62,13 @@ function MenuMobile() {
             <MenuMobileContainer>
                 <MenuMobileBtn onClick={toggleMenu} children={<LinearScaleSharpIcon sx={{fontSize: "35px"}}/>}/>
                     <MenuMobileItemContainer sx={{display: menuIsVisible ? "flex" : "none"}}>
-                        {ClientMenuItems.map((menu, index) => <MenuMobileItem key={index} onClick={toggleMenu} to={menu.path}><MenuMobileItemText>{menu.title}</MenuMobileItemText></MenuMobileItem>)}
+                        {ClientMenuItems.map((menu, index) => 
+                                {
+                                    if (index < ClientMenuItems.length - 1)
+                                        return <MenuMobileItem key={index} onClick={toggleMenu} to={menu.path}><MenuMobileItemText>{menu.title}</MenuMobileItemText></MenuMobileItem>
+                                    return <DeclarationMenu title={menu.title} ></DeclarationMenu>
+                                }
+                        )}
                         {<FadeInRight start={menuIsVisible}><DevisButton ></DevisButton></FadeInRight>}
                     </MenuMobileItemContainer>
             </MenuMobileContainer>

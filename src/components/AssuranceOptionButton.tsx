@@ -1,9 +1,10 @@
 import { styled, Typography } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { PROJECT_COLORS } from '../common/colors';
 
 const OptionButtonStyle=styled(Link)(({theme})=>({
-    minWidth:"100px",
+    // maxWidth:"100px",
     height:"42px",
     borderRadius:"5px",
     display:"flex",
@@ -14,11 +15,12 @@ const OptionButtonStyle=styled(Link)(({theme})=>({
    margin:"10px",
    padding:"5px",
    textDecoration:"none",
+   color:PROJECT_COLORS.primarySwatch,
     [theme.breakpoints.down("md")] : {
-        minWidth:"70px"
+        // maxWidth:"70px"
     },
     [theme.breakpoints.down("sm")] : {
-        minWidth:"Opx"
+        // minWidth:"Opx"
     }
 
 }));

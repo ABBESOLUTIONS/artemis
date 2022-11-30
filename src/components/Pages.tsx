@@ -6,7 +6,7 @@ const PageBaseStyle = styled("div")(() => ({
     // maxWidth: "1800px",
     // width: "100%",
     // margin: "auto"
-    paddingTop:"80px"
+    paddingTop:"100px"
 }));
 interface Props {
     children: React.ReactNode,

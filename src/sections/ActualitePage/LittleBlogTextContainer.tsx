@@ -1,8 +1,8 @@
 import { Stack, styled, Typography } from '@mui/material';
 import React from 'react';
-import ImageComponent from './ImageComponent';
+import ImageComponent from '../../components/ImageComponent';
 
-const LittleBlogTextContainerStyle=styled("div")(()=>({
+const LittleBlogTextContainerStyle=styled("div")(({theme})=>({
     width:"60%",
     minHeight:"175px",
     display:"flex",
@@ -11,7 +11,11 @@ const LittleBlogTextContainerStyle=styled("div")(()=>({
     justifyContent:"center",
     backgroundColor:"#F4F4F4",
     borderRadius:"5px",
-    padding:"15px"
+    padding:"15px",
+    [theme.breakpoints.down("md")] : {
+        flexDirection:"column",
+        width:"95%"
+    }
 }));
 
 function LittleBlogTextContainer() {

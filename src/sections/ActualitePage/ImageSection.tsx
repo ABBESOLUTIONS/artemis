@@ -1,11 +1,11 @@
-import { Grid, Stack, styled, Typography } from '@mui/material';
+import { Button, Grid, Stack, styled, Typography } from '@mui/material';
 import React from 'react';
 import ImageComponent from '../../components/ImageComponent';
 import TextButton from '../../components/TextButton';
 import SectionStyle from '../../styles/SectionStyle';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import LittleBlogTextContainer from '../../components/LittleBlogTextContainer';
+import LittleBlogTextContainer from './LittleBlogTextContainer';
 
 const ImageSectionStyle=styled(SectionStyle)(()=>({
     width:"calc(100% - 20px)",
@@ -24,11 +24,12 @@ export const FirstSectionStyle=styled("div")(({theme})=>({
     justifyContent:"center",
     // backgroundColor:"red",
     [theme.breakpoints.down("md")] : {
-        width:"75%"
+        width:"95%"
     }
 }));
 
 const UnderImageElement=styled(Grid)(({theme})=>({
+    marginTop:"15px",
     width:"100%",
     [theme.breakpoints.down("md")] : {
         width:"100%",
@@ -72,6 +73,22 @@ const AssuranceText=styled(TextButton)(({theme})=>({
     }
 
 }));
+const UnderImageButton=styled(Button)(({theme})=>({
+    fontWeight:525,
+    color:"grey",
+    // margin:"15px",
+    // fontSize:"1em",
+   
+    [theme.breakpoints.down("md")] : {
+        // width:"30px",
+        fontSize:"10px"
+    },
+    [theme.breakpoints.down("sm")] : {
+        width:"100px",
+        fontSize:"7px"
+    },
+
+}));
 
 function ImageSection() {
     return (
@@ -82,18 +99,23 @@ function ImageSection() {
                         <BigImageStyle src={"assets/images/blog-1.jpg"}/>
                         </Grid>
                 </Grid>
-                <UnderImageElement container xs>
-                        <Grid xs={7} sx={{}}>
-                            <Stack direction={"row"} sx={{ alignItems:"center",  margin:"8px", left:"0px"}}>
-                                <ImageComponent image="assets/images/admin.jpg" sx={{margin:"15px" }}/>
-                                <TextButton title={"Publié par Admin"} path={''} />
+                <UnderImageElement container xs sx={{}}>
+                        <Grid md={7} lg={7} xs={5} sx={{}}>
+                            <Stack direction={"row"} sx={{ alignItems:"center",  margin:"0px", left:"0px"}}>
+                                <ImageComponent image="assets/images/admin.jpg" sx={{ }}/>
+                                {/* <TextButton title={"Publié par Admin"} path={''} /> */}
+                                <UnderImageButton>Publié par Admin</UnderImageButton>
                             </Stack>
                         </Grid>
-                        <Grid xs={3} sx={{}}>
-                             <MonthText sx={{}}><CalendarMonthIcon/> 14 janvier 2022</MonthText>
+                        <Grid md={3} lg={3}  xs={4} sx={{}}>
+                             {/* <MonthText sx={{}} ><CalendarMonthIcon/> 14 janvier 2022</MonthText> */}
+                             <UnderImageButton startIcon={<CalendarMonthIcon/>}>14 Janvier 2022</UnderImageButton>
                         </Grid>
-                        <Grid xs={2} sx={{}}>
-                            <Stack direction={"row"} sx={{margin:"15px", marginRight:"0px"}}><BookmarkBorderIcon/><AssuranceText title={"ASSURANCE"} path={''}/></Stack>
+                        <Grid md={2} lg={2}  xs={3} sx={{}}>
+                            {/* <Stack direction={"row"} sx={{margin:"15px", marginRight:"0px"}}><BookmarkBorderIcon/><AssuranceText title={"ASSURANCE"} path={''}/></Stack> */}
+                            <Stack direction={"row"} sx={{marginRight:"0px"}}>
+                                <UnderImageButton startIcon={<BookmarkBorderIcon/>}>ASSURANCE</UnderImageButton>
+                            </Stack>
                         </Grid>
                 </UnderImageElement>
 
