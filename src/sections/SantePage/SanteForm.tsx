@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled, Typography, Box, Grid, TextField, MenuItem, FormControl, FormGroup, FormControlLabel, Checkbox, FormHelperText, Button} from '@mui/material';
 import SectionStyle from '../../styles/SectionStyle';
 import { PROJECT_COLORS } from '../../common/colors';
@@ -12,6 +12,8 @@ import { GarantieSante } from '../../components/Ennum/GarantiesSante';
 import { OptionsSante } from '../../components/Ennum/OptionsSante';
 import { ModePaiement } from '../../components/Ennum/ModePaiement';
 import { addDevisSante } from '../../redux/slices/DevisSanteRed';
+import { useNavigate } from 'react-router-dom';
+import ModalValidation from '../../components/ModalValidation';
 
 
 const SanteFormContainer=styled(SectionStyle)(()=>({
@@ -72,22 +74,36 @@ const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>)
       setData((prev) => ({ ...prev, Mode_Paiement: data?.Mode_Paiement.filter(one => one != e.target.name) } as DevisSanteModel));
     }
   console.log(data);
+}
 
   const dispatch = useAppDispatch();
 
   const validate = () => {
     if (data && user?.uid) {
       data.id_client = user?.uid;
-      dispatch(addDevisSante({oneDevisSante: data})).unwrap();
+      const nDate= new Date();
+      data!.dateRegister= `${nDate.getFullYear()}-${(nDate.getUTCMonth()+1)}-${nDate.getDate()}`;
+      data.typeDevis = "SANTE";
+      dispatch(addDevisSante({oneDevisSante: data})).unwrap().then(handleOpenDialog);
     }
 };
   
+const [dialogOpen, setDialogOpen] = useState(false);
+const [succesState, setSuccesState] = useState(true);
+const navigate = useNavigate();
+const handleOpenDialog = () => {
+  setDialogOpen(true);
+};
+const handleCloseDialog = () => {
+  setDialogOpen(false);
+  navigate("/contratsList");
+}
     return (
         <SanteFormContainer>
             <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Vous etes entrain de demander un devis...</Typography>
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"45px", marginBottom:"50px", textAlign:"center" }}>FICHE CONSEIL</Typography>
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"35px", marginBottom:"50px", textAlign:"center" }}>Etude Assurance Sante</Typography>
-            <Box component="form" sx={{'& .MuiTextField-root': { m: 2, width: '50ch' },}}>
+            <Box component="form"  sx={{'& .MuiTextField-root': { m: 2, width: '50ch' },}}>
                 <div>
                 <TextFieldPersonnalise id={''}  name="Nom" required={true} onChange={handleChange} label={'Nom'} value={data?.Nom ?? ""} />
                 <TextFieldPersonnalise id={''}  name="Prenom" required={true} onChange={handleChange}  label={"Prénom"} value={data?.Prenom ?? ""} />
@@ -153,7 +169,7 @@ const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>)
                 </div>
                 <Box sx={{ display: 'flex' }}>
                   <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-                    <FormGroup>
+                    <FormGroup sx={{display:"flex", flexDirection:"row"}}>
                       {
                         Object.keys(GarantieSante).map((oneGarantie, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedGarantie} name={GarantieSante[oneGarantie as keyof typeof GarantieSante]}/>} label={GarantieSante[oneGarantie as keyof typeof GarantieSante]}/>)
                       }
@@ -163,7 +179,7 @@ const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>)
                 </Box>
                 <Box sx={{ display: 'flex' }}>
                   <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-                    <FormGroup>
+                    <FormGroup sx={{display:"flex",  height:"150px",}}>
                       {
                         Object.keys(OptionsSante).map((oneOptionSante, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedOptions} name={OptionsSante[oneOptionSante as keyof typeof OptionsSante]}/>} label={OptionsSante[oneOptionSante as keyof typeof OptionsSante]}/>)
                       }
@@ -173,7 +189,7 @@ const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>)
                 </Box>
                 <Box sx={{ display: 'flex' }}>
                   <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-                    <FormGroup>
+                    <FormGroup sx={{display:"flex", flexDirection:"row"}}>
                       {
                         Object.keys(ModePaiement).map((oneModePaiement, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>)
                       }
@@ -181,10 +197,11 @@ const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>)
                   <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                   </FormControl>
                 </Box>
-                <Button variant='outlined' onClick={validate}>valider</Button>
+                <Button variant="contained" onClick={validate} sx={{ backgroundColor:"#138f82", display:"flex", justifyContent:"center", alignItems:"center", marginLeft:"40%", width:"100px", height:"50px" }}>valider</Button>
+                {dialogOpen && (<ModalValidation stateInit={dialogOpen} stateClose={handleCloseDialog} isSucces={succesState}  />)}
             </Box>
         </SanteFormContainer>
     );
-                    }}
+                    }
 
 export default SanteForm;

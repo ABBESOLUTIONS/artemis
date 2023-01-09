@@ -1,11 +1,11 @@
 import React from 'react';
-import Page from '../components/Pages';
+import Page from '../components/UserLayout/UserPages';
 import ProfessionelleForm from '../sections/ProfessionellePage.tsx/ProfessionelleForm';
 
 function Professionelle() {
     return (
         <Page title="Devis-Pro">
-            <ProfessionelleForm/>
+           <ProfessionelleForm/>
         </Page>
     );
 }

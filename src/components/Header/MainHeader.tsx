@@ -37,7 +37,7 @@ function MainHeader() {
                             <Logo sx={{marginLeft: "30px"}} logoImg="assets/images/logo.png"/>
                         </Grid>
                         <Grid item lg={11} xs sx={{ display: "flex", alignItems: "center", justifyContent:"space-around", }}>
-                            {!isMobile && <Search/>}
+                            {/* {!isMobile && <Search/>} */}
                             {!isMobile && <Header/>}
                             {!isMobile && <DevisButton/>}
                             {isMobile && <MenuMobile/>}

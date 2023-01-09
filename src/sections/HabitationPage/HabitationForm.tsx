@@ -1,6 +1,7 @@
 
 import { styled, Typography, Box, Grid, TextField, MenuItem, RadioGroup, FormLabel, FormControlLabel, Radio, FormControl, FormGroup, Checkbox, FormHelperText, Button} from '@mui/material';
-import React from 'react';
+import React, { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PROJECT_COLORS } from '../../common/colors';
 import AutoMotoPaiementCheck from '../../components/AutoMotoPaiementCheck';
 import { GarantiesHabitation } from '../../components/Ennum/GarantiesHabitation';
@@ -10,6 +11,7 @@ import { OptionHabitation } from '../../components/Ennum/OptionsHabitation';
 import HabitationGarantieCheck from '../../components/HabitationGarantieCheck';
 import HabitationInstallationCheck from '../../components/HabitationInstallationCheck';
 import HabitationOptionCheck from '../../components/HabitationOptionCheck';
+import ModalValidation from '../../components/ModalValidation';
 import TextFieldPersonnalise from '../../components/TextFieldPersonnalise';
 import { DevisHabitationModel } from '../../models/DevisHabitationModel';
 import { addDevisHabitation } from '../../redux/slices/DevisHabitationRed';
@@ -91,149 +93,34 @@ const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>)
 
 const dispatch = useAppDispatch();
 
-const validate = () => {
+const validate = (event: FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
     if (data && user?.uid) {
       data.id_client = user?.uid;
-      dispatch(addDevisHabitation({oneDevisHabitation: data})).unwrap();
+      const nDate= new Date();
+      data!.dateRegister= `${nDate.getFullYear()}-${(nDate.getUTCMonth()+1)}-${nDate.getDate()}`;
+      data.typeDevis = "HABITATION";
+      dispatch(addDevisHabitation({oneDevisHabitation: data})).unwrap().then(handleOpenDialog);
     }
 }
 
-  //   const [name, setName] = React.useState("");
+const [dialogOpen, setDialogOpen] = useState(false);
+const [succesState, setSuccesState] = useState(true);
+const navigate = useNavigate();
+const handleOpenDialog = () => {
+  setDialogOpen(true);
+};
+const handleCloseDialog = () => {
+  setDialogOpen(false);
+  navigate("/contratsList");
+}
 
-  // const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setName(event.target.value);
-  // };
-  //   const [prenom, setPrenom] = React.useState("");
-
-  // const handlePrenomChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setPrenom(event.target.value);
-  // };
-  // const [adresse, setAdresse] = React.useState("");
-
-  // const handleAdresseChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setAdresse(event.target.value);
-  // };
-  //   const [numId, setNumId] = React.useState("");
-
-  // const handleNumIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setNumId(event.target.value);
-  // };
-  //   const [etage, setEtage] = React.useState("");
-
-  // const handleEtageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setEtage(event.target.value);
-  // };
-  //   const [nbEtage, setNbEtage] = React.useState("");
-
-  // const handleNbEtageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setNbEtage(event.target.value);
-  // };
-  // const [telFix, setTelFix] = React.useState("");
-
-  // const handleTelFixChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setTelFix(event.target.value);
-  // };
-  //   const [telMob, setTelMob] = React.useState("");
-
-  // const handleTelMobChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setTelMob(event.target.value);
-  // };
-  // const [email, setEmail] = React.useState("");
-
-  // const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setEmail(event.target.value);
-  // };
-  // const [situationFami, setSituationFami] = React.useState("");
-
-  // const handlesituationFamiChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setSituationFami(event.target.value);
-  // };
-  // const [nbEfts, setNbEfts] = React.useState("");
-
-  // const handleNbEftsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setNbEfts(event.target.value);
-  // };
-  // const [adresseBien, setAdresseBien] = React.useState("");
-
-  // const handleAdresseBienChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setAdresseBien(event.target.value);
-  // };
-  // const [utilisationResidence, setUtilisationResidence] = React.useState("");
-
-  // const handleUtilisationResidenceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setUtilisationResidence(event.target.value);
-  // };
-  // const [statut, setStatut] = React.useState("");
-
-  // const handleStatutChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setStatut(event.target.value);
-  // };
-  // const [siProprio, setSiProprio] = React.useState("");
-
-  // const handleSiProprioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setSiProprio(event.target.value);
-  // };
-  // const [surface, setSurface] = React.useState("");
-
-  // const handleSurfaceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setSurface(event.target.value);
-  // };
-  // const [nbPieces, setNbPieces] = React.useState("");
-
-  // const handleNbPiecesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setNbPieces(event.target.value);
-  // };
-  // const [ageBien, setAgeBien] = React.useState("");
-
-  // const handleAgeBienChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setAgeBien(event.target.value);
-  // };
-  // const [engin, setEngin] = React.useState("");
-
-  // const handleEnginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setEngin(event.target.value);
-  // };
-  // const [plafondValeur, setPlafondValeur] = React.useState("");
-
-  // const handlePlafondValeurChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setPlafondValeur(event.target.value);
-  // };
-  // const [objetValeur, setObjetValeur] = React.useState("");
-
-  // const handleObjetValeurChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setObjetValeur(event.target.value);
-  // };
-  // const [realisationComp, setRealisationComp] = React.useState("");
-
-  // const handleRealisationCompChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setRealisationComp(event.target.value);
-  // };
-  // const [motifReal, setMotifReal] = React.useState("");
-
-  // const handleMotifRealChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setMotifReal(event.target.value);
-  // };
-  // const [utilResidence, setUtilResidence] = React.useState("");
-
-  // const handleUtilResidenceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setUtilResidence(event.target.value);
-  // };
-  // const [nomsPenomNaissEfts, setNomsPenomNaissEfts] = React.useState("");
-
-  // const handleNomsPenomNaissEftsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setNomsPenomNaissEfts(event.target.value);
-  // };
-  // const [animaux, setAnimaux] = React.useState("");
-
-  // const handleAnimauxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setAnimaux(event.target.value);
-  // };
     return (
         <HabitationFormContainer>
             <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Vous etes entrain de demander un devis...</Typography>
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"45px", marginBottom:"50px", textAlign:"center" }}>FICHE CONSEIL</Typography>
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"35px", marginBottom:"50px", textAlign:"center" }}>Etude Assurance Habitation</Typography>
-            <Box component="form" sx={{'& .MuiTextField-root': { m: 2, width: '50ch' },}}>
+            <Box component="form" onSubmit={validate} sx={{'& .MuiTextField-root': { m: 2, width: '50ch' },}}>
                 <div>
                 <TextFieldPersonnalise id={''} name="Nom" required={true} onChange={handleChange} label={"Nom"} value={data?.Nom ?? ""} />
                 <TextFieldPersonnalise id={''} name="Prenom" required={true} onChange={handleChange}  label={"Prénom"} value={data?.Prenom ?? ""} />
@@ -244,11 +131,11 @@ const validate = () => {
                 </div>
                 <div>
                 <TextFieldPersonnalise id={''} name="Etage" required={true} onChange={handleChange} label={"Etage"} value={data?.Etage ?? ""} />
-                <TextFieldPersonnalise id={''} name="Nbre_Etages_Immeuble" required={true} onChange={handleChange} label={"Nombre d'Etages de l'immeuble"} value={data?.Nbre_Etages_Immeuble ?? ""} />
+                <TextFieldPersonnalise id={''} name="Nbre_Etages_Immeuble" required={true} onChange={handleChange} label={"Nombre d'Etages de l'immeuble"} type="number" value={data?.Nbre_Etages_Immeuble ?? ""} />
                 </div>
                 <div>
                 <TextFieldPersonnalise id={''} name="Telephone_Fix" required={true} onChange={handleChange} label={"Téléphone Fixe"} value={data?.Telephone_Fix ?? ""} />
-                <TextFieldPersonnalise id={''} name="Telephone_Mobile" required={true} onChange={handleChange} label={"Téléphone Mobile"} value={data?.Telephone_Mobile ?? ""} />
+                <TextFieldPersonnalise id={''} name="Telephone_Mobile" required={true} onChange={handleChange} type="tel" label={"Téléphone Mobile"} value={data?.Telephone_Mobile ?? ""} />
                 </div>
                 <div>
                 <TextFieldPersonnalise id={''} name="Email" required={true} onChange={handleChange} label={"Email"} value={data?.Email ?? ""} />
@@ -309,7 +196,7 @@ const validate = () => {
                 <Typography>Installations Extérieures:</Typography>
                 <Box sx={{ display: 'flex' }}>
                   <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-                    <FormGroup>
+                    <FormGroup sx={{display:"flex", flexDirection:"row"}}>
                       {
                         Object.keys(InstallationsHabitation).map((oneInstallation, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedInstallation} name={InstallationsHabitation[oneInstallation as keyof typeof InstallationsHabitation]}/>} label={InstallationsHabitation[oneInstallation as keyof typeof InstallationsHabitation]}/>)
                       }
@@ -323,7 +210,7 @@ const validate = () => {
                 <Typography>Garanties Souhaitées:</Typography>
                 <Box sx={{ display: 'flex' }}>
                   <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-                    <FormGroup>
+                    <FormGroup sx={{display:"flex",  height:"150px",}}>
                       {
                         Object.keys(GarantiesHabitation).map((oneHabitation, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedGarantieHabitat} name={GarantiesHabitation[oneHabitation as keyof typeof GarantiesHabitation]}/>} label={GarantiesHabitation[oneHabitation as keyof typeof GarantiesHabitation]}/>)
                       }
@@ -336,7 +223,7 @@ const validate = () => {
                 <Typography>Options:</Typography>
                 <Box sx={{ display: 'flex' }}>
                   <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-                    <FormGroup>
+                    <FormGroup sx={{display:"flex", flexDirection:"row"}}>
                       {
                         Object.keys(OptionHabitation).map((oneOption, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedOptionHabitat} name={OptionHabitation[oneOption as keyof typeof OptionHabitation]}/>} label={OptionHabitation[oneOption as keyof typeof OptionHabitation]}/>)
                       }
@@ -351,7 +238,7 @@ const validate = () => {
                 <Box sx={{ display: 'flex' }}>
                     <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
                         <FormLabel component="legend">Modes de Paiement possible</FormLabel>
-                        <FormGroup>
+                        <FormGroup sx={{display:"flex", flexDirection:"row"}}>
                           {
                             Object.keys(ModePaiement).map((oneModePaiement, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>)
                           }
@@ -360,9 +247,9 @@ const validate = () => {
                     </FormControl>
                 </Box>
                 {/* </Box> */}
-                <Button variant='outlined' onClick={validate}>valider</Button>
+                <Button variant="contained" type="submit" sx={{ backgroundColor:"#138f82", display:"flex", justifyContent:"center", alignItems:"center", marginLeft:"40%", width:"100px", height:"50px" }}>valider</Button>
             </Box>
-            
+            {dialogOpen && (<ModalValidation stateInit={dialogOpen} stateClose={handleCloseDialog} isSucces={succesState}  />)}
         </HabitationFormContainer>
     );
 }

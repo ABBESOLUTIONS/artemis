@@ -1,12 +1,11 @@
 import React from 'react';
-import Page from '../components/Pages';
+import Page from '../components/UserLayout/UserPages';
 import SanteForm from '../sections/SantePage/SanteForm';
 
 function Sante() {
     return (
         <Page title="Formulaire-Sante">
-            {/* <SanteForm/> */}
-            {/* <SanteForm/> */}
+           <SanteForm/>
         </Page>
     );
 }

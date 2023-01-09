@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, styled, Typography, Button, Stack} from '@mui/material';
 import FooterItems from './Footer/FooterItems';
 import TextButton from './TextButton';
+import { CLIENT_PAGES } from '../routes/paths';
 
 
 const ServiceOverviewCardStyle=styled(Card)(({theme})=>({
@@ -45,7 +46,7 @@ function ServiceOverviewCard() {
                     <Typography> ASSURANCE    •</Typography>
                     <Typography>VIE</Typography>
                 </Stack>
-                <TextButton title={"Savoir plus..."} path={''} sx={{fontWeight:"bold", fontSize:"25px", color:"white", marginLeft:"20px"}}/>
+                <TextButton title={"Savoir plus..."} path={CLIENT_PAGES.services} sx={{fontWeight:"bold", fontSize:"25px", color:"white", marginLeft:"20px"}}/>
             </ServiceOverviewTextStyle>
         </ServiceOverviewCardStyle>
     );

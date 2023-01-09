@@ -4,7 +4,7 @@ import ImageComponent from './ImageComponent';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Visibility, VisibilityOff, VpnKeyRounded } from '@mui/icons-material';
 import TextButton from './TextButton';
-import { CLIENT_PAGES } from '../routes/paths';
+import { CLIENT_PAGES, USER_PAGES } from '../routes/paths';
 import PasswordIcon from '@mui/icons-material/Password';
 import { useAppDispatch } from '../redux/store';
 import { useNavigate } from 'react-router-dom';
@@ -37,7 +37,7 @@ function LogInCard() {
       event.preventDefault();
       setIsLoading(true);
       dispatch(signInWithEmailAndPassword({email, pwd})).unwrap().then((res) => {
-        navigate("/devisOption");
+        navigate("/contratsList");
       }).catch(error => {
         console.log(error);
       });
@@ -48,7 +48,7 @@ function LogInCard() {
 
     return (
         <LogInCardContainer>
-            <ImageComponent image={"assets/images/logo.gif"} sx={{marginBottom:"50px"}}/>
+            <ImageComponent image={"assets/images/logo.gif"} sx={{marginBottom:"50px", width:"55%"}}/>
             <Box component="form" sx={{ m: 1, width: "90%"}} noValidate autoComplete="off">
                 <TextField value={email} onChange={handleEmailChange} fullWidth size="small" label="Email" helperText=" " variant="standard" InputProps={{startAdornment: <InputAdornment position="start"><AccountCircle sx={{ color: 'action.active', }} /></InputAdornment>}}/>
                 <TextField value={pwd} onChange={handlePwdChange} fullWidth size="small" label="Mot de passe" helperText=" " variant="standard" type={"password"} InputProps={{startAdornment: <InputAdornment position="start"><VpnKeyRounded sx={{ color: 'action.active' }} /></InputAdornment>}}/>

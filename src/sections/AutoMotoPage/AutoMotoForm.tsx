@@ -1,11 +1,13 @@
 import { styled, Typography, Box, Grid, TextField, MenuItem, FormHelperText, FormControl, FormGroup, Checkbox, FormControlLabel, FormLabel, Button} from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PROJECT_COLORS } from '../../common/colors';
 import { currencies } from '../../common/Data';
 import { Garage } from '../../components/Ennum/Garage';
 import { Garantie } from '../../components/Ennum/Garantie';
 import { ModePaiement } from '../../components/Ennum/ModePaiement';
 import { Options } from '../../components/Ennum/Option';
+import ModalValidation from '../../components/ModalValidation';
 import TextFieldPersonnalise from '../../components/TextFieldPersonnalise';
 import { DevisAutoModel } from '../../models/DevisAutoModel';
 import { addDevisAuto } from '../../redux/slices/DevisAutoRed';
@@ -170,9 +172,23 @@ function AutoMotoForm() {
   const validate = () => {
     if (data && user?.uid) {
       data.id_client = user?.uid;
-      dispatch(addDevisAuto({oneDevisAuto: data})).unwrap();
+      const nDate= new Date();
+      data!.dateRegister= `${nDate.getFullYear()}-${(nDate.getUTCMonth()+1)}-${nDate.getDate()}`;
+      data.typeDevis = "AUTO-MOTO";
+      dispatch(addDevisAuto({oneDevisAuto: data})).unwrap().then(handleOpenDialog);
     }
-}
+}     
+
+    const [dialogOpen, setDialogOpen] = useState(false);
+    const [succesState, setSuccesState] = useState(true);
+    const navigate = useNavigate();
+    const handleOpenDialog = () => {
+      setDialogOpen(true);
+    };
+    const handleCloseDialog = () => {
+      setDialogOpen(false);
+      navigate("/contratsList");
+    }
     return (
         <AutoMotoFormContainer>
             <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Vous etes entrain de demander un devis...</Typography>
@@ -197,15 +213,15 @@ function AutoMotoForm() {
                 <TextFieldPersonnalise id={''} name={"Situation_Familial"} required={true} label={'Situation Familial'} onChange={handleChange} value={data?.Situation_Familial?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"Nombre_Enfants_Inférieur_16ans"} required={true} label={"Nombre d'enfants < 16"} onChange={handleChange} value={data?.Nombre_Enfants_Inférieur_16ans ?? ""} />
-                <TextFieldPersonnalise id={''} name={"Nombre_Enfants_Superieur_16ans"} required={true} label={"Nombre d'enfants > 16"} onChange={handleChange} value={data?.Nombre_Enfants_Superieur_16ans ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Nombre_Enfants_Inférieur_16ans"} required={true} label={"Nombre d'enfants < 16"} type="number" onChange={handleChange} value={data?.Nombre_Enfants_Inférieur_16ans ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Nombre_Enfants_Superieur_16ans"} required={true} label={"Nombre d'enfants > 16"} type="number" onChange={handleChange} value={data?.Nombre_Enfants_Superieur_16ans ?? ""} />
                 </div>
                 <div>
                 <TextFieldPersonnalise id={''} name={"Profession"} required={true} label={'Profession'} onChange={handleChange} value={data?.Profession ?? ""} />
-                <TextFieldPersonnalise id={''} name={"Date_Naissance"} required={true} label={'Date de Naissance'} onChange={handleChange} value={data?.Date_Naissance ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Date_Naissance"} required={true} label={'Date de Naissance'} type="date" defaultValue="2022/1/06" onChange={handleChange} value={data?.Date_Naissance ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"Date_Permis_Conduite"} required={true} label={'Date de Permis de Conduire'} onChange={handleChange} value={data?.Date_Permis_Conduite ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Date_Permis_Conduite"} required={true} label={'Date de Permis de Conduire'}  type="date" onChange={handleChange} value={data?.Date_Permis_Conduite ?? ""} />
                 <TextFieldPersonnalise id={''} name={"Marque_D1"} required={true} label={"Marque (D1)"} onChange={handleChange} value={data?.Marque_D1 ?? ""} />
                 </div>
                 <div>
@@ -221,7 +237,7 @@ function AutoMotoForm() {
                 <TextFieldPersonnalise id={''} name={"Immatriculation"} required={true} label={"Immatriculation (A)"} onChange={handleChange} value={data?.Immatriculation ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"Date_Acquisition"} required={true} label={"Date d'Acquisition"} onChange={handleChange} value={data?.Date_Acquisition ?? ""} />
+                <TextFieldPersonnalise id={''} name={"Date_Acquisition"} required={true} label={"Date d'Acquisition"}  type="date" onChange={handleChange} value={data?.Date_Acquisition ?? ""} />
                 <TextFieldPersonnalise id={''} name={"Titulaire_Carte_Grise"} required={true} label={"Titulaire Carte Grise"} onChange={handleChange} value={data?.Titulaire_Carte_Grise ?? ""} />
                 </div>
                 <div>
@@ -229,7 +245,7 @@ function AutoMotoForm() {
                 <TextFieldPersonnalise id={''} name={"Coefficient_Bonus_CRM"} required={true} label={"Coef. Bonus/Malus (CRM)"} onChange={handleChange} value={data?.Coefficient_Bonus_CRM ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name={"Date_Obtention_CRM"} required={true} label={"Date d'Obtention du CRM"} onChange={handleChange} value={data?.Date_Obtention_CRM?? ""} />
+                <TextFieldPersonnalise id={''} name={"Date_Obtention_CRM"} required={true} label={"Date d'Obtention du CRM"}  type="date" onChange={handleChange} value={data?.Date_Obtention_CRM?? ""} />
                 </div>
                 <Typography>Nombre de sinistres lors des dernières années(R.i)</Typography>
                 <Typography>Ordre = Responsable / Demi-Responsable / Non-Responsable / Bris de Glace</Typography>
@@ -237,36 +253,36 @@ function AutoMotoForm() {
                 <TextField  id="outlined-required" select name={"Nature_Sinistre_1"} label="Nature" value={data?.Nature_Sinistre_1 ?? ""} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
                     {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
-                <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_1"} label={"Date"} onChange={handleChange} value={data?.Date_Sinistre_1 ?? ""} />
+                <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_1"} label={"Date"} onChange={handleChange}  type="date" value={data?.Date_Sinistre_1 ?? ""} />
                 </div>
                 <div>
                 <TextField  id="outlined-required" select name={"Nature_Sinistre_2"} label="Nature" value={data?.Nature_Sinistre_2 ?? ""} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined" sx={{borderColor:"green"}}>
                     {currencies.map((option) => (<MenuItem key={option.value}  value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
-                <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_2"} label={"Date"} onChange={handleChange} value={data?.Date_Sinistre_2 ?? ""} />
+                <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_2"} label={"Date"} onChange={handleChange}  type="date" value={data?.Date_Sinistre_2 ?? ""} />
                 </div>
                 <div>
                 <TextField  id="outlined-required" select name={"Nature_Sinistre_3"} label="Nature" value={data?.Nature_Sinistre_3 ?? ""} onChange={handleChange} helperText="Veuillez sélectioner la nature" variant="outlined">
                     {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
-                <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_3"} label={"Date"} onChange={handleChange} value={data?.Date_Sinistre_3 ?? ""} />
+                <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_3"} label={"Date"} onChange={handleChange}  type="date" value={data?.Date_Sinistre_3 ?? ""} />
                 </div>
                 <div>
                 <TextFieldPersonnalise id={''} required={true} name={"Resiliation_Compagnie"} label={"Résiliaton de la Compagnie"} onChange={handleChange} value={data?.Resiliation_Compagnie ?? ""} />
                 <TextFieldPersonnalise id={''} required={true} name={"Motif_Resiliation"} label={"Motif de Résiliation"} onChange={handleChange} value={data?.Motif_Resiliation ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} name={"Date_Resiliation"} label={"Date de Résiliation"} onChange={handleChange} value={data?.Date_Resiliation ?? ""} />
+                <TextFieldPersonnalise id={''} required={true} name={"Date_Resiliation"} label={"Date de Résiliation"}  type="date" onChange={handleChange} value={data?.Date_Resiliation ?? ""} />
                 <TextFieldPersonnalise id={''} required={true} name={"Suspension_ou_Annulation_Permis"} label={"Suspension/Annulation de Permis"} onChange={handleChange} value={data?.Suspension_ou_Annulation_Permis?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} required={true} name={"dateSuspens"} label={"Date & motif de la suspension / Annulation"} onChange={handleChange} value={data?.Date_Motif_Suspension ?? ""} />
+                <TextFieldPersonnalise id={''} required={true} name={"dateSuspens"} label={"Date & motif de la suspension / Annulation"}  type="date" onChange={handleChange} value={data?.Date_Motif_Suspension ?? ""} />
                 {/* <TextFieldPersonnalise  id="outlined-required" required={true} name={"dateMotifSuspens"} label="Date & motif de la suspension / Annulation" onChange={handleChange} value={data?.Nature_Sinistre_1 ?? ""}/> */}
                 </div>
                 <Typography>Garage:</Typography>
                 <Box sx={{ display: 'flex' }}>
                   <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-                    <FormGroup>
+                    <FormGroup sx={{display:"flex", flexDirection:"row"}}>
                       {
                         Object.keys(Garage).map((oneGarage, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedGarage} name={Garage[oneGarage as keyof typeof Garage]}/>} label={Garage[oneGarage as keyof typeof Garage]}/>)
                       }
@@ -277,7 +293,7 @@ function AutoMotoForm() {
                 <Box sx={{ display: 'flex' }}>
                     <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
                         <FormLabel component="legend">Garanties Souhaitées</FormLabel>
-                        <FormGroup>
+                        <FormGroup sx={{display:"flex", flexDirection:"row"}}>
                           {
                             Object.keys(Garantie).map((oneGarantie, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedGarantie} name={Garantie[oneGarantie as keyof typeof Garantie]}/>} label={Garantie[oneGarantie as keyof typeof Garantie]}/>)
                           }
@@ -288,7 +304,7 @@ function AutoMotoForm() {
                 <Box sx={{ display: 'flex' }}>
                     <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
                         <FormLabel component="legend">Option</FormLabel>
-                        <FormGroup>
+                        <FormGroup sx={{display:"flex",  height:"150px",}}>
                           {
                             Object.keys(Options).map((oneOptions, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedOptions} name={Options[oneOptions as keyof typeof Options]}/>} label={Options[oneOptions as keyof typeof Options]}/>)
                           }
@@ -299,7 +315,7 @@ function AutoMotoForm() {
                 <Box sx={{ display: 'flex' }}>
                     <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
                         <FormLabel component="legend">Modes de Paiement possible</FormLabel>
-                        <FormGroup>
+                        <FormGroup sx={{display:"flex", flexDirection:"row", }}>
                           {
                             Object.keys(ModePaiement).map((oneModePaiement, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>)
                           }
@@ -307,8 +323,9 @@ function AutoMotoForm() {
                         <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                     </FormControl>
                 </Box>
-                <Button variant='outlined' onClick={validate}>valider</Button>
+                <Button variant="contained" onClick={validate} sx={{ backgroundColor:"#138f82", display:"flex", justifyContent:"center", alignItems:"center", marginLeft:"40%", width:"100px", height:"50px" }}>valider</Button>
             </Box>
+            {dialogOpen && (<ModalValidation stateInit={dialogOpen} stateClose={handleCloseDialog} isSucces={succesState}  />)}
         </AutoMotoFormContainer>
     );
 }

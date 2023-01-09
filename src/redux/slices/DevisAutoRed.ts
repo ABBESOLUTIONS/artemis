@@ -28,4 +28,4 @@ const devisAutoSlice = createSlice({
 });
 
 // export const { } = ridesSlice.actions;
-export default devisAutoSlice.reducer;
+export default devisAutoSlice.reducer; 

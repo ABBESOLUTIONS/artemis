@@ -1,5 +1,5 @@
 import React from 'react';
-import Page from '../components/Pages';
+import Page from '../components/UserLayout/UserPages';
 import DevisOptionSection from '../sections/DevisOptionPage/DevisOptionSection';
 
 function DevisOption() {

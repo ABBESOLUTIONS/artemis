@@ -1,9 +1,12 @@
+import { getDateRangePickerDayUtilityClass } from '@mui/lab';
 import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Grid, styled, TextField, Typography } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PROJECT_COLORS } from '../../common/colors';
 import { GarantiesPro } from '../../components/Ennum/GarantiesPro';
 import { ModePaiement } from '../../components/Ennum/ModePaiement';
 import { OptionsPro } from '../../components/Ennum/OptionsPro';
+import ModalValidation from '../../components/ModalValidation';
 import ProfessionelleGarantieCheck from '../../components/ProfessionelGarantieCheck';
 import ProfessionelleOptionCheck from '../../components/ProfessionelleOptionCheck';
 import TextFieldPersonnalise from '../../components/TextFieldPersonnalise';
@@ -69,21 +72,35 @@ const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>)
 };
 
 const dispatch = useAppDispatch();
+const [currentDate, setCurrentDate] = useState({date: ''})
 
-const validate = () => {
+const validate = (event:any) => {
+    event?.preventDefault();
     if (data && user?.uid) {
       data.id_Client = user?.uid;
-      dispatch(addDevisPro({oneDevisPro: data})).unwrap();
+      const nDate= new Date();
+      data!.dateRegister= `${nDate.getFullYear()}-${(nDate.getUTCMonth()+1)}-${nDate.getDate()}`;
+      data.typeDevis = "RC-PRO";
+      dispatch(addDevisPro({oneDevisPro: data})).unwrap().then(handleOpenDialog);
     }
 }
 
-  
+const [dialogOpen, setDialogOpen] = useState(false);
+const [succesState, setSuccesState] = useState(true);
+const navigate = useNavigate();
+const handleOpenDialog = () => {
+  setDialogOpen(true);
+};
+const handleCloseDialog = () => {
+  setDialogOpen(false);
+  navigate("/contratsList");
+}
     return (
         <ProfessionelleFormContainer>
             <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Vous etes entrain de demander un devis...</Typography>
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"45px", marginBottom:"50px", textAlign:"center" }}>FICHE CONSEIL</Typography>
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"35px", marginBottom:"50px", textAlign:"center" }}>Etude Assurance RC Pro - Multi Risques Pro</Typography>
-            <Box component="form" sx={{'& .MuiTextField-root': { m: 2, width: '50ch' },}}>
+            <Box component="form" onSubmit={validate} sx={{'& .MuiTextField-root': { m: 2, width: '50ch' },}}>
                 <div>
                 <TextFieldPersonnalise id={''} name="Nom_Entreprise" required={true} onChange={handleChange} label={"Nom de l'Entreprise"} value={data?.Nom_Entreprise ?? ""} />
                 </div>
@@ -92,7 +109,7 @@ const validate = () => {
                 <TextFieldPersonnalise id={''} name="id_Client" required={true} onChange={handleChange} label={"N° Client"} value={data?.id_Client ?? ""} />
                 </div>
                 <div>
-                <TextFieldPersonnalise id={''} name="Nom_Souscripteur" required={true} onChange={handleChange} label={"Nom du Souscripteur"} value={data?.Nom_Souscripteur ?? ""} />
+                <TextFieldPersonnalise id={''} name="Nom" required={true} onChange={handleChange} label={"Nom du Souscripteur"} value={data?.Nom ?? ""} />
                 <TextFieldPersonnalise id={''} name="Prenom" required={true} onChange={handleChange}  label={"Prénom"} value={data?.Prenom ?? ""} />
                 </div>
                 <div>
@@ -156,7 +173,7 @@ const validate = () => {
                 <Typography>Garanties Souhaitées:</Typography>
                 <Box sx={{ display: 'flex' }}>
                   <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-                    <FormGroup>
+                    <FormGroup sx={{display:"flex", flexDirection:"row"}}>
                       {
                         Object.keys(GarantiesPro).map((oneGaranti, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedGarantiePro} name={GarantiesPro[oneGaranti as keyof typeof GarantiesPro]}/>} label={GarantiesPro[oneGaranti as keyof typeof GarantiesPro]}/>)
                       }
@@ -167,7 +184,7 @@ const validate = () => {
                 <Typography>Options:</Typography>
                 <Box sx={{ display: 'flex' }}>
                   <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-                    <FormGroup>
+                    <FormGroup sx={{display:"flex", flexDirection:"row"}}>
                       {
                         Object.keys(OptionsPro).map((oneOption, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedOptionPro} name={OptionsPro[oneOption as keyof typeof OptionsPro]}/>} label={OptionsPro[oneOption as keyof typeof OptionsPro]}/>)
                       }
@@ -178,7 +195,7 @@ const validate = () => {
                 <Box sx={{ display: 'flex' }}>
                     <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
                         <FormLabel component="legend">Modes de Paiement possible</FormLabel>
-                        <FormGroup>
+                        <FormGroup sx={{display:"flex", flexDirection:"row"}}>
                           {
                             Object.keys(ModePaiement).map((oneModePaiement, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>)
                           }
@@ -186,8 +203,9 @@ const validate = () => {
                         <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                     </FormControl>
                 </Box>
-                <Button variant='outlined' onClick={validate}>valider</Button>
+                <Button variant="contained" type="submit" sx={{ backgroundColor:"#138f82", display:"flex", justifyContent:"center", alignItems:"center", marginLeft:"40%", width:"100px", height:"50px" }}>valider</Button>
             </Box>
+            {dialogOpen && (<ModalValidation stateInit={dialogOpen} stateClose={handleCloseDialog} isSucces={succesState}  />)}
         </ProfessionelleFormContainer>
     );
 }

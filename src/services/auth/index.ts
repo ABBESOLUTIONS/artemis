@@ -19,6 +19,7 @@ const getCurentUser = () => {
         });
     });
 };
+
 const sendPasswordResetEmail = (email: string) => {
     return auth.sendPasswordResetEmail(auth.auth, email);
 };

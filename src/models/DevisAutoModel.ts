@@ -42,6 +42,8 @@ export interface DevisAutoModel {
       Garanties_Souhaitées: Array<string>,
       Option: Array<string>,
       Mode_Paiement: Array<string>,
+      dateRegister:string | null,
+      typeDevis:string,
       uid:string,
       
 }

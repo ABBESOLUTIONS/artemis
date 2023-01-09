@@ -34,7 +34,7 @@ const SubMenuItemContainer = styled("div")(() => ({
     justifyContent:"space-around",
     backgroundColor:"white",
     marginRight:"15px",
-    marginTop:"100px",
+    marginTop:"10%",
 
 }));
 const OneSubMenuItem = styled(Container)(() => ({

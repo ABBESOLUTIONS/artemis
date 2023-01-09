@@ -9,13 +9,19 @@ export const CLIENT_PAGES = {
     contact:"/contact",
     declaration:"/declaration",
     devisOption:"/devisOption",
-    autoMoto:"/autoMoto",
-    habitation:"/habitation",
-    sante:"/devisOption/sante",
-    professionelle:"/devisOption/professionelle",
     logIn:"/logIn",
     signUp:"/signUp",
     actualite:"/actualite",
     declarationSinistre:"/declarationSinistre",
     authentification:"/authentification",
 };
+export const USER_PAGES = {
+    contratsList:"/contratsList",
+    autoMoto:"/contratsList/autoMoto",
+    sante:"/contratsList/sante",
+    habitation:"/contratsList/habitation",
+    professionelle:"/contratsList/professionelle",
+    demande:"/contratsList/demande",
+    contact:"/contact",
+    deconnexion:"/contratsList/deconnexion",
+}

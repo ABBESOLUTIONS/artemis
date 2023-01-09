@@ -1,4 +1,4 @@
-import { OTHER_PAGES, CLIENT_PAGES } from "../routes/paths";
+import { OTHER_PAGES, CLIENT_PAGES, USER_PAGES } from "../routes/paths";
 
 const OtherMenuItems = [
   {
@@ -44,9 +44,28 @@ const ClientMenuItems = [
   },
 ];
 
+const UserMenuItems = [
+  {
+    title:"Mes Contrats",
+    path:USER_PAGES.contratsList,
+  },
+  {
+    title:"Demander Un Devis",
+    path:USER_PAGES.demande,
+  },
+  {
+    title:"Envoyer un Message",
+    path:USER_PAGES.contact,
+  },
+  {
+    title:"Deconnexion",
+    path:USER_PAGES.deconnexion,
+  },
+]
+
 const HeaderConfig = {
   HEIGHT: 80,
   MAX_HEIGHT: 90,
 };
 
-export { OtherMenuItems, ClientMenuItems, HeaderConfig };
+export { OtherMenuItems, ClientMenuItems, HeaderConfig, UserMenuItems};

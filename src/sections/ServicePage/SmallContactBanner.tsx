@@ -3,6 +3,8 @@ import { Button, Container, Grid, Stack, styled, Typography } from '@mui/materia
 import SectionStyle from '../../styles/SectionStyle';
 import { PROJECT_COLORS } from '../../common/colors';
 import ImageComponent from '../../components/ImageComponent';
+import { Link } from 'react-router-dom';
+import { CLIENT_PAGES } from '../../routes/paths';
 
 const SmallContactBannerStyle=styled(SectionStyle)(()=>({
     height:"300px",
@@ -36,8 +38,8 @@ function SmallContactBanner() {
         <SmallContactBannerStyle>
             <Typography sx={{fontWeight:"bold", color:"white"}}>Prêt.e à nous rejoindre ?</Typography>
             <Stack direction={"row"} sx={{margin:"15px"}}>
-                <Button variant="contained" sx={{bgcolor:PROJECT_COLORS.primarySwatch, fontSize:13, padding:"15px",margin:"15px" }}>Nous joindre</Button>
-                <Button variant="outlined" sx={{color:"white", borderColor:"white", fontSize:13, padding:"15px",margin:"15px"}}>Demander un devis</Button>
+                <Button variant="contained" type="button" component={Link} to={CLIENT_PAGES.contact} sx={{bgcolor:PROJECT_COLORS.primarySwatch, fontSize:13, padding:"15px",margin:"15px" }}>Nous joindre</Button>
+                <Button variant="outlined" type="button" component={Link} to={CLIENT_PAGES.devisOption} sx={{color:"white", borderColor:"white", fontSize:13, padding:"15px",margin:"15px"}}>Demander un devis</Button>
             </Stack>
             <EllipseWhite src="assets/images/ellipseWhite.png" sx={{}}/>
             <LeafDaught src="assets/images/Leaf+daught.png" sx={{}}/>

@@ -11,6 +11,8 @@ import TestimonyCard from '../../components/TestimonyCard';
 import Testimony from '../../components/Testimony';
 import Fade from '../../components/animation/Fade';
 import FadeVariants from '../../variants/FadeVariants';
+import { CLIENT_PAGES } from '../../routes/paths';
+import { Link } from 'react-router-dom';
 
 const HomeHeroContainer=styled(SectionStyle)(({theme})=>({
     // width:"100%",
@@ -184,8 +186,8 @@ function HomeHero() {
                     
                 </ButtonsContainer>
                 <HomeHeroLeftSubTitle spacing={4} direction="row" sx={{margin:"25px"}}>
-                    <Button variant="contained" startIcon={<ArrowForwardIosIcon sx={{fontSize:"large"}}/>} sx={{color:"white", backgroundColor:PROJECT_COLORS.primarySwatch, padding:"15px", fontSize:13}}>Lire plus...</Button>
-                    <Button variant="outlined" startIcon={<SendIcon/>} sx={{color:PROJECT_COLORS.primarySwatch, borderColor:PROJECT_COLORS.primarySwatch, fontSize:13}}>Nous contacter</Button>
+                    <Button variant="contained" component={Link} to={CLIENT_PAGES.services} type="button" startIcon={<ArrowForwardIosIcon sx={{fontSize:"large"}}/>} sx={{color:"white", backgroundColor:PROJECT_COLORS.primarySwatch, padding:"15px", fontSize:13}}>Lire plus...</Button>
+                    <Button variant="outlined" component={Link} to={CLIENT_PAGES.contact} type="button" startIcon={<SendIcon/>} sx={{color:PROJECT_COLORS.primarySwatch, borderColor:PROJECT_COLORS.primarySwatch, fontSize:13}}>Nous contacter</Button>
                 </HomeHeroLeftSubTitle>
             </HomeHeroContainerLeft>
             <HomeHeroContainerRight>

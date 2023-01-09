@@ -2,7 +2,7 @@ export interface DevisProModel{
     Nom_Entreprise:string,
     Adresse:string,
     id_Client:string,
-    Nom_Souscripteur:string,
+    Nom:string,
     Prenom : string,
     Forme_Juridique: string,
     Date_Naiss: string,
@@ -37,4 +37,7 @@ export interface DevisProModel{
     Options:Array<string>,
     Autres_Options:string,
     Mode_Paiements:Array<string>,
+    dateRegister:string | null,
+    typeDevis:string,
+    uid:string,
 }

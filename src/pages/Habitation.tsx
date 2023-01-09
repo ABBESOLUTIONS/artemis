@@ -1,5 +1,5 @@
 import React from 'react';
-import Page from '../components/Pages';
+import Page from '../components/UserLayout/UserPages';
 import HabitationForm from '../sections/HabitationPage/HabitationForm';
 
 function Habitation() {

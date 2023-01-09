@@ -34,4 +34,7 @@ export interface DevisHabitationModel {
     Options:Array<string>,
     Autres_Options:string,
     Modes_Paiement:Array<string>,
+    dateRegister:string | null,
+    typeDevis:string,
+    uid:string,
 }

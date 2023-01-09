@@ -34,6 +34,8 @@ export interface DevisSanteModel {
     Garantie_Souhaitées: Array<string>,
     Option: Array<string>,
     Mode_Paiement: Array<string>,
+    dateRegister:string | null,
+    typeDevis:string,
     uid:string,
 
 }

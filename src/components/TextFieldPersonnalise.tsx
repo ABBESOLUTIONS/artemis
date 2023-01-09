@@ -43,9 +43,11 @@ interface Props {
     value:string,
     helperText?:string,
     onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+    type?:string,
+    defaultValue?:string,
 }
 
-function TextFieldPersonnalise({id, required, label, value, helperText, onChange, name}: Props) {
+function TextFieldPersonnalise({id, required, label, value, helperText, onChange, name,type,defaultValue}: Props) {
     return (
         <TextFieldPersonnaliseStyle 
           id={id} 
@@ -55,6 +57,8 @@ function TextFieldPersonnalise({id, required, label, value, helperText, onChange
           value={value} 
           helperText={helperText} 
           onChange={onChange}
+          type={type}
+          defaultValue={defaultValue}
         />
     );
 }
