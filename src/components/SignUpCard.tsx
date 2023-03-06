@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { styled, SxProps, Typography,Container,Grid, Card, TextField, Box, FormControl, InputLabel, Input, IconButton, InputAdornment, Link} from '@mui/material';
+import { styled, SxProps, Typography,Container,Grid, Card, TextField, Box, FormControl, InputLabel, Input, IconButton, InputAdornment, Link, Snackbar} from '@mui/material';
 import ImageComponent from './ImageComponent';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Visibility, VisibilityOff, VpnKeyRounded } from '@mui/icons-material';
@@ -19,8 +19,8 @@ const SignUpCardContainer=styled(Card)(()=>({
     display:"flex",
     flexDirection:"column",
     alignItems:"center",
-    justifyContent:"center",
-    marginBottom:"100px",
+    justifyContent:"space-around",
+    marginBottom:"10px",
 }));
 
   
@@ -30,6 +30,19 @@ function SignUpCard() {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
+  const [openBar, setOpenBar] = useState(false);
+
+  const handleOpenBar = () => {
+    setOpenBar(true);
+  };
+
+  const handleCloseBar = (event: React.SyntheticEvent | Event, reason?: string) => {
+      if (reason === "clickaway") {
+        return
+      }
+
+      setOpenBar(false);
+  }
 
   const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -39,15 +52,17 @@ function SignUpCard() {
         if (pwd==confirmPwd && pwd.length>= 8) {
             setIsLoading(true);
             dispatch(createUserWithEmailAndPassword({email, pwd})).unwrap().then((res) => {
-                navigate("/authentification");
-                alert ("ca marche!");
+                navigate("/contratsList");
+                // alert ("ca marche!");
             }).catch(error => {
+                // alert("Email déja existant");
+                handleOpenBar();
             console.log(error);
             });
         } else if(pwd.length<8) {
-            alert ("Le")
+            alert ("Le Mot de Passe doit contenir au moins 8 caractères")
         } else {
-            alert("Mot de passe non comfnvhsghgviq")
+            alert("Mot de passe non conforme")
         }
         
 
@@ -63,9 +78,11 @@ function SignUpCard() {
                 <TextField value={pwd} onChange={handlePwdChange} fullWidth size="small" label="Mot de passe" helperText=" " variant="standard" type={"password"} InputProps={{startAdornment: <InputAdornment position="start"><VpnKeyRounded sx={{ color: 'action.active' }} /></InputAdornment>}}/>
                 <TextField value={confirmPwd} onChange={handleConfirmPwdChange} fullWidth size="small" label="confirmer votre mot de passe" helperText=" " variant="standard" type={"password"} InputProps={{startAdornment: <InputAdornment position="start"><VpnKeyRounded sx={{ color: 'action.active' }} /></InputAdornment>}}/>
             </Box>
-            <TextButton title={"Vous n'avez pas de compte?"} path={CLIENT_PAGES.logIn} sx={{ fontSize:"10px"}}/>
-          <LoadingButton sx={{}}  loading={isLoading} onClick={onSubmit} variant="outlined" color="success" type="submit">Valider</LoadingButton>
+          <LoadingButton sx={{}}  loading={isLoading} onClick={onSubmit} variant="contained" color="success" type="submit">Valider</LoadingButton>
+            <TextButton title={"Vous avez déjà un compte?"} path={CLIENT_PAGES.logIn} sx={{ fontSize:"10px"}}/>
+            <Snackbar open={openBar} onClose={handleCloseBar} message={"Email déja existant"}/>
         </SignUpCardContainer>
+        
     );
 }
 

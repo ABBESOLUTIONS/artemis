@@ -14,8 +14,10 @@ import Deconnexion from "../pages/Deconnexion";
 import DevisOption from "../pages/DevisOption";
 import Habitation from "../pages/Habitation";
 import HomePage from "../pages/HomePage";
+import InputEmail from "../pages/InputEmail";
 import LogIn from "../pages/LogIn";
 import Professionelle from "../pages/Professionelle";
+import ResetPassword from "../pages/ResetPassword";
 import Sante from "../pages/Sante";
 import Services from "../pages/Services";
 import SignUp from "../pages/SignUp";
@@ -55,6 +57,8 @@ export default function Router() {
           { path: CLIENT_PAGES.actualite, element: <Actualites /> },
           { path: CLIENT_PAGES.declarationSinistre, element: <DeclarationSinistre /> },
           { path: CLIENT_PAGES.authentification, element: <AuthEmail /> },
+          { path: CLIENT_PAGES.emailInput, element: <InputEmail /> },
+          { path: CLIENT_PAGES.reset, element: <ResetPassword /> },
         ],
       },
 
@@ -68,12 +72,7 @@ export default function Router() {
           { path: USER_PAGES.sante, element: <Sante /> },
           { path: USER_PAGES.habitation, element: <Habitation /> },
           { path: USER_PAGES.professionelle, element: <Professionelle /> },
-          { path: USER_PAGES.deconnexion, element: <Deconnexion/> },
-
-
-
-
-          
+          { path: USER_PAGES.deconnexion, element: <Deconnexion/> },          
         ]
       },
 

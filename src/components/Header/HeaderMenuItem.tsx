@@ -1,5 +1,5 @@
 import { Container, Divider, styled, Typography } from "@mui/material";
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import { Link, PathMatch, useMatch, useResolvedPath } from "react-router-dom";
 import { MenuItemModel } from "../../models/MenuItemModel";
 import { CLIENT_PAGES } from "../../routes/paths";
 import TextButton from "../TextButton";
@@ -34,7 +34,8 @@ const SubMenuItemContainer = styled("div")(() => ({
     justifyContent:"space-around",
     backgroundColor:"white",
     marginRight:"15px",
-    marginTop:"10%",
+    marginTop:"125px",
+    borderRadius:"10px",
 
 }));
 const OneSubMenuItem = styled(Container)(() => ({
@@ -56,17 +57,18 @@ interface Pops {
 
 function HeaderMenuItem({title, path, subMenu}: Pops) {
     let resolved = useResolvedPath(path);
-    let match = useMatch({ path: resolved.pathname, end: true });
+    let match:PathMatch<string> | boolean | null = useMatch({ path: resolved.pathname, end: true });
+    match = path.length === 0 ? false : match;
 
     return (
         <HeaderMenuItemContainer>
-            <Typography component={HeaderMenuItemLink} to={path} variant="body1" style={{color: match ? "#138f82" : "black"}} sx={{fontWeight:"bold"}}>{title}</Typography>
+            <Typography component={path.length === 0 ? "div" : HeaderMenuItemLink} to={path} variant="body1" style={{color: match ? "#138f82" : "black"}} sx={{fontWeight:"bold"}}>{title}</Typography>
             <HeaderMenuItemIndicator style={{backgroundColor: match ? "#138f82" : "rgba(0,0,0,0)"}}/>
             {subMenu?.length &&
                 <SubMenuItemContainer id="subMenu" sx={{display:"none"}}>
                     {
                         subMenu?.map((oneMenu, index)=> 
-                            <Container key={index} sx={{ width:"200px", height:"50px", display:"flex", justifyContent:"center", alignItems:"center",fontSize:"18px", flexDirection:"column" }}><TextButton title={oneMenu.title} path={CLIENT_PAGES.declarationSinistre} sx={{fontWeight:"bold", color:"black"}}/>
+                            <Container key={index} sx={{ width:"200px", height:"50px",display:"flex", justifyContent:"center", alignItems:"center",fontSize:"18px", flexDirection:"column" }}><TextButton title={oneMenu.title} path={CLIENT_PAGES.declarationSinistre} sx={{fontWeight:"bold", color:"black"}}/>
                             {subMenu?.length - 1 !== index &&
                                 <Divider sx={{width:"100%"}}/>
                             }

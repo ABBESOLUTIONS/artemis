@@ -30,7 +30,7 @@ const ClientMenuItems = [
   },
   {
     title: "Declaration",
-    path:"/look",
+    path:"",
     submenu:[
       {
       title:"Un sinistre",
@@ -46,17 +46,17 @@ const ClientMenuItems = [
 
 const UserMenuItems = [
   {
-    title:"Mes Contrats",
+    title:"Demander Un Devis",
     path:USER_PAGES.contratsList,
   },
-  {
-    title:"Demander Un Devis",
-    path:USER_PAGES.demande,
-  },
-  {
-    title:"Envoyer un Message",
-    path:USER_PAGES.contact,
-  },
+  // {
+  //   title:"Demander Un Devis",
+  //   path:USER_PAGES.demande,
+  // },
+  // {
+  //   title:"Envoyer un Message",
+  //   path:USER_PAGES.contact,
+  // },
   {
     title:"Deconnexion",
     path:USER_PAGES.deconnexion,

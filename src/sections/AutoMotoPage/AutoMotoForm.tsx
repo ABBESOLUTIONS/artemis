@@ -1,5 +1,5 @@
 import { styled, Typography, Box, Grid, TextField, MenuItem, FormHelperText, FormControl, FormGroup, Checkbox, FormControlLabel, FormLabel, Button} from '@mui/material';
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PROJECT_COLORS } from '../../common/colors';
 import { currencies } from '../../common/Data';
@@ -169,7 +169,8 @@ function AutoMotoForm() {
 
   const dispatch = useAppDispatch();
 
-  const validate = () => {
+  const validate = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (data && user?.uid) {
       data.id_client = user?.uid;
       const nDate= new Date();
@@ -195,7 +196,7 @@ function AutoMotoForm() {
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"45px", marginBottom:"50px", textAlign:"center" }}>FICHE CONSEIL</Typography>
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"35px", marginBottom:"50px", textAlign:"center" }}>Etude Assurance Auto-Moto</Typography>
             <Typography variant="caption" sx={{color:PROJECT_COLORS.primarySwatch, textAlign:"flex-start"}}>(*)=Champs Obligatoire</Typography>
-            <Box component="form" sx={{'& .MuiTextField-root': { m: 2, width: '50ch' },}}>
+            <Box component="form" onSubmit={validate} sx={{'& .MuiTextField-root': { m: 2, width: '50ch' },}}>
                 <div>
                 <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Nom'} value={data?.Nom ?? ""} onChange={handleChange} />
                 <TextFieldPersonnalise id={''} name="Prenom" required={true}  label={"Prénom"} onChange={handleChange} value={data?.Prenom ?? ""} />
@@ -323,7 +324,7 @@ function AutoMotoForm() {
                         <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                     </FormControl>
                 </Box>
-                <Button variant="contained" onClick={validate} sx={{ backgroundColor:"#138f82", display:"flex", justifyContent:"center", alignItems:"center", marginLeft:"40%", width:"100px", height:"50px" }}>valider</Button>
+                <Button variant="contained"  type="submit" sx={{ backgroundColor:"#138f82", display:"flex", justifyContent:"center", alignItems:"center", marginLeft:"40%", width:"100px", height:"50px" }}>valider</Button>
             </Box>
             {dialogOpen && (<ModalValidation stateInit={dialogOpen} stateClose={handleCloseDialog} isSucces={succesState}  />)}
         </AutoMotoFormContainer>

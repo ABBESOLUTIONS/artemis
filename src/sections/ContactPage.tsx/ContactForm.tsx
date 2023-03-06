@@ -33,23 +33,23 @@ function ContactForm() {
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"45px", marginBottom:"50px", textAlign:"center" }}>Veuillez renseigner le formulaire</Typography>
             <Box component={"form"} sx={{'& .MuiTextField-root': { m:2, width: '50ch' },}}>
                 <div>
-                <TextField required id="outlined-required" label="Nom" defaultValue=""/>
-                <TextField required id="outlined-disabled" label="Email" defaultValue=""/>
+                    <TextField required id="outlined-required" label="Nom" defaultValue=""/>
+                    <TextField required id="outlined-disabled" label="Email" defaultValue=""/>
                 </div>
                 <div>
-                <TextField required id="outlined-required" label="N° de Télephone" defaultValue=""/>
-                <TextField required id="outlined-disabled" label="Sujet" defaultValue="Sujet"/>
+                    <TextField required id="outlined-required" label="N° de Télephone" defaultValue=""/>
+                    <TextField required id="outlined-disabled" label="Sujet" defaultValue="Sujet"/>
                 </div>
                 <div>
-                <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                    <FormControl fullWidth sx={{ m: 1 }} variant="standard">
                 {/* <TextField required id="outlined-disabled" label="Sujet" defaultValue="Sujet" multiline rows={6}/> */}
-                <CommentArea placeholder="Comment pouvons vous vous aider?"/>
+                        <CommentArea placeholder="Comment pouvons vous vous aider?"/>
                 {/* <TextField variant="standard" label={"Comment pouvons nous vous aidé"} /> */}
                 {/* <TextField variant="outlined" label={"Comment pouvons nous vous aidé"} fullWidth  multiline rows={6} /> */}
-        <Typography sx={{margin:"10px"}}>
-                Selectionner tous vos documents à envoyer
-            </Typography>
-            <OutlinedInput type='file' id="upload"></OutlinedInput>
+                    <Typography sx={{margin:"10px"}}>
+                            Selectionner tous vos documents à envoyer
+                     </Typography>
+                    <OutlinedInput type='file' id="upload"></OutlinedInput>
             <FormControlLabel value="end" control={<Checkbox />} label="J'accepte les termes et conditions" labelPlacement="end"/>
             </FormControl>
                 </div>

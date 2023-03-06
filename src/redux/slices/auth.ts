@@ -25,6 +25,22 @@ export const signOut = createAsyncThunk(
     async () => await auth.signOut()
 );
 
+export const sendPasswordResetEmail = createAsyncThunk<void, {email: string}>(
+    "auth/sendPasswordResetEmail",
+    async(args) => {
+        const {email}=args;
+        return await auth.sendPasswordResetEmail(email)
+    }
+);
+
+export const updatePassword = createAsyncThunk<void, {oobCode: string | null, pwd:string}> (
+    "auth/updatePassword",
+    async(args) => {
+        const {oobCode, pwd} = args;
+        return await auth.updatePassword(oobCode, pwd);
+    }
+)
+
 interface AuthState {
     userData: UserDataModel | null,
     user: UserModel | null,
@@ -49,6 +65,8 @@ const authSlice = createSlice({
         });
         builder.addCase(getCurentUser.fulfilled, (state, { payload }) => {
             state.user = payload;
+        });
+        builder.addCase(updatePassword.fulfilled, (state, { payload }) => {
         });
     }
 });

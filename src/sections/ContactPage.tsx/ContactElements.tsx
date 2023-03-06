@@ -35,42 +35,42 @@ function ContactElements() {
         <ContactElementsContainer>
             <Grid container spacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={12} md={6} sm={6}  lg={3} >
-                <Fade variants={FadeVariants({}).inLeft}>
+                {/* <Fade variants={FadeVariants({}).inLeft}> */}
                     <OneContactElementStyle>
                         <ImageComponent image={"assets/images/adress.png"}/>
                         <Typography sx={{fontWeight:"bold", fontSize:"25px"}}>Adresse</Typography>
                         <Typography sx={{width:"275px" ,fontSize:"18px", color:"#6F716F", textAlign:"center"}}>19, avenue Abel Sarnette, 84300 Cavaillon | France</Typography>
                     </OneContactElementStyle>
-                </Fade>  
+                {/* </Fade>   */}
                 </Grid>
                 <Grid item xs={12} md={6} sm={6} lg={3} >
-                <Fade variants={FadeVariants({}).inLeft}>
+                {/* <Fade variants={FadeVariants({}).inLeft}> */}
                     <OneContactElementStyle>
                         <ImageComponent image={"assets/images/telephone.png"}/>
                         <Typography sx={{fontWeight:"bold", fontSize:"25px"}}>Téléphone</Typography>
                         <TextButton title={"+33 4 90 71 35 47"} path={''} sx={{color:"#6F716F", fontSize:"18px"}}/>
                         <Typography sx={{color:"#6F716F", fontSize:"18px", textAlign:"center"}}>(Lundi - vendredi, 09:00–12:00, 14:00–18:00)</Typography>
                     </OneContactElementStyle>
-                </Fade>  
+                {/* </Fade>   */}
                 </Grid>
                 <Grid item xs={12} md={6} sm={6} lg={3} >
-                <Fade variants={FadeVariants({}).inRight}>
+                {/* <Fade variants={FadeVariants({}).inRight}> */}
                     <OneContactElementStyle>
                         <ImageComponent image={"assets/images/email.png"}/>
                         <Typography sx={{fontWeight:"bold", fontSize:"25px"}}>E-Mail</Typography>
                         <TextButton title={"contact@artemisassurance.fr"} path={''} sx={{color:"#6F716F", fontSize:"18px"}}/>
                         <TextButton title={"contact@artemisassurance.fr"} path={''} sx={{color:"#6F716F", fontSize:"18px"}}/>
                     </OneContactElementStyle>
-                </Fade>  
+                {/* </Fade>   */}
                 </Grid>
                 <Grid item xs={12} md={6} sm={6} lg={3} >
-                <Fade variants={FadeVariants({}).inRight}>
+                {/* <Fade variants={FadeVariants({}).inRight}> */}
                     <OneContactElementStyle>
                         <ImageComponent image={"assets/images/global.png"}/>
                         <Typography sx={{fontWeight:"bold", fontSize:"25px"}}>Site Internet</Typography>
                         <TextButton title={"www.artemisassurance.fr"} path={''} sx={{color:"#6F716F", fontSize:"18px"}}/>
                     </OneContactElementStyle>
-                </Fade>  
+                {/* </Fade>   */}
                 </Grid>
             </Grid>
         </ContactElementsContainer>

@@ -14,6 +14,8 @@ export const CLIENT_PAGES = {
     actualite:"/actualite",
     declarationSinistre:"/declarationSinistre",
     authentification:"/authentification",
+    emailInput:"/emailInput",
+    reset:"/reset",
 };
 export const USER_PAGES = {
     contratsList:"/contratsList",

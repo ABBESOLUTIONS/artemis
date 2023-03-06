@@ -23,15 +23,10 @@ const getCurentUser = () => {
 const sendPasswordResetEmail = (email: string) => {
     return auth.sendPasswordResetEmail(auth.auth, email);
 };
-const updatePassword = (pwd: string) => {
-    // auth.onAuthStateChanged(auth.auth, (user) => {
-    //     auth.updatePassword(user!, pwd).catch((err) => {
-    //         if(err.code = "auth/weak-password")
-    //             console.log("Password should be at least 6 characters");
-    //         else
-    //             console.log("An error has occurred. Please log back in before");
-    //     });
-    // });
+const updatePassword = (oobCode: string | null, pwd: string) => {
+    auth.confirmPasswordReset(auth.auth, oobCode!, pwd).then(() => {
+        console.log("okkkk");
+    });
 };
 const updateEmail = (email: string) => {
     // auth.onAuthStateChanged(auth.auth, (user) => {
