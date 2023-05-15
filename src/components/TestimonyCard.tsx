@@ -2,14 +2,14 @@ import { Card, Rating, styled, SxProps, Typography } from '@mui/material';
 import React from 'react';
 const TestimonyCardContainer=styled(Card)(({theme})=>({
     // position:"relative",
-    width:"275px",
+    maxWidth:"275px",
     minHeight:"425px",
     padding:"30px",
     display:"flex",
     flexDirection:"column",
     justifyContent:"space-around",
     [theme.breakpoints.down("lg")]: {
-        width:"90%",
+        maxWidth:"90%",
         minHeight:"350px",
         padding:"10px",
     },

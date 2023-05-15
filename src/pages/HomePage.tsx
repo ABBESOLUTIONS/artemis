@@ -22,7 +22,7 @@ function HomePage() {
             {/* <SinistreForm/> */}
             <HomeHero/>
             <Qualities/>
-            <ServicesOverview/>
+            {/* <ServicesOverview/> */}
             <ServiceOverview/>
             <Experience/>
             <Members/>

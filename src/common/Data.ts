@@ -14,11 +14,6 @@ export const members = [
         name: "NINA AFITE",
         job: "Assureur",
     },
-    {
-        picture: "assets/images/team-1.jpg",
-        name: "BOBO MITAHO",
-        job: "Directeur",
-    },
 ];
 
 export const servicesOverview = [
@@ -37,11 +32,6 @@ export const servicesOverview = [
 ];
 
 export const qualitiesInfo = [
-    {
-        icone:"assets/images/dollar.png",
-        title:"Professionnalisme",
-        text:"Une équipe de professionnels compétents et diplomés en Assurance afin de vous conseiller au mieux. Nous avons fait le choix d'être courtier en assurance pour vous offrir un large éventail de compagnies. Seuls vos besoins guide notre choix et non notre dépendance à une enseigne.",
-    },
     {
         icone:"assets/images/event.png",
         title:"Economie",

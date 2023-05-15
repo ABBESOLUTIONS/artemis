@@ -21,6 +21,7 @@ const ServiceOverviewCardStyle=styled(Card)(({theme})=>({
 const ServiceOverviewImgStyle=styled("img")(()=>({
     width:"100%",
     height:"100%",
+    objectFit:"cover"
     // padding:"10px"
 }));
 const ServiceOverviewTextStyle=styled("div")(()=>({
