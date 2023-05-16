@@ -16,6 +16,7 @@ export const CLIENT_PAGES = {
     authentification:"/authentification",
     emailInput:"/emailInput",
     reset:"/reset",
+    reclamation:"/reclamation"
 };
 export const USER_PAGES = {
     contratsList:"/contratsList",

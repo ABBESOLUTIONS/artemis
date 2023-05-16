@@ -6,13 +6,14 @@ import ImageComponent from './ImageComponent';
 
 
 const OneServiceDetailsContainer=styled(Card)(({theme})=>({
-    minWidth:"525px",
-    // minHeight:"135px",
+    minWidth:"100%",
+    // minWidth:"calc(100% - 60px)",
+    minHeight:"100px",
     display:"flex",
     flexDirection:"row",
     justifyContent:"space-around",
     padding:"15px",
-    margin:"10px",
+    // margin:"10px",
     [theme.breakpoints.down("lg")]: {
         flexDirection:"column",
         minWidth:"50%",
@@ -45,8 +46,9 @@ const AboutIconeCircle= styled("div")(()=>({
     // position:"absolute",
 }));
 const DetailsStyle= styled(Typography)(({theme})=>({
-    width:"375px",
+    maxWidth:"375px",
     marginTop:"10px",
+    marginLeft:"20px",
     [theme.breakpoints.down("md")]: {
     width:"100%",
         
@@ -69,7 +71,7 @@ function OneServiceDetails({icone, title, detail}:Props) {
                     <ImageComponent image={icone}/>
                 </AboutIconeCircle>
                 <Stack direction={"column"} sx={{}}>
-                    <TextButton title={title} path={''} sx={{fontWeight:"bold", fontSize:"18px",textDecoration:"none",color:"black", '&hover':{color:PROJECT_COLORS.primarySwatch}}}/>
+                    <TextButton title={title} path={''} sx={{fontWeight:"bold",    marginLeft:"20px", fontSize:"18px",textDecoration:"none",color:"black", '&hover':{color:PROJECT_COLORS.primarySwatch}}}/>
                     <DetailsStyle>{detail}</DetailsStyle>
                 </Stack>
             </OneServiceDetailsContainer>
