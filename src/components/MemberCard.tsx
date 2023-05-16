@@ -5,7 +5,7 @@ import { PROJECT_COLORS } from '../common/colors';
 
 
 const MemberCardContainer= styled(Card)(({theme})=>({
-    width: "98%",
+    width: "300px",
     height: "395px",
     boxShadow:"0px 4px 4px rgba(0, 0, 0, 0.25)",
     borderRadius:"3px",

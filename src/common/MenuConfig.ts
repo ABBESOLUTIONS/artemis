@@ -34,11 +34,11 @@ const ClientMenuItems = [
     submenu:[
       {
       title:"Un sinistre",
-      path:CLIENT_PAGES.contact,
+      path:CLIENT_PAGES.declarationSinistre,
       },
       {
-      title:"Faire un réclamation",
-      path: CLIENT_PAGES.contact,
+      title:"Faire un Donation",
+      path: CLIENT_PAGES.reclamation,
       }
     ]
   },

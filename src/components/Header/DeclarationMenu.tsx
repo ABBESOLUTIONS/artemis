@@ -49,7 +49,7 @@ function DeclarationMenu({title}: Props) {
             <SubMenuItem to={CLIENT_PAGES.declarationSinistre}>Un Sinistre</SubMenuItem>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-            <SubMenuItem to={''}>Faire un Réclamation</SubMenuItem>
+            <SubMenuItem to={CLIENT_PAGES.reclamation}>Faire une réclamation</SubMenuItem>
         </MenuItem>
       </Menu>
     </div>

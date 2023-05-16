@@ -4,11 +4,22 @@ import { members } from '../../common/Data';
 import MemberCard from '../../components/MemberCard';
 import SectionStyle from '../../styles/SectionStyle';
 
-const MembersContainer = styled(SectionStyle)(() => ({
+const MembersContainer = styled("section")(({theme}) => ({
     minHeight: "750px",
+    width:"calc(100% - 30vw)",
+    padding:"0vw 15vw 0vw 15vw",
+    paddingTop:"100px",
+    paddingBottom:"100px",
     display: "flex",
     flexDirection:"column",
     justifyContent:"space-around",
+    [theme.breakpoints.down("lg")]: {
+        // flexDirection:"column",
+        // width:"calc(100% - 20px)",
+        // height:"auto",
+        width:"calc(100% - 4vw)",
+        padding:"100px 2vw 100px 2vw",
+    },
 
 }));
 
@@ -40,11 +51,13 @@ function Members() {
             <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>NOTRE EQUIPE</Typography>
             {/* <Typography variant='h3' sx={{textAlign:"center", fontWeight:"bold", fontSize:"55px", marginBottom:"50px"}}>Notre équipe de professionnels compétents</Typography> */}
             <QualityTitle>Notre équipe de professionnels compétents</QualityTitle>
-            <Grid container sx={{margintop:"50px", justify:"center"}} >
-                    {
-                        members.map((OneMember, index) => <Grid key={index} item xs={12} sm={6} md={6} lg={3} sx={{display:"flex", justifyContent:"center", alignItems:"center"}} ><MemberCard image={OneMember.picture} nom={OneMember.name} poste={OneMember.job} /></Grid>)
-                    }
-                </Grid>
+                <Container>
+                    <Grid container  sx={{margintop:"50px", justify:"center"}} columnSpacing={5} rowSpacing={5} >
+                            {
+                                members.map((OneMember, index) => <Grid key={index} item xs sx={{display:"flex", justifyContent:"center", alignItems:"center"}} ><MemberCard image={OneMember.picture} nom={OneMember.name} poste={OneMember.job} /></Grid>)
+                            }
+                    </Grid>
+                </Container>
             <Typography sx={{textAlign:"center", fontWeight:"75", fontSize:"18px", marginTop:"30px"}}>Toute notre équipe est contituée de professionnels compétents et diplomés en Assurance.</Typography>
         </MembersContainer>
     );

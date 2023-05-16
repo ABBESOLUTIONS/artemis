@@ -8,13 +8,22 @@ import ServiceCarousel from '../../components/ServiceCarousel';
 import { QualityTitle } from './Qualities';
 import { PROJECT_COLORS } from '../../common/colors';
 
-const ServiceOverviewContainer=styled(SectionStyle)(()=>({
+const ServiceOverviewContainer=styled("section")(({theme})=>({
     height:"600px",
-    width:"calc(100% - 30px)",
+    // width:"calc(100% - 30px)",
+    width:"calc(100% - 30vw)",
+    padding:"0vw 15vw 0vw 15vw",
     paddingTop:"40px",
     paddingBottom:"40px",
     // display:"flex",
     justifyContent:"space-around",
+    [theme.breakpoints.down("lg")]: {
+        // flexDirection:"column",
+        // width:"calc(100% - 20px)",
+        // height:"auto",
+        width:"calc(100% - 4vw)",
+        padding:"0vw 2vw 0vw 2vw",
+    },
 }))
 
 function ServiceOverview() {

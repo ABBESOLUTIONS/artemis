@@ -24,6 +24,7 @@ import SignUp from "../pages/SignUp";
 import ContratsList from "../pages/UserPages/ContratsList";
 import SinistreForm from "../sections/SinistrePage/SinistreForm";
 import { CLIENT_PAGES, USER_PAGES } from "./paths";
+import RéclamationPage from "../pages/RéclamationPage";
 
 export default function Router() {
 
@@ -59,6 +60,7 @@ export default function Router() {
           { path: CLIENT_PAGES.authentification, element: <AuthEmail /> },
           { path: CLIENT_PAGES.emailInput, element: <InputEmail /> },
           { path: CLIENT_PAGES.reset, element: <ResetPassword /> },
+          { path: CLIENT_PAGES.reclamation, element: <RéclamationPage /> },
         ],
       },
 

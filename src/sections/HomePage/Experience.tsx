@@ -7,16 +7,20 @@ import ImageComponent from '../../components/ImageComponent';
 import SectionStyle from '../../styles/SectionStyle';
 
 
-const ExperienceContainer=styled(SectionStyle)(({theme})=>({
-    width:"calc(100% - 50px)",
-    // height:"575px",
+const ExperienceContainer=styled("section")(({theme})=>({
+    // width:"calc(100% - 50px)",
+    width:"calc(100% - 30vw)",
+    padding:"0vw 15vw 0vw 15vw",
+    minHeight:"70vh",
     backgroundColor:"#F8F8F8",
     display:"flex",
     flexDirection:"row",
     // padding:"25px",
     [theme.breakpoints.down("lg")]: {
         flexDirection:"column",
-    width:"calc(100% - 20px)",
+    // width:"calc(100% - 20px)",
+    width:"calc(100% - 4vw)",
+    padding:"0vw 2vw 0vw 2vw",
 
     },
 }));
@@ -24,24 +28,44 @@ const ExperienceContainer=styled(SectionStyle)(({theme})=>({
 const ExperienceContainerLeft=styled("div")(({theme})=>({
     position:"relative",
     width:"50%",
+    display:"grid",
+    placeItems:"center",
+    // backgroundColor:"yellow",
     [theme.breakpoints.down("lg")]: {
         // flexDirection:"column"
+        paddingTop:"5vh",
         width:"100%"
+    },
+}));
+
+const ExperienceContainerRight=styled("div")(({theme})=>({
+    width:"calc(50% - 3vw)",
+    display:"flex",
+    padding:"0vw 0vw 0vw 3vw",
+    flexDirection:"column",
+    // backgroundColor:"blue",
+    // justifyContent:"space-around"
+    [theme.breakpoints.down("lg")]: {
+        width:"85%",
+        padding:"5vw 0vw 0vw 0vw",
 
     },
 }));
-const ExperienceContainerRight=styled("div")(({theme})=>({
-    width:"50%",
+const RightContent=styled("div")(({theme})=>({
     display:"flex",
     flexDirection:"column",
-    // justifyContent:"space-around"
-    [theme.breakpoints.down("md")]: {
-        width:"75%"
+    justifyContent:"center",
+    width:"100%",
+    height:"100%",
+    [theme.breakpoints.down("lg")]: {
+        // width:"75%"
+        margin:"5vh 0vh 5vh 0vh"
     },
 }));
 const ExperienceImg=styled("img")(({theme})=>({
     // position:"absolute",
-    width:"575px",
+    maxWidth:"100%",
+    height:"auto",
     [theme.breakpoints.down("lg")]: {
 
         width:"100%"
@@ -51,7 +75,8 @@ const LeafImage=styled("img")(({theme})=>({
     position:"absolute",
     // marginLeft:"175px",
     left:"250px",
-    marginTop:"-25px",
+    // marginTop:"-125px",
+    top:50,
     [theme.breakpoints.down("lg")]: {
 display:"none"    },
 }));
@@ -74,31 +99,34 @@ function Experience() {
                 <LeafImage src="assets/images/leaf2.png"/>
             </ExperienceContainerLeft>
             <ExperienceContainerRight>
-                <Typography variant="h6" sx={{textAlign:"start", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>POURQUOI NOUS CHOISIR</Typography>
-                <SubtitleExp variant='h3' >30 années d'expérience que nous mettons à votre service</SubtitleExp>
-                <Typography variant="h6" sx={{textAlign:"start", fontSize:'15px', color:"#616179", marginBottom:"50px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus. Id nisl quis arcu nulla leo.</Typography>
-                <Container>
-                    <Grid container spacing={3}>
-                        <Grid item md={12} lg={6}>
-                             <ExperienceButton text={'VEHICULE'}/>
+                <RightContent>
+                    <Typography variant="h6" sx={{textAlign:"start", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>POURQUOI NOUS CHOISIR</Typography>
+                    <SubtitleExp variant='h3' >30 années d'expérience que nous mettons à votre service</SubtitleExp>
+                    <Typography variant="h6" sx={{textAlign:"start", fontSize:'15px', color:"#616179", marginBottom:"50px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus. Id nisl quis arcu nulla leo.</Typography>
+                    <Container>
+                        <Grid container spacing={3}>
+                            <Grid item md={6} sm={6} xs={12} lg={6} >
+                                <ExperienceButton text={'VEHICULE'}/>
+                            </Grid>
+                            <Grid item md={6} sm={6} xs={12} lg={6} >
+                                <ExperienceButton text={'GAGNER EN TEMPS'}/>
+                            </Grid>
+                            <Grid item md={6} sm={6} xs={12} lg={6} >
+                                <ExperienceButton text={'HABITATION'}/>
+                            </Grid>
+                            <Grid item md={6} sm={6} xs={12} lg={6} >
+                                <ExperienceButton text={'ECONOMISER'}/>
+                            </Grid>
+                            {/* <Grid item md={12} lg={6}>
+                                <ExperienceButton text={'CONSULTATION'}/>
+                            </Grid>
+                            <Grid item md={12} lg={6}>
+                                <ExperienceButton text={'VIVEZ MIEUX'}/>
+                            </Grid> */}
                         </Grid>
-                        <Grid item md={12} lg={6}>
-                             <ExperienceButton text={'GAGNER EN TEMPS'}/>
-                        </Grid>
-                        <Grid item md={12} lg={6}>
-                             <ExperienceButton text={'HABITATION'}/>
-                        </Grid>
-                        <Grid item md={12} lg={6}>
-                             <ExperienceButton text={'ECONOMISER'}/>
-                        </Grid>
-                        <Grid item md={12} lg={6}>
-                             <ExperienceButton text={'CONSULTATION'}/>
-                        </Grid>
-                        <Grid item md={12} lg={6}>
-                             <ExperienceButton text={'VIVEZ MIEUX'}/>
-                        </Grid>
-                    </Grid>
-                </Container>
+                    </Container>
+
+                </RightContent>
             </ExperienceContainerRight>
         </ExperienceContainer>
     );

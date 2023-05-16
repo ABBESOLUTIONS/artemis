@@ -9,7 +9,7 @@ const DeclarationSinistreContainer= styled("div")(()=>({
 
 function DeclarationSinistre() {
     return (
-        <Page title="Declaration-Sinistre">
+        <Page title="Declaration-Sinistre" >
             <DeclarationSinistreContainer>
                 <SinistreForm />
             </DeclarationSinistreContainer>

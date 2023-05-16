@@ -68,7 +68,7 @@ function HeaderMenuItem({title, path, subMenu}: Pops) {
                 <SubMenuItemContainer id="subMenu" sx={{display:"none"}}>
                     {
                         subMenu?.map((oneMenu, index)=> 
-                            <Container key={index} sx={{ width:"200px", height:"50px",display:"flex", justifyContent:"center", alignItems:"center",fontSize:"18px", flexDirection:"column" }}><TextButton title={oneMenu.title} path={CLIENT_PAGES.declarationSinistre} sx={{fontWeight:"bold", color:"black"}}/>
+                            <Container key={index} sx={{ width:"200px", height:"50px",display:"flex", justifyContent:"center", alignItems:"center",fontSize:"18px", flexDirection:"column" }}><TextButton title={oneMenu.title} path={oneMenu.path} sx={{fontWeight:"bold", color:"black"}}/>
                             {subMenu?.length - 1 !== index &&
                                 <Divider sx={{width:"100%"}}/>
                             }

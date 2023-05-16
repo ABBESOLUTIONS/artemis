@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
-import { Outlet } from 'react-router-dom';
 import UserHeader from '../components/Header/UserHeader';
 import MyDrawer from '../components/MyDrawer/MyDrawer';
+import { Outlet } from 'react-router-dom';
 
 function UserLayout() {
     const [openDrawer, setOpenDrawer] = useState(false) 

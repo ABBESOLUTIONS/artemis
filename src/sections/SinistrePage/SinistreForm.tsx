@@ -6,45 +6,59 @@ import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import { PROJECT_COLORS } from '../../common/colors';
 
 
- const SinistreFormContainer=styled(SectionStyle)(()=>({
+ const SinistreFormContainer=styled("section")(({theme})=>({
+    width:"calc(100% - 30vw)",
+    padding:"75px 15vw 75px 15vw",
     minHeight:"600px",
     display:"flex",
     flexDirection:"column",
     alignItems:"center",
-    justifyContent:"center",
+    justifyContent:"center",    [theme.breakpoints.down("lg")]: {
+        // flexDirection:"column",
+        width:"calc(100% - 4vw)",
+        padding:"75px 2vw 75px 2vw",
+        // display:"flex",
+        // justifyContent:"center",
+        // alignItems:"center",
+        
+    },
 }));
-const CommentArea=styled(TextareaAutosize)(({theme})=>({
-    minHeight:"100px",
-    maxWidth:"850px",
-    [theme.breakpoints.down("lg")]: {
-        maxWidth:"450px"
-    },
-    [theme.breakpoints.down("md")]: {
-        maxWidth:"400px"
-    },
-}))
+
 
 function SinistreForm() {
     return (
         <SinistreFormContainer>
                 <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Nous envoyer un message</Typography>
                 <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"45px", marginBottom:"50px", textAlign:"center" }}>Veuillez renseigner le formulaire</Typography>
-                <Box component={"form"} sx={{'& .MuiTextField-root': { m:2, width: '50ch' },}}>
+                <Box component={"form"} sx={{ width:"75%"}}>
+                <Grid container spacing={3}>
+                    <Grid item md={6} xs={12} sx={{display:"flex", flexDirection:"row"}} >
+                        <TextField required id="outlined-required" label="Nom" defaultValue="" fullWidth/>
+                    </Grid>
+                    <Grid item md={6} xs={12} sx={{display:"flex", flexDirection:"row"}}>
+                        <TextField required id="outlined-disabled" label="Prénom" defaultValue="" fullWidth/>
+                    </Grid>
+                    <Grid item md={6} xs={12} sx={{display:"flex", flexDirection:"row"}}>
+                        {/* <TextField name="email"  variant="outlined" label={"Your Email"} type="email" fullWidth /> */}
+                        <TextField required id="outlined-disabled" label="Email" defaultValue="" fullWidth/>
+                    </Grid>
+                    <Grid item md={6} xs={12} sx={{display:"flex", flexDirection:"row"}}>
+                        {/* <TextField name="email"  variant="outlined" label={"Your Email"} type="email" fullWidth /> */}
+                        <TextField required id="outlined-disabled" label="Téléphone" defaultValue="" fullWidth/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField name="message"  variant="outlined" label={"Sujet"} fullWidth />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField name="message"  variant="outlined" label={"Votre déclaration circontancié"} fullWidth  multiline rows={6} />
+                    </Grid>
+                    {/* <Grid item md={6} xs={12} sx={{display:"flex", flexDirection:"row"}}>
+                        <TextField required id="outlined-required" label="N° de Télephone" defaultValue=""/>
+                    </Grid> */}
+                </Grid>
                     <div>
-                    <TextField required id="outlined-required" label="Nom" defaultValue=""/>
-                    <TextField required id="outlined-disabled" label="Prénom (s)" defaultValue=""/>
-                    </div>
-                    <div>
-                    <TextField required id="outlined-disabled" label="Email" defaultValue=""/>
-                    <TextField required id="outlined-required" label="N° de Télephone" defaultValue=""/>
-                    </div>
-                    <div>
-                    <TextField required id="outlined-required" label="Numéro Contrat" defaultValue=""/>
-                    <TextField required id="outlined-disabled" label="Sujet" defaultValue=""/>
-                    </div>
-                    <div>
-                    <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-                        <CommentArea placeholder="Votre message"/>
+                    <FormControl fullWidth sx={{ }} variant="standard">
+                        {/* <CommentArea placeholder="Votre message"/> */}
                         <Typography sx={{margin:"10px"}}>Selectionner tous vos documents à envoyer</Typography>
                         <OutlinedInput type='file' id="upload"></OutlinedInput>
                         <FormControlLabel value="end" control={<Checkbox />} label={<TextButton title={"J'accepte les termes et conditions"} path={''}></TextButton>} labelPlacement="end"/>

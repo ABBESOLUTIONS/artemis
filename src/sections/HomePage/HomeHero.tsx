@@ -14,23 +14,27 @@ import FadeVariants from '../../variants/FadeVariants';
 import { CLIENT_PAGES } from '../../routes/paths';
 import { Link } from 'react-router-dom';
 
-const HomeHeroContainer=styled(SectionStyle)(({theme})=>({
+const HomeHeroContainer=styled("section")(({theme})=>({
     // width:"100%",
-    // width:"calc(100% - 100px)",
+    width:"calc(100% - 16vw)",
+    padding:"0vw 8vw 0vw 8vw",
     minHeight:"100vh",
     display:"flex",
     position:"relative",
     flexDirection:"row",
-    justifyContent:"space-evenly",
+    // justifyContent:"space-evenly",
     alignItems:"center",
     backgroundColor:"#F5FAF9",
     [theme.breakpoints.down("lg")]: {
         flexDirection:"column",
-        minHeight:"120vh"
+        minHeight:"120vh",
+        // width:"100%",
+        width:"calc(100% - 4vw)",
+        padding:"0vw 2vw 0vw 2vw",
     },
 }));
 const HomeHeroBG=styled("div")(({theme})=>({
-    width:"100%",
+    width:"calc(100% - 16vw)",
     height:"100%",
     // backgroundColor:"#F5FAF9",
     position:"absolute",
@@ -39,30 +43,55 @@ const HomeHeroBG=styled("div")(({theme})=>({
     },
 }));
 const HomeHeroContainerLeft=styled("div")(({theme})=>({
-    minWidth:"675px",
-    maxWidth:"45%",
+    width:"50%",
+    // minWidth:"675px",
+    // maxWidth:"45%",
     minHeight:"500px",
-    margin:"20px",
+    // margin:"20px",
     display:"flex",
     paddingTop:"75px",
     flexDirection:"column",
     justifyContent:"center",
+    // backgroundColor:"yellow",
+    [theme.breakpoints.down("lg")]: {
+        // maxWidth:"100%",
+        // minWidth:"150px",
+        width:"100%"
+    },
     [theme.breakpoints.down("md")]: {
-        maxWidth:"100%",
-        minWidth:"150px",
+        // maxWidth:"100%",
+        // minWidth:"150px",
+        width:"100%"
     },
 }));
 const HomeHeroContainerRight=styled("div")(({theme})=>({
-    minWidth:"450px",
-    minHeight:"400px",
-    margin:"15px",
+    // minWidth:"450px",
+    minHeight:"500px",
+    width:"50%",
     display:"flex",
-    alignItems:"center",
+    // placeItems:"end",
+    // margin:"15px",
+    // display:"flex",
+    flexDirection:"column",
+    alignItems:"flex-end",
     justifyContent:"center",
+    // backgroundColor:"green",
+    [theme.breakpoints.down("lg")]: {
+        // maxWidth:"100%",
+        // minWidth:"150px",
+        width:"100%",
+        flexDirection:"column",
+        alignItems:"center",
+        justifyContent:"center",
+        display:"flex",
+        // display:"grid",
+        // placeItems:"end",
+
+    },
     [theme.breakpoints.down("md")]: {
-        maxWidth:"300px",
-        minWidth:"200px",
-        margin:"15px"
+        // maxWidth:"300px",
+        // minWidth:"200px",
+        // margin:"15px"
     },
 
 }));
@@ -72,9 +101,10 @@ const ButtonsContainer=styled("div")(()=>({
     justifyContent:"space-evenly"
 }));
 const HomeHeroLeftTitle=styled(Typography)(({theme})=>({
-    fontSize:"60px",
-    fontWeight:800,
+    fontSize:"55px",
+    fontWeight:600,
     color:"#000000",
+    fontFamily: "RedHatBold, sans-serif !important" ,
     position:"relative",
     [theme.breakpoints.down("lg")]: {
         fontSize:"2.5em",
@@ -82,21 +112,24 @@ const HomeHeroLeftTitle=styled(Typography)(({theme})=>({
     },
 }));
 const HeroImage=styled("img")(({theme})=>({
-    position:"absolute",
-    width:"42%",
-    height:"550px",
-    marginTop:"50px",
-    borderRadius:"10px",
+    // position:"absolute",
+    // width:"95%",
+    maxWidth:"100%",
+    // height:"500px",
+    scale:"0.9",
+    objectFit:"cover",
+    // marginTop:"50px",
+    borderRadius:"8px",
     [theme.breakpoints.down("lg")]: {
         // display:"none",
-        width:"50%",
+        // width:"50%",
         // height:"auto"
     },
     [theme.breakpoints.down("md")]: {
         // display:"none",
-        width:"80%",
-        height:"400px",
-        marginTop:"-20px"
+        // width:"80%",
+        // height:"400px",
+        // marginTop:"-20px"
     },
 }));
 const HomeHeroLeftSubTitle=styled(Stack)(({theme})=>({
@@ -112,10 +145,11 @@ const HomeHeroLeftSubTitle=styled(Stack)(({theme})=>({
     },
 }));
 const LeftSubTitle=styled(Typography)(({theme})=>({
-    fontSize:"30px",
-    fontWeight:500,
+    fontSize:"26px",
+    fontWeight:600,
     color:"#000000",
     position:"relative",
+    fontFamily: "RedHatExtraBold, sans-serif !important" ,
     [theme.breakpoints.down("md")]: {
         fontSize:"1.6em",
         textAlign:"center"
@@ -127,13 +161,13 @@ const LeftSubTitle=styled(Typography)(({theme})=>({
 }));
 const HomeHeroLeftText=styled(Typography)(({theme})=>({
     minWidth:"  200px",
-    fontSize:"22px",
+    fontSize:"20px",
     // fontWeight:75,
     // height:"40%",
     marginTop:"15px",
     color:"#616161",
     position:"relative",
-    // fontFamily: "Red Hat Display" ,
+    fontFamily: "RedHatRegular, sans-serif !important" ,
     // backgroundColor:"red",
     [theme.breakpoints.down("md")]: {
         minWidth:"95%",
@@ -167,12 +201,8 @@ function HomeHero() {
             {/* <TestimonyCard  text={"Super accueil super service un super courtier qui saura trouvé la bonne réponse à vos questions d'assurance et cerise sur le gâteau chez Artemis on vous fait une audit de tout vos contrats assurance quand vous êtes pro oui oui."} profilImage={"assets/images/profile.jpg"} name={"Mohamad D"}/> */}
             
             <HomeHeroContainerLeft>
-                {/* <Typography sx={{fontSize:"60px",position:"relative", fontWeight:"bold",width:"500px", marginTop:"-30px",margin:"25px"}}>Bienvenue chez ARTEMIS !</Typography> */}
-                {/* <Typography sx={{fontSize:"60px",position:"absolute", fontWeight:"bold",width:"500px"}}>Bienvenue chez ARTEMIS !</Typography> */}
-                {/* <Typography sx={{fontSize:"30px",position:"relative", fontWeight:"bold",width:"500px", margin:"25px", marginTop:"-8px"}}>Artémis Assurance, ça Rassure !</Typography> */}
-                {/* <Typography sx={{fontSize:"20px",position:"relative",width:"675px", margin:"25px"}}>Artémis est une entreprise inscrite au registre du commerce et des sociétés, dont la vocation est d'analyser l'ensemble des contrats que vous avez souscrit (tant auprès d'assureurs que de banquiers ou autres) et de vous représenter auprès des sociétés d'assurances afin de négocier au mieux les garanties adaptées à vos besoins et négocier les conditions de tarif en faisant jouer la concurrence.</Typography> */}
                 <HomeHeroLeftTitle>
-                Bienvenue chez ARTEMIS !
+                    Bienvenue chez ARTEMIS !
                 </HomeHeroLeftTitle>
                 <HomeHeroLeftSubTitle direction={"row"}>
                 <LeftSubTitle  sx={{color:"green", marginRight:"8px"}}>Artémis </LeftSubTitle><LeftSubTitle >Assurance, ça Rassure !</LeftSubTitle>
@@ -185,7 +215,7 @@ function HomeHero() {
                     <ButtonComponent libele={"Nous contacter"} children={<SendIcon/>}/> */}
                     
                 </ButtonsContainer>
-                <HomeHeroLeftSubTitle spacing={4} direction="row" sx={{margin:"25px"}}>
+                <HomeHeroLeftSubTitle spacing={4} direction="row" sx={{margin:"25px 0px 0px 0px"}}>
                     <Button variant="contained" component={Link} to={CLIENT_PAGES.services} type="button" startIcon={<ArrowForwardIosIcon sx={{fontSize:"large"}}/>} sx={{color:"white", backgroundColor:PROJECT_COLORS.primarySwatch, padding:"15px", fontSize:13}}>Lire plus...</Button>
                     <Button variant="outlined" component={Link} to={CLIENT_PAGES.contact} type="button" startIcon={<SendIcon/>} sx={{color:PROJECT_COLORS.primarySwatch, borderColor:PROJECT_COLORS.primarySwatch, fontSize:13}}>Nous contacter</Button>
                 </HomeHeroLeftSubTitle>

@@ -1,14 +1,34 @@
 @font-face {
-  font-family: 'Red Hat Display';
+  font-family: 'RedHatRegular';
   src: url("/public/Fonts/RedHatDisplay-Regular.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'RedHatSemiBold';
+  src: url("/public/Fonts/RedHatDisplay-SemiBold.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'RedHatBold';
+  src: url("/public/Fonts/RedHatDisplay-Bold.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'RedHatExtraBold';
+  src: url("/public/Fonts/RedHatDisplay-ExtraBold.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'RedHatThin';
+  src: url("/public/Fonts/RedHatDisplay-Light.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'RedHatItalic';
+  src: url("/public/Fonts/RedHatDisplay-Italic.ttf") format('truetype');
 }
 
 html {
   scroll-behavior: smooth;
 }
 body {
-  font-size: "16px";
-  font-family: "Red Hat Display";
-  color: "#616161";
+  /* font-size: "16px"; */
+  /* font-family: "Red Hat Display"; */
+  /* color: "#616161"; */
   margin: 0px !important;
 }

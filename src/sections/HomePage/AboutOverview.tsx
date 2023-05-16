@@ -9,16 +9,20 @@ import ImageComponent from '../../components/ImageComponent';
 import Fade from '../../components/animation/Fade';
 import FadeVariants from '../../variants/FadeVariants';
 
-const AboutOverviewContainer=styled(SectionStyle)(({theme})=>({
-    height:"750px",
+const AboutOverviewContainer=styled("section")(({theme})=>({
+    width:"calc(100% - 30vw)",
+    padding:"0vw 15vw 0vw 15vw",
+    minHeight:"100vh",
     backgroundColor:"#F8F8F8",
     display:"flex",
     flexDirection:"row",
     justifyContent:"space-evenly",
     [theme.breakpoints.down("lg")]: {
         flexDirection:"column",
-        width:"calc(100% - 20px)",
-        height:"auto",
+        // width:"calc(100% - 20px)",
+        // height:"auto",
+        width:"calc(100% - 4vw)",
+        padding:"0vw 2vw 0vw 2vw",
     },
 }));
 
@@ -40,7 +44,7 @@ const AboutOverviewLeft=styled("div")(({theme})=>({
 }));
 const AboutOverviewRight=styled("div")(({theme})=>({
     maxWidth:"50%",
-    backgroundColor:"",
+    // backgroundColor:"blue",
     display:"flex",
     flexDirection:"row",
     [theme.breakpoints.down("lg")]: {
@@ -62,7 +66,7 @@ const AboutOverviewRight=styled("div")(({theme})=>({
 const ImageRight=styled("div")(({theme})=>({
     width:"100%",
     display:"flex",
-    justifyContent:"center",
+    justifyContent:"start",
     alignItems:"center",
     // backgroundColor:"red",
     [theme.breakpoints.down("lg")]: {
@@ -130,8 +134,7 @@ function AboutOverview() {
                 <AboutImage image={"assets/images/about/about-2.jpg"} />
                 </div>
                 <ImageRight>
-                <LastImg src='assets/images/about/about-3.jpg' />
-                {/* <AboutImage image={"assets/images/about/about-2.jpg"} /> */}
+                    <LastImg src='assets/images/about/about-3.jpg' />
                 </ImageRight>
             </AboutOverviewRight>
         </AboutOverviewContainer>
