@@ -14,6 +14,7 @@ import { ModePaiement } from '../../components/Ennum/ModePaiement';
 import { addDevisSante } from '../../redux/slices/DevisSanteRed';
 import { useNavigate } from 'react-router-dom';
 import ModalValidation from '../../components/ModalValidation';
+import jsPDF from 'jspdf';
 
 
 const SanteFormContainer=styled(SectionStyle)(()=>({
@@ -86,6 +87,10 @@ const handleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInputElement>)
       data.typeDevis = "SANTE";
       dispatch(addDevisSante({oneDevisSante: data})).unwrap().then(handleOpenDialog);
     }
+
+    const pdfDoc = new jsPDF();
+    pdfDoc.text("Données du formulaire:" , 10, 10);
+    pdfDoc.text(JSON.stringify(data), 10, 20);
 };
   
 const [dialogOpen, setDialogOpen] = useState(false);
