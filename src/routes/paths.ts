@@ -16,15 +16,15 @@ export const CLIENT_PAGES = {
     authentification:"/authentification",
     emailInput:"/emailInput",
     reset:"/reset",
-    reclamation:"/reclamation"
+    reclamation:"/reclamation",
+    autoMoto:"/autoMoto",
+    sante:"/sante",
+    habitation:"/habitation",
+    professionelle:"/professionelle",
+    demande:"/demande",
 };
 export const USER_PAGES = {
     contratsList:"/contratsList",
-    autoMoto:"/contratsList/autoMoto",
-    sante:"/contratsList/sante",
-    habitation:"/contratsList/habitation",
-    professionelle:"/contratsList/professionelle",
-    demande:"/contratsList/demande",
     contact:"/contact",
     deconnexion:"/contratsList/deconnexion",
 }

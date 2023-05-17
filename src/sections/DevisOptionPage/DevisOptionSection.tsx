@@ -21,16 +21,16 @@ function DevisOptionSection() {
             <Container sx={{margin:"50px"}}>
             <Grid container xs rowSpacing={1} >
                 <Grid item xs={6}>
-                    <FormAccesButton nom={"AUTO-MOTO"} desc={"(Vélo, Trotinette,Bateau)"} chemin={USER_PAGES.autoMoto}/>
+                    <FormAccesButton nom={"AUTO-MOTO"} desc={"(Vélo, Trotinette,Bateau)"} chemin={CLIENT_PAGES.autoMoto}/>
                 </Grid>
                 <Grid item xs={6}>
-                    <FormAccesButton nom={"HABITATION"} desc={"(Propriétaie ou Locataire)"} chemin={USER_PAGES.habitation}/>
+                    <FormAccesButton nom={"HABITATION"} desc={"(Propriétaie ou Locataire)"} chemin={CLIENT_PAGES.habitation}/>
                 </Grid>
                 <Grid item xs={6}>
-                    <FormAccesButton nom={"SANTE"} desc={"(Mutuel et Prévoyance)"} chemin={USER_PAGES.sante}/>
+                    <FormAccesButton nom={"SANTE"} desc={"(Mutuel et Prévoyance)"} chemin={CLIENT_PAGES.sante}/>
                 </Grid>
                 <Grid item xs={6}>
-                    <FormAccesButton nom={"PROFESSIONELLE"} desc={"(RCPRO,Multirisques et Decennal)"} chemin={USER_PAGES.professionelle}/>
+                    <FormAccesButton nom={"PROFESSIONELLE"} desc={"(RCPRO,Multirisques et Decennal)"} chemin={CLIENT_PAGES.professionelle}/>
                 </Grid>
             </Grid>
             

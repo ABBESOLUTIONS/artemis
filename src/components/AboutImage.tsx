@@ -1,8 +1,10 @@
 import { styled, SxProps } from '@mui/material';
 
 const AboutOverViewContainerImg= styled("img")(({theme})=>({
-    width: "285px",
-    height: "320px",
+    maxWidth: "285px",
+    maxHeight: "320px",
+    // maxWidth:"100%",
+    // height:"auto",
     borderRadius: "15px",
     margin:"8px",
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",

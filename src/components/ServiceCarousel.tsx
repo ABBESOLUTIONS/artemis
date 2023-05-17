@@ -4,7 +4,6 @@ import Slider, { ResponsiveObject } from "react-slick";
 import ServiceOverviewCard from "./ServiceOverviewCard";
 
 const ServiceCarouselContainer=styled("div")(()=>({
-
     // height:"400px",
     // display:"flex",
     // flexDirection:"row",
