@@ -16,7 +16,9 @@ const ServiceOverviewContainer=styled("section")(({theme})=>({
     padding:"75px 15vw 75px 15vw",
     // paddingTop:"40px",
     // paddingBottom:"40px",
-    // display:"flex",
+    display:"flex",
+    flexDirection:"column",
+    
     justifyContent:"space-around",
     [theme.breakpoints.down("lg")]: {
         // flexDirection:"column",

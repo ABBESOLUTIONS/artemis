@@ -4,24 +4,24 @@ import ImageComponent from './ImageComponent';
 
 
 const AboutOverviewCardContainer=styled(Card)(({theme})=>({
-    minWidth:"550px",
+    width:"calc(95% - 20px)",
     minHeight:"100px",
     display:"flex",
     flexDirection:"row",
     justifyContent:"space-around",
     padding:"10px",
-    margin:"10px",
+    // margin:"10px",
     transition: "all ease 300ms",
     '&:hover':{
         transform: "scale(1.03)"
     },
     [theme.breakpoints.down("lg")]: {
-        minWidth:"75%",
+        width:"75%",
         minHeight:"150px",
         flexDirection:"row",   
     },
     [theme.breakpoints.down("sm")]: {
-        minWidth:"75%",
+        width:"75%",
         minHeight:"200px",
         flexDirection:"column",
         // flexDirection:"column",   
@@ -54,7 +54,7 @@ const AboutTextStyle = styled(Typography)(({theme}) => ({
     fontSize: "16px",
     // width:"100%",
     color:"#616161",
-    maxWidth:"425px",
+    maxWidth:"90%",
     [theme.breakpoints.down("lg")]: {
         fontSize: "15px",
         textAlign: "center"
