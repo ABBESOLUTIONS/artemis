@@ -22,7 +22,7 @@ const AboutOverviewContainer=styled("section")(({theme})=>({
         // width:"calc(100% - 20px)",
         // height:"auto",
         width:"calc(100% - 4vw)",
-        padding:"0vw 2vw 0vw 2vw",
+        padding:"75px 2vw 75px 2vw",
     },
 }));
 
@@ -36,7 +36,6 @@ const AboutOverviewLeft=styled("div")(({theme})=>({
     alignItems:"center",
     // backgroundColor:"pink",
     [theme.breakpoints.down("lg")]: {
-    padding:"0px",
         width:"100%",
         display:"flex",
         flexDirection:"column",
@@ -54,6 +53,7 @@ const AboutOverviewRight=styled("div")(({theme})=>({
     alignItems:"center",
     // gap:5,
     [theme.breakpoints.down("lg")]: {
+        padding:"25px 0px 0px 0px",
         // flexDirection:"column",
         width:"100%",
         // marginLeft:"100px",
@@ -144,13 +144,13 @@ function AboutOverview() {
                     <Grid container rowSpacing={3}>
                             {
                                 servicesOverview.map((oneService,index) => 
-                                <Grid item lg={12} md={12} sm={12} xs={12} sx={{ }}>
-                                <Fade variants={FadeVariants({}).inUp}><ServiceOverviewCard icone={oneService.icone} detail={oneService.subtitle}/></Fade>
+                                <Grid item lg={12} md={12} sm={12} xs={12} sx={{ display:"flex", justifyContent:"center"}}>
+                                    <ServiceOverviewCard icone={oneService.icone} detail={oneService.subtitle}/>
+                                    {/* <Fade variants={FadeVariants({}).inUp} ><ServiceOverviewCard icone={oneService.icone} detail={oneService.subtitle}/></Fade> */}
                                 </Grid>
                                 )
                         
                             }
-
                     </Grid>
             </AboutOverviewLeft>
             <AboutOverviewRight>

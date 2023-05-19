@@ -6,7 +6,7 @@ import SectionStyle from '../../styles/SectionStyle';
 
 const DevisOptionSectionContainer=styled(SectionStyle)(()=>({
     // width:"100%",
-    height:"350px",
+    minHeight:"60vh",
     display:"flex",
     flexDirection:"column",
     alignItems:"center",

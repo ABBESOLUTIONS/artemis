@@ -89,7 +89,7 @@ function   MenuMobile() {
                                 {
                                     if (index < ClientMenuItems.length - 1)
                                         return <MenuMobileItem key={index} onClick={toggleMenu} to={menu.path}><MenuMobileItemText>{menu.title}</MenuMobileItemText></MenuMobileItem>
-                                    return <DeclarationMenu title={menu.title} sx={{color:"black"}}></DeclarationMenu>
+                                    return <DeclarationMenu title={menu.title} sx={{color:"black", }}></DeclarationMenu>
                                 }
                         )}
                         {<FadeInRight start={menuIsVisible}><DevisButton sx={{display: pathDemande || pathAuto || pathSante || pathHabit || pathPro ? "none" : "flex"}}></DevisButton></FadeInRight>}
