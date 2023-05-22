@@ -10,8 +10,14 @@ import Logo from "../Logo";
 import MenuMobile from "../MenuMobile";
 import Search from "../Search";
 import Header from "./Header";
+import { PathMatch, useMatch, useResolvedPath } from "react-router-dom";
+import { CLIENT_PAGES } from "../../routes/paths";
 
 function MainHeader() {
+    let resolved = useResolvedPath(CLIENT_PAGES.demande);
+    let chemin: string;
+    let match:PathMatch<string> | boolean | null = useMatch({ path: resolved.pathname, end: true });
+    match = CLIENT_PAGES.demande.length === 0 ? false : match;
     const isMobile = useResponsive("down", "lg");
 
     const [open, setOpen] = React.useState(false);
@@ -36,13 +42,13 @@ function MainHeader() {
                             {/* <Logo logoWithName={!isMobile} sx={{width: isMobile ? 50 : 200, height: isMobile ? 50 : 70}}/> */}
                             <Logo sx={{marginLeft: "30px"}} logoImg="assets/images/logo.png"/>
                         </Grid>
-                        <Grid item lg={11} xs sx={{ display: "flex", alignItems: "center", justifyContent:"space-around", }}>
+                        <Grid item lg={11} xs sx={{ display: "flex",backgroundColor:"red", }}>
                             {/* {!isMobile && <Search/>} */}
                             {!isMobile && <Header/>}
-                            {!isMobile && <DevisButton/>}
+                            {!isMobile && <DevisButton  />}
                             {isMobile && <MenuMobile/>}
-                            <Button onClick={handleOpenDrawer}><Menu fontSize="large" sx={{color:"black"}}/></Button>
-                            <AboutDrawer open={open} onClick={handleCloseDrawer} />
+                            {/* <Button onClick={handleOpenDrawer}><Menu fontSize="large" sx={{color:"black"}}/></Button> */}
+                            {/* <AboutDrawer open={open} onClick={handleCloseDrawer} /> */}
                         </Grid>
                     </Grid>
                 </Container>

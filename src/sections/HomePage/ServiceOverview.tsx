@@ -9,12 +9,13 @@ import { QualityTitle } from './Qualities';
 import { PROJECT_COLORS } from '../../common/colors';
 
 const ServiceOverviewContainer=styled("section")(({theme})=>({
-    height:"600px",
+    // height:"600px",
+    minHeight:"75vh",
     // width:"calc(100% - 30px)",
     width:"calc(100% - 30vw)",
-    padding:"0vw 15vw 0vw 15vw",
-    paddingTop:"40px",
-    paddingBottom:"40px",
+    padding:"75px 15vw 75px 15vw",
+    // paddingTop:"40px",
+    // paddingBottom:"40px",
     // display:"flex",
     justifyContent:"space-around",
     [theme.breakpoints.down("lg")]: {
@@ -22,7 +23,7 @@ const ServiceOverviewContainer=styled("section")(({theme})=>({
         // width:"calc(100% - 20px)",
         // height:"auto",
         width:"calc(100% - 4vw)",
-        padding:"0vw 2vw 0vw 2vw",
+        padding:"75px 2vw 75px 2vw",
     },
 }))
 
