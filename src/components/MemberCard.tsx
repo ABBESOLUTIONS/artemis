@@ -2,6 +2,7 @@ import { Button,Card, CardMedia, Grid, styled, Typography } from '@mui/material'
 import SocialMediaList from './SocialMediaList';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { PROJECT_COLORS } from '../common/colors';
+import { Email, EmailOutlined, EmailSharp } from '@mui/icons-material';
 
 
 const MemberCardContainer= styled(Card)(({theme})=>({
@@ -32,7 +33,7 @@ function MemberCard({image,nom,poste}: Props) {
         <MemberCardContainer>
             <CardMedia>
                 <MemberImageContainer sx={{ backgroundImage: "url('"+image+"')", backgroundSize: "100% 100%" }}/>
-                <Button variant='contained' sx={{width:"20px",borderRadius:"100px",bgcolor:PROJECT_COLORS.primarySwatch, marginLeft:"70%", bottom:25, positon:"absolute"}}><InstagramIcon/></Button>
+                <Button href='mailto:contact@artemisassurance.fr' variant='contained' sx={{width:"20px",borderRadius:"100px",bgcolor:PROJECT_COLORS.primarySwatch, marginLeft:"70%", bottom:25, positon:"absolute"}}><EmailSharp     /></Button>
             </CardMedia>
             <Grid container>
                 <Grid item xs={12}>

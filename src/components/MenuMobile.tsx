@@ -6,15 +6,17 @@ import { ClientMenuItems, HeaderConfig } from "../common/MenuConfig";
 import FadeInRight from "./animation/FadeInRight";
 import LinearScaleSharpIcon from '@mui/icons-material/LinearScaleSharp';
 import DevisButton from "./DevisButton";
-import { Link } from "react-router-dom";
+import { Link, PathMatch, useMatch, useResolvedPath } from "react-router-dom";
 import DeclarationMenu from "./Header/DeclarationMenu";
+import { CLIENT_PAGES } from "../routes/paths";
 
 const MenuMobileContainer = styled(Container)(() => ({
+    // width:"100%",
     position: "relative",
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
-    backgroundColor:"yellow"
+    // backgroundColor:"yellow"
 }));
 const MenuMobileBtn = styled(IconButton)(() => ({
     color: "black",
@@ -26,7 +28,7 @@ const MenuMobileItemContainer = styled("div")(() => ({
     position: "absolute",
     top: HeaderConfig.HEIGHT,
     right: "5px",
-    minWidth: "200%",
+    minWidth: "100%",
     minHeight: "250px",
     display: "none",
     flexDirection: "column",
@@ -47,7 +49,7 @@ const MenuMobileItem = styled(Link)(() => ({
 const MenuMobileItemText = styled(Typography)(() => ({
     fontSize: "18px",
 }));
-function MenuMobile() {
+function   MenuMobile() {
     const [menuIsVisible, setMenuIsVisible] = useState(false);
 
     const toggleMenu = () => {
@@ -58,6 +60,26 @@ function MenuMobile() {
         setMenuIsVisible(false);
     }
 
+    let resolvedDemande = useResolvedPath(CLIENT_PAGES.demande);
+    let pathDemande:PathMatch<string> | boolean | null = useMatch({ path: resolvedDemande.pathname, end: true });
+    pathDemande = CLIENT_PAGES.demande.length === 0 ? false : pathDemande;
+
+    let resolvedAuto = useResolvedPath(CLIENT_PAGES.autoMoto);
+    let pathAuto:PathMatch<string> | boolean | null = useMatch({ path: resolvedAuto.pathname, end: true });
+    pathAuto = CLIENT_PAGES.autoMoto.length === 0 ? false : pathAuto;
+
+    let resolvedSante = useResolvedPath(CLIENT_PAGES.sante);
+    let pathSante:PathMatch<string> | boolean | null = useMatch({ path: resolvedSante.pathname, end: true });
+    pathSante = CLIENT_PAGES.sante.length === 0 ? false : pathSante;
+
+    let resolvedHabit = useResolvedPath(CLIENT_PAGES.habitation);
+    let pathHabit:PathMatch<string> | boolean | null = useMatch({ path: resolvedHabit.pathname, end: true });
+    pathHabit = CLIENT_PAGES.habitation.length === 0 ? false : pathHabit;
+
+    let resolvedPro = useResolvedPath(CLIENT_PAGES.professionelle);
+    let pathPro:PathMatch<string> | boolean | null = useMatch({ path: resolvedPro.pathname, end: true });
+    pathPro = CLIENT_PAGES.professionelle.length === 0 ? false : pathPro;
+
     return (
         <ClickAwayListener onClickAway={onClickAway}>
             <MenuMobileContainer>
@@ -67,10 +89,10 @@ function MenuMobile() {
                                 {
                                     if (index < ClientMenuItems.length - 1)
                                         return <MenuMobileItem key={index} onClick={toggleMenu} to={menu.path}><MenuMobileItemText>{menu.title}</MenuMobileItemText></MenuMobileItem>
-                                    return <DeclarationMenu title={menu.title} ></DeclarationMenu>
+                                    return <DeclarationMenu title={menu.title} sx={{color:"black", }}></DeclarationMenu>
                                 }
                         )}
-                        {<FadeInRight start={menuIsVisible}><DevisButton ></DevisButton></FadeInRight>}
+                        {<FadeInRight start={menuIsVisible}><DevisButton sx={{display: pathDemande || pathAuto || pathSante || pathHabit || pathPro ? "none" : "flex"}}></DevisButton></FadeInRight>}
                     </MenuMobileItemContainer>
             </MenuMobileContainer>
         </ClickAwayListener>

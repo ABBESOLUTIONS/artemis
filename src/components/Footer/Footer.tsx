@@ -7,8 +7,9 @@ import SocialMediaList from '../SocialMediaList';
 import FooterItems from './FooterItems';
 
 const FooterContainerCopirght=styled(FooterStyle)(()=>({
-    minHeight: "450px",
+    minHeight: "350px",
     display: "flex",
+    paddingTop:"25px",
     flexDirection: "column",
     justifyContent: "space-around",
     backgroundColor: "#DFF1F1",
@@ -29,7 +30,7 @@ const FooterContainerPart=styled("div")(({theme})=>({
     minHeight:"100%",
     display:"flex",
     flexDirection:"column",
-    justifyContent: "space-evenly",
+    // justifyContent: "space-evenly",
     // backgroundColor:"blue",
     [theme.breakpoints.down("lg")]: {
     //    padding:"25px 0px 25px 0px"
@@ -47,7 +48,7 @@ function Footer() {
     return (
         <FooterContainerCopirght>
             <FooterContainer>
-                <Grid container columnSpacing={5}>
+                <Grid container columnSpacing={5} rowSpacing={{md:3,sm:3, xs:3}}>
                     <Grid item xs={12} md={6} sm={6} lg={3}>
                         <FooterContainerPart>
                             <Logo sx={{marginLeft: "30px"}} logoImg="assets/images/logo.png"/>
@@ -60,7 +61,7 @@ function Footer() {
                     </Grid>
                     <Grid item xs={12} md={6} sm={6} lg={3}>
                         <FooterContainerPart>
-                            <Typography sx={{fontSize:"18px", fontWeight:"bold"}}>Information légales</Typography>
+                            <Typography sx={{fontSize:"18px", fontWeight:"bold", marginBottom:"15px"}}>Information légales</Typography>
                             <FooterItems title={'Politique de confidentialité'} path={''}></FooterItems>
                             <FooterItems title={'Termes et conditions'} path={''}></FooterItems>
                             <FooterItems title={'Traitement de vos données'} path={''}></FooterItems>
@@ -69,7 +70,7 @@ function Footer() {
                     </Grid>
                     <Grid item xs={12} md={6} sm={6} lg={3}>
                         <FooterContainerPart>
-                            <Typography sx={{fontSize:"18px", fontWeight:"bold"}}>Liens utiles</Typography>
+                            <Typography sx={{fontSize:"18px", fontWeight:"bold", marginBottom:"15px"}}>Liens utiles</Typography>
                             <FooterItems title={'A propos de nous'} path={''}></FooterItems>
                             <FooterItems title={'Blog et actualités'} path={''}></FooterItems>
                             <FooterItems title={'Nous contacter'} path={''}></FooterItems>
@@ -79,7 +80,7 @@ function Footer() {
                     </Grid>
                     <Grid item xs={12} md={6} sm={6} lg={3}>
                         <FooterContainerPart>
-                            <Typography sx={{fontSize:"18px", fontWeight:"bold"}}>Nos assurances</Typography>
+                            <Typography sx={{fontSize:"18px", fontWeight:"bold", marginBottom:"15px"}}>Nos assurances</Typography>
                             <FooterItems title={"Assurance Habitation"} path={''}></FooterItems>
                             <FooterItems title={"Assurance Professionnelle"} path={''}></FooterItems>
                             <FooterItems title={"Assurance Auto"} path={''}></FooterItems>
