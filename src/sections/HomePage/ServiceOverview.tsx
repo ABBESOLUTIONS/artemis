@@ -10,16 +10,14 @@ import { PROJECT_COLORS } from '../../common/colors';
 
 const ServiceOverviewContainer=styled("section")(({theme})=>({
     // height:"600px",
-    minHeight:"65vh",
+    minHeight:"75vh",
     // width:"calc(100% - 30px)",
     width:"calc(100% - 30vw)",
     padding:"75px 15vw 75px 15vw",
     // paddingTop:"40px",
     // paddingBottom:"40px",
-    display:"flex",
-    flexDirection:"column",
-    
-    // justifyContent:"space-around",
+    // display:"flex",
+    justifyContent:"space-around",
     [theme.breakpoints.down("lg")]: {
         // flexDirection:"column",
         // width:"calc(100% - 20px)",
