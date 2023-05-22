@@ -34,31 +34,30 @@ import EmailEx from '../../components/EmailEx';
 
 function SinistreForm() {
 
-    const MyEmail = render(<EmailEx/>)
+    const MyEmail = render(<EmailEx/>, {plainText:true})
+    // const transporter = nodemailer.createTransport({
+    //     service: 'Gmail',
+    //     port: 587,
+    //     host:"smtp.ethereal.email",
+    //     auth : {
+    //         user:'hervekaohk@gmail.com',
+    //         pass:"developpeurFULLSTACK98"
+    //     }
+    // })
 
-    const transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        port: 587,
-        host:"smtp.ethereal.email",
-        auth : {
-            user:'hervekaohk@gmail.com',
-            pass:"developpeurFULLSTACK98"
-        }
-    })
+    // const mailOptions = {
+    //     from: 'hervekaohk@gmail.com',
+    //     to: 'achhmorning@gmail.com',
+    //     subject: 'Test',
+    //     html: MyEmail,
+    //   };
 
-    const mailOptions = {
-        from: 'hervekaohk@gmail.com',
-        to: 'achhmorning@gmail.com',
-        subject: 'Test',
-        html: MyEmail,
-      };
-
-      const validate = () => {
-        transporter.sendMail(mailOptions).then(()=> {
-            console.log("marche");
+    //   const validate = () => {
+    //     transporter.sendMail(mailOptions).then(()=> {
+    //         console.log("marche");
             
-        })
-      }
+    //     })
+    //   }
     return (
         <SinistreFormContainer>
                 <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Nous envoyer un message</Typography>
@@ -98,7 +97,7 @@ function SinistreForm() {
             </FormControl>
                 </div>
             </Box>
-                <Button startIcon={<ArrowForwardIos/>} sx={{color:"white", backgroundColor:"#138F82", padding:"18px"}} onClick={validate}> Envoyer </Button>
+                <Button startIcon={<ArrowForwardIos/>} sx={{color:"white", backgroundColor:"#138F82", padding:"18px"}} onClick={()=> console.log(MyEmail)}> Envoyer </Button>
         </SinistreFormContainer>
     );
 }

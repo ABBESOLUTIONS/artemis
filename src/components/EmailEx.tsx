@@ -9,7 +9,7 @@ import { Button } from '@react-email/button';
 function EmailEx() {
     return (
         <Html>
-            <Button>Marche§§§§</Button>
+            <Button>Emqil Test</Button>
         </Html>
     );
 }
