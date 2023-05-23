@@ -20,10 +20,10 @@ const ClientMenuItems = [
     title: "Services",
     path: CLIENT_PAGES.services
   },
-  // {
-  //   title: "Blog",
-  //   path:  CLIENT_PAGES.blog,
-  // },
+  {
+    title: "Blog",
+    path:  CLIENT_PAGES.blog,
+  },
   {
     title: "Contact",
     path: CLIENT_PAGES.contact

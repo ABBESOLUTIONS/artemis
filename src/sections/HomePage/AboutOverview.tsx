@@ -11,8 +11,8 @@ import FadeVariants from '../../variants/FadeVariants';
 
 const AboutOverviewContainer=styled("section")(({theme})=>({
     width:"calc(100% - 30vw)",
-    padding:"75px 15vw 75px 15vw",
-    minHeight:"75vh",
+    padding:"0vw 15vw 0vw 15vw",
+    minHeight:"100vh",
     backgroundColor:"#F8F8F8",
     display:"flex",
     flexDirection:"row",
@@ -27,13 +27,11 @@ const AboutOverviewContainer=styled("section")(({theme})=>({
 }));
 
 const AboutOverviewLeft=styled("div")(({theme})=>({
-    width:"50%",
+    maxWidth:"50%",
     // marginLeft:"5%",
     display:"flex",
     flexDirection:"column",
-    // padding:"10px",
-    justifyContent:"center",
-    alignItems:"center",
+    padding:"10px",
     [theme.breakpoints.down("lg")]: {
     padding:"0px",
         maxWidth:"100%",
@@ -45,13 +43,10 @@ const AboutOverviewLeft=styled("div")(({theme})=>({
     },
 }));
 const AboutOverviewRight=styled("div")(({theme})=>({
-    width:"50%",
+    maxWidth:"50%",
     // backgroundColor:"blue",
     display:"flex",
     flexDirection:"row",
-    justifyContent:"center",
-    alignItems:"center",
-    // gap:5,
     [theme.breakpoints.down("lg")]: {
         // flexDirection:"column",
         maxWidth:"80%",
@@ -101,8 +96,6 @@ const QualityTitle = styled(Typography)(({theme}) => ({
 const LastImg= styled("img")(({theme})=>({
     width: "285px",
     height: "320px",
-    // maxWidth:"100%",
-    // height:"auto",
     borderRadius: "15px",
     margin:"8px",
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",

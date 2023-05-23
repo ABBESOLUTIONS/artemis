@@ -1,4 +1,4 @@
-import { Button, SxProps, styled } from '@mui/material';
+import { Button, styled } from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import React from 'react';
 import { CLIENT_PAGES } from '../routes/paths';
@@ -23,13 +23,9 @@ const DevisButtonStyle= styled(Button)(({theme}) => ({
     }
 }))
 
-interface Props {
-    sx? : SxProps
-}
-
-function DevisButton({sx={}}: Props) {
+function DevisButton() {
     return (
-        <DevisButtonStyle variant="contained" startIcon={<DriveFileRenameOutlineIcon/>} href={CLIENT_PAGES.demande} sx={{...sx}}>Demander un devis</DevisButtonStyle>
+        <DevisButtonStyle variant="contained" startIcon={<DriveFileRenameOutlineIcon/>} href={CLIENT_PAGES.logIn}>Demander un devis</DevisButtonStyle>
     );
 }
 

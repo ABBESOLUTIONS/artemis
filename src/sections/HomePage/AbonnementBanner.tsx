@@ -79,7 +79,7 @@ function AbonnementBanner() {
         <AbonnementBannerContainer>
             <FirstTitle>S'abonner à nos news</FirstTitle>
             <SecondTitle>Restez informé de nos dernières infos</SecondTitle>
-            {/* <TheSubTitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus..</TheSubTitle> */}
+            <TheSubTitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus..</TheSubTitle>
             <Typography sx={{color:"#138F82", }}></Typography>
             <FieldButton direction={"row"} sx={{}}>
                 <TextField/>

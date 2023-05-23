@@ -22,12 +22,12 @@ function HomePage() {
             {/* <SinistreForm/> */}
             <HomeHero/>
             <Qualities/>
-            <ServicesOverview/>
+            {/* <ServicesOverview/> */}
             <ServiceOverview/>
             <Experience/>
             <Members/>
             <TestimonyOverview/>
-            {/* <BlogOverview/> */}
+            <BlogOverview/>
             <AbonnementBanner/>
             {/* <HeroComponent/> */}
             {/* <AutoMoto/> */}

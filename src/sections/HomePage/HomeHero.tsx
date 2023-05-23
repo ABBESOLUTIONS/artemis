@@ -208,7 +208,8 @@ function HomeHero() {
                 <LeftSubTitle  sx={{color:"green", marginRight:"8px"}}>Artémis </LeftSubTitle><LeftSubTitle >Assurance, ça Rassure !</LeftSubTitle>
                 </HomeHeroLeftSubTitle>
                 <HomeHeroLeftText>
-                Une équipe de professionnels compétents et diplômés en Assurance afin de vous conseiller au mieux. Nous avons fait le choix d'être courtier en assurance pour vous offrir un large éventail de compagnies. Seuls vos besoins guident notre choix et non notre dépendance à une enseigne..                </HomeHeroLeftText>
+                Artémis est une entreprise inscrite au registre du commerce et des sociétés, dont la vocation est d'analyser l'ensemble des contrats que vous avez souscrit (tant auprès d'assureurs que de banquiers ou autres) et de vous représenter auprès des sociétés d'assurances afin de négocier au mieux les garanties adaptées à vos besoins et négocier les conditions de tarif en faisant jouer la concurrence.
+                </HomeHeroLeftText>
                 <ButtonsContainer>
                     {/* <ButtonComponent libele={"Lire plus..."} children={<ArrowBackIosNewIcon/>}/>
                     <ButtonComponent libele={"Nous contacter"} children={<SendIcon/>}/> */}
