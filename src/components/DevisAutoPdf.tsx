@@ -3,6 +3,19 @@ import React from 'react';
 import { DevisAutoModel } from '../models/DevisAutoModel';
 
 const styles = StyleSheet.create({
+  table: {
+    // display: 'flex',
+    width: '100%',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    // borderRightWidth: 0,
+    // borderBottomWidth: 0,
+    borderColor: '#bfbfbf', 
+    marginTop: 10
+  },
+  // tableRow: {display: 'flex', flexDirection: 'row' },
+  // tableColLabel: { width: '50%', borderStyle: 'solid', borderWidth: 1, borderColor: '#bfbfbf', padding: 5 },
+  // tableColValue: { width: '50%', borderStyle: 'solid', borderWidth: 1, borderColor: '#bfbfbf', padding: 5 },
     page: {
         // width:"100%",
         // backgroundColor: '#E4E4E4'
@@ -12,6 +25,7 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "column",
         backgroundColor: "",
+        backgroundImage:'assets/images/email.png'
     },
     section: {
       // display:"flex",
@@ -63,6 +77,15 @@ const styles = StyleSheet.create({
         color:"#9FADB3",
         textAlign:"center"
       },
+      container: { margin: 20 },
+      pageBackground: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.2 },
+      tablea: { width: '100%', marginBottom: 20 },
+      tableRow: { flexDirection: 'row', minHeight: 30 },
+      tableColLabel: { width: '30%', borderStyle: 'solid', borderWidth: 1, borderColor: '#bfbfbf', padding: 5 },
+      tableColValue: { width: '70%', borderStyle: 'solid', borderWidth: 1, borderColor: '#bfbfbf', padding: 5 },
+      header: { flexDirection: 'row', alignItems: 'center', marginBottom: 20 },
+      logo: { width: 50, height: 50, marginRight: 10 },
+      title: { fontSize: 18, fontWeight: 'bold' }, 
 })
 
 interface Props {
@@ -291,7 +314,7 @@ const DevisModelPdf = ({
             <Text style={styles.libelleStyle}>Garanties_Souhaitées:</Text> {Garanties_Souhaitées?.map(one => <Text style={styles.dataStyle}>{one}/</Text>)}
            </View>
            <View style={styles.section}>
-            <Text style={styles.libelleStyle}>Option:</Text>{Option?.map(one => <Text style={styles.dataStyle}>{one}/</Text>)}
+            <Text style={styles.libelleStyle}>Option:</Text>{Option?.map(one => <Text style={styles.dataStyle}>{one}<br></br></Text>)}
            </View>
            <View style={styles.section}>
             <Text style={styles.libelleStyle}>Mode_Paiement:</Text>{Mode_Paiement?.map(one => <Text style={styles.dataStyle}>{one}/</Text>)}
@@ -302,6 +325,193 @@ const DevisModelPdf = ({
            <View style={styles.section}>
             <Text style={styles.libelleStyle}>uid:</Text><Text style={styles.dataStyle}>{uid}</Text>
            </View>
+           <View style={styles.table}>
+              <View style={styles.tableRow} >
+                <View style={styles.tableColLabel}>
+                  <Text>LOUP</Text>
+                </View>
+                <View style={styles.tableColValue}>
+                  <Text>GAROU</Text>
+              </View>
+          </View>
+          <View style={styles.pageBackground}>
+        <Image style={{ width: '100%', height: '100%', objectPosition:"center", objectFit:'cover' }} src="assets/images/BLOG.jpg" />
+        </View>
+
+      {/* En-tête */}
+      <View style={styles.header}>
+        <Image style={styles.logo} src="assets/images/email.png" />
+        <Text style={styles.title}>Demande de Devis d'Assurance</Text>
+      </View>
+      <View style={styles.tablea}>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow} >
+            <View style={styles.tableColLabel}>
+              <Text>NOM</Text>
+            </View>
+            <View style={styles.tableColValue}>
+              {/* {renderMultilineValue(value)} */}
+              <Text>HERVE</Text>
+              <Text>HERVE</Text>
+              <Text>HERVE</Text>
+              <Text>HERVE</Text>
+            </View>
+          </View>
+      </View>
+
+      {/* <View style={styles.content}>
+        <View style={styles.field}>
+          <Text style={styles.label}>Nom :</Text>
+          <Text style={styles.value}>HUB</Text>
+        </View>
+        <View style={styles.field}>
+          <Text style={styles.label}>Prénom :</Text>
+          <Text style={styles.value}>TINE</Text>
+        </View>
+        <View style={styles.field}>
+          <Text style={styles.label}>Adresse Email :</Text>
+          <Text style={styles.value}>CHARA</Text>
+        </View>
+        <View style={styles.field}>
+          <Text style={styles.label}>Téléphone :</Text>
+          <Text style={styles.value}>9898989</Text>
+        </View>
+      </View> */}
+      </View>
         </Page>
     </Document>
 );
