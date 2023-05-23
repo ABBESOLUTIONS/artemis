@@ -7,16 +7,16 @@ import Fade from '../../components/animation/Fade';
 import FadeVariants from '../../variants/FadeVariants';
 
 const ContactElementsContainer=styled("section")(({theme})=>({
-    width:"calc(100% - 30vw)",
-    padding:"75px 15vw 75px 15vw",
-    minHeight:"400px",
+    width:"calc(100% - 40vw)",
+    padding:"75px 20vw 20px 20vw",
+    minHeight:"30vh",
     display:"flex",
     alignItems:"center",
     justifyContent:"center",
     [theme.breakpoints.down("lg")]: {
         // flexDirection:"column",
         width:"calc(100% - 4vw)",
-        padding:"75px 2vw 75px 2vw",
+        padding:"75px 2vw 20px 2vw",
         // display:"flex",
         // justifyContent:"center",
         // alignItems:"center",
@@ -69,8 +69,7 @@ function ContactElements() {
                     <OneContactElementStyle>
                         <ImageComponent image={"assets/images/email.png"}/>
                         <Typography sx={{fontWeight:"bold", fontSize:"25px"}}>E-Mail</Typography>
-                        <TextButton title={"contact@artemisassurance.fr"} path={''} sx={{color:"#6F716F", fontSize:"15px",textAlign:"center"}}/>
-                        <TextButton title={"contact@artemisassurance.fr"} path={''} sx={{color:"#6F716F", fontSize:"15px", textAlign:"center"}}/>
+                        <TextButton title={"contact@artemisassurance.fr"} path={'mailto:contact@artemisassurance.fr'} sx={{color:"#6F716F", fontSize:"15px", textAlign:"center"}}/>
                     </OneContactElementStyle>
                 {/* </Fade>   */}
                 </Grid>

@@ -29,13 +29,12 @@ const ServicesDetailsStyle=styled("section")(({theme})=>({
 export const ServiceBigTitle=styled(Typography)(({theme})=>({
     fontWeight:"bold", 
     // fontSize:"45px", 
-    fontSize:"2.5em", 
+    fontSize:"35px", 
     marginBottom:"50px",
     justifyContent:"center", 
     textAlign:"center",
     [theme.breakpoints.down("md")]: {
-        
-            
+        fontSize:"25px", 
         },
 }));
 

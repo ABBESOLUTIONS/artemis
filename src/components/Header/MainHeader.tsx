@@ -33,6 +33,11 @@ function MainHeader() {
     let resolvedPro = useResolvedPath(CLIENT_PAGES.professionelle);
     let pathPro:PathMatch<string> | boolean | null = useMatch({ path: resolvedPro.pathname, end: true });
     pathPro = CLIENT_PAGES.professionelle.length === 0 ? false : pathPro;
+
+    let resolvedOption= useResolvedPath(CLIENT_PAGES.devisOption);
+    let pathOption:PathMatch<string> | boolean | null = useMatch({ path: resolvedOption.pathname, end: true });
+    pathOption = CLIENT_PAGES.devisOption.length === 0 ? false : pathOption;
+
     const isMobile = useResponsive("down", "lg");
 
     const [open, setOpen] = React.useState(false);
@@ -56,12 +61,12 @@ function MainHeader() {
                         <Grid item lg={1} md={1} sm={1} xs={2} sx={{}}>
                             <Logo sx={{marginLeft: "30px"}} logoImg="assets/images/logo.png"/>
                         </Grid>
-                        <Grid item lg={8} md={0} sm={0} xs={0} sx={{display: "flex", justifyContent:"center" }}>
+                        <Grid item lg={10} md={0} sm={0} xs={0} sx={{display: "flex", justifyContent:"center",  }}>
                             {!isMobile && <Header/>}
                         </Grid>
-                        <Grid item lg={3} md={11} sm={11} xs={10} sx={{ display: "flex", justifyContent:"flex-end" }}>
+                        <Grid item lg={1} md={11} sm={11} xs={10} sx={{ display: "flex", justifyContent:"flex-end" }}>
                             {/* {!isMobile && <Search/>} */}
-                            {!isMobile && <DevisButton sx={{display: pathDemande || pathAuto || pathSante || pathHabit || pathPro ? "none" : "flex"}} />}
+                            {!isMobile && <DevisButton sx={{display: pathDemande || pathAuto || pathSante || pathHabit || pathPro || pathOption ? "none" : "flex"}} />}
                             {isMobile && <MenuMobile/>}
                             {/* <Button onClick={handleOpenDrawer}><Menu fontSize="large" sx={{color:"black"}}/></Button> */}
                             {/* <AboutDrawer open={open} onClick={handleCloseDrawer} /> */}

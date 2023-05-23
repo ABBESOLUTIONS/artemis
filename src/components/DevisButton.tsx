@@ -29,7 +29,7 @@ interface Props {
 
 function DevisButton({sx={}}: Props) {
     return (
-        <DevisButtonStyle variant="contained" startIcon={<DriveFileRenameOutlineIcon/>} href={CLIENT_PAGES.demande} sx={{...sx}}>Demander un devis</DevisButtonStyle>
+        <DevisButtonStyle variant="contained" startIcon={<DriveFileRenameOutlineIcon/>} href={CLIENT_PAGES.demande} sx={{...sx}}>Devis</DevisButtonStyle>
     );
 }
 

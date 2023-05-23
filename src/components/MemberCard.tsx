@@ -33,7 +33,7 @@ function MemberCard({image,nom,poste}: Props) {
         <MemberCardContainer>
             <CardMedia>
                 <MemberImageContainer sx={{ backgroundImage: "url('"+image+"')", backgroundSize: "100% 100%" }}/>
-                <Button href='mailto:contact@artemisassurance.fr' variant='contained' sx={{width:"20px",borderRadius:"100px",bgcolor:PROJECT_COLORS.primarySwatch, marginLeft:"70%", bottom:25, positon:"absolute"}}><EmailSharp /></Button>            </CardMedia>
+                <Button href='mailto:contact@artemisassurance.fr' variant='contained' sx={{width:"20px",borderRadius:"100px",bgcolor:PROJECT_COLORS.primarySwatch, marginLeft:"70%", bottom:25, positon:"absolute",'&:hover':{bgcolor:"#213438"} }}><EmailSharp /></Button>            </CardMedia>
             <Grid container>
                 <Grid item xs={12}>
                     <Typography sx={{fontWeight:"bold", margin:"10px", fontSize:"20px"}}>{nom}</Typography>

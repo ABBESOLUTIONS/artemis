@@ -37,7 +37,7 @@ const ClientMenuItems = [
       path:CLIENT_PAGES.declarationSinistre,
       },
       {
-      title:"Faire un Donation",
+      title:"Faire une Réclamation",
       path: CLIENT_PAGES.reclamation,
       }
     ]

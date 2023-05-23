@@ -38,8 +38,8 @@ function SmallContactBanner() {
         <SmallContactBannerStyle>
             <Typography sx={{fontWeight:"bold", color:"white"}}>Prêt.e à nous rejoindre ?</Typography>
             <Stack direction={"row"} sx={{margin:"15px"}}>
-                <Button variant="contained" type="button" component={Link} to={CLIENT_PAGES.contact} sx={{bgcolor:PROJECT_COLORS.primarySwatch, fontSize:13, padding:"15px",margin:"15px" }}>Nous joindre</Button>
-                <Button variant="outlined" type="button" component={Link} to={CLIENT_PAGES.devisOption} sx={{color:"white", borderColor:"white", fontSize:13, padding:"15px",margin:"15px"}}>Demander un devis</Button>
+                <Button variant="contained" type="button" component={Link} to={CLIENT_PAGES.contact} sx={{bgcolor:PROJECT_COLORS.primarySwatch, fontSize:12, padding:"15px",margin:"15px",'&:hover': {backgroundColor: '#213438',} }}>Nous joindre</Button>
+                <Button variant="outlined" type="button" component={Link} to={CLIENT_PAGES.devisOption} sx={{color:"white", borderColor:"white", fontSize:12, padding:"15px",margin:"15px", '&:hover': {borderColor: '#213438',}}}>Demander un devis</Button>
             </Stack>
             <EllipseWhite src="assets/images/ellipseWhite.png" sx={{}}/>
             <LeafDaught src="assets/images/Leaf+daught.png" sx={{}}/>

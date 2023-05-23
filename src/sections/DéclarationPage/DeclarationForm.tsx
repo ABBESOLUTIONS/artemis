@@ -4,8 +4,8 @@ import { PROJECT_COLORS } from '../../common/colors';
 import { ArrowForwardIos } from '@mui/icons-material';
 
 const DeclarationFormContainer=styled("section")(({theme})=>({
-    width:"calc(100% - 30vw)",
-    padding:"75px 15vw 75px 15vw",
+    width:"calc(100% - 40vw)",
+    padding:"75px 20vw 75px 20vw",
     minHeight:"600px",
     display:"flex",
     flexDirection:"column",
@@ -21,12 +21,22 @@ const DeclarationFormContainer=styled("section")(({theme})=>({
     },
 }));
 
+const BoxStyle=styled(Box)(({theme})=>({
+    width:"65%",
+    [theme.breakpoints.down("lg")]: {
+    },
+    [theme.breakpoints.down("md")]: {
+        width:"90%"
+    },
+   
+}));
+
 function DeclarationForm() {
     return (
         <DeclarationFormContainer>
             <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Nous envoyer un message</Typography>
-            <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"45px", marginBottom:"50px", textAlign:"center" }}>Veuillez renseigner le formulaire</Typography>
-            <Box component={"form"} sx={{ width:"75%"}}>
+            <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"35px", marginBottom:"50px", textAlign:"center" }}>Veuillez renseigner le formulaire</Typography>
+            <BoxStyle component={"form"} sx={{ width:"65%"}}>
             <Grid container spacing={3}>
                     <Grid item md={6} xs={12} sx={{display:"flex", flexDirection:"row"}} >
                         {/* <TextField name="lastName"  variant="outlined" label={"FullName"} type="text" fullWidth sx={{color:"white"}}/> */}
@@ -61,8 +71,8 @@ function DeclarationForm() {
             <FormControlLabel value="end" control={<Checkbox />} label="J'accepte les termes et conditions" labelPlacement="end"/>
             </FormControl>
                 </div>
-            </Box>
-            <Button startIcon={<ArrowForwardIos/>} sx={{color:"white", backgroundColor:"#138F82", padding:"18px"}}> Envoyer </Button>
+            </BoxStyle>
+            <Button startIcon={<ArrowForwardIos/>} sx={{color:"white", backgroundColor:"#138F82", padding:"10px", '&:hover':{backgroundColor:"#213438"}}}> Envoyer </Button>
         </DeclarationFormContainer>
     );
 }

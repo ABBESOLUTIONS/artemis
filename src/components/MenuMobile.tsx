@@ -28,7 +28,7 @@ const MenuMobileItemContainer = styled("div")(() => ({
     position: "absolute",
     top: HeaderConfig.HEIGHT,
     right: "5px",
-    minWidth: "100%",
+    minWidth: "105%",
     minHeight: "250px",
     display: "none",
     flexDirection: "column",

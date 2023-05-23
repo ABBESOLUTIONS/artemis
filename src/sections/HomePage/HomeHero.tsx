@@ -16,8 +16,8 @@ import { Link } from 'react-router-dom';
 
 const HomeHeroContainer=styled("section")(({theme})=>({
     // width:"100%",
-    width:"calc(100% - 16vw)",
-    padding:"0vw 8vw 0vw 8vw",
+    width:"calc(100% - 20vw)",
+    padding:"0vw 10vw 0vw 10vw",
     minHeight:"100vh",
     display:"flex",
     position:"relative",
@@ -215,8 +215,8 @@ function HomeHero() {
                     
                 </ButtonsContainer>
                 <HomeHeroLeftSubTitle spacing={4} direction="row" sx={{margin:"25px 0px 0px 0px"}}>
-                    <Button variant="contained" component={Link} to={CLIENT_PAGES.services} type="button" startIcon={<ArrowForwardIosIcon sx={{fontSize:"large"}}/>} sx={{color:"white", backgroundColor:PROJECT_COLORS.primarySwatch, padding:"15px", fontSize:13}}>Lire plus...</Button>
-                    <Button variant="outlined" component={Link} to={CLIENT_PAGES.contact} type="button" startIcon={<SendIcon/>} sx={{color:PROJECT_COLORS.primarySwatch, borderColor:PROJECT_COLORS.primarySwatch, fontSize:13}}>Nous contacter</Button>
+                    <Button variant="contained" component={Link} to={CLIENT_PAGES.services} type="button" startIcon={<ArrowForwardIosIcon sx={{fontSize:"large"}}/>} sx={{color:"white", backgroundColor:PROJECT_COLORS.primarySwatch, padding:"15px", fontSize:13, '&:hover':{backgroundColor:"#213438"}}}>Lire plus...</Button>
+                    <Button variant="outlined" component={Link} to={CLIENT_PAGES.contact} type="button" startIcon={<SendIcon sx={{fontSize:"large"}}/>} sx={{color:PROJECT_COLORS.primarySwatch, borderColor:PROJECT_COLORS.primarySwatch, fontSize:13,padding:"15px", '&:hover':{color:"#213438", borderColor:"#213438"}}}>Nous contacter</Button>
                 </HomeHeroLeftSubTitle>
             </HomeHeroContainerLeft>
             <HomeHeroContainerRight>

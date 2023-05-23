@@ -9,13 +9,13 @@ import { PROJECT_COLORS } from '../../common/colors';
 // import nodemailer from 'nodemailer';
 // @ts-ignore
 import * as nodemailer from "nodemailer";
-import { render } from '@react-email/render';
-import EmailEx from '../../components/EmailEx';
+// import { render } from '@react-email/render';
+// import EmailEx from '../../components/EmailEx';
 
 
  const SinistreFormContainer=styled("section")(({theme})=>({
-    width:"calc(100% - 30vw)",
-    padding:"75px 15vw 75px 15vw",
+    width:"calc(100% - 40vw)",
+    padding:"75px 20vw 75px 20vw",
     minHeight:"600px",
     display:"flex",
     flexDirection:"column",
@@ -31,10 +31,20 @@ import EmailEx from '../../components/EmailEx';
     },
 }));
 
+const BoxStyle=styled(Box)(({theme})=>({
+    width:"65%",
+    [theme.breakpoints.down("lg")]: {
+    },
+    [theme.breakpoints.down("md")]: {
+        width:"90%"
+    },
+   
+}));
+
 
 function SinistreForm() {
 
-    const MyEmail = render(<EmailEx/>, {plainText:true})
+    // const MyEmail = render(<EmailEx/>, {plainText:true})
     // const transporter = nodemailer.createTransport({
     //     service: 'Gmail',
     //     port: 587,
@@ -61,8 +71,8 @@ function SinistreForm() {
     return (
         <SinistreFormContainer>
                 <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Nous envoyer un message</Typography>
-                <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"45px", marginBottom:"50px", textAlign:"center" }}>Veuillez renseigner le formulaire</Typography>
-                <Box component={"form"} sx={{ width:"75%"}}>
+                <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"35px", marginBottom:"50px", textAlign:"center" }}>Veuillez renseigner le formulaire</Typography>
+                <BoxStyle component={"form"} >
                 <Grid container spacing={3}>
                     <Grid item md={6} xs={12} sx={{display:"flex", flexDirection:"row"}} >
                         <TextField required id="outlined-required" label="Nom" defaultValue="" fullWidth/>
@@ -96,8 +106,8 @@ function SinistreForm() {
                         <FormControlLabel value="end" control={<Checkbox />} label={<TextButton title={"J'accepte les termes et conditions"} path={''}></TextButton>} labelPlacement="end"/>
             </FormControl>
                 </div>
-            </Box>
-                <Button startIcon={<ArrowForwardIos/>} sx={{color:"white", backgroundColor:"#138F82", padding:"18px"}} onClick={()=> console.log(MyEmail)}> Envoyer </Button>
+            </BoxStyle>
+            <Button startIcon={<ArrowForwardIos/>} sx={{color:"white", backgroundColor:"#138F82", padding:"10px", '&:hover':{backgroundColor:"#213438"}}}> Envoyer </Button>
         </SinistreFormContainer>
     );
 }

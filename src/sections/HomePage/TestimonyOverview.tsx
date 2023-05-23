@@ -10,12 +10,12 @@ import GoogleRatings from '../../components/GoogleRatings';
 
 const TestimonyOverviewStyle=styled("section")(({theme})=>({
     // width:"100%",
-    minHeight:"700px",
+    minHeight:"60vh",
     backgroundColor:"#497774",
     display:"flex",
     flexDirection:"row",
     width:"calc(100% - 30vw)",
-    padding:"75px 15vw 75px 15vw",
+    padding:"75px 15vw 50px 15vw",
     [theme.breakpoints.down("lg")]: {
         // flexDirection:"column",
         width:"calc(100% - 4vw)",
@@ -194,7 +194,7 @@ function TestimonyOverview() {
                     <Title variant="h6" >LES AVIS</Title>
                     <Subtitle variant='h3' sx={{}}>Ce que disent les clients de nous</Subtitle>
                     <TextDesc variant="h6" sx={{}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus</TextDesc>
-                    <Button startIcon={<ArrowForwardIosIcon sx={{fontSize:"10px"}}/>} sx={{color:"white", backgroundColor:PROJECT_COLORS.primarySwatch, padding:"15px", fontSize:13, width:"150px"}} variant="contained">lire plus...</Button>
+                    <Button startIcon={<ArrowForwardIosIcon sx={{fontSize:"10px"}}/>} sx={{color:"white", backgroundColor:PROJECT_COLORS.primarySwatch, padding:"15px", fontSize:13, width:"150px", '&:hover':{backgroundColor:"#213438"}}} variant="contained">lire plus...</Button>
                     <DaughtTestimony src="assets/images/DaughtGroup1.png"/>
                 </RightContent>
             </TestimonyOverviewRight>

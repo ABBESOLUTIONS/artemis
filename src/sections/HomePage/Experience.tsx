@@ -11,7 +11,7 @@ const ExperienceContainer=styled("section")(({theme})=>({
     // width:"calc(100% - 50px)",
     width:"calc(100% - 30vw)",
     padding:"75px 15vw 75px 15vw",
-    minHeight:"70vh",
+    minHeight:"50vh",
     backgroundColor:"#F8F8F8",
     display:"flex",
     flexDirection:"row",
@@ -76,14 +76,14 @@ const LeafImage=styled("img")(({theme})=>({
     // marginLeft:"175px",
     left:"250px",
     // marginTop:"-125px",
-    top:50,
+    top:0,
     [theme.breakpoints.down("lg")]: {
 display:"none"    },
 }));
 const SubtitleExp =styled(Typography)(({theme})=>({
     textAlign:"start", 
     fontWeight:"bold", 
-    fontSize:"45px", 
+    fontSize:"35px", 
     marginBottom:"50px",
 
     [theme.breakpoints.down("lg")]: {
@@ -101,7 +101,7 @@ function Experience() {
             <ExperienceContainerRight>
                 <RightContent>
                     <Typography variant="h6" sx={{textAlign:"start", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>POURQUOI NOUS CHOISIR</Typography>
-                    <SubtitleExp variant='h3' >30 années d'expérience que nous mettons à votre service</SubtitleExp>
+                    <SubtitleExp  >30 années d'expérience que nous mettons à votre service</SubtitleExp>
                     <Typography variant="h6" sx={{textAlign:"start", fontSize:'16px', color:"#616179", marginBottom:"50px"}}>Une équipe diplômée en assurance vous accueille pour vous faire bénéficier de leurs conseils et des meilleures propositions négociées auprès des Compagnies.</Typography>
                     <Container>
                         <Grid container spacing={3}>

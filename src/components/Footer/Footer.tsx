@@ -5,11 +5,12 @@ import Logo from '../Logo';
 import SocialMediaButton from '../SocialMediaButton';
 import SocialMediaList from '../SocialMediaList';
 import FooterItems from './FooterItems';
+import { CLIENT_PAGES } from '../../routes/paths';
 
 const FooterContainerCopirght=styled(FooterStyle)(()=>({
     minHeight: "350px",
     display: "flex",
-    paddingTop:"25px",
+    paddingTop:"50px",
     flexDirection:'column',
     justifyContent: "space-around",
     backgroundColor: "#DFF1F1",
@@ -71,24 +72,23 @@ function Footer() {
                     <Grid item xs={12} md={6} sm={6} lg={3}>
                         <FooterContainerPart>
                             <Typography sx={{fontSize:"18px", fontWeight:"bold", marginBottom:"15px"}}>Liens utiles</Typography>
-                            <FooterItems title={'A propos de nous'} path={''}></FooterItems>
-                            <FooterItems title={'Blog et actualités'} path={''}></FooterItems>
-                            <FooterItems title={'Nous contacter'} path={''}></FooterItems>
-                            <FooterItems title={'Fiche Conseil'} path={''}></FooterItems>
-                            <FooterItems title={'Numéros utiles'} path={''}></FooterItems>
+                            <FooterItems title={'A propos de nous'} path={CLIENT_PAGES.home}></FooterItems>
+                            <FooterItems title={'Nous contacter'} path={CLIENT_PAGES.contact}></FooterItems>
+                            <FooterItems title={'Fiche Conseil'} path={'document/fiche-conseil.pdf'}></FooterItems>
+                            <FooterItems title={'Numéros utiles'} path={'https://www.cavaillon.fr/numeros-utiles.html'}></FooterItems>
                         </FooterContainerPart>
                     </Grid>
                     <Grid item xs={12} md={6} sm={6} lg={3}>
                         <FooterContainerPart>
                             <Typography sx={{fontSize:"18px", fontWeight:"bold", marginBottom:"15px"}}>Nos assurances</Typography>
-                            <FooterItems title={"Assurance Habitation"} path={''}></FooterItems>
-                            <FooterItems title={"Assurance Professionnelle"} path={''}></FooterItems>
-                            <FooterItems title={"Assurance Auto"} path={''}></FooterItems>
-                            <FooterItems title={"Assurance Batiments"} path={''}></FooterItems>
-                            <FooterItems title={"Assurance Moto"} path={''}></FooterItems>
-                            <FooterItems title={"Assurance Loisirs"} path={''}></FooterItems>
-                            <FooterItems title={"Assurance Santé"} path={''}></FooterItems>
-                            <FooterItems title={"Assurance de Prets"} path={''}></FooterItems>
+                            <FooterItems title={"Assurance Habitation"} path={CLIENT_PAGES.services}></FooterItems>
+                            <FooterItems title={"Assurance Professionnelle"} path={CLIENT_PAGES.services}></FooterItems>
+                            <FooterItems title={"Assurance Auto"} path={CLIENT_PAGES.services}></FooterItems>
+                            <FooterItems title={"Assurance Batiments"} path={CLIENT_PAGES.services}></FooterItems>
+                            <FooterItems title={"Assurance Moto"} path={CLIENT_PAGES.services}></FooterItems>
+                            <FooterItems title={"Assurance Loisirs"} path={CLIENT_PAGES.services}></FooterItems>
+                            <FooterItems title={"Assurance Santé"} path={CLIENT_PAGES.services}></FooterItems>
+                            <FooterItems title={"Assurance de Prets"} path={CLIENT_PAGES.services}></FooterItems>
                         </FooterContainerPart>
                     </Grid>
                 </Grid>

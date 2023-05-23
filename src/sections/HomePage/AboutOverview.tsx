@@ -86,6 +86,7 @@ const QualityTitle = styled(Typography)(({theme}) => ({
     fontSize: "35px",
     fontWeight: 800,
     width:"100%",
+    marginBottom:'50px',
     [theme.breakpoints.down("lg")]: {
         fontSize: "25px",
         fontWeight: 400,

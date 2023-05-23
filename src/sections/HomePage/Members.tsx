@@ -5,14 +5,14 @@ import MemberCard from '../../components/MemberCard';
 import SectionStyle from '../../styles/SectionStyle';
 
 const MembersContainer = styled("section")(({theme}) => ({
-    minHeight: "750px",
+    minHeight: "75vh",
     width:"calc(100% - 30vw)",
-    padding:"0vw 15vw 0vw 15vw",
-    paddingTop:"100px",
-    paddingBottom:"100px",
+    padding:"75px 15vw 50px 15vw",
+    // paddingTop:"100px",
+    // paddingBottom:"100px",
     display: "flex",
     flexDirection:"column",
-    justifyContent:"space-around",
+    // justifyContent:"space-around",
     [theme.breakpoints.down("lg")]: {
         // flexDirection:"column",
         // width:"calc(100% - 20px)",
@@ -29,6 +29,7 @@ const QualityTitle = styled(Typography)(({theme}) => ({
     fontWeight: 800,
     width:"100%",
     textAlign: "center",
+    marginBottom:"50px",
     [theme.breakpoints.down("lg")]: {
         fontSize: "25px",
         fontWeight: 400,

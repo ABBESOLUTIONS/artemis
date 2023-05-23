@@ -8,7 +8,7 @@ import ImageComponent from './ImageComponent';
 const OneServiceDetailsContainer=styled(Card)(({theme})=>({
     minWidth:"100%",
     // minWidth:"calc(100% - 60px)",
-    minHeight:"100px",
+    minHeight:"175px",
     display:"flex",
     flexDirection:"row",
     justifyContent:"space-around",
@@ -51,6 +51,7 @@ const DetailsStyle= styled(Typography)(({theme})=>({
     marginLeft:"20px",
     [theme.breakpoints.down("md")]: {
     width:"100%",
+    marginLeft:"10px",
         
     },
 }));

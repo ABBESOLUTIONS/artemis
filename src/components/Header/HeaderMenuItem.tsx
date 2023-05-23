@@ -25,8 +25,9 @@ const HeaderMenuItemLink = styled(Link)(() => ({
 }));
 const SubMenuItemContainer = styled("div")(() => ({
     position:"absolute",
-    width:"200px",
-    height:"100px",
+    // backgroundColor:"pink",
+    minWidth:"210px",
+    height:"95px",
     boxShadow:"rgba(149, 157, 165, 0.2) 0px 8px 24px",
     // border:"1px solid black",
     display:"flex",
@@ -35,7 +36,7 @@ const SubMenuItemContainer = styled("div")(() => ({
     backgroundColor:"white",
     marginRight:"15px",
     marginTop:"125px",
-    borderRadius:"10px",
+    borderRadius:"6px",
 
 }));
 const OneSubMenuItem = styled(Container)(() => ({
@@ -68,7 +69,7 @@ function HeaderMenuItem({title, path, subMenu}: Pops) {
                 <SubMenuItemContainer id="subMenu" sx={{display:"none"}}>
                     {
                         subMenu?.map((oneMenu, index)=> 
-                            <Container key={index} sx={{ width:"200px", height:"40px",display:"flex", justifyContent:"center", alignItems:"center",fontSize:"18px", flexDirection:"column" }}><TextButton title={oneMenu.title} path={oneMenu.path} sx={{fontWeight:"bold", color:"black", fontSize:"15px"}}/>
+                            <Container key={index} sx={{ width:"100%", height:"40px",display:"flex", justifyContent:"center", alignItems:"center",fontSize:"18px", flexDirection:"column" }}><TextButton title={oneMenu.title} path={oneMenu.path} sx={{fontWeight:"bold", color:"black", fontSize:"15px"}}/>
                             {subMenu?.length - 1 !== index &&
                                 <Divider sx={{width:"100%"}}/>
                             }
