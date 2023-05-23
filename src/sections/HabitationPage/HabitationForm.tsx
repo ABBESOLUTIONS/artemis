@@ -121,9 +121,13 @@ const handleCloseDialog = () => {
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"45px", marginBottom:"50px", textAlign:"center" }}>FICHE CONSEIL</Typography>
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"35px", marginBottom:"50px", textAlign:"center" }}>Etude Assurance Habitation</Typography>
             <Box component="form" onSubmit={validate} sx={{'& .MuiTextField-root': { m: 2, width: '50ch' },}}>
+                <Grid item lg={6} md={6} sm={6} xs={12}>
+                  <TextFieldPersonnalise id={''} name="Nom" required={true} onChange={handleChange} label={"Nom"} value={data?.Nom ?? ""} />
+                </Grid>
+                <Grid item lg={6} md={6} sm={6} xs={12}>
+                  <TextFieldPersonnalise id={''} name="Prenom" required={true} onChange={handleChange}  label={"Prénom"} value={data?.Prenom ?? ""} />
+                </Grid>
                 <div>
-                <TextFieldPersonnalise id={''} name="Nom" required={true} onChange={handleChange} label={"Nom"} value={data?.Nom ?? ""} />
-                <TextFieldPersonnalise id={''} name="Prenom" required={true} onChange={handleChange}  label={"Prénom"} value={data?.Prenom ?? ""} />
                 </div>
                 <div>
                 <TextFieldPersonnalise id={''} name="Adresse" required={true} onChange={handleChange} label={"Adresse"} value={data?.Adresse ?? ""} />
