@@ -1,18 +1,20 @@
-import { Button, Menu, MenuItem, styled } from '@mui/material';
+import { Button, Menu, MenuItem, SxProps, styled } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CLIENT_PAGES } from '../../routes/paths';
 
 const SubMenuItem = styled(Link)(() => ({
     textDecoration:"none",
+    color:"black"
 }));
 
 interface Props {
     title:string,
+    sx?: SxProps
     
 }
 
-function DeclarationMenu({title}: Props) {
+function DeclarationMenu({title, sx={}}: Props) {
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -33,6 +35,7 @@ function DeclarationMenu({title}: Props) {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        sx={{...sx}}
       >
         {title}
       </Button>

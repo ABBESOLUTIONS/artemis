@@ -9,7 +9,7 @@ const DevisButtonStyle= styled(Button)(({theme}) => ({
     backgroundColor:"#138f82",
     fontWeight:"700",
     height:"50px",
-    marginLeft:"-50%",
+    // marginLeft:"-50%",
     // marginLeft:"1335px",
     display:"flex",
     // position:"absolute",
