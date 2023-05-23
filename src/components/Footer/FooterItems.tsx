@@ -2,15 +2,12 @@ import { styled, SxProps, Typography } from '@mui/material';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 
 const FooterItemContainer = styled('div')(() => ({
-    padding:"5px 0px 5px 0px"
+    
 }));
-const FooterItemLink = styled("a")(() => ({
+const FooterItemLink = styled(Link)(() => ({
     textDecoration: "none",
     color:"black",
     margin:"10px",
-    '&:hover':{
-        color:"green"
-    }
 }));
 
 interface Pops {
@@ -25,7 +22,7 @@ function FooterItems({title, path, sx={}}: Pops) {
 
     return (
         <FooterItemContainer>
-            <Typography target='' component={FooterItemLink} href={path} variant="body1" style={{color: match ? "black" : "black"}} sx={{...sx}}>{title}</Typography>
+            <Typography component={FooterItemLink} to={path} variant="body1" style={{color: match ? "black" : "black"}} sx={{...sx}}>{title}</Typography>
         </FooterItemContainer>
     );
 }

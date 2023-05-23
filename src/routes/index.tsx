@@ -61,11 +61,6 @@ export default function Router() {
           { path: CLIENT_PAGES.emailInput, element: <InputEmail /> },
           { path: CLIENT_PAGES.reset, element: <ResetPassword /> },
           { path: CLIENT_PAGES.reclamation, element: <RéclamationPage /> },
-          {path: CLIENT_PAGES.demande, element: <DevisOption/>},
-          { path: CLIENT_PAGES.autoMoto, element: <AutoMoto /> },
-          { path: CLIENT_PAGES.sante, element: <Sante /> },
-          { path: CLIENT_PAGES.habitation, element: <Habitation /> },
-          { path: CLIENT_PAGES.professionelle, element: <Professionelle /> },
         ],
       },
 
@@ -74,7 +69,11 @@ export default function Router() {
         element: <UserLayout />,
         children: [
           {element: <ContratsList />, index: true},
-
+          {path: USER_PAGES.demande, element: <DevisOption/>},
+          { path: USER_PAGES.autoMoto, element: <AutoMoto /> },
+          { path: USER_PAGES.sante, element: <Sante /> },
+          { path: USER_PAGES.habitation, element: <Habitation /> },
+          { path: USER_PAGES.professionelle, element: <Professionelle /> },
           { path: USER_PAGES.deconnexion, element: <Deconnexion/> },          
         ]
       },

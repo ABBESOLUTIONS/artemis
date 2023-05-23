@@ -1,13 +1,12 @@
-import { Button,Card, CardMedia, Grid, styled, Typography } from '@mui/material';
+import { Button,Card, Grid, styled, Typography } from '@mui/material';
 import SocialMediaList from './SocialMediaList';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { PROJECT_COLORS } from '../common/colors';
-import { Email, EmailOutlined, EmailSharp } from '@mui/icons-material';
 
 
 const MemberCardContainer= styled(Card)(({theme})=>({
     width: "300px",
-    minHeight: "395px",
+    height: "395px",
     boxShadow:"0px 4px 4px rgba(0, 0, 0, 0.25)",
     borderRadius:"3px",
     position:"relative",
@@ -19,7 +18,7 @@ const MemberCardContainer= styled(Card)(({theme})=>({
 }));
 const MemberImageContainer =styled("img")(()=>({
     width:"100%",
-    minHeight:"275px",
+    height:"275px",
     // borderRadius:"19px 19px 0px 0px",
 }));
 interface Props {
@@ -31,10 +30,7 @@ interface Props {
 function MemberCard({image,nom,poste}: Props) {
     return (
         <MemberCardContainer>
-            <CardMedia>
-                <MemberImageContainer sx={{ backgroundImage: "url('"+image+"')", backgroundSize: "100% 100%" }}/>
-                <Button href='mailto:contact@artemisassurance.fr' variant='contained' sx={{width:"20px",borderRadius:"100px",bgcolor:PROJECT_COLORS.primarySwatch, marginLeft:"70%", bottom:25, positon:"absolute"}}><EmailSharp     /></Button>
-            </CardMedia>
+            <MemberImageContainer sx={{ backgroundImage: "url('"+image+"')", backgroundSize: "100% 100%" }}/>
             <Grid container>
                 <Grid item xs={12}>
                     <Typography sx={{fontWeight:"bold", margin:"10px", fontSize:"20px"}}>{nom}</Typography>
@@ -45,6 +41,7 @@ function MemberCard({image,nom,poste}: Props) {
                 <Grid item xs={12}>
                     <SocialMediaList/>
                 </Grid>
+                <Button variant='contained' sx={{width:"20px",borderRadius:"100px",bgcolor:PROJECT_COLORS.primarySwatch, marginLeft:"70%", bottom:"150px", positon:"absolute"}}><InstagramIcon/></Button>
             </Grid>
         </MemberCardContainer>
     );

@@ -1,18 +1,18 @@
 export const members = [
     {
         picture: "assets/images/team-1.jpg",
-        name: "BATTINI Sylvie",
-        job: "Directrice Diplômée Master 2 de l’Ecole Nationale d’Assurance PARIS",
+        name: "Kokou Jonnathan",
+        job: "Commercial",
     },
     {
         picture: "assets/images/team-1.jpg",
-        name: "BATTINI-BELLAMY Thibaut",
-        job: "Responsable de Clientèle Diplômé Master 2 de l’Ecole Nationale d’Assurance PARIS",
+        name: "Robert Maeva",
+        job: "Marketeur",
     },
     {
         picture: "assets/images/team-1.jpg",
-        name: "BATTINI Jean-Pierre",
-        job: "Responsable du service indemnisations",
+        name: "NINA AFITE",
+        job: "Assureur",
     },
 ];
 
@@ -50,44 +50,34 @@ export const qualitiesInfo = [
 ];
  export const differentServices = [
     {
-        icone:"assets/images/habitation.png",
-        title:"Assurance Habitation",
-        text:"Votre studio étudiant, votre appartement, votre maison, le mobil ’home de vos vacances. Tous vos biens trouveront l’assurance au meilleur rapport qualité prix auprès de nos partenaires.",
-    },
-    {
-        icone:"assets/images/pro.png",
-        title:"Assurance Professionnelle",
-        text:"Votre activité professionnelle est précieuse. Nous nous attachons à la couvrir au mieux pour pallier tous les imprévus. Notre souhait est d’accompagner votre développement en toute sérénité..",
+        icone:"assets/images/presentation.png",
+        title:"L'assurance des batiments",
+        text:"Qu'il s'agisse d'un simple bureau, d'un commerce ou d'un entrepôt, un contrat multirisque adapté permet de garantir la pérennité de vos bâtiments.",
     },
     {
         icone:"assets/images/voiture.png",
-        title:"Assurance Auto",
-        text:"Notre équipe analyse avec vous les besoins de chacun afin d'obtenir le meilleur rapport qualité/prix des contrats d'assurance de vos véhicules",
+        title:"L'assurance des Véhicules",
+        text:"Notre équipe analyse avec vous les besoins de chacun afin d'obtenir le meilleur rapport qualité/prix des contrats d'assurance de vos véhicules.",
     },
     {
-        icone:"assets/images/habitations.png",
-        title:"Assurance des Bâtiments",
-        text:"Qu'il s'agisse d'un simple bureau, d'un commerce ou d'un entrepôt, un contrat multirisque adapté permet de garantir la pérennité de vos bâtiments",
+        icone:"assets/images/voyage.png",
+        title:"L'assurance des Voyages",
+        text:"Lorem ipsum dolor sit amet, consectetur adipcing elit. Quis placerat arcu nibh sed. Lorem ipsum dolor sit ame adipcing elit. Quis placerat arcu nibh sed consectetur adipcing.",
     },
     {
-        icone:"assets/images/moto.png",
-        title:"Assurance Moto",
-        text:"Quel que soit votre permis, l’engin qui vous emmène partout doit être bien couvert, tout autant que le pilote. Des partenaires spécialisés nous ont fait confiance. A vous d’en faire de même..",
+        icone:"assets/images/etudiant.png",
+        title:"L'assurance des Etudiants",
+        text:"Lorem ipsum dolor sit amet, consectetur adipcing elit. Quis placerat arcu nibh sed. Lorem ipsum dolor sit ame adipcing elit. Quis placerat arcu nibh sed consectetur adipcing.",
     },
     {
-        icone:"assets/images/loisirs.png",
-        title:"Assurance Loisirs",
-        text:"Vélo électrique, trottinette. Nous avons la solution économique pour que vous puissiez circuler facilement en étant bien garanti..",
+        icone:"assets/images/sante32.png",
+        title:"L'assurance Santé",
+        text:"Lorem ipsum dolor sit amet, consectetur adipcing elit. Quis placerat arcu nibh sed. Lorem ipsum dolor sit ame adipcing elit. Quis placerat arcu nibh sed consectetur adipcing.",
     },
     {
-        icone:"assets/images/santeIcon.png",
-        title:"Assurance Santé",
-        text:"Que vous soyez seul, en famille, salarié, artisan ou chef d'entreprise, nous pouvons vous trouver le contrat qui vous conviendra.",
-    },
-    {
-        icone:"assets/images/prett.png",
-        title:"Assurance de Prêts",
-        text:"Votre banque est précieuse et vous a accordé le prêt nécessaire à votre projet et au meilleur taux mais en matière d’assurance, rien de tel qu’un assureur pour vous garantir au mieux mais de manière plus économique",
+        icone:"assets/images/habitation.png",
+        title:"L'assurance des Habitation",
+        text:"Lorem ipsum dolor sit amet, consectetur adipcing elit. Quis placerat arcu nibh sed. Lorem ipsum dolor sit ame adipcing elit. Quis placerat arcu nibh sed consectetur adipcing.",
     },
  ];
 

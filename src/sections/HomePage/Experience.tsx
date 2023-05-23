@@ -10,7 +10,7 @@ import SectionStyle from '../../styles/SectionStyle';
 const ExperienceContainer=styled("section")(({theme})=>({
     // width:"calc(100% - 50px)",
     width:"calc(100% - 30vw)",
-    padding:"75px 15vw 75px 15vw",
+    padding:"0vw 15vw 0vw 15vw",
     minHeight:"70vh",
     backgroundColor:"#F8F8F8",
     display:"flex",
@@ -20,7 +20,7 @@ const ExperienceContainer=styled("section")(({theme})=>({
         flexDirection:"column",
     // width:"calc(100% - 20px)",
     width:"calc(100% - 4vw)",
-    padding:"75px 2vw 75px 2vw",
+    padding:"0vw 2vw 0vw 2vw",
 
     },
 }));
@@ -102,20 +102,20 @@ function Experience() {
                 <RightContent>
                     <Typography variant="h6" sx={{textAlign:"start", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>POURQUOI NOUS CHOISIR</Typography>
                     <SubtitleExp variant='h3' >30 années d'expérience que nous mettons à votre service</SubtitleExp>
-                    <Typography variant="h6" sx={{textAlign:"start", fontSize:'16px', color:"#616179", marginBottom:"50px"}}>Une équipe diplômée en assurance vous accueille pour vous faire bénéficier de leurs conseils et des meilleures propositions négociées auprès des Compagnies.</Typography>
+                    <Typography variant="h6" sx={{textAlign:"start", fontSize:'15px', color:"#616179", marginBottom:"50px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis placerat arcu nibh sed placerat elementum. Urna eu et purus et mi sit rhoncus. Id nisl quis arcu nulla leo.</Typography>
                     <Container>
                         <Grid container spacing={3}>
                             <Grid item md={6} sm={6} xs={12} lg={6} >
-                                <ExperienceButton text={'ECONOMIES'}/>
+                                <ExperienceButton text={'VEHICULE'}/>
                             </Grid>
                             <Grid item md={6} sm={6} xs={12} lg={6} >
-                                <ExperienceButton text={'PROXIMITE'}/>
+                                <ExperienceButton text={'GAGNER EN TEMPS'}/>
                             </Grid>
                             <Grid item md={6} sm={6} xs={12} lg={6} >
-                                <ExperienceButton text={'CONSEILS'}/>
+                                <ExperienceButton text={'HABITATION'}/>
                             </Grid>
                             <Grid item md={6} sm={6} xs={12} lg={6} >
-                                <ExperienceButton text={'ACCOMPAGNEMENTS'}/>
+                                <ExperienceButton text={'ECONOMISER'}/>
                             </Grid>
                             {/* <Grid item md={12} lg={6}>
                                 <ExperienceButton text={'CONSULTATION'}/>
