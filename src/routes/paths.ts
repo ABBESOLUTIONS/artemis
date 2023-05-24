@@ -28,3 +28,6 @@ export const USER_PAGES = {
     contact:"/contact",
     deconnexion:"/contratsList/deconnexion",
 }
+export const REDIRECT_PAGES = {
+    reseauRedirection:"/reseauRedirection"
+}

@@ -1,5 +1,5 @@
-import { Container, Grid, styled, Typography } from '@mui/material';
-import React from 'react';
+import { Container, Grid, MenuItem, styled, TextField, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import FormAccesButton from '../../components/FormAccesButton';
 import { CLIENT_PAGES, USER_PAGES } from '../../routes/paths';
 import SectionStyle from '../../styles/SectionStyle';
@@ -15,6 +15,8 @@ const DevisOptionSectionContainer=styled(SectionStyle)(()=>({
 }));
 
 function DevisOptionSection() {
+    const [formType, setFormType] = useState('');
+
     return (
         <DevisOptionSectionContainer>
             <Typography sx={{fontSize:"30px", textAlign:"center", fontWeight:"bold"}}>SELECTIONEZ:</Typography>
@@ -33,7 +35,14 @@ function DevisOptionSection() {
                     <FormAccesButton nom={"PROFESSIONELLE"} desc={"(RCPRO,Multirisques et Decennal)"} chemin={CLIENT_PAGES.professionelle}/>
                 </Grid>
             </Grid>
-            
+            <TextField></TextField>
+            <TextField></TextField>
+            <TextField select value={formType} onChange={(e) => setFormType(e.target.value)}>
+                <MenuItem>AUTO</MenuItem>
+                <MenuItem >PRO</MenuItem>
+                <MenuItem>SANTE</MenuItem>
+                <MenuItem>HABITATION</MenuItem>
+            </TextField>
             </Container>
         </DevisOptionSectionContainer>
     );

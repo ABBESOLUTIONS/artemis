@@ -23,8 +23,10 @@ import Services from "../pages/Services";
 import SignUp from "../pages/SignUp";
 import ContratsList from "../pages/UserPages/ContratsList";
 import SinistreForm from "../sections/SinistrePage/SinistreForm";
-import { CLIENT_PAGES, USER_PAGES } from "./paths";
+import { CLIENT_PAGES, REDIRECT_PAGES, USER_PAGES } from "./paths";
 import RéclamationPage from "../pages/RéclamationPage";
+import ReseauLayout from "../layouts/ReseauLayout";
+import ReseauRedirection from "../pages/ReseauRedirection";
 
 export default function Router() {
 
@@ -76,6 +78,14 @@ export default function Router() {
           {element: <ContratsList />, index: true},
 
           { path: USER_PAGES.deconnexion, element: <Deconnexion/> },          
+        ]
+      },
+      {
+        path: REDIRECT_PAGES.reseauRedirection,
+        element: <ReseauLayout />,
+        children: [
+          {element: <ReseauRedirection />, index: true},
+
         ]
       },
 

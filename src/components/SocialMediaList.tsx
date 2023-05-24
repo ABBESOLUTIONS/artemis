@@ -5,6 +5,7 @@ import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { REDIRECT_PAGES } from '../routes/paths';
 
 const SocialMediaContainer=styled("div")(()=>({
     display:"flex",
@@ -17,10 +18,10 @@ const SocialMediaContainer=styled("div")(()=>({
 function SocialMediaList() {
     return (
         <SocialMediaContainer>
-            <SocialMediaButton children={<FacebookOutlinedIcon/>} link={''}/>
-            <SocialMediaButton children={<TwitterIcon/>} link={''}/>
-            <SocialMediaButton children={<InstagramIcon/>} link={''}/>
-            <SocialMediaButton children={<LinkedInIcon/>} link={''}/>
+            <SocialMediaButton children={<FacebookOutlinedIcon/>} link={REDIRECT_PAGES.reseauRedirection}/>
+            <SocialMediaButton children={<TwitterIcon/>} link={REDIRECT_PAGES.reseauRedirection}/>
+            <SocialMediaButton children={<InstagramIcon/>} link={REDIRECT_PAGES.reseauRedirection}/>
+            <SocialMediaButton children={<LinkedInIcon/>} link={REDIRECT_PAGES.reseauRedirection}/>
         </SocialMediaContainer>
     );
 }

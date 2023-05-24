@@ -1,10 +1,12 @@
 import React from 'react';
+import Page from '../components/Pages';
+import RedirectionSection from '../sections/ReseauRedirection/RedirectionSection';
 
 function ReseauRedirection() {
     return (
-        <div>
-            
-        </div>
+        <Page title='Reseau' sx={{paddingTop:"0px"}}>
+            <RedirectionSection/>
+        </Page>
     );
 }
 
