@@ -71,7 +71,7 @@ function HeaderMenuItem({title, path, subMenu}: Pops) {
                         subMenu?.map((oneMenu, index)=> 
                             <Container key={index} sx={{ width:"100%", height:"40px",display:"flex", justifyContent:"center", alignItems:"center",fontSize:"18px", flexDirection:"column" }}><TextButton title={oneMenu.title} path={oneMenu.path} sx={{fontWeight:"bold", color:"black", fontSize:"15px"}}/>
                             {subMenu?.length - 1 !== index &&
-                                <Divider sx={{width:"100%"}}/>
+                                <Divider sx={{width:"100%", margin:"5px 0px -20px 0px"}}/>
                             }
                             </Container>)
                     }

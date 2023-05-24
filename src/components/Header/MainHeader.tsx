@@ -61,10 +61,10 @@ function MainHeader() {
                         <Grid item lg={1} md={1} sm={1} xs={2} sx={{}}>
                             <Logo sx={{marginLeft: "30px"}} logoImg="assets/images/logo.png"/>
                         </Grid>
-                        <Grid item lg={10} md={0} sm={0} xs={0} sx={{display: "flex", justifyContent:"center",  }}>
+                        <Grid item lg={10} md={0} sm={0} xs={0} sx={{display: "flex", justifyContent:"end",  }}>
                             {!isMobile && <Header/>}
                         </Grid>
-                        <Grid item lg={1} md={11} sm={11} xs={10} sx={{ display: "flex", justifyContent:"flex-end" }}>
+                        <Grid item lg={1} md={11} sm={11} xs={10} sx={{ display: "flex", justifyContent:"flex-end", }}>
                             {/* {!isMobile && <Search/>} */}
                             {!isMobile && <DevisButton sx={{display: pathDemande || pathAuto || pathSante || pathHabit || pathPro || pathOption ? "none" : "flex"}} />}
                             {isMobile && <MenuMobile/>}

@@ -6,7 +6,7 @@ import { PROJECT_COLORS } from '../../common/colors';
 
 const ContactElementsContainer=styled("section")(({theme})=>({
     width:"calc(100% - 40vw)",
-    padding:"75px 20vw 75px 20vw",
+    padding:"65px 20vw 75px 20vw",
     minHeight:"600px",
     display:"flex",
     flexDirection:"column",

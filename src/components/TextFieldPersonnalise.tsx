@@ -1,4 +1,4 @@
-import { TextField, TextFieldProps, styled, } from '@mui/material';
+import { SxProps, TextField, TextFieldProps, styled, } from '@mui/material';
 // import TextField,  from '@mui/material/TextField';
 
 import React from 'react';
@@ -78,9 +78,10 @@ interface Props {
     onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
     type?:string,
     defaultValue?:string,
+    sx?: SxProps
 }
 
-function TextFieldPersonnalise({id, required, label, value, helperText, onChange, name,type,defaultValue}: Props) {
+function TextFieldPersonnalise({id, required, label, value, helperText, onChange, name,type,defaultValue, sx={}}: Props) {
     return (
         <TextFieldPersonnaliseStyle 
           id={id} 
@@ -92,6 +93,7 @@ function TextFieldPersonnalise({id, required, label, value, helperText, onChange
           onChange={onChange}
           type={type}
           defaultValue={defaultValue}
+          sx={{...sx}}
         />
     );
 }

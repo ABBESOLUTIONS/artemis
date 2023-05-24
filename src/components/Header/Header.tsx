@@ -21,8 +21,10 @@ const LogoContainer = styled("div")(() => ({
 const HeaderContainer = styled(Container)(() => ({
         // backgroundColor:"blueviolet",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "end",
         alignItems: "center",
+        // backgroundColor:"green",
+        width:"100%",
     // backgroundImage: "url('assets/images/logo.png')",
 }));
 // const LogoBgContainer = styled("div")(() => ({

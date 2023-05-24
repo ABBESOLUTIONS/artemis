@@ -87,6 +87,7 @@ const QualityTitle = styled(Typography)(({theme}) => ({
     fontWeight: 800,
     width:"100%",
     marginBottom:'50px',
+    textAlign: "center",
     [theme.breakpoints.down("lg")]: {
         fontSize: "25px",
         fontWeight: 400,
@@ -138,7 +139,7 @@ function AboutOverview() {
     return (
         <AboutOverviewContainer>
             <AboutOverviewLeft>
-                <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>A PROPOS DE NOUS</Typography>
+                <Typography variant="h6" sx={{ fontSize:'', color:PROJECT_COLORS.primarySwatch}}>A PROPOS DE NOUS</Typography>
                 {/* <Typography variant='h3' sx={{textAlign:"center", fontWeight:"bold", fontSize:"45px", marginBottom:"50px"}}>Les missions que nous nous sommes fixées</Typography> */}
                 <QualityTitle>Les missions que nous nous sommes fixées</QualityTitle>
                 <Grid container rowSpacing={3}>

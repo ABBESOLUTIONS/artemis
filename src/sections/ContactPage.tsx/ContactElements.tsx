@@ -9,7 +9,7 @@ import FadeVariants from '../../variants/FadeVariants';
 const ContactElementsContainer=styled("section")(({theme})=>({
     width:"calc(100% - 40vw)",
     padding:"75px 20vw 20px 20vw",
-    minHeight:"30vh",
+    minHeight:"25vh",
     display:"flex",
     alignItems:"center",
     justifyContent:"center",

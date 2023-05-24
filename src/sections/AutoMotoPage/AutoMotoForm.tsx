@@ -287,32 +287,6 @@ function AutoMotoForm() {
                   <TextFieldPersonnalise id={''} name={"Date_Obtention_CRM"} required={true} label={"Date d'Obtention du CRM"}  type="date" onChange={handleChange} value={data?.Date_Obtention_CRM?? ""} />
                 </Grid>
                 </Grid>
-                {/* <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div> */}
                 <Typography>Nombre de sinistres lors des dernières années(R.i)</Typography>
                 <Typography>Ordre = Responsable / Demi-Responsable / Non-Responsable / Bris de Glace</Typography>
                 <Grid container rowSpacing={5} sx={{margin:"0px 0px 35px 0px"}}>
@@ -354,22 +328,6 @@ function AutoMotoForm() {
                     <TextFieldPersonnalise id={''} required={true} name={"Suspension_ou_Annulation_Permis"} label={"Suspension/Annulation de Permis"} onChange={handleChange} value={data?.Suspension_ou_Annulation_Permis?? ""} />
                   </Grid>
                 </Grid>
-                {/* <Grid item lg={6} md={6} sm={6} xs={12}>
-                </Grid> */}
-                {/* <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div> */}
-                {/* <div> */}
-                {/* <TextFieldPersonnalise id={''} required={true} name={"dateSuspens"} label={"Date & motif de la suspension / Annulation"}  type="date" onChange={handleChange} value={data?.Date_Motif_Suspension ?? ""} /> */}
-                {/* <TextFieldPersonnalise  id="outlined-required" required={true} name={"dateMotifSuspens"} label="Date & motif de la suspension / Annulation" onChange={handleChange} value={data?.Nature_Sinistre_1 ?? ""}/> */}
-                {/* </div> */}
                 <Typography>Garage:</Typography>
                 <Box sx={{ display: 'flex' }}>
                   <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">

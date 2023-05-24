@@ -4,8 +4,8 @@ import ImageComponent from './ImageComponent';
 
 
 const QualitieCardContainer=styled(Card)(({theme})=>({
-    width:"85%",
-    minHeight:"450px",
+    width:"80%",
+    minHeight:"445px",
     display:"flex",
     flexDirection:"column",
     justifyContent:"space-around",
@@ -38,7 +38,7 @@ function QualitieCard({illus,titre,texte}: Props) {
     return (
         <QualitieCardContainer>
             <ImageComponent image={illus} sx={{width:"80px"}}/>
-            <Typography sx={{fontSize:"20px", fontWeight:"bold"}}>{titre}</Typography>
+            <Typography sx={{fontSize:"20px", fontWeight:"bold", marginBottom:"-55px"}}>{titre}</Typography>
             <Typography sx={{}}>{texte}</Typography>
         </QualitieCardContainer>
     );
