@@ -24,19 +24,32 @@ import { OptionsPro } from '../../components/Ennum/OptionsPro';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { ContactElementsContainer } from '../ContactPage.tsx/ContactForm';
 
 
 
 
 
-const DevisOptionSectionContainer=styled(SectionStyle)(()=>({
+const DevisOptionSectionContainer=styled('section')(()=>({
+    width:"calc(100% - 27vw)",
+    padding:"65px 15vw 75px 12vw",
     // width:"100%",
     minHeight:"60vh",
     display:"flex",
     flexDirection:"column",
     alignItems:"center",
     justifyContent:"center",
-    paddingBottom:"30px"
+    // paddingBottom:"30px"
+}));
+
+const BoxStyle=styled(Box)(({theme})=>({
+    width:"100%",
+    [theme.breakpoints.down("lg")]: {
+    },
+    [theme.breakpoints.down("md")]: {
+        width:"90%"
+    },
+   
 }));
 
 function DevisOptionSection() {
@@ -293,6 +306,7 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
 // information devis 
 
     return (
+        // <ContactElementsContainer>
         <DevisOptionSectionContainer>
             {/* <Typography sx={{fontSize:"30px", textAlign:"center", fontWeight:"bold"}}>SELECTIONEZ:</Typography>
             <Container sx={{margin:"50px"}}>
@@ -310,9 +324,10 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                     <FormAccesButton nom={"PROFESSIONELLE"} desc={"(RCPRO,Multirisques et Decennal)"} chemin={CLIENT_PAGES.professionelle}/>
                 </Grid>
             </Grid> */}
-            <Box component={"form"} onSubmit={validate}>
-                <Container>
-                    <Grid container rowSpacing={5} sx={{margin:"35px 0px 35px 0px"}}>
+            <BoxStyle  >
+                <Box component={"form"} onSubmit={validate} sx={{width:"100%"}}>
+                {/* <Container> */}
+                    <Grid container spacing={3} sx={{margin:"35px 0px 0px 0px", }}>
                     {/* <Grid container > */}
                         <Grid item  lg={6} md={6} sm={6} xs={12}>
                             <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Nom'} value={nom} onChange={(e) => setNom(e.target.value)} />
@@ -327,11 +342,11 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                             <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Adresse'} value={telephone} onChange={(e) => setTelephone(e.target.value)} />
                         </Grid>
                         <Grid item  lg={12} md={12} sm={12} xs={12}>
-                            <TextFieldPersonnalise sx={{width:"95%"}} id={''} name="Nom" required={true} label={'Adresse'} value={adresse} onChange={(e) => setAdresse(e.target.value)} />
+                            <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Adresse'} value={adresse} onChange={(e) => setAdresse(e.target.value)} />
                         </Grid>
                         <Grid item  lg={12} md={12} sm={12} xs={12}>
                             {/* <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Adresse'} value={adresse} onChange={(e) => setAdresse(e.target.value)} /> */}
-                            <TextField sx={{width:"95%"}} defaultValue={"Selectionner Un Devis"} select value={formType} onChange={(e) => setFormType(e.target.value)} label="Selectioner le Type de Devis">
+                            <TextField  defaultValue={"Selectionner Un Devis"} select value={formType} onChange={(e) => setFormType(e.target.value)} label="Selectioner le Type de Devis" fullWidth>
                                 <MenuItem value={"AUTO-MOTO"}>AUTO-MOTO</MenuItem>
                                 <MenuItem value={"SANTE"}>SANTE</MenuItem>
                                 <MenuItem value={"HABITATION"}>HABITATION</MenuItem>
@@ -342,7 +357,7 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
 
                         {formType === "AUTO-MOTO" && (
                             <>
-                            <Grid container rowSpacing={5} sx={{margin:"0px 0px 35px 0px"}}>
+                            <Grid container spacing={3} sx={{margin:"0px 0px 25px 0px"}}>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
                                     <TextFieldPersonnalise id={''} name={"Situation_Familial"} required={true} label={'Situation Familial'} onChange={handleChangeAuto} value={autoData?.Situation_Familial?? ""} />
                                 </Grid>
@@ -400,10 +415,10 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                             </Grid>
                             <Typography>Nombre de sinistres lors des dernières années(R.i)</Typography>
                             <Typography>Ordre = Responsable / Demi-Responsable / Non-Responsable / Bris de Glace</Typography>
-                            <Grid container rowSpacing={5} sx={{margin:"0px 0px 35px 0px"}}>
+                            <Grid container spacing={3} sx={{margin:"0px 0px 35px 0px"}}>
                     
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    <TextField sx={{width:"90%"}}  id="outlined-required" select name={"Nature_Sinistre_1"} label="Nature" value={autoData?.Nature_Sinistre_1 ?? ""} onChange={handleChangeAuto} helperText="Veuillez sélectioner la nature" variant="outlined">
+                                    <TextField fullWidth  id="outlined-required" select name={"Nature_Sinistre_1"} label="Nature" value={autoData?.Nature_Sinistre_1 ?? ""} onChange={handleChangeAuto} helperText="Veuillez sélectioner la nature" variant="outlined">
                                         {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                                     </TextField>
                                 </Grid>
@@ -411,7 +426,7 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_1"} label={"Date"} onChange={handleChangeAuto}  type="date" value={autoData?.Date_Sinistre_1 ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    <TextField sx={{width:"90%"}} id="outlined-required" select name={"Nature_Sinistre_2"} label="Nature" value={autoData?.Nature_Sinistre_2 ?? ""} onChange={handleChangeAuto} helperText="Veuillez sélectioner la nature" variant="outlined" >
+                                    <TextField fullWidth id="outlined-required" select name={"Nature_Sinistre_2"} label="Nature" value={autoData?.Nature_Sinistre_2 ?? ""} onChange={handleChangeAuto} helperText="Veuillez sélectioner la nature" variant="outlined" >
                                         {currencies.map((option) => (<MenuItem key={option.value}  value={option.value}>{option.label}</MenuItem>))}
                                     </TextField>
                                 </Grid>
@@ -419,7 +434,7 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_2"} label={"Date"} onChange={handleChangeAuto}  type="date" value={autoData?.Date_Sinistre_2 ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    <TextField sx={{width:"90%"}} id="outlined-required" select name={"Nature_Sinistre_3"} label="Nature" value={autoData?.Nature_Sinistre_3 ?? ""} onChange={handleChangeAuto} helperText="Veuillez sélectioner la nature" variant="outlined">
+                                    <TextField fullWidth id="outlined-required" select name={"Nature_Sinistre_3"} label="Nature" value={autoData?.Nature_Sinistre_3 ?? ""} onChange={handleChangeAuto} helperText="Veuillez sélectioner la nature" variant="outlined">
                                         {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                                     </TextField>
                                 </Grid>
@@ -443,13 +458,13 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                 </Grid>
                             </Grid>
                                 {/* // <> */}
-                                <Box sx={{ display: 'flex' }}>
-                                <Typography>Garage:</Typography>
+                                <Box sx={{ }}>
                                     <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
-                                        <FormGroup sx={{display:"flex", flexDirection:"row"}}>
-                                        <Grid container>
+                                    <FormLabel component="legend">Garage</FormLabel>
+                                        <FormGroup sx={{display:"flex",  height:"auto",}}>
+                                        <Grid container sx={{ width:'100%'}}>
                                             {
-                                                Object.keys(Garage).map((oneGarage, index) =><Grid item lg={4} md={6} sm={6} xs={12}> <FormControlLabel key={index} control={<Checkbox onChange={AutohandleChangeCheckedGarage} name={Garage[oneGarage as keyof typeof Garage]}/>} label={Garage[oneGarage as keyof typeof Garage]}/></Grid>)
+                                                Object.keys(Garage).map((oneGarage, index) =><Grid item lg={4} md={6} sm={6} xs={12} sx={{width:"200px"}}> <FormControlLabel key={index} control={<Checkbox onChange={AutohandleChangeCheckedGarage} name={Garage[oneGarage as keyof typeof Garage]}/>} label={Garage[oneGarage as keyof typeof Garage]}/></Grid>)
                                             }
                                         </Grid>
                                         </FormGroup>
@@ -459,10 +474,10 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                 <Box sx={{ display: 'flex' }}>
                                     <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
                                         <FormLabel component="legend">Garanties Souhaitées</FormLabel>
-                                        <FormGroup sx={{display:"flex", flexDirection:"row"}}>
+                                        <FormGroup sx={{display:"flex",  height:"auto",}}>
                                         <Grid container>
                                         {
-                                            Object.keys(Garantie).map((oneGarantie, index) =><Grid item lg={4} md={6} sm={6} xs={12}> <FormControlLabel key={index} control={<Checkbox onChange={AutohandleChangeCheckedGarantie} name={Garantie[oneGarantie as keyof typeof Garantie]}/>} label={Garantie[oneGarantie as keyof typeof Garantie]}/></Grid>)
+                                            Object.keys(Garantie).map((oneGarantie, index) =><Grid item lg={3} md={6} sm={6} xs={12} sx={{width:"200px"}}> <FormControlLabel key={index} control={<Checkbox onChange={AutohandleChangeCheckedGarantie} name={Garantie[oneGarantie as keyof typeof Garantie]}/>} label={Garantie[oneGarantie as keyof typeof Garantie]}/></Grid>)
                                         }
                                         </Grid>
                                         </FormGroup>
@@ -473,7 +488,7 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
                                         <FormLabel component="legend">Option</FormLabel>
                                         <FormGroup sx={{display:"flex",  height:"auto",}}>
-                                        <Grid container>
+                                        <Grid container sx={{}}> 
                                         {
                                             Object.keys(Options).map((oneOptions, index) =><Grid item lg={4} md={6} sm={6} xs={12}> <FormControlLabel key={index} control={<Checkbox onChange={AutohandleChangeCheckedOptions} name={Options[oneOptions as keyof typeof Options]}/>} label={Options[oneOptions as keyof typeof Options]}/> </Grid>)
                                         }
@@ -495,8 +510,8 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                         </FormGroup>
                                         <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                                     </FormControl>
-                                    <Button variant="contained"  type="submit" sx={{ backgroundColor:"#138f82", display:"flex", justifyContent:"center", alignItems:"center", marginLeft:"40%", width:"100px", height:"50px" }}>valider</Button>
                                 </Box>
+                                    <Button variant="contained"  type="submit" sx={{ backgroundColor:"#138f82", display:"flex", justifyContent:"center", alignItems:"center", marginLeft:"40%", width:"100px", height:"50px" }}>valider</Button>
                                 {/* // </> */}
                             </>
                         )}
@@ -861,10 +876,12 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                             </>
                         )}
                     {/* </Grid> */}
-                </Container>
-            </Box>
+                {/* </Container> */}
+                </Box >
+            </BoxStyle >
             {/* </Container> */}
         </DevisOptionSectionContainer>
+        // </ContactElementsContainer>
     );
 }
 
