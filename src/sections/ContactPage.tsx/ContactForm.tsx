@@ -4,7 +4,7 @@ import SectionStyle from '../../styles/SectionStyle';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import { PROJECT_COLORS } from '../../common/colors';
 
-const ContactElementsContainer=styled("section")(({theme})=>({
+export const ContactElementsContainer=styled("section")(({theme})=>({
     width:"calc(100% - 40vw)",
     padding:"65px 20vw 75px 20vw",
     minHeight:"600px",

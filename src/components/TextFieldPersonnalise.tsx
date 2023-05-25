@@ -45,7 +45,7 @@ import { PROJECT_COLORS } from '../common/colors';
 // })
 
 const TextFieldPersonnaliseStyle=styled(TextField)(({theme})=>({
-  width:"90%",
+  // width:"90%",
 
   '& label.Mui-focused': {
     color: 'green',
@@ -94,6 +94,7 @@ function TextFieldPersonnalise({id, required, label, value, helperText, onChange
           type={type}
           defaultValue={defaultValue}
           sx={{...sx}}
+          fullWidth
         />
     );
 }
