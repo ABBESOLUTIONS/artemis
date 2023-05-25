@@ -39,5 +39,6 @@ export interface DevisProModel{
     Mode_Paiements:Array<string>,
     dateRegister:string | null,
     typeDevis:string,
+    Situation_Familial: string,
     uid:string,
 }

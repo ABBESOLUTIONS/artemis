@@ -109,3 +109,50 @@ export const qualitiesInfo = [
       label: 'Bris de glace',
     },
   ];
+ export const situationFamille = [
+    {
+      value: 'Célibataire',
+      label: 'Célibataire',
+    },
+    {
+      value: 'Concubinage',
+      label: 'Concubinage',
+    },
+    {
+      value: 'Pacse (é)',
+      label: 'Pacse (é)',
+    },
+    {
+      value: 'Marie (é)',
+      label: 'Marie (é)',
+    },
+    {
+      value: 'Divorce (é)',
+      label: 'Divorce (é)',
+    },
+  ];
+
+ export const residence = [
+    {
+      value: 'Résidence Principale',
+      label: 'Résidence Principale',
+    },
+    {
+      value: 'Résidence Secondaire',
+      label: 'Résidence Secondaire',
+    },
+    {
+      value: 'Propriétaire Non Occupant',
+      label: 'Propriétaire Non Occupant',
+    },
+  ];
+ export const statut = [
+    {
+      value: 'Locataire',
+      label: 'Locataire',
+    },
+    {
+      value: 'Propriétaire',
+      label: 'Propriétaire',
+    },
+  ];

@@ -36,5 +36,6 @@ export interface DevisHabitationModel {
     Modes_Paiement:Array<string>,
     dateRegister:string | null,
     typeDevis:string,
+    Situation_Familial: string,
     uid:string,
 }

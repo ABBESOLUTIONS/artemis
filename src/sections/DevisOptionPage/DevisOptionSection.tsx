@@ -6,7 +6,7 @@ import SectionStyle from '../../styles/SectionStyle';
 import TextFieldPersonnalise from '../../components/TextFieldPersonnalise';
 import { DevisAutoModel } from '../../models/DevisAutoModel';
 import { Garage } from '../../components/Ennum/Garage';
-import { currencies } from '../../common/Data';
+import { currencies, residence, situationFamille, statut } from '../../common/Data';
 import { Garantie } from '../../components/Ennum/Garantie';
 import { Options } from '../../components/Ennum/Option';
 import { ModePaiement } from '../../components/Ennum/ModePaiement';
@@ -20,11 +20,13 @@ import { OptionHabitation } from '../../components/Ennum/OptionsHabitation';
 import { DevisProModel } from '../../models/DevisProModel';
 import { GarantiesPro } from '../../components/Ennum/GarantiesPro';
 import { OptionsPro } from '../../components/Ennum/OptionsPro';
-// import { DatePicker } from '@mui/lab';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { Dayjs } from 'dayjs';
 import { ContactElementsContainer } from '../ContactPage.tsx/ContactForm';
+import { PROJECT_COLORS } from '../../common/colors';
 
 
 
@@ -43,12 +45,29 @@ const DevisOptionSectionContainer=styled('section')(()=>({
 }));
 
 const BoxStyle=styled(Box)(({theme})=>({
-    width:"100%",
+    width:"65%",
     [theme.breakpoints.down("lg")]: {
     },
     [theme.breakpoints.down("md")]: {
         width:"90%"
     },
+   
+}));
+const TextFieldStyle=styled(TextField)(({theme})=>({
+    '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+          borderColor: 'grey', // Remplacez "your-color" par votre couleur personnalisée
+        },
+        '&:hover fieldset': {
+            borderColor: 'black', // Remplacez "your-hover-color" par votre couleur au survol
+          },
+          '&.Mui-focused fieldset': {
+            borderColor: 'green', // Remplacez "your-focus-color" par votre couleur au clic/focus
+          },
+      },
+      '& .MuiInputLabel-root.Mui-focused': {
+        color: 'green', // Remplacez "your-focus-color" par votre couleur personnalisée après le clic/focus
+      },
    
 }));
 
@@ -64,12 +83,39 @@ function DevisOptionSection() {
     // information devis Auto Moto
 
     const validate = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        autoData!.Nom = nom;
-        autoData!.Prenom = prenom;
-        autoData!.Telephone_Fix = telephone;
-        autoData!.Adresse = adresse;
-        console.log(autoData);
+
+        if (!formType) {
+            
+        }
+        if (formType === "AUTO-MOTO") {
+            event.preventDefault();
+            autoData!.Nom = nom;
+            autoData!.Prenom = prenom;
+            autoData!.Telephone_Fix = telephone;
+            autoData!.Adresse = adresse;
+            console.log(autoData);
+        } else if (formType === "SANTE") {
+            event.preventDefault();
+            santeData!.Nom = nom;
+            santeData!.Prenom = prenom;
+            santeData!.Telephone_Fix = telephone;
+            santeData!.Adresse = adresse;
+            console.log(santeData);
+        }  else if (formType === "HABITATION") {
+            event.preventDefault();
+            habitationData!.Nom = nom;
+            habitationData!.Prenom = prenom;
+            habitationData!.Telephone_Fix = telephone;
+            habitationData!.Adresse = adresse;
+            console.log(habitationData);
+        }   else {
+            event.preventDefault();
+            proData!.Nom = nom;
+            proData!.Prenom = prenom;
+            proData!.Telephone_Fix = telephone;
+            proData!.Adresse = adresse;
+            console.log(proData);
+        }
         
         // if (data && user?.uid) {
         //   data.id_client = user?.uid;
@@ -258,6 +304,7 @@ const HabitationhandleChangeCheckedModePaiement = (e: React.ChangeEvent<HTMLInpu
 // information devis Pro
 const [proData, setProData] = React.useState<DevisProModel>();
 
+
 const handleChangePro = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProData((prev) => ({...prev, [e.target.name]: e.target.value} as DevisProModel));
     console.log(proData);
@@ -324,10 +371,13 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                     <FormAccesButton nom={"PROFESSIONELLE"} desc={"(RCPRO,Multirisques et Decennal)"} chemin={CLIENT_PAGES.professionelle}/>
                 </Grid>
             </Grid> */}
+            <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Vous etes entrain de demander un devis</Typography>
+            <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"35px", marginBottom:"50px", textAlign:"center" }}>Renseignez le formulaire suivant:</Typography>
+
             <BoxStyle  >
-                <Box component={"form"} onSubmit={validate} sx={{width:"100%"}}>
+                <Box component={"form"} onSubmit={validate}  sx={{width:"100%"}}>
                 {/* <Container> */}
-                    <Grid container spacing={3} sx={{margin:"35px 0px 0px 0px", }}>
+                    <Grid container spacing={{xs: 2, md: 5}} sx={{margin:"35px 0px 40px 0px", }}>
                     {/* <Grid container > */}
                         <Grid item  lg={6} md={6} sm={6} xs={12}>
                             <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Nom'} value={nom} onChange={(e) => setNom(e.target.value)} />
@@ -339,27 +389,32 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                             <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Email'} value={email} onChange={(e) => setEmail(e.target.value)} />
                         </Grid>
                         <Grid item  lg={6} md={6} sm={6} xs={12}>
-                            <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Adresse'} value={telephone} onChange={(e) => setTelephone(e.target.value)} />
+                            <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Telephone'} value={telephone} onChange={(e) => setTelephone(e.target.value)} />
                         </Grid>
                         <Grid item  lg={12} md={12} sm={12} xs={12}>
                             <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Adresse'} value={adresse} onChange={(e) => setAdresse(e.target.value)} />
                         </Grid>
                         <Grid item  lg={12} md={12} sm={12} xs={12}>
+                            <TextFieldStyle fullWidth label={"Test"}/>
+                        </Grid>
+                        <Grid item  lg={12} md={12} sm={12} xs={12}>
                             {/* <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Adresse'} value={adresse} onChange={(e) => setAdresse(e.target.value)} /> */}
-                            <TextField  defaultValue={"Selectionner Un Devis"} select value={formType} onChange={(e) => setFormType(e.target.value)} label="Selectioner le Type de Devis" fullWidth>
+                            <TextFieldStyle  defaultValue={"Selectionner Un Devis"} select value={formType} onChange={(e) => setFormType(e.target.value)} label="Selectioner le Type de Devis" fullWidth >
                                 <MenuItem value={"AUTO-MOTO"}>AUTO-MOTO</MenuItem>
                                 <MenuItem value={"SANTE"}>SANTE</MenuItem>
                                 <MenuItem value={"HABITATION"}>HABITATION</MenuItem>
                                 <MenuItem value={"PRO"}>RC-PRO</MenuItem>
-                            </TextField>
+                            </TextFieldStyle>
                         </Grid>
                     </Grid>
 
                         {formType === "AUTO-MOTO" && (
                             <>
-                            <Grid container spacing={3} sx={{margin:"0px 0px 25px 0px"}}>
+                            <Grid container spacing={{xs: 2, md: 5}} sx={{margin:"0px 0px 24px 0px"}}>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    <TextFieldPersonnalise id={''} name={"Situation_Familial"} required={true} label={'Situation Familial'} onChange={handleChangeAuto} value={autoData?.Situation_Familial?? ""} />
+                                    <TextField fullWidth id={''} select name={"Situation_Familial"} required={true} label={'Situation Familial'} onChange={handleChangeAuto} value={autoData?.Situation_Familial?? ""} >
+                                        {situationFamille.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
+                                    </TextField>
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
                                     <TextFieldPersonnalise id={''} name={"Nombre_Enfants_Inférieur_16ans"} required={true} label={"Nombre d'enfants < 16"} type="number" onChange={handleChangeAuto} value={autoData?.Nombre_Enfants_Inférieur_16ans ?? ""} />
@@ -371,51 +426,51 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     <TextFieldPersonnalise id={''} name={"Profession"} required={true} label={'Profession'} onChange={handleChangeAuto} value={autoData?.Profession ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Date_Naissance"} required={true} label={'Date de Naissance'} type="date" defaultValue="2022/1/06" onChange={handleChangeAuto} value={autoData?.Date_Naissance ?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Date_Naissance"} required={true} label={'Date de Naissance'} type="date" defaultValue="2022/1/06" onChange={handleChangeAuto} value={autoData?.Date_Naissance ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Date_Permis_Conduite"} required={true} label={'Date de Permis de Conduire'}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Permis_Conduite ?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Date_Permis_Conduite"} required={true} label={'Date de Permis de Conduire'}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Permis_Conduite ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Marque_D1"} required={true} label={"Marque (D1)"} onChange={handleChangeAuto} value={autoData?.Marque_D1 ?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Marque_D1"} required={true} label={"Marque (D1)"} onChange={handleChangeAuto} value={autoData?.Marque_D1 ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Modele_D3"} required={true} label={"Modèle (D3)"} onChange={handleChangeAuto} value={autoData?.Modele_D3 ?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Modele_D3"} required={true} label={"Modèle (D3)"} onChange={handleChangeAuto} value={autoData?.Modele_D3 ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Version"} required={true} label={"Version"} onChange={handleChangeAuto} value={autoData?.Version ?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Version"} required={true} label={"Version"} onChange={handleChangeAuto} value={autoData?.Version ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Puissance_Fiscale"} required={true} label={"Puissance Fiscale (P6)"} onChange={handleChangeAuto} value={autoData?.Puissance_Fiscale ?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Puissance_Fiscale"} required={true} label={"Puissance Fiscale (P6)"} onChange={handleChangeAuto} value={autoData?.Puissance_Fiscale ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Type_Mine_D2"} required={true} label={"Type Mines (D2)"} onChange={handleChangeAuto} value={autoData?.Type_Mine_D2 ?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Type_Mine_D2"} required={true} label={"Type Mines (D2)"} onChange={handleChangeAuto} value={autoData?.Type_Mine_D2 ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Mise_Circulation_B"} required={true} label={"Mise en Circulation (B)"} onChange={handleChangeAuto} value={autoData?.Mise_Circulation_B ?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Mise_Circulation_B"} required={true} label={"Mise en Circulation (B)"} onChange={handleChangeAuto} value={autoData?.Mise_Circulation_B ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Immatriculation"} required={true} label={"Immatriculation (A)"} onChange={handleChangeAuto} value={autoData?.Immatriculation ?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Immatriculation"} required={true} label={"Immatriculation (A)"} onChange={handleChangeAuto} value={autoData?.Immatriculation ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Date_Acquisition"} required={true} label={"Date d'Acquisition"}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Acquisition ?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Date_Acquisition"} required={true} label={"Date d'Acquisition"}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Acquisition ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Titulaire_Carte_Grise"} required={true} label={"Titulaire Carte Grise"} onChange={handleChangeAuto} value={autoData?.Titulaire_Carte_Grise ?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Titulaire_Carte_Grise"} required={true} label={"Titulaire Carte Grise"} onChange={handleChangeAuto} value={autoData?.Titulaire_Carte_Grise ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Autres_Conducteurs"} required={true} label={"Autres Conducteurs à désigner"} onChange={handleChangeAuto} value={autoData?.Autres_Conducteurs ?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Autres_Conducteurs"} required={true} label={"Autres Conducteurs à désigner"} onChange={handleChangeAuto} value={autoData?.Autres_Conducteurs ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Coefficient_Bonus_CRM"} required={true} label={"Coef. Bonus/Malus (CRM)"} onChange={handleChangeAuto} value={autoData?.Coefficient_Bonus_CRM ?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Coefficient_Bonus_CRM"} required={true} label={"Coef. Bonus/Malus (CRM)"} onChange={handleChangeAuto} value={autoData?.Coefficient_Bonus_CRM ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                <TextFieldPersonnalise id={''} name={"Date_Obtention_CRM"} required={true} label={"Date d'Obtention du CRM"}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Obtention_CRM?? ""} />
+                                    <TextFieldPersonnalise id={''} name={"Date_Obtention_CRM"} required={true} label={"Date d'Obtention du CRM"}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Obtention_CRM?? ""} />
                                 </Grid>
                             </Grid>
                             <Typography>Nombre de sinistres lors des dernières années(R.i)</Typography>
                             <Typography>Ordre = Responsable / Demi-Responsable / Non-Responsable / Bris de Glace</Typography>
-                            <Grid container spacing={3} sx={{margin:"0px 0px 35px 0px"}}>
+                            <Grid container spacing={{xs: 2, md: 3}} sx={{margin:"0px 0px 35px 0px"}}>
                     
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
                                     <TextField fullWidth  id="outlined-required" select name={"Nature_Sinistre_1"} label="Nature" value={autoData?.Nature_Sinistre_1 ?? ""} onChange={handleChangeAuto} helperText="Veuillez sélectioner la nature" variant="outlined">
@@ -423,7 +478,14 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     </TextField>
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_1"} label={"Date"} onChange={handleChangeAuto}  type="date" value={autoData?.Date_Sinistre_1 ?? ""} />
+                                    {/* <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_1"} label={"Date"} onChange={handleChangeAuto}  type="date" value={autoData?.Date_Sinistre_1 ?? ""} /> */}
+                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        <DemoContainer components={['DatePicker']}>
+                                            {/* <TextField fullWidth> */}
+                                                <DatePicker label="Basic date picker" sx={{color:"green", width:"100%"}} />
+                                            {/* </TextField> */}
+                                        </DemoContainer>
+                                    </LocalizationProvider>
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
                                     <TextField fullWidth id="outlined-required" select name={"Nature_Sinistre_2"} label="Nature" value={autoData?.Nature_Sinistre_2 ?? ""} onChange={handleChangeAuto} helperText="Veuillez sélectioner la nature" variant="outlined" >
@@ -505,19 +567,18 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                         {
                                             Object.keys(ModePaiement).map((oneModePaiement, index) => <Grid item lg={3} md={6} sm={6} xs={12}> <FormControlLabel key={index} control={<Checkbox onChange={AutohandleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/></Grid> )
                                         }
-                
                                         </Grid>
                                         </FormGroup>
                                         <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                                     </FormControl>
                                 </Box>
-                                    <Button variant="contained"  type="submit" sx={{ backgroundColor:"#138f82", display:"flex", justifyContent:"center", alignItems:"center", marginLeft:"40%", width:"100px", height:"50px" }}>valider</Button>
                                 {/* // </> */}
                             </>
                         )}
+                        
                         {formType === "SANTE" && (
                             <>
-                                <Grid container rowSpacing={5} sx={{margin:"35px 0px 35px 0px"}}>
+                                <Grid container  spacing={{xs: 2, md: 5}} sx={{margin:"0px 0px 35px 0px"}}>       
                                     <Grid item lg={6} md={6} sm={6} xs={12}>
                                         <TextFieldPersonnalise id={''}  name="Num_Secu_Social" required={true} onChange={handleChangeSante} label={"Numéro de sécurité social"} value={santeData?.Num_Secu_Social ?? ""} />
                                     </Grid>
@@ -531,7 +592,9 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                         <TextFieldPersonnalise id={''}  name="Statut_Pro_Date_Creation" required={true} onChange={handleChangeSante} label={"Statut Pro. (Si Indépendant :Caisse + Date de Création"} value={santeData?.Statut_Pro_Date_Creation ?? ""} />
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={6} xs={12}>
-                                        <TextFieldPersonnalise id={''}  name="Situation_Familial" required={true} onChange={handleChangeSante} label={"Situation Familial"} value={santeData?.Situation_Familial ?? ""} />
+                                        <TextField select fullWidth id={''}  name="Situation_Familial" required={true} onChange={handleChangeSante} label={"Situation Familial"} value={santeData?.Situation_Familial ?? ""}  >
+                                            {situationFamille.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
+                                        </TextField>
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={6} xs={12}>
                                         <TextFieldPersonnalise id={''}  name="Nom_Prenom_Conjoint" required={true} onChange={handleChangeSante} label={"Nom , Prénom Conjoint"} value={santeData?.Nom_Prenom_Conjoint ?? ""} />
@@ -594,19 +657,23 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                 <Box sx={{ display: 'flex' }}>
                                     <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
                                         <FormGroup sx={{display:"flex", flexDirection:"row"}}>
-                                        {
-                                            Object.keys(GarantieSante).map((oneGarantie, index) =><FormControlLabel key={index} control={<Checkbox onChange={SantehandleChangeCheckedGarantie} name={GarantieSante[oneGarantie as keyof typeof GarantieSante]}/>} label={GarantieSante[oneGarantie as keyof typeof GarantieSante]}/>)
-                                        }
+                                            <Grid container> 
+                                                {
+                                                    Object.keys(GarantieSante).map((oneGarantie, index) =><Grid item lg={3} md={6} sm={6} xs={12} sx={{width:"200px"}}><FormControlLabel key={index} control={<Checkbox onChange={SantehandleChangeCheckedGarantie} name={GarantieSante[oneGarantie as keyof typeof GarantieSante]}/>} label={GarantieSante[oneGarantie as keyof typeof GarantieSante]}/></Grid>)
+                                                }
+                                            </Grid>
                                         </FormGroup>
                                     <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                                     </FormControl>
                                 </Box>
                                 <Box sx={{ display: 'flex' }}>
                                     <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-                                        <FormGroup sx={{display:"flex",  height:"150px",}}>
-                                        {
-                                            Object.keys(OptionsSante).map((oneOptionSante, index) =><FormControlLabel key={index} control={<Checkbox onChange={SantehandleChangeCheckedOptions} name={OptionsSante[oneOptionSante as keyof typeof OptionsSante]}/>} label={OptionsSante[oneOptionSante as keyof typeof OptionsSante]}/>)
-                                        }
+                                        <FormGroup sx={{display:"flex",  }}>
+                                        <Grid container>                                            
+                                            {
+                                                Object.keys(OptionsSante).map((oneOptionSante, index) =><Grid item lg={3} md={6} sm={6} xs={12} sx={{ }}><FormControlLabel key={index} control={<Checkbox onChange={SantehandleChangeCheckedOptions} name={OptionsSante[oneOptionSante as keyof typeof OptionsSante]}/>} label={OptionsSante[oneOptionSante as keyof typeof OptionsSante]}/></Grid>)
+                                            }
+                                        </Grid>
                                         </FormGroup>
                                     <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                                     </FormControl>
@@ -614,9 +681,11 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                 <Box sx={{ display: 'flex' }}>
                                     <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
                                         <FormGroup sx={{display:"flex", flexDirection:"row"}}>
-                                        {
-                                            Object.keys(ModePaiement).map((oneModePaiement, index) =><FormControlLabel key={index} control={<Checkbox onChange={SantehandleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>)
-                                        }
+                                        <Grid container>
+                                            {
+                                                Object.keys(ModePaiement).map((oneModePaiement, index) =><Grid item lg={3} md={6} sm={6} xs={12} sx={{width:"200px"}}><FormControlLabel key={index} control={<Checkbox onChange={SantehandleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/></Grid>)
+                                            }
+                                        </Grid>
                                         </FormGroup>
                                     <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                                     </FormControl>
@@ -626,9 +695,8 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                         
                         )}
                         {formType === "HABITATION" && (
-                            // <Typography>HELOOOOOOOOOOOOO</Typography>
                             <>
-                                <Grid container rowSpacing={5} sx={{margin:"35px 0px 35px 0px"}}>
+                                <Grid container spacing={{xs: 2, md: 5}} sx={{margin:"40px 0px 35px 0px"}}>
                                     <Grid item lg={6} md={6} sm={6} xs={12}>
                                         <TextFieldPersonnalise id={''} name="Etage" required={true} onChange={handleChangeHabitation} label={"Etage"} value={habitationData?.Etage ?? ""} />
                                     </Grid>
@@ -636,7 +704,9 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                         <TextFieldPersonnalise id={''} name="Nbre_Etages_Immeuble" required={true} onChange={handleChangeHabitation} label={"Nombre d'Etages de l'immeuble"} type="number" value={habitationData?.Nbre_Etages_Immeuble ?? ""} />
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={6} xs={12}>
-                                        <TextFieldPersonnalise id={''} name="Situation_Falilial" required={true} onChange={handleChangeHabitation} label={"Situation Famillial"} value={habitationData?.Situation_Falilial ?? ""} />
+                                        <TextField select fullWidth id={''} name="Situation_Falilial" required={true} onChange={handleChangeHabitation} label={"Situation Famillial"} value={habitationData?.Situation_Falilial ?? ""}  >
+                                            {situationFamille.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
+                                        </TextField>
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={6} xs={12}>
                                         <TextFieldPersonnalise id={''} name="Nombre_Enfants" required={true} onChange={handleChangeHabitation} label={"Nombre d'Enfants"} value={habitationData?.Nombre_Enfants ?? ""} />
@@ -645,10 +715,14 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                         <TextFieldPersonnalise id={''} name="Adresse_Bien" required={true} onChange={handleChangeHabitation} label={"Adresse du bien"} value={habitationData?.Adresse_Bien ?? ""} />
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={6} xs={12}>
-                                        <TextFieldPersonnalise id={''} name="Utilisation_Residence" required={true} onChange={handleChangeHabitation} label={"Utilisation de la Résidence"} value={habitationData?.Utilisation_Residence ?? ""} />
+                                        <TextField select fullWidth id={''} name="Utilisation_Residence" required={true} onChange={handleChangeHabitation} label={"Utilisation de la Résidence"} value={habitationData?.Utilisation_Residence ?? ""}  >
+                                            {residence.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
+                                        </TextField>
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={6} xs={12}>
-                                        <TextFieldPersonnalise id={''} name="Statut" required={true} onChange={handleChangeHabitation} label={"Statut"} value={habitationData?.Statut ?? ""} />
+                                        <TextField select fullWidth  id={''} name="Statut" required={true} onChange={handleChangeHabitation} label={"Statut"} value={habitationData?.Statut ?? ""} >
+                                            {statut.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
+                                        </TextField>
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={6} xs={12}>
                                         <TextFieldPersonnalise id={''} name="Surface_Total" required={true} onChange={handleChangeHabitation} label={"Surface totale en M2"} value={habitationData?.Surface_Total ?? ""} />
@@ -678,7 +752,7 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                         <TextFieldPersonnalise id={''} name="Utilisation_Residence" required={true} onChange={handleChangeHabitation} label={"Utilisation de la Résidence"} value={habitationData?.Utilisation_Residence ?? ""} />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                                    <Typography sx={{textAlign:"center"}}>Assurance Scolaire:</Typography>
+                                    <Typography sx={{}}>Assurance Scolaire:</Typography>
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={6} xs={12}>
                                         <TextFieldPersonnalise id={''} name="Nom_Prenom_Naiss_Enfant" required={true} onChange={handleChangeHabitation} label={"Nom (S), Prénom (s) de Naissance des enfants (obligatoire)"} value={habitationData?.Nom_Prenom_Naiss_Enfant ?? ""} />
@@ -689,19 +763,19 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                     <Typography>Si Animaux:</Typography>
                                     </Grid>
-                                    <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    </Grid>
                                 </Grid>
                                 <FormLabel id="demo-row-radio-buttons-group-label">Carnet de Vaccination:</FormLabel>
                                 <RadioGroup row name="Carnet_de_Vaccination" value={habitationData?.Carnet_de_Vaccination} onChange={handleChangeHabitation}>
                                     <FormControlLabel value="OUI" control={<Radio />} label="Oui" />
                                     <FormControlLabel value="NON" control={<Radio />} label="Non" />
                                 </RadioGroup>
-                                <FormLabel id="demo-row-radio-buttons-group-label">Tatouages:</FormLabel>
-                                <RadioGroup row name="Tatouages" value={habitationData?.Tatouages} onChange={handleChangeHabitation}>
-                                    <FormControlLabel value="OUI" control={<Radio />} label="Oui" />
-                                    <FormControlLabel value="NON" control={<Radio />} label="Non" />
-                                </RadioGroup>
+                                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                                        <FormLabel id="demo-row-radio-buttons-group-label">Tatouages:</FormLabel>
+                                        <RadioGroup row name="Tatouages" value={habitationData?.Tatouages} onChange={handleChangeHabitation}>
+                                            <FormControlLabel value="OUI" control={<Radio />} label="Oui" />
+                                            <FormControlLabel value="NON" control={<Radio />} label="Non" />
+                                        </RadioGroup>
+                                    </Grid>
                                 <Box sx={{  }}>
                                     <FormControl sx={{ m: 0 }} component="fieldset" variant="standard">
                                         <FormGroup sx={{display:"flex", flexDirection:"row"}}>
@@ -716,24 +790,28 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                             <TextFieldPersonnalise id={''} name="Autres_Installation" required={true} onChange={handleChangeHabitation} label={"Autres Installations à Préciser"} value={habitationData?.Autres_Installation ?? ""} />
                                         </Grid>
                                     </Grid>
-                                    <Typography>Garanties Souhaitées:</Typography>
-                                    <Box sx={{ display: 'flex' }}>
-                                        <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-                                            <FormGroup sx={{display:"flex",  height:"150px",}}>
+                                    <Box sx={{ }}>
+                                        <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
+                                        <FormLabel> Garanties Souhaitées:</FormLabel>
+                                            <FormGroup sx={{display:"flex",  height:"auto",}}>
+                                            <Grid container>
                                             {
-                                                Object.keys(GarantiesHabitation).map((oneHabitation, index) =><FormControlLabel key={index} control={<Checkbox onChange={HabitationhandleChangeCheckedGarantieHabitat} name={GarantiesHabitation[oneHabitation as keyof typeof GarantiesHabitation]}/>} label={GarantiesHabitation[oneHabitation as keyof typeof GarantiesHabitation]}/>)
+                                                Object.keys(GarantiesHabitation).map((oneHabitation, index) =><Grid item lg={4} md={6} sm={6} xs={12} sx={{maxWidth:"200px"}}> <FormControlLabel key={index} control={<Checkbox onChange={HabitationhandleChangeCheckedGarantieHabitat} name={GarantiesHabitation[oneHabitation as keyof typeof GarantiesHabitation]}/>} label={GarantiesHabitation[oneHabitation as keyof typeof GarantiesHabitation]}/></Grid>)
                                             }
+                                            </Grid>
                                             </FormGroup>
                                         <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                                         </FormControl>
                                     </Box>
-                                    <Typography>Options:</Typography>
                                     <Box sx={{ display: 'flex' }}>
-                                        <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
-                                            <FormGroup sx={{display:"flex", flexDirection:"row"}}>
+                                        <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
+                                            <FormLabel component="legend">Option</FormLabel>
+                                            <FormGroup sx={{display:"flex",  height:"auto",}}>
+                                            <Grid container sx={{}}> 
                                             {
-                                                Object.keys(OptionHabitation).map((oneOption, index) =><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedOptionHabitat} name={OptionHabitation[oneOption as keyof typeof OptionHabitation]}/>} label={OptionHabitation[oneOption as keyof typeof OptionHabitation]}/>)
+                                                Object.keys(OptionHabitation).map((oneOption, index) =><Grid item lg={4} md={6} sm={6} xs={12}><FormControlLabel key={index} control={<Checkbox onChange={handleChangeCheckedOptionHabitat} name={OptionHabitation[oneOption as keyof typeof OptionHabitation]}/>} label={OptionHabitation[oneOption as keyof typeof OptionHabitation]}/> </Grid>)
                                             }
+                                            </Grid>
                                             </FormGroup>
                                         <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                                         </FormControl>
@@ -744,12 +822,14 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                         </Grid>
                                     </Grid>
                                     <Box sx={{ display: 'flex' }}>
-                                        <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
+                                        <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
                                             <FormLabel component="legend">Modes de Paiement possible</FormLabel>
                                             <FormGroup sx={{display:"flex", flexDirection:"row"}}>
+                                            <Grid container>
                                             {
-                                                Object.keys(ModePaiement).map((oneModePaiement, index) =><FormControlLabel key={index} control={<Checkbox onChange={HabitationhandleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>)
+                                                Object.keys(ModePaiement).map((oneModePaiement, index) => <Grid item lg={3} md={6} sm={6} xs={12} sx={{width:"200px"}}> <FormControlLabel key={index} control={<Checkbox onChange={HabitationhandleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/></Grid> )
                                             }
+                                            </Grid>
                                             </FormGroup>
                                             <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                                         </FormControl>
@@ -760,7 +840,12 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
 
                         {formType === "PRO" && (
                             <>
-                                <Grid container rowSpacing={5} sx={{margin:"35px 0px 35px 0px"}}>
+                                <Grid container spacing={{xs: 2, md: 5}} sx={{margin:"0px 0px 35px 0px"}}>
+                                <Grid item lg={6} md={6} sm={6} xs={12}>
+                                        <TextField select fullWidth id={''}  name="Situation_Familial" required={true} onChange={handleChangeSante} label={"Situation Familial"} value={proData?.Situation_Familial ?? ""}  >
+                                            {situationFamille.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
+                                        </TextField>
+                                    </Grid>
                                     <Grid item lg={6} md={6} sm={6} xs={12}>
                                         <TextFieldPersonnalise id={''} name="Nom_Entreprise" required={true} onChange={handleChangePro} label={"Nom de l'Entreprise"} value={proData?.Nom_Entreprise ?? ""} />
                                     </Grid>
@@ -839,24 +924,28 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     <Grid item lg={6} md={6} sm={6} xs={12}>
                                         <TextFieldPersonnalise id={''} name="Nature_Produits" required={true} onChange={handleChangePro} label={"Nature des Produits"} value={proData?.Nature_Produits ?? ""} />
                                     </Grid>
-                                    <Typography>Garanties Souhaitées:</Typography>
-                                    <Box sx={{ display: 'flex' }}>
+                                    <Box sx={{ }}>
                                         <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
+                                        <FormLabel> Garanties Souhaitées:</FormLabel>
                                             <FormGroup sx={{display:"flex", flexDirection:"row"}}>
+                                            <Grid container>
                                             {
-                                                Object.keys(GarantiesPro).map((oneGaranti, index) =><FormControlLabel key={index} control={<Checkbox onChange={ProhandleChangeCheckedGarantiePro} name={GarantiesPro[oneGaranti as keyof typeof GarantiesPro]}/>} label={GarantiesPro[oneGaranti as keyof typeof GarantiesPro]}/>)
+                                                Object.keys(GarantiesPro).map((oneGaranti, index) =><Grid item lg={3} md={6} sm={6} xs={12} sx={{width:"200px"}}><FormControlLabel key={index} control={<Checkbox onChange={ProhandleChangeCheckedGarantiePro} name={GarantiesPro[oneGaranti as keyof typeof GarantiesPro]}/>} label={GarantiesPro[oneGaranti as keyof typeof GarantiesPro]}/></Grid>)
                                             }
+                                            </Grid>
                                             </FormGroup>
                                         <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                                         </FormControl>
                                     </Box>
-                                    <Typography>Options:</Typography>
                                     <Box sx={{ display: 'flex' }}>
                                         <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
+                                        <FormLabel component="legend">Option</FormLabel>
                                             <FormGroup sx={{display:"flex", flexDirection:"row"}}>
+                                            <Grid container>
                                             {
-                                                Object.keys(OptionsPro).map((oneOption, index) =><FormControlLabel key={index} control={<Checkbox onChange={ProhandleChangeCheckedOptionPro} name={OptionsPro[oneOption as keyof typeof OptionsPro]}/>} label={OptionsPro[oneOption as keyof typeof OptionsPro]}/>)
+                                                Object.keys(OptionsPro).map((oneOption, index) =><Grid item lg={4} md={6} sm={6} xs={12}><FormControlLabel key={index} control={<Checkbox onChange={ProhandleChangeCheckedOptionPro} name={OptionsPro[oneOption as keyof typeof OptionsPro]}/>} label={OptionsPro[oneOption as keyof typeof OptionsPro]}/></Grid>)
                                             }
+                                            </Grid>
                                             </FormGroup>
                                         <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                                         </FormControl>
@@ -865,9 +954,11 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                         <FormControl sx={{ m: 4 }} component="fieldset" variant="standard">
                                             <FormLabel component="legend">Modes de Paiement possible</FormLabel>
                                             <FormGroup sx={{display:"flex", flexDirection:"row"}}>
+                                            <Grid container>
                                             {
-                                                Object.keys(ModePaiement).map((oneModePaiement, index) =><FormControlLabel key={index} control={<Checkbox onChange={ProhandleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>)
+                                                Object.keys(ModePaiement).map((oneModePaiement, index) =><Grid item lg={3} md={6} sm={6} xs={12} sx={{width:"200px"}}><FormControlLabel key={index} control={<Checkbox onChange={ProhandleChangeCheckedModePaiement} name={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/>} label={ModePaiement[oneModePaiement as keyof typeof ModePaiement]}/></Grid>)
                                             }
+                                            </Grid>
                                             </FormGroup>
                                             <FormHelperText>Veuillez sélectioner une case</FormHelperText>
                                         </FormControl>
@@ -877,6 +968,7 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                         )}
                     {/* </Grid> */}
                 {/* </Container> */}
+                <Button variant="contained"  type="submit" sx={{ backgroundColor:"#138f82", display:"flex", justifyContent:"center", alignItems:"center", marginLeft:"40%", width:"100px", height:"50px", '&:hover': {backgroundColor:"black"} }}>valider</Button>
                 </Box >
             </BoxStyle >
             {/* </Container> */}
