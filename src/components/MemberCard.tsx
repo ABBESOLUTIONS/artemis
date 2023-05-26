@@ -3,6 +3,7 @@ import SocialMediaList from './SocialMediaList';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { PROJECT_COLORS } from '../common/colors';
 import { EmailSharp } from '@mui/icons-material';
+import MemberSocialMediaList from './MemberSocialMediaList';
 
 
 const MemberCardContainer= styled(Card)(({theme})=>({
@@ -42,7 +43,7 @@ function MemberCard({image,nom,poste}: Props) {
                     <Typography sx={{margin:"-5px", fontSize:"13px", color:"#808080", width:"80%", marginLeft:"15px"}}>{poste}</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <SocialMediaList/>
+                    <MemberSocialMediaList/>
                 </Grid>
             </Grid>
         </MemberCardContainer>

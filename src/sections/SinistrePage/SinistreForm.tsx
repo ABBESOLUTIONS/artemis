@@ -1,6 +1,6 @@
 import React from 'react';
 import SectionStyle from '../../styles/SectionStyle';
-import { Box, Button, Card, Container, FormControl, Grid, Input, InputLabel, Stack, styled, TextField, Typography, OutlinedInput, FormControlLabel, Checkbox, FormGroup, TextareaAutosize } from '@mui/material';
+import { Box, Button, Card, Container, FormControl, Grid, Input, InputLabel, Stack, styled, TextField, Typography, OutlinedInput, FormControlLabel, Checkbox, FormGroup, TextareaAutosize, FormHelperText } from '@mui/material';
 import TextButton from '../../components/TextButton';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import { PROJECT_COLORS } from '../../common/colors';
@@ -9,6 +9,7 @@ import { PROJECT_COLORS } from '../../common/colors';
 // import nodemailer from 'nodemailer';
 // @ts-ignore
 import * as nodemailer from "nodemailer";
+import { CLIENT_PAGES } from '../../routes/paths';
 // import { render } from '@react-email/render';
 // import EmailEx from '../../components/EmailEx';
 
@@ -40,6 +41,32 @@ const BoxStyle=styled(Box)(({theme})=>({
     },
    
 }));
+
+export const CheckText = styled(Typography)(({theme})=> ({
+    // lineHeight:"1.0em",
+    // fontSize:"2.5em",
+    // fontWeight:"bold",
+    // fontFamily:"PoppinsBold, sans-serif !important",
+
+    '& .conditionButton': {
+        color:"green",
+        [theme.breakpoints.down('lg')]: {
+            // fontSize:"2.2em",
+            lineHeight:1.2,
+            // backgroundColor:"red"
+            },
+
+      },    
+      [theme.breakpoints.down('lg')]: {
+        // fontSize:"2.2em",
+        // lineHeight:1.2,
+        },
+      [theme.breakpoints.down('md')]: {
+        // fontSize:"1.8em",
+        },
+
+
+}))
 
 
 function SinistreForm() {
@@ -102,8 +129,10 @@ function SinistreForm() {
                     <FormControl fullWidth sx={{ }} variant="standard">
                         {/* <CommentArea placeholder="Votre message"/> */}
                         <Typography sx={{margin:"10px"}}>Selectionner tous vos documents à envoyer</Typography>
-                        <OutlinedInput type='file' id="upload"></OutlinedInput>
-                        <FormControlLabel value="end" control={<Checkbox />} label={<TextButton title={"J'accepte les termes et conditions"} path={''}></TextButton>} labelPlacement="end"/>
+                        <OutlinedInput type='file' id="upload" inputProps={{accept:".pdf, .png, .jpg, .docx", multiple:true}}></OutlinedInput>
+                        <FormHelperText>Type de fichier recquis: .pdf, .jpeg, .png, .docx</FormHelperText>
+                        {/* <FormControlLabel value="end" control={<Checkbox />} label={<TextButton title={"J'accepte les termes et conditions"} path={''}></TextButton>} labelPlacement="end"/> */}
+                        <FormControlLabel value="end" control={<Checkbox />} label={<CheckText>J'accepte les<span><a href={CLIENT_PAGES.home} style={{color:PROJECT_COLORS.primarySwatch, textDecoration:"none", fontWeight:"bold"}}> termes et conditions</a></span></CheckText>} labelPlacement="end"/>
             </FormControl>
                 </div>
             </BoxStyle>

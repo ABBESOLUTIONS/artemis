@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Container, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Grid, MenuItem, Radio, RadioGroup, styled, TextField, Typography } from '@mui/material';
+import { Box, Button, Checkbox, Container, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Grid, Input, MenuItem, Radio, RadioGroup, styled, TextField, Typography } from '@mui/material';
 import React, { FormEvent, useState } from 'react';
 import FormAccesButton from '../../components/FormAccesButton';
 import { CLIENT_PAGES, USER_PAGES } from '../../routes/paths';
@@ -397,6 +397,9 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                         <Grid item  lg={12} md={12} sm={12} xs={12}>
                             <TextFieldStyle fullWidth label={"Test"}/>
                         </Grid>
+                        {/* <Grid item  lg={12} md={12} sm={12} xs={12}>
+                            <Input  fullWidth type='file' inputProps={{}} />
+                        </Grid> */}
                         <Grid item  lg={12} md={12} sm={12} xs={12}>
                             {/* <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Adresse'} value={adresse} onChange={(e) => setAdresse(e.target.value)} /> */}
                             <TextFieldStyle  defaultValue={"Selectionner Un Devis"} select value={formType} onChange={(e) => setFormType(e.target.value)} label="Selectioner le Type de Devis" fullWidth >

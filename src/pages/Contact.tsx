@@ -18,7 +18,6 @@ function Contact() {
                 <HeroComponent bigTitle={"CONTACT"} littleTitle={"Nous Contacter"}/>
                 <ContactElements/>
                 <ContactForm/>
-                <DevisOptionSection/>
             </ContactStyle>
         </Page>
     );

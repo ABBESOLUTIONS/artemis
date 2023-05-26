@@ -12,6 +12,8 @@ import Logo from "../Logo";
 import Search from "../Search";
 import HeaderMenuItem from "./HeaderMenuItem";
 import MenuIcon from '@mui/icons-material/Menu';
+import { PathMatch, useMatch, useResolvedPath } from "react-router-dom";
+import { CLIENT_PAGES } from "../../routes/paths";
 
 const LogoContainer = styled("div")(() => ({
     height: "100%",
@@ -43,6 +45,10 @@ function Header() {
     const isMobile = useResponsive("down", "lg");
     const [open, setOpen] = React.useState(false);
 
+    let resolvedContact = useResolvedPath(CLIENT_PAGES.contact);
+    let pathContact:PathMatch<string> | boolean | null = useMatch({ path: resolvedContact.pathname, end: true });
+    pathContact = CLIENT_PAGES.contact.length === 0 ? false : pathContact;
+
 
     const handleCloseDrawer = (event: {}, reason: "backdropClick" | "escapeKeyDown") =>{
         setOpen(false);
@@ -62,7 +68,7 @@ function Header() {
                 </LogoContainer> */}
                 <Box sx={{display: "flex"}}>
                 {/* <Search /> */}
-                    {ClientMenuItems.map((menu, index) => <HeaderMenuItem key={index} title={menu.title} path={menu.path} subMenu={menu.submenu}/>)}
+                    {/* {ClientMenuItems.map((menu, index) => <HeaderMenuItem  key={index} title={menu.title} path={menu.path} subMenu={menu.submenu} subPath={menu.submenu?.map((e, index) => {e.path})}/>)} */}
                 {/* <DevisButton/> */}
                 </Box>
                 {/* <Button onClick={handleOpenDrawer}><MenuIcon fontSize="large" sx={{color:"black"}}/></Button>

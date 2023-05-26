@@ -15,9 +15,10 @@ interface Pops {
     title: string,
     path: string,
     sx? : SxProps,
+    // component:string
 };
 
-function TextButton({title,path, sx={}}: Pops) {
+function TextButton({title,path, sx={}, }: Pops) {
     return (
        <TextButtonContainer>
             <Typography component={TextButtonLink} to={path} sx={{...sx}}>{title}</Typography>

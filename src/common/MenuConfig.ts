@@ -26,12 +26,12 @@ const ClientMenuItems = [
   // },
   {
     title: "Contact",
-    path: CLIENT_PAGES.contact
-  },
-  {
-    title: "Declaration",
     path:"",
     submenu:[
+      {
+        title: "Nous Contacter",
+        path: CLIENT_PAGES.contact
+      },
       {
       title:"Un sinistre",
       path:CLIENT_PAGES.declarationSinistre,
@@ -39,7 +39,7 @@ const ClientMenuItems = [
       {
       title:"Faire une Réclamation",
       path: CLIENT_PAGES.reclamation,
-      }
+      },
     ]
   },
 ];

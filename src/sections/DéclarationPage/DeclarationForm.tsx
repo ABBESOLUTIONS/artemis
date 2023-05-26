@@ -1,7 +1,9 @@
-import { Box, Button, Checkbox, FormControl, FormControlLabel, Grid, OutlinedInput, TextField, Typography, styled } from '@mui/material';
+import { Box, Button, Checkbox, FormControl, FormControlLabel, FormHelperText, Grid, OutlinedInput, TextField, Typography, styled } from '@mui/material';
 import React from 'react';
 import { PROJECT_COLORS } from '../../common/colors';
 import { ArrowForwardIos } from '@mui/icons-material';
+import { CLIENT_PAGES } from '../../routes/paths';
+import { CheckText } from '../SinistrePage/SinistreForm';
 
 const DeclarationFormContainer=styled("section")(({theme})=>({
     width:"calc(100% - 40vw)",
@@ -67,8 +69,9 @@ function DeclarationForm() {
                     <Typography sx={{margin:"10px"}}>
                             Selectionner tous vos documents à envoyer
                      </Typography>
-                     <OutlinedInput type='file' id="upload"></OutlinedInput>
-            <FormControlLabel value="end" control={<Checkbox />} label="J'accepte les termes et conditions" labelPlacement="end"/>
+                     <OutlinedInput type='file' id="upload" inputProps={{accept:".pdf, .png, .jpg, .docx", multiple:true}}></OutlinedInput>
+                     <FormHelperText>Type de fichier recquis: .pdf, .jpeg, .png, .docx</FormHelperText>
+                     <FormControlLabel value="end" control={<Checkbox />} label={<CheckText>J'accepte les<span><a href={CLIENT_PAGES.home} style={{color:PROJECT_COLORS.primarySwatch, textDecoration:"none", fontWeight:"bold"}}> termes et conditions</a></span></CheckText>} labelPlacement="end"/>
             </FormControl>
                 </div>
             </BoxStyle>

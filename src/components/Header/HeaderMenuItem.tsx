@@ -1,4 +1,4 @@
-import { Container, Divider, styled, Typography } from "@mui/material";
+import { Container, Divider, styled, SxProps, Typography } from "@mui/material";
 import { Link, PathMatch, useMatch, useResolvedPath } from "react-router-dom";
 import { MenuItemModel } from "../../models/MenuItemModel";
 import { CLIENT_PAGES } from "../../routes/paths";
@@ -10,6 +10,7 @@ const HeaderMenuItemContainer = styled("div")(() => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    // backgroundColor:"red",
     "&:hover > #subMenu":{
         display:"block"
     }
@@ -27,7 +28,7 @@ const SubMenuItemContainer = styled("div")(() => ({
     position:"absolute",
     // backgroundColor:"pink",
     minWidth:"210px",
-    height:"95px",
+    minHeight:"95px",
     boxShadow:"rgba(149, 157, 165, 0.2) 0px 8px 24px",
     // border:"1px solid black",
     display:"flex",
@@ -53,27 +54,34 @@ const OneSubMenuItem = styled(Container)(() => ({
 interface Pops {
     title: string,
     path: string,
-    subMenu?: Array<MenuItemModel>
+    subPath:string,
+    subMenu?: Array<MenuItemModel>,
+    sx?: SxProps,
 }
 
-function HeaderMenuItem({title, path, subMenu}: Pops) {
+function HeaderMenuItem({title, path, subMenu, sx={}, subPath}: Pops) {
     let resolved = useResolvedPath(path);
     let match:PathMatch<string> | boolean | null = useMatch({ path: resolved.pathname, end: true });
     match = path.length === 0 ? false : match;
 
+    let resolvedContact = useResolvedPath(subPath);
+    let pathContact:PathMatch<string> | boolean | null = useMatch({ path: resolvedContact.pathname, end: true });
+    pathContact = subPath.length === 0 ? false : pathContact;
+
     return (
-        <HeaderMenuItemContainer>
+        <HeaderMenuItemContainer sx={{...sx}}>
             <Typography component={path.length === 0 ? "div" : HeaderMenuItemLink} to={path} variant="body1" style={{color: match ? "#138f82" : "black"}} sx={{fontWeight:"bold"}}>{title}</Typography>
             <HeaderMenuItemIndicator style={{backgroundColor: match ? "#138f82" : "rgba(0,0,0,0)"}}/>
             {subMenu?.length &&
                 <SubMenuItemContainer id="subMenu" sx={{display:"none"}}>
                     {
-                        subMenu?.map((oneMenu, index)=> 
-                            <Container key={index} sx={{ width:"100%", height:"40px",display:"flex", justifyContent:"center", alignItems:"center",fontSize:"18px", flexDirection:"column" }}><TextButton title={oneMenu.title} path={oneMenu.path} sx={{fontWeight:"bold", color:"black", fontSize:"15px"}}/>
-                            {subMenu?.length - 1 !== index &&
-                                <Divider sx={{width:"100%", margin:"5px 0px -20px 0px"}}/>
-                            }
-                            </Container>)
+                        // subMenu?.map((oneMenu, index)=> {
+                        //     if (pathContact) {
+    
+                        //     }
+
+                        // }
+                        //     )
                     }
                 </SubMenuItemContainer>
             }
