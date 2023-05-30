@@ -68,7 +68,7 @@ function Header() {
                 </LogoContainer> */}
                 <Box sx={{display: "flex"}}>
                 {/* <Search /> */}
-                    {/* {ClientMenuItems.map((menu, index) => <HeaderMenuItem  key={index} title={menu.title} path={menu.path} subMenu={menu.submenu} subPath={menu.submenu?.map((e, index) => {e.path})}/>)} */}
+                    {ClientMenuItems.map((menu, index) => <HeaderMenuItem  key={index} title={menu.title} path={menu.path} subMenu={menu.submenu} />)}
                 {/* <DevisButton/> */}
                 </Box>
                 {/* <Button onClick={handleOpenDrawer}><MenuIcon fontSize="large" sx={{color:"black"}}/></Button>

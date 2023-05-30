@@ -3,6 +3,8 @@ import { Link, PathMatch, useMatch, useResolvedPath } from "react-router-dom";
 import { MenuItemModel } from "../../models/MenuItemModel";
 import { CLIENT_PAGES } from "../../routes/paths";
 import TextButton from "../TextButton";
+import SubmenuItem from "./SubmenuItem";
+import { Fragment } from "react";
 
 const HeaderMenuItemContainer = styled("div")(() => ({
     marginRight: "40px",
@@ -54,19 +56,25 @@ const OneSubMenuItem = styled(Container)(() => ({
 interface Pops {
     title: string,
     path: string,
-    subPath:string,
     subMenu?: Array<MenuItemModel>,
     sx?: SxProps,
 }
 
-function HeaderMenuItem({title, path, subMenu, sx={}, subPath}: Pops) {
+function HeaderMenuItem({title, path, subMenu, sx={}}: Pops) {
     let resolved = useResolvedPath(path);
     let match:PathMatch<string> | boolean | null = useMatch({ path: resolved.pathname, end: true });
     match = path.length === 0 ? false : match;
 
-    let resolvedContact = useResolvedPath(subPath);
-    let pathContact:PathMatch<string> | boolean | null = useMatch({ path: resolvedContact.pathname, end: true });
-    pathContact = subPath.length === 0 ? false : pathContact;
+
+    // let matchs:any = [];
+    // if(subMenu)
+    //     matchs = subMenu!.map((one) => {
+    //         let resolvedContact = useResolvedPath(one.path);
+    //         let pathContact:PathMatch<string> | boolean | null = useMatch({ path: resolvedContact.pathname, end: true });
+    //         pathContact = one.path.length === 0 ? false : match;
+    //         return pathContact;
+    //     });
+
 
     return (
         <HeaderMenuItemContainer sx={{...sx}}>
@@ -74,14 +82,13 @@ function HeaderMenuItem({title, path, subMenu, sx={}, subPath}: Pops) {
             <HeaderMenuItemIndicator style={{backgroundColor: match ? "#138f82" : "rgba(0,0,0,0)"}}/>
             {subMenu?.length &&
                 <SubMenuItemContainer id="subMenu" sx={{display:"none"}}>
+                    
                     {
-                        // subMenu?.map((oneMenu, index)=> {
-                        //     if (pathContact) {
-    
-                        //     }
-
-                        // }
-                        //     )
+                        subMenu?.map((oneMenu, index)=> 
+                            <div>
+                                <SubmenuItem key={index} title={oneMenu.title} path={oneMenu.path} num={subMenu?.length} indexN={index}/>
+                            </div>
+                                )
                     }
                 </SubMenuItemContainer>
             }
