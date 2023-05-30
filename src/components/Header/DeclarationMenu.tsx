@@ -49,6 +49,9 @@ function DeclarationMenu({title, sx={}}: Props) {
         }}
       >
         <MenuItem onClick={handleClose}>
+            <SubMenuItem to={CLIENT_PAGES.contact}>Nous Contacter</SubMenuItem>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
             <SubMenuItem to={CLIENT_PAGES.declarationSinistre}>Un Sinistre</SubMenuItem>
         </MenuItem>
         <MenuItem onClick={handleClose}>

@@ -24,9 +24,12 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import { ContactElementsContainer } from '../ContactPage.tsx/ContactForm';
 import { PROJECT_COLORS } from '../../common/colors';
+import DatePickerComponent from '../../components/DatePickerComponent';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import DevisModelPdf from '../../components/DevisAutoPdf';
 
 
 
@@ -71,6 +74,21 @@ const TextFieldStyle=styled(TextField)(({theme})=>({
    
 }));
 
+const customDatePickerStyles = {
+    // Styles par défaut
+    root: {
+      border: '1px solid red', // Exemple de couleur de bordure par défaut
+    },
+    // Styles au survol
+    '&:hover': {
+      border: '1px solid blue', // Exemple de couleur de bordure au survol
+    },
+    // Styles au focus
+    '&:focus': {
+      border: '1px solid green', // Exemple de couleur de bordure au focus
+    },
+  };
+
 function DevisOptionSection() {
     const [formType, setFormType] = useState('');
 
@@ -94,6 +112,7 @@ function DevisOptionSection() {
             autoData!.Telephone_Fix = telephone;
             autoData!.Adresse = adresse;
             console.log(autoData);
+
         } else if (formType === "SANTE") {
             event.preventDefault();
             santeData!.Nom = nom;
@@ -125,11 +144,17 @@ function DevisOptionSection() {
         //   dispatch(addDevisAuto({oneDevisAuto: data})).unwrap().then(handleOpenDialog);
         // }
     } 
+    const defaultDate = dayjs('2022-04-17');
 
     const [autoData, setAutoData] = React.useState<DevisAutoModel>();
 
     const handleChangeAuto = (e: React.ChangeEvent<HTMLInputElement>) => {
         setAutoData((prev) => ({...prev, [e.target.name]: e.target.value} as DevisAutoModel));
+        console.log(autoData);
+      };
+    const handleChangeAutoDate = (propertyName: string, newValue: string | null) => {
+        const parsedValue = newValue ? dayjs(newValue).format("YYYY/MM/DD") : null;
+        setAutoData((prev) => ({ ...prev, [propertyName]: parsedValue } as DevisAutoModel));
         console.log(autoData);
       };
 
@@ -394,9 +419,9 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                         <Grid item  lg={12} md={12} sm={12} xs={12}>
                             <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Adresse'} value={adresse} onChange={(e) => setAdresse(e.target.value)} />
                         </Grid>
-                        <Grid item  lg={12} md={12} sm={12} xs={12}>
+                        {/* <Grid item  lg={12} md={12} sm={12} xs={12}>
                             <TextFieldStyle fullWidth label={"Test"}/>
-                        </Grid>
+                        </Grid> */}
                         {/* <Grid item  lg={12} md={12} sm={12} xs={12}>
                             <Input  fullWidth type='file' inputProps={{}} />
                         </Grid> */}
@@ -429,10 +454,12 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     <TextFieldPersonnalise id={''} name={"Profession"} required={true} label={'Profession'} onChange={handleChangeAuto} value={autoData?.Profession ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    <TextFieldPersonnalise id={''} name={"Date_Naissance"} required={true} label={'Date de Naissance'} type="date" defaultValue="2022/1/06" onChange={handleChangeAuto} value={autoData?.Date_Naissance ?? ""} />
+                                    <DatePickerComponent child={<DatePicker label={"Date_Naissance"}  sx={{width:"100%"}}  value={autoData?.Date_Naissance} onChange={(newValue) => handleChangeAutoDate(autoData?.Date_Naissance ?? "", newValue )} />}/>
+                                    {/* <TextFieldPersonnalise id={''} name={"Date_Naissance"} required={true} label={'Date de Naissance'} type="date" onChange={handleChangeAuto} value={autoData?.Date_Naissance ?? ""} /> */}
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    <TextFieldPersonnalise id={''} name={"Date_Permis_Conduite"} required={true} label={'Date de Permis de Conduire'}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Permis_Conduite ?? ""} />
+                                    {/* <TextFieldPersonnalise id={''} name={"Date_Permis_Conduite"} required={true} label={'Date de Permis de Conduire'}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Permis_Conduite ?? ""} /> */}
+                                    <DatePickerComponent child={<DatePicker label={"Date_Permis_Conduite"}  sx={{width:"100%"}}  value={autoData?.Date_Permis_Conduite } onChange={(newValue) => handleChangeAutoDate(autoData?.Date_Permis_Conduite ?? "", newValue )} />}/>
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
                                     <TextFieldPersonnalise id={''} name={"Marque_D1"} required={true} label={"Marque (D1)"} onChange={handleChangeAuto} value={autoData?.Marque_D1 ?? ""} />
@@ -456,7 +483,8 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     <TextFieldPersonnalise id={''} name={"Immatriculation"} required={true} label={"Immatriculation (A)"} onChange={handleChangeAuto} value={autoData?.Immatriculation ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    <TextFieldPersonnalise id={''} name={"Date_Acquisition"} required={true} label={"Date d'Acquisition"}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Acquisition ?? ""} />
+                                    {/* <TextFieldPersonnalise id={''} name={"Date_Acquisition"} required={true} label={"Date d'Acquisition"}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Acquisition ?? ""} /> */}
+                                    <DatePickerComponent child={<DatePicker label={"Date d'Acquisition"}  sx={{width:"100%"}}  value={autoData?.Date_Acquisition} onChange={(newValue) => handleChangeAutoDate(autoData?.Date_Acquisition ?? "", newValue )} />}/>
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
                                     <TextFieldPersonnalise id={''} name={"Titulaire_Carte_Grise"} required={true} label={"Titulaire Carte Grise"} onChange={handleChangeAuto} value={autoData?.Titulaire_Carte_Grise ?? ""} />
@@ -468,7 +496,8 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     <TextFieldPersonnalise id={''} name={"Coefficient_Bonus_CRM"} required={true} label={"Coef. Bonus/Malus (CRM)"} onChange={handleChangeAuto} value={autoData?.Coefficient_Bonus_CRM ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    <TextFieldPersonnalise id={''} name={"Date_Obtention_CRM"} required={true} label={"Date d'Obtention du CRM"}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Obtention_CRM?? ""} />
+                                    {/* <TextFieldPersonnalise id={''} name={"Date_Obtention_CRM"} required={true} label={"Date d'Obtention du CRM"}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Obtention_CRM?? ""} /> */}
+                                    <DatePickerComponent child={<DatePicker  label={"Date d'Obtention du CRM"}  sx={{width:"100%"}}  value={autoData?.Date_Obtention_CRM} onChange={(newValue) => handleChangeAutoDate(autoData?.Date_Obtention_CRM ?? "", newValue )} />}/>
                                 </Grid>
                             </Grid>
                             <Typography>Nombre de sinistres lors des dernières années(R.i)</Typography>
@@ -476,19 +505,21 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                             <Grid container spacing={{xs: 2, md: 3}} sx={{margin:"0px 0px 35px 0px"}}>
                     
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    <TextField fullWidth  id="outlined-required" select name={"Nature_Sinistre_1"} label="Nature" value={autoData?.Nature_Sinistre_1 ?? ""} onChange={handleChangeAuto} helperText="Veuillez sélectioner la nature" variant="outlined">
+                                    <TextField fullWidth   id="outlined-required" select name={"Nature_Sinistre_1"} label="Nature" value={autoData?.Nature_Sinistre_1 ?? ""} onChange={handleChangeAuto} helperText="Veuillez sélectioner la nature" variant="outlined">
                                         {currencies.map((option) => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                                     </TextField>
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
                                     {/* <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_1"} label={"Date"} onChange={handleChangeAuto}  type="date" value={autoData?.Date_Sinistre_1 ?? ""} /> */}
-                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DatePickerComponent child={<DatePicker  label={"Date_Sinistre_1"}  sx={{width:"100%"}}  value={autoData?.Date_Sinistre_1} onChange={(newValue) => handleChangeAutoDate(autoData?.Date_Sinistre_1 ?? "", newValue )} />}/>
+
+                                    {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                                         <DemoContainer components={['DatePicker']}>
-                                            {/* <TextField fullWidth> */}
+                                            <TextField fullWidth>
                                                 <DatePicker label="Basic date picker" sx={{color:"green", width:"100%"}} />
-                                            {/* </TextField> */}
+                                            </TextField>
                                         </DemoContainer>
-                                    </LocalizationProvider>
+                                    </LocalizationProvider> */}
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
                                     <TextField fullWidth id="outlined-required" select name={"Nature_Sinistre_2"} label="Nature" value={autoData?.Nature_Sinistre_2 ?? ""} onChange={handleChangeAuto} helperText="Veuillez sélectioner la nature" variant="outlined" >
@@ -496,7 +527,9 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     </TextField>
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_2"} label={"Date"} onChange={handleChangeAuto}  type="date" value={autoData?.Date_Sinistre_2 ?? ""} />
+                                    {/* <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_2"} label={"Date"} onChange={handleChangeAuto}  type="date" value={autoData?.Date_Sinistre_2 ?? ""} /> */}
+                                    <DatePickerComponent  child={<DatePicker label={"Date_Sinistre_2"}  sx={{width:"100%"}}  value={autoData?.Date_Sinistre_2} onChange={(newValue) => handleChangeAutoDate(autoData?.Date_Sinistre_2 ?? "", newValue )} />}/>
+
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
                                     <TextField fullWidth id="outlined-required" select name={"Nature_Sinistre_3"} label="Nature" value={autoData?.Nature_Sinistre_3 ?? ""} onChange={handleChangeAuto} helperText="Veuillez sélectioner la nature" variant="outlined">
@@ -504,7 +537,8 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     </TextField>
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_3"} label={"Date"} onChange={handleChangeAuto}  type="date" value={autoData?.Date_Sinistre_3 ?? ""} />
+                                    {/* <TextFieldPersonnalise id={''} required={true} name={"Date_Sinistre_3"} label={"Date"} onChange={handleChangeAuto}  type="date" value={autoData?.Date_Sinistre_3 ?? ""} /> */}
+                                    <DatePickerComponent child={<DatePicker label={"Date_Sinistre_3"}  sx={{width:"100%"}}   value={autoData?.Date_Sinistre_3} onChange={(newValue) => handleChangeAutoDate(autoData?.Date_Sinistre_3 ?? "", newValue )} />}/>
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
                                     <TextFieldPersonnalise id={''} required={true} name={"Resiliation_Compagnie"} label={"Résiliaton de la Compagnie"} onChange={handleChangeAuto} value={autoData?.Resiliation_Compagnie ?? ""} />
@@ -516,7 +550,9 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                                         <DatePicker/>
                                     </LocalizationProvider> */}
-                                    <TextFieldPersonnalise id={''} required={true} name={"Date_Resiliation"} label={"Date de Résiliation"}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Resiliation ?? ""}  />
+                                    {/* <TextFieldPersonnalise id={''} required={true} name={"Date_Resiliation"} label={"Date de Résiliation"}  type="date" onChange={handleChangeAuto} value={autoData?.Date_Resiliation ?? ""}  /> */}
+                                    <DatePickerComponent child={<DatePicker label={"Date de Résiliation"} sx={{width:"100%"}} value={autoData?.Date_Resiliation} onChange={(newValue) => handleChangeAutoDate(autoData?.Date_Sinistre_2 ?? "", newValue )}/>}/>
+
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
                                     <TextFieldPersonnalise id={''} required={true} name={"Suspension_ou_Annulation_Permis"} label={"Suspension/Annulation de Permis"} onChange={handleChangeAuto} value={autoData?.Suspension_ou_Annulation_Permis?? ""} />
@@ -971,6 +1007,9 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                         )}
                     {/* </Grid> */}
                 {/* </Container> */}
+                <PDFDownloadLink document={<DevisModelPdf id_client={''} Nom={autoData?.Nom} Prenom={autoData?.Prenom} Adresse={autoData?.Adresse} Num_Client={null} Telephone_Fix={autoData?.Telephone_Fix} Telephone_Mobile={autoData?.Telephone_Mobile} Email={autoData?.Email} Situation_Familial={autoData?.Situation_Familial} Nombre_Enfants_Inférieur_16ans={autoData?.Nombre_Enfants_Inférieur_16ans} Nombre_Enfants_Superieur_16ans={autoData?.Nombre_Enfants_Superieur_16ans} Profession={autoData?.Profession} Date_Naissance={autoData?.Date_Naissance} Date_Permis_Conduite={autoData?.Date_Permis_Conduite} Marque_D1={autoData?.Marque_D1} Modele_D3={autoData?.Modele_D3} Version={autoData?.Version} Puissance_Fiscale={autoData?.Puissance_Fiscale} Type_Mine_D2={autoData?.Type_Mine_D2} Mise_Circulation_B={autoData?.Mise_Circulation_B} Immatriculation={autoData?.Immatriculation} Date_Acquisition={autoData?.Date_Acquisition} Titulaire_Carte_Grise={autoData?.Titulaire_Carte_Grise} Autres_Conducteurs={autoData?.Autres_Conducteurs} Coefficient_Bonus_CRM={autoData?.Coefficient_Bonus_CRM} Date_Obtention_CRM={autoData?.Date_Obtention_CRM} Nature_Sinistre_1={autoData?.Nature_Sinistre_1} Date_Sinistre_1={autoData?.Date_Sinistre_1} Nature_Sinistre_2={autoData?.Nature_Sinistre_2} Date_Sinistre_2={autoData?.Date_Sinistre_2} Nature_Sinistre_3={autoData?.Nature_Sinistre_3} Date_Sinistre_3={autoData?.Date_Sinistre_3} Resiliation_Compagnie={autoData?.Resiliation_Compagnie} Motif_Resiliation={autoData?.Motif_Resiliation} Date_Resiliation={autoData?.Date_Resiliation} Suspension_ou_Annulation_Permis={autoData?.Suspension_ou_Annulation_Permis} dateSuspens={autoData?.dateSuspens} Date_Motif_Suspension={autoData?.Date_Motif_Suspension} Garage={autoData?.Garage} Usage_Vehiculaire={autoData?.Usage_Vehiculaire} Garanties_Souhaitées={autoData?.Garanties_Souhaitées} Option={autoData?.Option} Mode_Paiement={autoData?.Mode_Paiement} typeDevis={autoData?.typeDevis} uid={autoData?.uid} />} fileName={autoData?.Nom}>
+                    {({loading})=> (loading? <Button>Loading....</Button> : <Button>DownLoad</Button>)}
+                </PDFDownloadLink>
                 <Button variant="contained"  type="submit" sx={{ backgroundColor:"#138f82", display:"flex", justifyContent:"center", alignItems:"center", marginLeft:"40%", width:"100px", height:"50px", '&:hover': {backgroundColor:"black"} }}>valider</Button>
                 </Box >
             </BoxStyle >
