@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import { Box, Button, Card, Container, FormControl, Grid, Input, InputLabel, Stack, styled, TextField, Typography, OutlinedInput, FormControlLabel, Checkbox, TextareaAutosize, FormHelperText, withStyles } from '@mui/material';
 import SectionStyle from '../../styles/SectionStyle';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import { PROJECT_COLORS } from '../../common/colors';
 import { CheckText } from '../SinistrePage/SinistreForm';
 import { CLIENT_PAGES } from '../../routes/paths';
+import { ContactModel } from '../../models/ContactModel';
+import { sendFormData } from '../../services/http';
 
 export const ContactElementsContainer=styled("section")(({theme})=>({
     width:"calc(100% - 40vw)",
@@ -58,30 +60,51 @@ const FileFieldStyle=styled(OutlinedInput)(({theme})=>({
 }));
 
 function ContactForm() {
+    const [contactData, setContactData] = React.useState<ContactModel>();
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setContactData((prev) => ({...prev, [e.target.name]: e.target.value} as ContactModel));
+        console.log(contactData);
+      };
+
+      const validate = (event: FormEvent<HTMLFormElement>) => {
+          event.preventDefault();
+        const formData = new FormData(event.target as HTMLFormElement);
+        sendFormData(formData);
+        // console.log(contactData);
+    } 
+
+    // const handleSubmit = (event: { preventDefault: () => void; target: HTMLFormElement; }) => {
+    //     event.preventDefault();
+    //     const formData = new FormData(event.target );
+    //     // ...
+    //   };
+
     return (
         <ContactElementsContainer>
             <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Nous envoyer un message</Typography>
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"35px", marginBottom:"50px", textAlign:"center" }}>Veuillez renseigner le formulaire</Typography>
-            <BoxStyle component={"form"} sx={{ width:"65%"}}>
-                <Grid container spacing={3}>
+            <BoxStyle  sx={{ width:"65%"}}>
+                <Box component={"form"} onSubmit={validate}>
+                <Grid container  spacing={3}>
                     <Grid item md={6} xs={12} sx={{display:"flex", flexDirection:"row"}} >
                         {/* <TextField name="lastName"  variant="outlined" label={"FullName"} type="text" fullWidth sx={{color:"white"}}/> */}
-                        <TextField required id="outlined-required" label="Nom" defaultValue="" fullWidth/>
+                        <TextField  required id="outlined-required" label="Nom" defaultValue="" fullWidth name='Nom' value={contactData?.Nom ?? ""} onChange={handleChange}/>
                     </Grid>
                     <Grid item md={6} xs={12} sx={{display:"flex", flexDirection:"row"}}>
                         {/* <TextField name="email"  variant="outlined" label={"Your Email"} type="email" fullWidth /> */}
-                        <TextField required id="outlined-disabled" label="Email" defaultValue="" fullWidth/>
+                        <TextField required id="outlined-disabled" label="Email" defaultValue="" fullWidth name='Email' value={contactData?.Email ?? ""} onChange={handleChange}/>
                     </Grid>
                     <Grid item md={6} xs={12} sx={{display:"flex", flexDirection:"row"}}>
                         {/* <TextField name="email"  variant="outlined" label={"Your Email"} type="email" fullWidth /> */}
-                        <TextField required id="outlined-disabled" label="Téléphone" defaultValue="" fullWidth/>
+                        <TextField required id="outlined-disabled" label="Téléphone" defaultValue="" fullWidth name='Telephone' value={contactData?.Telephone ?? ""} onChange={handleChange}/>
                     </Grid>
                     <Grid item md={6} xs={12} sx={{display:"flex", flexDirection:"row"}}>
                         {/* <TextField name="email"  variant="outlined" label={"Your Email"} type="email" fullWidth /> */}
-                        <TextField required id="outlined-disabled" label="Sujet" defaultValue="" fullWidth/>
+                        <TextField required id="outlined-disabled" label="Sujet" defaultValue="" fullWidth name='Sujet' value={contactData?.Sujet ?? ""} onChange={handleChange}/>
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField name="message"  variant="outlined" label={"Votre déclaration circontancié"} fullWidth  multiline rows={6} />
+                        <TextField  variant="outlined" label={"Votre déclaration circontancié"} fullWidth  multiline rows={6} name='Message' value={contactData?.Message ?? ""} onChange={handleChange}/>
                     </Grid>
                     {/* <Grid item md={6} xs={12} sx={{display:"flex", flexDirection:"row"}}>
                         <TextField required id="outlined-required" label="N° de Télephone" defaultValue=""/>
@@ -97,8 +120,9 @@ function ContactForm() {
                     <FormControlLabel value="end" control={<Checkbox />} label={<CheckText>J'accepte les<span><a href={CLIENT_PAGES.home} style={{color:PROJECT_COLORS.primarySwatch, textDecoration:"none", fontWeight:"bold"}}> termes et conditions</a></span></CheckText>} labelPlacement="end"/>
             </FormControl>
                 </div>
+                <Button startIcon={<ArrowForwardIos/>} sx={{color:"white", backgroundColor:"#138F82", padding:"10px", '&:hover':{backgroundColor:"#213438"}}} type='submit'> Envoyer </Button>
+                </Box>
             </BoxStyle>
-                <Button startIcon={<ArrowForwardIos/>} sx={{color:"white", backgroundColor:"#138F82", padding:"10px", '&:hover':{backgroundColor:"#213438"}}}> Envoyer </Button>
         </ContactElementsContainer>
     );
 }

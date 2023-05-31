@@ -36,7 +36,7 @@ const BoxStyle=styled(Box)(({theme})=>({
 function DeclarationForm() {
     return (
         <DeclarationFormContainer>
-            <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Nous envoyer un message</Typography>
+            <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Vous êtes entrain de déposer une réclamation</Typography>
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"35px", marginBottom:"50px", textAlign:"center" }}>Veuillez renseigner le formulaire</Typography>
             <BoxStyle component={"form"} sx={{ width:"65%"}}>
             <Grid container spacing={3}>
