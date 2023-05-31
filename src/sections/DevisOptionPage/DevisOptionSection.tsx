@@ -454,7 +454,7 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                                     <TextFieldPersonnalise id={''} name={"Profession"} required={true} label={'Profession'} onChange={handleChangeAuto} value={autoData?.Profession ?? ""} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
-                                    <DatePickerComponent child={<DatePicker label={"Date_Naissance"}  sx={{width:"100%"}}  value={autoData?.Date_Naissance} onChange={(newValue) => handleChangeAutoDate(autoData?.Date_Naissance ?? "", newValue )} />}/>
+                                    <DatePickerComponent child={<DatePicker label={"Date_Naissance"}  sx={{width:"100%"}}  value={autoData?.Date_Naissance} onChange={(newValue) => handleChangeAutoDate("Date_Naissance", newValue )} />}/>
                                     {/* <TextFieldPersonnalise id={''} name={"Date_Naissance"} required={true} label={'Date de Naissance'} type="date" onChange={handleChangeAuto} value={autoData?.Date_Naissance ?? ""} /> */}
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={6} xs={12}>
