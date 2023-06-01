@@ -54,9 +54,9 @@ function Footer() {
                         <FooterContainerPart>
                             <Logo sx={{marginLeft: "30px"}} logoImg="assets/images/logo.png"/>
                             <FooterItems target='_blank'  title={'19, avenue Abel Sarnette, 84300 Cavaillon | France'} path={'https://goo.gl/maps/y5CJnN4egLDmjhdEA?coh=178573&entry=tt'} sx={{fontWeight:"bold", width:"70%"}}></FooterItems>
-                            <FooterItems title={'+33 4 90 71 35 47'} path={'tel:+33 4 90 35 47'}></FooterItems>
+                            <FooterItems target='_blank' title={'+33 4 90 71 35 47'} path={'tel:+33 4 90 35 47'}></FooterItems>
                             <Typography>Lundi - vendredi, 	09:00–12:00 / 14:00–18:00</Typography>
-                            <FooterItems title={'contact@artemisassurance.fr'} path={'mailto:contact@artemisassurance.fr'}></FooterItems>
+                            <FooterItems target='_blank' title={'contact@artemisassurance.fr'} path={'mailto:contact@artemisassurance.fr'}></FooterItems>
                             <SocialMediaList/>
                         </FooterContainerPart>
                     </Grid>

@@ -101,12 +101,13 @@ function DevisOptionSection() {
     // information devis Auto Moto
 
     const validate = (event: FormEvent<HTMLFormElement>) => {
-
+        autoData!.typeDevis= formType
         if (!formType) {
-            
+            return null
         }
         if (formType === "AUTO-MOTO") {
             event.preventDefault();
+            
             autoData!.Nom = nom;
             autoData!.Prenom = prenom;
             autoData!.Telephone_Fix = telephone;
