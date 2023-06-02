@@ -53,9 +53,9 @@ function Footer() {
                         <Grid item xs={12} md={6} sm={6} lg={3}>
                         <FooterContainerPart>
                             <Logo sx={{marginLeft: "30px"}} logoImg="assets/images/logo.png"/>
-                            <FooterItems target='_blank'  title={'19, avenue Abel Sarnette, 84300 Cavaillon | France'} path={'https://goo.gl/maps/y5CJnN4egLDmjhdEA?coh=178573&entry=tt'} sx={{fontWeight:"bold", width:"70%"}}></FooterItems>
+                            <FooterItems target='_blank'  title={'19, Avenue Abel Sarnette, 84300 Cavaillon | France'} path={'https://goo.gl/maps/y5CJnN4egLDmjhdEA?coh=178573&entry=tt'} sx={{fontWeight:"bold", width:"70%"}}></FooterItems>
                             <FooterItems target='_blank' title={'+33 4 90 71 35 47'} path={'tel:+33 4 90 35 47'}></FooterItems>
-                            <Typography>Lundi - vendredi, 	09:00–12:00 / 14:00–18:00</Typography>
+                            <Typography>Lundi - Vendredi, 	09:00–12:00 / 14:00–18:00</Typography>
                             <FooterItems target='_blank' title={'contact@artemisassurance.fr'} path={'mailto:contact@artemisassurance.fr'}></FooterItems>
                             <SocialMediaList/>
                         </FooterContainerPart>
@@ -63,7 +63,7 @@ function Footer() {
                     <Grid item xs={12} md={6} sm={6} lg={3}>
                         <FooterContainerPart>
                             <Typography sx={{fontSize:"18px", fontWeight:"bold" , marginBottom:"15px"}}>Information légales</Typography>
-                            <FooterItems title={'Politique de confidentialité'} path={''}></FooterItems>
+                            <FooterItems title={'Politique de confidentialité'} path={CLIENT_PAGES.confidentialite}></FooterItems>
                             <FooterItems title={'Termes et conditions'} path={''}></FooterItems>
                             <FooterItems title={'Traitement de vos données'} path={''}></FooterItems>
                             <FooterItems title={'Conditions'} path={''}></FooterItems>
@@ -80,7 +80,7 @@ function Footer() {
                     </Grid>
                     <Grid item xs={12} md={6} sm={6} lg={3}>
                         <FooterContainerPart>
-                            <Typography sx={{fontSize:"18px", fontWeight:"bold", marginBottom:"15px"}}>Nos assurances</Typography>
+                            <Typography sx={{fontSize:"18px", fontWeight:"bold", marginBottom:"15px"}}>Nos Assurances</Typography>
                             <FooterItems title={"Assurance Habitation"} path={CLIENT_PAGES.services}></FooterItems>
                             <FooterItems title={"Assurance Professionnelle"} path={CLIENT_PAGES.services}></FooterItems>
                             <FooterItems title={"Assurance Auto"} path={CLIENT_PAGES.services}></FooterItems>
@@ -95,7 +95,7 @@ function Footer() {
             </FooterContainer>
             
             <Divider/>
-            <Typography sx={{display:"flex", flexDirection:"row", justifyContent:"center"}}>© Copyright 2022<span>ARTEMIS</span></Typography>
+            <Typography sx={{display:"flex", flexDirection:"row", justifyContent:"center"}}>© Copyright 2022 <span> ARTEMIS</span></Typography>
         </FooterContainerCopirght>
     );
 }

@@ -1,8 +1,5 @@
-import { Box, Button, Checkbox, Container, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Grid, Input, MenuItem, Radio, RadioGroup, styled, TextField, Typography } from '@mui/material';
+import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Grid, Input, MenuItem, Radio, RadioGroup, styled, TextField, Typography } from '@mui/material';
 import React, { FormEvent, useState } from 'react';
-import FormAccesButton from '../../components/FormAccesButton';
-import { CLIENT_PAGES, USER_PAGES } from '../../routes/paths';
-import SectionStyle from '../../styles/SectionStyle';
 import TextFieldPersonnalise from '../../components/TextFieldPersonnalise';
 import { DevisAutoModel } from '../../models/DevisAutoModel';
 import { Garage } from '../../components/Ennum/Garage';
@@ -21,11 +18,7 @@ import { DevisProModel } from '../../models/DevisProModel';
 import { GarantiesPro } from '../../components/Ennum/GarantiesPro';
 import { OptionsPro } from '../../components/Ennum/OptionsPro';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs, { Dayjs } from 'dayjs';
-import { ContactElementsContainer } from '../ContactPage.tsx/ContactForm';
+import dayjs from 'dayjs';
 import { PROJECT_COLORS } from '../../common/colors';
 import DatePickerComponent from '../../components/DatePickerComponent';
 import { PDFDownloadLink } from '@react-pdf/renderer';
@@ -102,12 +95,13 @@ function DevisOptionSection() {
 
     const validate = (event: FormEvent<HTMLFormElement>) => {
         autoData!.typeDevis= formType
+
         if (!formType) {
             return null
         }
+
         if (formType === "AUTO-MOTO") {
             event.preventDefault();
-            
             autoData!.Nom = nom;
             autoData!.Prenom = prenom;
             autoData!.Telephone_Fix = telephone;

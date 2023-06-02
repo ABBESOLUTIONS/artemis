@@ -22,6 +22,7 @@ export const CLIENT_PAGES = {
     habitation:"/habitation",
     professionelle:"/professionelle",
     demande:"/demande",
+    confidentialite:"/confidentialite"
 };
 export const USER_PAGES = {
     contratsList:"/contratsList",

@@ -27,6 +27,7 @@ import { CLIENT_PAGES, REDIRECT_PAGES, USER_PAGES } from "./paths";
 import RéclamationPage from "../pages/RéclamationPage";
 import ReseauLayout from "../layouts/ReseauLayout";
 import ReseauRedirection from "../pages/ReseauRedirection";
+import Confidentialité from "../pages/Confidentialité";
 
 export default function Router() {
 
@@ -68,6 +69,7 @@ export default function Router() {
           { path: CLIENT_PAGES.sante, element: <Sante /> },
           { path: CLIENT_PAGES.habitation, element: <Habitation /> },
           { path: CLIENT_PAGES.professionelle, element: <Professionelle /> },
+          { path: CLIENT_PAGES.confidentialite, element: <Confidentialité /> },
         ],
       },
 
