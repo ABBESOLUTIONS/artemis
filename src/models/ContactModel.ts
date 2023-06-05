@@ -3,5 +3,6 @@ export interface ContactModel {
     Email:string,
     Telephone:string,
     Message:string,
-    Sujet:string
+    Sujet:string,
+    Fichiers: File[],
 }

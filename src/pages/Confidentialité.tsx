@@ -6,7 +6,7 @@ import ConfidentialiteSection from '../sections/ConfidentialitePage/Confidential
 function Confidentialité() {
     return (
         <Page  title={'Confidentialité'}>
-            <HeroComponent bigTitle={'Confidentialité'} littleTitle={''}/>
+            <HeroComponent bigTitle={'Politique de Confidentialité'} littleTitle={'Politique de Confidentialité'}/>
             <ConfidentialiteSection/>
         </Page>
     );

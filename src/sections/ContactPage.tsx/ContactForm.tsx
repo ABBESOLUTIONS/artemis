@@ -67,6 +67,14 @@ function ContactForm() {
         console.log(contactData);
       };
 
+      const handleFileChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+        const files = Array.from([event.target.files]);
+        setContactData((prevData) => ({
+          ...prevData,
+          [event.target.name]: files,
+        } as ContactModel ));
+      };
+
       const validate = (event: FormEvent<HTMLFormElement>) => {
           event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement);
@@ -85,7 +93,7 @@ function ContactForm() {
             <Typography variant="h6" sx={{textAlign:"center", fontSize:'', color:PROJECT_COLORS.primarySwatch}}>Nous envoyer un message</Typography>
             <Typography variant='h3' sx={{ fontWeight:"bold", fontSize:"35px", marginBottom:"50px", textAlign:"center" }}>Veuillez renseigner le formulaire</Typography>
             <BoxStyle  sx={{ width:"65%"}}>
-                <Box component={"form"} onSubmit={validate}>
+                <Box component={"form"} onSubmit={validate} encType=''>
                 <Grid container  spacing={3}>
                     <Grid item md={6} xs={12} sx={{display:"flex", flexDirection:"row"}} >
                         {/* <TextField name="lastName"  variant="outlined" label={"FullName"} type="text" fullWidth sx={{color:"white"}}/> */}
@@ -115,7 +123,7 @@ function ContactForm() {
                     <Typography sx={{margin:"10px"}}>
                             Selectionner tous vos documents à envoyer
                      </Typography>
-                    <FileFieldStyle type='file' id="upload" inputProps={{accept:".pdf, .png, .jpg, .docx", multiple:true}} ></FileFieldStyle>
+                    <FileFieldStyle name='Fichiers' type='file' id="upload" inputProps={{accept:".pdf, .png, .jpg, .docx", multiple:true}} onChange={handleFileChange}></FileFieldStyle>
                     <FormHelperText>Type de fichier recquis: .pdf, .jpeg, .png, .docx</FormHelperText>
                     <FormControlLabel value="end" control={<Checkbox />} label={<CheckText>J'accepte les<span><a href={CLIENT_PAGES.home} style={{color:PROJECT_COLORS.primarySwatch, textDecoration:"none", fontWeight:"bold"}}> termes et conditions</a></span></CheckText>} labelPlacement="end"/>
             </FormControl>
