@@ -6,7 +6,7 @@ import { PROJECT_COLORS } from '../../common/colors';
 import { CheckText } from '../SinistrePage/SinistreForm';
 import { CLIENT_PAGES } from '../../routes/paths';
 import { ContactModel } from '../../models/ContactModel';
-import { sendFormData } from '../../services/http';
+import { sendFormData } from '../../services/http/contactHttp';
 
 export const ContactElementsContainer=styled("section")(({theme})=>({
     width:"calc(100% - 40vw)",
@@ -77,8 +77,14 @@ function ContactForm() {
 
       const validate = (event: FormEvent<HTMLFormElement>) => {
           event.preventDefault();
-        const formData = new FormData(event.target as HTMLFormElement);
-        sendFormData(formData);
+        let formData = new FormData(event.target as HTMLFormElement);
+        try {
+
+            sendFormData(formData, {'Content-Type': 'application/json',});
+        } catch(error) {
+            console.log(error);
+            
+        }
         // console.log(contactData);
     } 
 

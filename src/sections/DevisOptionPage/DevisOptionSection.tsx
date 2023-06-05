@@ -23,6 +23,7 @@ import { PROJECT_COLORS } from '../../common/colors';
 import DatePickerComponent from '../../components/DatePickerComponent';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import DevisModelPdf from '../../components/DevisAutoPdf';
+import { sendDevisData } from '../../services/http/devisHttp';
 
 
 
@@ -129,6 +130,14 @@ function DevisOptionSection() {
             proData!.Telephone_Fix = telephone;
             proData!.Adresse = adresse;
             console.log(proData);
+        }
+        let formData = new FormData(event.target as HTMLFormElement);
+        try {
+
+            sendDevisData(formData, {'Content-Type': 'application/json',});
+        } catch(error) {
+            console.log(error);
+            
         }
         
         // if (data && user?.uid) {
@@ -422,7 +431,7 @@ const ProhandleChangeCheckedOptionPro = (e: React.ChangeEvent<HTMLInputElement>)
                         </Grid> */}
                         <Grid item  lg={12} md={12} sm={12} xs={12}>
                             {/* <TextFieldPersonnalise  id={''} name="Nom" required={true} label={'Adresse'} value={adresse} onChange={(e) => setAdresse(e.target.value)} /> */}
-                            <TextFieldStyle  defaultValue={"Selectionner Un Devis"} select value={formType} onChange={(e) => setFormType(e.target.value)} label="Selectioner le Type de Devis" fullWidth >
+                            <TextFieldStyle  defaultValue={"Selectionner Un Devis"} name='typeDevis' select value={formType} onChange={(e) => setFormType(e.target.value)} label="Selectioner le Type de Devis" fullWidth >
                                 <MenuItem value={"AUTO-MOTO"}>AUTO-MOTO</MenuItem>
                                 <MenuItem value={"SANTE"}>SANTE</MenuItem>
                                 <MenuItem value={"HABITATION"}>HABITATION</MenuItem>
